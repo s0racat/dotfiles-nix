@@ -65,6 +65,7 @@ in
     # '';
     ".profile".text = ''
     if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+    if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
     exec ~/.nix-profile/bin/zsh
     '';
   };
