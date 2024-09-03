@@ -1,0 +1,35 @@
+# set window split
+bind-key v split-window -v
+bind-key b split-window -h
+
+set -g status-interval 1
+
+bind-key c new-window
+bind-key n next-window
+
+# hjkl pane traversal
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+bind-key C command-prompt -p "Name of new window: " "new-window -n '%%'"
+
+# auto window rename
+set-window-option -g automatic-rename
+
+# resize window
+bind H resize-pane -L 
+bind J resize-pane -D 
+bind K resize-pane -U 
+bind L resize-pane -R
+
+set -g status-justify centre
+
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi C-v send -X rectangle-toggle
+bind -T copy-mode-vi y send -X copy-selection-and-cancel
+bind -T copy-mode-vi Escape send -X cancel
+bind -T copy-mode-vi H send -X start-of-line
+bind -T copy-mode-vi L send -X end-of-line
+set -ga terminal-overrides ',*-256color:Tc:smcup@:rmcup@'
