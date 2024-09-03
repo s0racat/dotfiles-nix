@@ -7,10 +7,10 @@
     signing.key = "ECCE3B658A852C82";
     signing.signByDefault = true;
     extraConfig = {
+      init = { defaultBranch = "main"; };
       core = {
         filemode = false;
       } // lib.optionalAttrs isWSL { sshcommand = ''ssh.exe''; };
-      init = { defaultBranch = "main"; };
 
     };
     includes = [
