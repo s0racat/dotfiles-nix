@@ -63,6 +63,9 @@ in
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".profile".text = ''
+    exec ~/.nix-profile/bin/zsh
+    '';
   };
 
   # Home Manager can also manage your environment variables through
