@@ -64,6 +64,7 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".profile".text = ''
+    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
     exec ~/.nix-profile/bin/zsh
     '';
   };
