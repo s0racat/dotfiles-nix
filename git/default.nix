@@ -10,6 +10,7 @@
       core = {
         filemode = false;
       } // lib.optionalAttrs isWSL { sshcommand = ''ssh.exe''; };
+      init = { defaultBranch = "main"; };
 
     };
     includes = [
