@@ -5,6 +5,6 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 git clone https://gitlab.com/takuoh/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run nixpkgs#home-manager -- switch --flake .#console
+nix run nixpkgs#home-manager -- switch --impure --flake .#console
 chsh -s $(which zsh)
 ```
