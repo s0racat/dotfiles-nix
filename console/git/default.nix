@@ -11,7 +11,7 @@
       init = { defaultBranch = "main"; };
       core = {
         filemode = false;
-      } // lib.optionalAttrs isWSL { sshcommand = ''/mnt/c/Program Files/OpenSSH/ssh.exe''; };
+      } // lib.optionalAttrs isWSL { sshcommand = "ssh.exe"; };
 
     };
     includes = [
