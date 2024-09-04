@@ -8,3 +8,9 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run nixpkgs#home-manager -- switch --impure --flake .#console
 chsh -s $(which zsh)
 ```
+
+# docker
+
+https://learn.microsoft.com/ja-jp/windows/wsl/systemd
+
+https://docs.docker.com/engine/install/debian/
