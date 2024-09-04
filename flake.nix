@@ -38,7 +38,13 @@
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
-          modules = [ ./console/home.nix ];
+          modules = [
+            ({ config, ... }: {
+              home.username = "takumi";
+              home.homeDirectory = "/home/${config.home.username}";
+              imports = [ ./console/home.nix ];
+            })
+          ];
         };
       };
     };
