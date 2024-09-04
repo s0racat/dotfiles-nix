@@ -1,6 +1,7 @@
-{ lib, isWSL, config, ... }: {
+{ lib, isWSL, config, pkgs, ... }: {
   programs.zsh = {
     enable = true;
+    package = pkgs.hello;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -41,10 +42,10 @@
     };
     autocd = true;
 
-    # profileExtra = ''
-    #   if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-    #   if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
-    # '';
+    profileExtra = ''
+      if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+      if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
+    '';
     initExtra = (builtins.readFile ./zshrc.extra);
     defaultKeymap = "emacs";
   };

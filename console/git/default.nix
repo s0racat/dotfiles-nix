@@ -1,6 +1,7 @@
 { pkgs, lib, isWSL, ... }: {
   programs.git = {
     enable = true;
+    package = pkgs.hello;
 
     userName = "Takumi";
     userEmail = "takuoh@tuta.io";

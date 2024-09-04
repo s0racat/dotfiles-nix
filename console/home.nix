@@ -2,7 +2,7 @@
 
 let
   isWSL = builtins.getEnv "WSLENV" != "";
-  zshConfig = import ./zsh/default.nix { inherit isWSL lib config; };
+  zshConfig = import ./zsh/default.nix { inherit isWSL lib config pkgs; };
   gitConfig = import ./git/default.nix { inherit isWSL pkgs lib; };
   tmuxConfig = import ./tmux/default.nix { inherit pkgs lib; };
 in
@@ -63,11 +63,11 @@ in
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".profile".text = ''
-    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-    if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
-    exec ~/.nix-profile/bin/zsh
-    '';
+    # ".profile".text = ''
+    # if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+    # if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
+    # exec ~/.nix-profile/bin/zsh
+    # '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -100,7 +100,10 @@ in
     tmuxConfig
   ];
 
-  programs.bat.config.theme = "Nord";
+  programs.bat = {
+    enable = true;
+    config.theme = "Nord";
+  };
   nix = {
     package = pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
