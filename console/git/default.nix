@@ -12,7 +12,6 @@
       core = {
         filemode = false;
       } // lib.optionalAttrs isWSL { sshcommand = "ssh.exe"; };
-
     };
     includes = [
       {
