@@ -16,8 +16,6 @@
       mv = "mv -v";
       rm = "rm -vi";
       mkdir = "mkdir -vp";
-      vim = "nvim";
-      vi = "nvim";
       cat = "bat";
       diff = "diff --color=auto";
       ip = "ip --color=auto";
@@ -25,9 +23,14 @@
       chmod = "chmod -c";
       chown = "chown -c";
       chattr = "chattr -V";
-      oct = "stat -c '%A %a %n'";
       md = "mkdir";
-      cdr = "cd $(ghq list -p | fzf)";
+      zr = "cd $(ghq list -p | fzf)";
+      gc = "git commit";
+      gp = "git push";
+      gd = "git diff";
+      gs = "git status";
+      oct = "stat -c '%A %a %n'";
+
 
 
     } // lib.optionalAttrs isWSL {
@@ -49,7 +52,11 @@
     initExtra = (builtins.readFile ./zshrc.extra);
     defaultKeymap = "emacs";
   };
-  programs.starship.enable = true;
+
+  programs.starship = {
+    enable = true;
+  };
+
   programs.fzf = {
     enable = true;
     colors = {

@@ -5,6 +5,7 @@ let
   zshConfig = import ./zsh/default.nix { inherit isWSL lib config pkgs; };
   gitConfig = import ./git/default.nix { inherit isWSL pkgs lib; };
   tmuxConfig = import ./tmux/default.nix { inherit pkgs lib; };
+  neovimConfig = import ./neovim/default.nix;
 in
 
 {
@@ -96,6 +97,7 @@ in
     gitConfig
     zshConfig
     tmuxConfig
+    neovimConfig
   ];
 
   programs.bat = {

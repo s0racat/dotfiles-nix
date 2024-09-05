@@ -8,7 +8,7 @@
     baseIndex = 1;
     keyMode = "vi";
     prefix = "c-s";
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     extraConfig = (lib.readFile ./tmux.conf.extra);
     plugins = with pkgs.tmuxPlugins; [
       nord

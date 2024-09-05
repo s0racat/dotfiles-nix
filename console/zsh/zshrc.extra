@@ -13,4 +13,9 @@ bindkey '\C-x\C-e' edit-command-line
 # https://wiki.archlinux.org/title/Zsh#Command_completion
 zstyle ':completion:*' menu select
 
+# https://gihyo.jp/dev/serial/01/zsh-book/0005#sec1_h1
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
+
+zstyle ':completion:*:processes' command "ps -au$USER"
+
 command -v exa &>/dev/null && function chpwd() { exa }
