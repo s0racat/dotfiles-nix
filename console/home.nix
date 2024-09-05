@@ -44,7 +44,6 @@ in
     # '')
     bat
     eza
-    neovim
     gnupg
     ghq
   ];

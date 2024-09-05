@@ -29,6 +29,7 @@
       gp = "git push";
       gd = "git diff";
       gs = "git status";
+      ga = "git add";
       oct = "stat -c '%A %a %n'";
 
 
