@@ -1,5 +1,5 @@
 ```bash
-sudo apt update; sudo apt upgrade -y; sudo apt install git zsh curl xz-utils wget vim -y
+sudo apt update; sudo apt upgrade -y; sudo apt install git zsh curl xz-utils wget -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
 git clone https://gitlab.com/takuoh/dotfiles-nix
