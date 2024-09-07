@@ -6,6 +6,7 @@ let
   gitConfig = import ./git/default.nix { inherit isWSL pkgs lib; };
   tmuxConfig = import ./tmux/default.nix { inherit pkgs lib; };
   neovimConfig = import ./neovim/default.nix;
+    inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 
 {
@@ -46,6 +47,9 @@ in
     eza
     gnupg
     ghq
+    gcc
+    nodejs
+    go
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -66,6 +70,10 @@ in
     # if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
     # exec ~/.nix-profile/bin/zsh
     # '';
+    ".config/nvim" = {
+        source = mkOutOfStoreSymlink ./neovim/nvim;
+        recursive = true;
+      };
   };
 
   # Home Manager can also manage your environment variables through
