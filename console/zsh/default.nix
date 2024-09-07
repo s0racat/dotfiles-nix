@@ -30,6 +30,7 @@
       gd = "git diff";
       gs = "git status";
       ga = "git add";
+      gl = "git pull";
       oct = "stat -c '%A %a %n'";
 
 
