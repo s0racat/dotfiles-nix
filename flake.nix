@@ -37,7 +37,7 @@
 
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          inherit pkgs;
           modules = [
             ({ config, ... }: {
               home.username = "takumi";
