@@ -70,10 +70,15 @@ in
     # if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
     # exec ~/.nix-profile/bin/zsh
     # '';
-    ".config/nvim" = {
-        source = mkOutOfStoreSymlink ./neovim/nvim;
-        recursive = true;
-      };
+   #  ".config/nvim" = {
+   #      source = pkgs.fetchFromGitLab {
+   #        owner = "takuoh";
+   #        repo = "nvim-config";
+	  # rev = "HEAD";
+	  # sha256 = lib.fakeSha256;
+   #      };
+   #      recursive = true;
+   #    };
   };
 
   # Home Manager can also manage your environment variables through
