@@ -1,14 +1,21 @@
-{ pkgs, lib, isWSL, ... }: {
+{
+  pkgs,
+  lib,
+  isWSL,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     package = pkgs.hello;
-
     userName = "Takumi";
     userEmail = "takuoh@tuta.io";
     signing.key = "ECCE3B658A852C82";
     signing.signByDefault = true;
     extraConfig = {
-      init = { defaultBranch = "main"; };
+      init = {
+        defaultBranch = "main";
+      };
       core = {
         filemode = false;
       } // lib.optionalAttrs isWSL { sshcommand = "ssh.exe"; };
@@ -35,13 +42,10 @@
         };
       }
     ];
-
-
   };
   services.gpg-agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
-
   };
   # programs.lazygit = {
   # enable = true;

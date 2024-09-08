@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -9,7 +9,7 @@
     keyMode = "vi";
     prefix = "c-s";
     terminal = "tmux-256color";
-    extraConfig = (lib.readFile ./tmux.conf.extra);
+    extraConfig = builtins.readFile ./tmux.conf.extra;
     plugins = with pkgs.tmuxPlugins; [
       nord
     ];

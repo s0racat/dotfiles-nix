@@ -13,37 +13,46 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , ...
-    } @ inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in
     {
+      formatter.${system} = pkgs.nixfmt-rfc-style;
       apps.${system}.update = {
         type = "app";
-        program = toString (pkgs.writeShellScript "update-script" ''
-          set -e
-          echo "Updating flake..."
-          nix flake update
-          echo "Updating home-manager..."
-          nix run nixpkgs#home-manager -- switch --impure --flake .#console
-          echo "Update complete!"
-        '');
+        program = toString (
+          pkgs.writeShellScript "update-script" ''
+            set -e
+            echo "Updating flake..."
+            nix flake update
+            echo "Updating home-manager..."
+            nix run nixpkgs#home-manager -- switch --impure --flake .#console
+            echo "Update complete!"
+            nix fmt
+            echo "nix fmt complete!"
+          ''
+        );
       };
 
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ({ config, ... }: {
-              home.username = "takumi";
-              home.homeDirectory = "/home/${config.home.username}";
-              imports = [ ./console/home.nix ];
-            })
+            (
+              { config, ... }:
+              {
+                home.username = "takumi";
+                home.homeDirectory = "/home/${config.home.username}";
+                imports = [ ./console/home.nix ];
+              }
+            )
           ];
         };
       };
