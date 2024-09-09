@@ -80,19 +80,19 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     # ".profile".text = ''
-    # if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-    # if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
-    # exec ~/.nix-profile/bin/zsh
+    #   if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+    #   if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
+    #   exec ~/.nix-profile/bin/zsh
     # '';
-    #  ".config/nvim" = {
-    #      source = pkgs.fetchFromGitLab {
-    #        owner = "takuoh";
-    #        repo = "nvim-config";
-    # rev = "HEAD";
-    # sha256 = lib.fakeSha256;
-    #      };
-    #      recursive = true;
-    #    };
+    # ".config/nvim" = {
+    #   source = pkgs.fetchFromGitLab {
+    #     owner = "takuoh";
+    #     repo = "nvim-config";
+    #     rev = "HEAD";
+    #     sha256 = lib.fakeSha256;
+    #   };
+    #   recursive = true;
+    # };
   };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

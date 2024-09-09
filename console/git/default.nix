@@ -48,6 +48,9 @@
     pinentryPackage = pkgs.pinentry-curses;
   };
   # programs.lazygit = {
-  # enable = true;
+  #   enable = true;
   # };
+  programs.gh = {
+    enable = true;
+  };
 }
