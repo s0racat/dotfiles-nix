@@ -10,6 +10,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nixvim = {
+    #   url = "github:nix-community/nixvim";
+    #   # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -42,6 +47,9 @@
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
           modules = [
             (
               { config, ... }:

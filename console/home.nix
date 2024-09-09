@@ -14,7 +14,7 @@ let
       pkgs
       ;
   };
-  gitConfig = import ./git/default.nix { inherit isWSL pkgs lib; };
+  gitConfig = import ./git/default.nix { inherit pkgs isWSL lib; };
   tmuxConfig = import ./tmux/default.nix { inherit pkgs; };
   neovimConfig = import ./neovim/default.nix;
   inherit (config.lib.file) mkOutOfStoreSymlink;
@@ -25,7 +25,7 @@ in
   #     neovim2 = prev.neovim.override {
   #       configure = {
   #         packages.myVimPackage = with pkgs.vimPlugins; {
-  #           start = [ markdown-preview-nvim ];
+  #           opt = [ lazy-nvim ];
   #         };
   #       };
   #     };
@@ -66,6 +66,8 @@ in
     gcc
     nodejs
     go
+    python3
+    lua
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -93,6 +95,14 @@ in
     #   };
     #   recursive = true;
     # };
+    ".config/nvim/lua/plugins" = {
+      source = mkOutOfStoreSymlink ./neovim/plugins;
+      recursive = true;
+    };
+    ".config/nvim/lua/conf" = {
+      source = mkOutOfStoreSymlink ./neovim/conf;
+      recursive = true;
+    };
   };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
