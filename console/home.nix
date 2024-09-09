@@ -20,14 +20,14 @@ let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
-  #   nixpkgs.overlays = [
+  # nixpkgs.overlays = [
   #   (final: prev: {
   #     neovim2 = prev.neovim.override {
   #       configure = {
-  #           packages.myVimPackage = with pkgs.vimPlugins; {
-  #             start = [ markdown-preview-nvim ];
-  #           };
+  #         packages.myVimPackage = with pkgs.vimPlugins; {
+  #           start = [ markdown-preview-nvim ];
   #         };
+  #       };
   #     };
   #   })
   # ];

@@ -35,8 +35,6 @@
             echo "Updating home-manager..."
             nix run nixpkgs#home-manager -- switch --impure --flake .#console
             echo "Update complete!"
-            nix fmt
-            echo "nix fmt complete!"
           ''
         );
       };
