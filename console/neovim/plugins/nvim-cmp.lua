@@ -95,31 +95,26 @@ local spec = {
   {
     'hrsh7th/cmp-nvim-lsp',
     event = 'InsertEnter',
-    dependencies = { 'nvim-lspconfig', 'nvim-cmp' },
   },
 
   {
     'hrsh7th/cmp-nvim-lsp-signature-help',
     event = 'InsertEnter',
-    dependencies = { 'nvim-lspconfig', 'nvim-cmp' },
   },
 
   {
     'hrsh7th/cmp-cmdline',
     event = 'CmdlineEnter',
-    dependencies = 'nvim-cmp'
   },
 
   {
     'hrsh7th/cmp-buffer',
     event = 'InsertEnter',
-    dependencies = 'nvim-cmp',
   },
 
   {
     'hrsh7th/cmp-path',
     event = { 'InsertEnter', 'CmdlineEnter' },
-    dependencies = 'nvim-cmp'
   },
 
 }
