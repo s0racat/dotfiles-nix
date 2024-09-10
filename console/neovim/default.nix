@@ -21,30 +21,7 @@
       {
         plugin = lazy-nvim;
         type = "lua";
-        config = ''
-          require("lazy").setup(
-              "plugins",
-              {
-                  defaults = {
-                      lazy = true
-                  },
-                  performance = {
-                      rtp = {
-                          disabled_plugins = {
-                              "gzip",
-                              "matchit",
-                              "tarPlugin",
-                              "tohtml",
-                              "tutor",
-                              "zipPlugin",
-                              "health",
-                              "netrwPlugin"
-                          }
-                      }
-                  }
-              }
-          )
-        '';
+        config = builtins.readFile ./lazy-nvim.lua;
       }
 
     ];
