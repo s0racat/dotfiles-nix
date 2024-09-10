@@ -1,6 +1,5 @@
 ```bash
 sudo apt update; sudo apt upgrade -y; sudo apt install git zsh curl xz-utils wget -y
-chsh -s $(which zsh)
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
 mkdir -p ~/ghq/github.com/s0racat/
