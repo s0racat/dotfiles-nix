@@ -1,5 +1,4 @@
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
 
 # https://wiki.archlinux.org/title/Tmux#Alternate_approach_for_default_session
 if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then

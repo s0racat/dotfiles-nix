@@ -68,6 +68,8 @@ in
     go
     python3
     lua
+    xdg-utils
+    ripgrep
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -120,9 +122,13 @@ in
   #
   #  /etc/profiles/per-user/takumi/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  home.sessionVariables =
+    {
+      # EDITOR = "emacs";
+    }
+    // lib.optionalAttrs isWSL {
+      BROWSER = "/mnt/c/Program Files/Mozilla Firefox/firefox.exe";
+    };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   imports = [
