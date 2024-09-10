@@ -128,7 +128,7 @@ in
       # EDITOR = "emacs";
     }
     // lib.optionalAttrs isWSL {
-      BROWSER = "/mnt/c/Program Files/Mozilla Firefox/firefox.exe";
+      BROWSER = "/mnt/c/Program\\ Files/Mozilla\\ Firefox/firefox.exe";
     };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
