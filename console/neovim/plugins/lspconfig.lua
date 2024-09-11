@@ -12,7 +12,10 @@ local spec = {
 
           vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
         end
-
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+        vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+        vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
         nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -71,77 +74,29 @@ local spec = {
         rust_analyzer = {}
       }
 
-      -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-      -- Ensure the servers above are installed
-      local mason_lspconfig = require 'mason-lspconfig'
-      local lspconfig = require 'lspconfig'
-      --
-      mason_lspconfig.setup {
-        ensure_installed = vim.tbl_keys(servers)
-      }
+      -- Add additional capabilities supported by nvim-cmp
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      local handlers = {
-        function(server_name)
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes
-          }
-        end,
+      local lspconfig = require('lspconfig')
 
-        ['bashls'] = function()
-          require('lspconfig').bashls.setup {
-            capabilities = capabilities,
-            filetypes = { "sh", "bash", "zsh" },
-            on_attach = function(client, bufnr)
-              on_attach(_, bufnr)
-              if vim.fn.expand('%:t') == 'PKGBUILD' then
-                client.config.settings.bashIde.shellcheckArguments = { '-e', 'SC2034', '-e', 'SC2154', '-e', 'SC2164' }
-              else
-                client.config.settings.bashIde.shellcheckArguments = {}
-              end
-            end,
-            settings = { bashIde = { shellcheckArguments = { '-s bash' } } }
-          }
-        end
-      }
-
-      mason_lspconfig.setup_handlers(handlers)
-    end,
-
-    -- Automatically install LSPs to stdpath for neovim
-
-    {
-      'williamboman/mason.nvim',
-      config = function()
-        require('mason').setup({
-          ui = {
-            icons = {
-              package_installed = "✓",
-              package_pending = "➜",
-              package_uninstalled = "✗"
-            }
-          }
-        })
-      end,
-    },
-
-    'williamboman/mason-lspconfig.nvim',
-
-    {
-      'folke/neodev.nvim',
-      config = function()
-        require('neodev').setup()
+      -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+      local servers = { 'lua_ls' }
+      for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup {
+          -- on_attach = my_custom_on_attach,
+          capabilities = capabilities,
+        }
       end
-    },
 
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} }
-
+      --
+    end
   },
+  -- Automatically install LSPs to stdpath for neovim
+
+  { 'j-hui/fidget.nvim', opts = {} }
+
+
 }
 
 return spec

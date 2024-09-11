@@ -1,26 +1,5 @@
 local spec = {
-  { 'tpope/vim-sleuth', event = 'VeryLazy' },
 
-  {
-    'folke/which-key.nvim',
-    opts = {},
-    keys = {
-      "<leader>", "<C-w>", "<C-e>"
-    }
-  },
-
-  {
-    'numToStr/Comment.nvim',
-    opts = {},
-    keys = {
-      { "gcc", mode = "n",          desc = "Comment toggle current line" },
-      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n",          desc = "Comment toggle current block" },
-      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" }
-    }
-  },
 
   {
     'vim-jp/vimdoc-ja',
@@ -65,10 +44,10 @@ local spec = {
     }
   },
 
-	{
-		'alvan/vim-closetag',
-		ft = { 'javascript', 'html'}
-	}
+  {
+    'alvan/vim-closetag',
+    ft = { 'javascript', 'html' }
+  }
 
 }
 

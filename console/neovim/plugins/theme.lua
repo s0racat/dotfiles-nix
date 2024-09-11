@@ -11,9 +11,8 @@ local spec = {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
     -- See `:help lualine.txt`
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    event = 'VeryLazy',
     opts = {
       options = {
         icons_enabled = true,
@@ -23,16 +22,16 @@ local spec = {
       }
     }
   },
+  { 'nvim-tree/nvim-web-devicons', opt = true },
 
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     event = 'VeryLazy',
+    main = 'ibl',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false
     }
   }
 

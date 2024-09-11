@@ -47,37 +47,26 @@ local spec = {
       vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
     end,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
 
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+    -- Only load if `make` is available. Make sure you have the system
+    -- requirements installed.
 
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end
-      }
 
-    }
+
+  },
+  'nvim-lua/plenary.nvim',
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    -- NOTE: If you are having trouble with this installation,
+    --       refer to the README for telescope-fzf-native for more instructions.
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end
   },
 
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
 
-
-    config = function()
-      require("telescope").load_extension "file_browser"
-    end,
-    keys = {
-      { id = 'fb', "<leader>fb", ":Telescope file_browser path=%:p:h select_buffer=true<cr>", mode = 'n' }
-    }
-  }
 }
 
 return spec

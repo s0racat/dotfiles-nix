@@ -85,12 +85,12 @@ local spec = {
       luasnip.config.setup {}
     end,
     event = 'InsertEnter',
-    {
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
-      'nvim-cmp'
-    },
+
   },
+  'L3MON4D3/LuaSnip',
+  'rafamadriz/friendly-snippets',
+  'nvim-cmp',
+
 
   {
     'hrsh7th/cmp-nvim-lsp',
