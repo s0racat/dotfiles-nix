@@ -48,6 +48,13 @@
     vimdiffAlias = true;
     extraPackages = with pkgs; [
       lua-language-server
+      nodePackages.typescript-language-server
+      bash-language-server
+      vim-language-server
+      emmet-language-server
+      gopls
+      nil
+      pyright
       stylua
     ];
 
@@ -66,7 +73,6 @@
           registers-nvim
           nvim-colorizer-lua
           # winresizer
-          # bufferline-nvim
           nvim-cmp
           cmp-buffer
           cmp-nvim-lsp
@@ -75,44 +81,18 @@
           cmp_luasnip
           cmp-nvim-lsp-signature-help
           # skkeleton
-          # denops-vim
+          denops-vim
           vim-suda
           friendly-snippets
           indent-blankline-nvim
           lualine-nvim
-          neo-tree-nvim
-          # treesitter
           nvim-treesitter
           nvim-treesitter-textobjects
-          # nvim-ts-autotag
-          # nvim-ts-context-commentstring
           nvim-web-devicons
-          # telescope
           plenary-nvim
           telescope-fzf-native-nvim
           telescope-nvim
           nord-nvim
-          # todo-comments-nvim
-          # tokyonight-nvim
-          # trouble-nvim
-          # vim-illuminate
-          # vim-startuptime
-          # which-key-nvim
-          # conform-nvim
-          # dashboard-nvim
-          # dressing-nvim
-          # flash-nvim
-          # persistence-nvim
-          # neoconf-nvim
-          # neodev-nvim
-          # noice-nvim
-          # nui-nvim
-          # nvim-lint
-          # nvim-lspconfig
-          # nvim-notify
-          # nvim-spectre
-          # gitsigns-nvim
-
           {
             name = "LuaSnip";
             path = luasnip;
@@ -180,8 +160,10 @@
         paths =
           (pkgs.vimPlugins.nvim-treesitter.withPlugins (
             plugins: with plugins; [
-              c
-              lua
+              go
+              nix
+              tsx
+              bash
             ]
           )).dependencies;
       };

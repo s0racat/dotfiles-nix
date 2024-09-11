@@ -1,7 +1,7 @@
 local spec = {
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    tag = '0.1.8',
     cmd = 'Telescope',
     keys = {
       "<leader>?",

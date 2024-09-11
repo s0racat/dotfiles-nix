@@ -46,7 +46,7 @@ local spec = {
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
-          { name = 'skkeleton' },
+          -- { name = 'skkeleton' },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'buffer' }
@@ -74,8 +74,8 @@ local spec = {
   -- {
   --   'rinx/cmp-skkeleton',
   --   event = 'InsertEnter',
-  --   dependencies = { 'skkeleton', 'nvim-cmp' },
   -- },
+
 
   {
     'saadparwaiz1/cmp_luasnip',
@@ -87,9 +87,12 @@ local spec = {
     event = 'InsertEnter',
 
   },
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
-  'nvim-cmp',
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = 'rafamadriz/friendly-snippets'
+  },
+
+
 
 
   {

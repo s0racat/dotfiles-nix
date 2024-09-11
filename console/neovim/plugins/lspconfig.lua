@@ -52,28 +52,6 @@ local spec = {
       --
       --  If you want to override the default filetypes that your language server will attach to you can
       --  define the property 'filetypes' to the map in question.
-      local servers = {
-        -- clangd = {},
-        gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
-
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false }
-          }
-        },
-        bashls = {},
-        cssls = {},
-        emmet_language_server = {},
-        tsserver = {},
-        vimls = {},
-        rust_analyzer = {}
-      }
-
 
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -81,10 +59,10 @@ local spec = {
       local lspconfig = require('lspconfig')
 
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-      local servers = { 'lua_ls' }
+      local servers = { 'lua_ls', 'tsserver', 'bashls', 'vimls', 'emmet_language_server', 'gopls', 'nil_ls', 'pyright' }
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup {
-          -- on_attach = my_custom_on_attach,
+          on_attach = on_attach,
           capabilities = capabilities,
         }
       end
@@ -94,7 +72,11 @@ local spec = {
   },
   -- Automatically install LSPs to stdpath for neovim
 
-  { 'j-hui/fidget.nvim', opts = {} }
+  {
+    'j-hui/fidget.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {}
+  }
 
 
 }
