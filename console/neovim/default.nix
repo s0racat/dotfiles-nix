@@ -36,9 +36,9 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
-
 {
   programs.neovim = {
     enable = true;
@@ -56,6 +56,7 @@
       nil
       pyright
       stylua
+      nixfmt-rfc-style
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -110,6 +111,9 @@
         lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
       in
       ''
+        require('conf.options')
+        require('conf.keymap')
+        require('conf.yank')
           require("lazy").setup(
             "plugins",
             {
@@ -146,9 +150,6 @@
                     },
                 },
             })
-        require('conf.options')
-        require('conf.keymap')
-        require('conf.yank')
       '';
   };
 
@@ -172,4 +173,40 @@
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   # xdg.configFile."nvim/lua".source = ./lua;
+
+  xdg.configFile."nvim/lua/plugins/skkeleton.lua" = {
+    source = pkgs.substituteAll {
+      src = ./plugins/skkeleton.lua;
+      skk_dicts = "${pkgs.skk-dicts}";
+    };
+  };
+  xdg.configFile."nvim/lua/plugins/git.lua" = {
+    text = builtins.readFile ./plugins/git.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/lspconfig.lua" = {
+    text = builtins.readFile ./plugins/lspconfig.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/misc.lua" = {
+    text = builtins.readFile ./plugins/misc.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/nvim-cmp.lua" = {
+    text = builtins.readFile ./plugins/nvim-cmp.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/telescope.lua" = {
+    text = builtins.readFile ./plugins/telescope.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/theme.lua" = {
+    text = builtins.readFile ./plugins/theme.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/treesitter.lua" = {
+    text = builtins.readFile ./plugins/treesitter.lua;
+  };
+  xdg.configFile."nvim/lua/plugins/vim-suda.lua" = {
+    text = builtins.readFile ./plugins/vim-suda.lua;
+  };
+  xdg.configFile."nvim/lua/conf" = {
+    source = config.lib.file.mkOutOfStoreSymlink ./conf;
+    recursive = true;
+  };
+
 }

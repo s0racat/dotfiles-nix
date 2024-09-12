@@ -61,10 +61,25 @@ local spec = {
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
       local servers = { 'lua_ls', 'tsserver', 'bashls', 'vimls', 'emmet_language_server', 'gopls', 'nil_ls', 'pyright' }
       for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
+        if lsp == 'nil_ls' then
+          -- Special configuration for nil_ls
+          lspconfig[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+              ['nil'] = {
+                formatting = {
+                  command = { "nixfmt" },
+                },
+              },
+            },
+          }
+        else
+          lspconfig[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+          }
+        end
       end
 
       --

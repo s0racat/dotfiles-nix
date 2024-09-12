@@ -17,20 +17,12 @@ let
   gitConfig = import ./git/default.nix { inherit pkgs isWSL lib; };
   tmuxConfig = import ./tmux/default.nix { inherit pkgs; };
   neovimConfig = import ./neovim/default.nix;
-  inherit (config.lib.file) mkOutOfStoreSymlink;
+
 in
 {
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     neovim2 = prev.neovim.override {
-  #       configure = {
-  #         packages.myVimPackage = with pkgs.vimPlugins; {
-  #           opt = [ lazy-nvim ];
-  #         };
-  #       };
-  #     };
-  #   })
-  # ];
+  nixpkgs.overlays = [
+    (import ../overlay/skk-dicts/package.nix)
+  ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -74,6 +66,7 @@ in
     deno
     typescript
     fd
+    skk-dicts
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -101,14 +94,13 @@ in
     #   };
     #   recursive = true;
     # };
-    ".config/nvim/lua/plugins" = {
-      source = mkOutOfStoreSymlink ./neovim/plugins;
-      recursive = true;
-    };
-    ".config/nvim/lua/conf" = {
-      source = mkOutOfStoreSymlink ./neovim/conf;
-      recursive = true;
-    };
+    # ".config/nvim/lua/plugins" = {
+    #   source = mkOutOfStoreSymlink ./neovim/plugins;
+    #   recursive = true;
+    # };
+    # ".config/nvim/lua/plugins/skkeleton.lua".text = ''
+
+    # '';
   };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
