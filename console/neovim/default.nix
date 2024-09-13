@@ -5,8 +5,8 @@
   ...
 }:
 let
-  concatFiles = import ../../function/concatFiles.nix;
-  substituteStrings = import ../../function/substituteStrings.nix;
+  concatFiles = import ../../lib/concatFiles.nix;
+  substituteStrings = import ../../lib/substituteStrings.nix;
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {

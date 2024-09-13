@@ -4,7 +4,7 @@
   ...
 }:
 let
-  isWSL = import ../../function/isWSL.nix;
+  isWSL = import ../../lib/isWSL.nix;
 in
 {
   programs.git = {
