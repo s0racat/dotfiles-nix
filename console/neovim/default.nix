@@ -7,7 +7,6 @@
 let
   concatFiles = import ../../lib/concatFiles.nix;
   substituteStrings = import ../../lib/substituteStrings.nix;
-  inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
   programs.neovim = {
@@ -144,7 +143,7 @@ in
     '';
 
   xdg.configFile."nvim/lua/conf" = {
-    source = mkOutOfStoreSymlink ./conf;
+    source = ./conf;
     recursive = true;
   };
 

@@ -6,8 +6,10 @@
       "nix-command"
       "flakes"
     ];
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
-  nixpkgs.overlays = [
-    (import ../../overlay/skk-dicts/package.nix)
-  ];
 }

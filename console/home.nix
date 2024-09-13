@@ -7,6 +7,10 @@ let
   isWSL = import ../lib/isWSL.nix;
 in
 {
+  nixpkgs.overlays = [
+    (import ../overlay/skk-dicts.nix)
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # This value determines the Home Manager release that your configuration is
@@ -49,7 +53,7 @@ in
     deno
     typescript
     fd
-    skk-dicts
+    skk-dicts-latest
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
