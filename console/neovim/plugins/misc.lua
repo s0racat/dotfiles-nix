@@ -1,6 +1,3 @@
-local spec = {
-
-
   {
     'vim-jp/vimdoc-ja',
     event = 'CmdlineEnter',
@@ -47,8 +44,4 @@ local spec = {
   {
     'alvan/vim-closetag',
     ft = { 'javascript', 'html' }
-  }
-
-}
-
-return spec
+  },

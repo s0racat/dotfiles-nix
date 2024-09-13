@@ -56,7 +56,7 @@
               {
                 home.username = "takumi";
                 home.homeDirectory = "/home/${config.home.username}";
-                imports = [ ./console/home.nix ];
+                imports = [ ./console/default.nix ];
               }
             )
           ];

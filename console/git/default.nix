@@ -1,9 +1,11 @@
 {
   pkgs,
   lib,
-  isWSL,
   ...
 }:
+let
+  isWSL = import ../../function/isWSL.nix;
+in
 {
   programs.git = {
     enable = true;

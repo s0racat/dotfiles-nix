@@ -1,5 +1,4 @@
-local spec = {
-  {
+ {
     'shaunsingh/nord.nvim',
     priority = 1000,
     lazy = false,
@@ -22,6 +21,7 @@ local spec = {
       }
     }
   },
+
   { 'nvim-tree/nvim-web-devicons', opt = true },
 
   {
@@ -31,10 +31,5 @@ local spec = {
     main = 'ibl',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-    }
-  }
-
-}
-
-return spec
+    opts = {}
+  },

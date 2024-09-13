@@ -1,44 +1,14 @@
-# { pkgs, ... }:
-# {
-#   imports = [
-#     # inputs.nixvim.homeManagerModules.nixvim
-#     # ./plugins/lazy-nvim.nix
-#   ];
-#   # programs.nixvim = {
-#   #   enable = true;
-#   #   plugins.lazy.enable = true;
-#   # };
-#   programs.neovim = {
-#     enable = true;
-#     defaultEditor = true;
-#     viAlias = true;
-#     vimAlias = true;
-#     vimdiffAlias = true;
-#     # extraLuaPackages = luaPkgs: with luaPkgs; [ 
-#     #   luarocks
-#     #  ];
-#     plugins = with pkgs.vimPlugins; [
-#       {
-#         plugin = lazy-nvim;
-#         type = "lua";
-#         config = builtins.readFile ./lazy-nvim.lua;
-#       }
-
-#     ];
-#     extraLuaConfig = ''
-#       require('conf.options')
-#       require('conf.keymap')
-#       require('conf.yank')
-#     '';
-#   };
-# }
-
 {
   lib,
   pkgs,
   config,
   ...
 }:
+let
+  concatFiles = import ../../function/concatFiles.nix;
+  substituteStrings = import ../../function/substituteStrings.nix;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
 {
   programs.neovim = {
     enable = true;
@@ -109,47 +79,18 @@
           else
             drv;
         lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
+        lazyConfig = substituteStrings {
+          file = ./plugins/lazy-nvim.lua;
+          replacements = [
+            {
+              old = "@lazyPath@";
+              new = "${lazyPath}";
+            }
+          ];
+        };
       in
       ''
-        require('conf.options')
-        require('conf.keymap')
-        require('conf.yank')
-          require("lazy").setup(
-            "plugins",
-            {
-                defaults = {
-                    lazy = true,
-                },
-                dev = {
-                    -- reuse files from pkgs.vimPlugins.*
-                    path = "${lazyPath}",
-                    patterns = { "." },
-                    -- fallback to download
-                    fallback = true,
-                },
-                performance = {
-                    cache = {
-                        enabled = true,
-                    },
-                    reset_packpath = true, -- reset the package path to improve startup time
-                    rtp = {
-                        reset = true,      -- reset the runtime path to $VIMRUNTIME and your config directory
-                        ---@type string[]
-                        paths = {},        -- add any custom paths here that you want to includes in the rtp
-                        ---@type string[] list any plugins you want to disable here
-                        disabled_plugins = {
-                            "gzip",
-                            "matchit",
-                            "matchparen",
-                            "netrwPlugin",
-                            "tarPlugin",
-                            "tohtml",
-                            "tutor",
-                            "zipPlugin",
-                        },
-                    },
-                },
-            })
+        ${lazyConfig}
       '';
   };
 
@@ -174,38 +115,36 @@
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   # xdg.configFile."nvim/lua".source = ./lua;
 
-  xdg.configFile."nvim/lua/plugins/skkeleton.lua" = {
-    source = pkgs.substituteAll {
-      src = ./plugins/skkeleton.lua;
-      skk_dicts = "${pkgs.skk-dicts}";
-    };
-  };
-  xdg.configFile."nvim/lua/plugins/git.lua" = {
-    text = builtins.readFile ./plugins/git.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/lspconfig.lua" = {
-    text = builtins.readFile ./plugins/lspconfig.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/misc.lua" = {
-    text = builtins.readFile ./plugins/misc.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/nvim-cmp.lua" = {
-    text = builtins.readFile ./plugins/nvim-cmp.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/telescope.lua" = {
-    text = builtins.readFile ./plugins/telescope.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/theme.lua" = {
-    text = builtins.readFile ./plugins/theme.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/treesitter.lua" = {
-    text = builtins.readFile ./plugins/treesitter.lua;
-  };
-  xdg.configFile."nvim/lua/plugins/vim-suda.lua" = {
-    text = builtins.readFile ./plugins/vim-suda.lua;
-  };
+  xdg.configFile."nvim/lua/plugins.lua".text =
+    let
+      skkeletonConfig = substituteStrings {
+        file = ./plugins/skkeleton.lua;
+        replacements = [
+          {
+            old = "@skk_dicts@";
+            new = "${pkgs.skk-dicts}";
+          }
+        ];
+      };
+    in
+    ''
+      return {
+      ${concatFiles [
+        ./plugins/git.lua
+        ./plugins/lspconfig.lua
+        ./plugins/misc.lua
+        ./plugins/nvim-cmp.lua
+        ./plugins/telescope.lua
+        ./plugins/theme.lua
+        ./plugins/treesitter.lua
+        ./plugins/vim-suda.lua
+      ]}
+      ${skkeletonConfig}
+      }
+    '';
+
   xdg.configFile."nvim/lua/conf" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./conf;
+    source = mkOutOfStoreSymlink ./conf;
     recursive = true;
   };
 

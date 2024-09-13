@@ -1,5 +1,4 @@
-local spec = {
-  {
+ {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     cmd = 'Telescope',
@@ -51,11 +50,10 @@ local spec = {
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
     -- Only load if `make` is available. Make sure you have the system
     -- requirements installed.
-
-
-
   },
+
   'nvim-lua/plenary.nvim',
+
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
@@ -65,8 +63,3 @@ local spec = {
       return vim.fn.executable 'make' == 1
     end
   },
-
-
-}
-
-return spec

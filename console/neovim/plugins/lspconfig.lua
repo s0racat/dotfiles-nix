@@ -1,4 +1,3 @@
-local spec = {
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -9,7 +8,6 @@ local spec = {
           if desc then
             desc = 'LSP: ' .. desc
           end
-
           vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
         end
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -91,9 +89,4 @@ local spec = {
     'j-hui/fidget.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {}
-  }
-
-
-}
-
-return spec
+  },

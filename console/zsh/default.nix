@@ -1,10 +1,13 @@
 {
   lib,
-  isWSL,
   config,
   pkgs,
   ...
 }:
+let
+  isWSL = import ../../function/isWSL.nix;
+
+in
 {
   programs.zsh = {
     enable = true;

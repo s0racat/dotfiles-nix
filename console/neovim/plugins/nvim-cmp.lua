@@ -1,5 +1,3 @@
-local spec = {
-
   {
     'hrsh7th/nvim-cmp',
     config = function()
@@ -85,15 +83,12 @@ local spec = {
       luasnip.config.setup {}
     end,
     event = 'InsertEnter',
-
   },
+
   {
     'L3MON4D3/LuaSnip',
     dependencies = 'rafamadriz/friendly-snippets'
   },
-
-
-
 
   {
     'hrsh7th/cmp-nvim-lsp',
@@ -119,7 +114,3 @@ local spec = {
     'hrsh7th/cmp-path',
     event = { 'InsertEnter', 'CmdlineEnter' },
   },
-
-}
-
-return spec

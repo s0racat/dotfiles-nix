@@ -1,29 +1,12 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
 let
-  isWSL = builtins.getEnv "WSLENV" != "";
-  zshConfig = import ./zsh/default.nix {
-    inherit
-      isWSL
-      lib
-      config
-      pkgs
-      ;
-  };
-  gitConfig = import ./git/default.nix { inherit pkgs isWSL lib; };
-  tmuxConfig = import ./tmux/default.nix { inherit pkgs; };
-  neovimConfig = import ./neovim/default.nix;
-
+  isWSL = import ../function/isWSL.nix;
 in
 {
-  nixpkgs.overlays = [
-    (import ../overlay/skk-dicts/package.nix)
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # This value determines the Home Manager release that your configuration is
@@ -127,30 +110,5 @@ in
     };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  imports = [
-    gitConfig
-    zshConfig
-    tmuxConfig
-    neovimConfig
-  ];
-  programs.bat = {
-    enable = true;
-    config.theme = "Nord";
-  };
-  programs.htop = {
-    enable = true;
-    settings = {
-      tree_view = 1;
-      tree_view_always_by_pid = 1;
-      show_cpu_frequency = 1;
-      show_cpu_temperature = 1;
-    };
-  };
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+
 }
