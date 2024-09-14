@@ -36,7 +36,7 @@ in
         chown = "chown -c";
         chattr = "chattr -V";
         md = "mkdir";
-        zr = "cd $(ghq list -p | fzf)";
+        zr = "z $(ghq list -p | fzf)";
         gc = "git commit";
         gp = "git push";
         gd = "git diff";
@@ -85,4 +85,5 @@ in
     };
   };
   home.file.".bashrc".text = builtins.readFile ./.bashrc;
+  programs.zoxide.enable = true;
 }
