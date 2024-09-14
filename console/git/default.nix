@@ -9,7 +9,7 @@ in
 {
   programs.git = {
     enable = true;
-    package = pkgs.hello;
+    # package = pkgs.hello;
     userName = "Takumi";
     userEmail = "takuoh@tuta.io";
     signing.key = "ECCE3B658A852C82";
