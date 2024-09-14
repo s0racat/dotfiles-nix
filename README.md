@@ -1,5 +1,5 @@
 ```bash
-sudo apt update; sudo apt upgrade -y; sudo apt install git curl xz-utils wget -y
+sudo apt update; sudo apt upgrade -y; sudo apt install curl xz-utils -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
 mkdir -p ~/ghq/github.com/s0racat/
