@@ -2,6 +2,7 @@
 {
   programs.tmux = {
     enable = true;
+    shell = "\${pkgs.zsh}/bin/zsh";
     escapeTime = 0;
     aggressiveResize = true;
     mouse = true;
