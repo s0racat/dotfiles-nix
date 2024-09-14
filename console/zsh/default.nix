@@ -79,10 +79,5 @@ in
       marker = "#EBCB8B";
     };
   };
-  home.file.".bashrc".text = ''
-    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-    if [ -x "$(command -v tmux)" ] && [ -z "''${TMUX}" ]; then
-        exec tmux new-session -A -s ''${USER} >/dev/null 2>&1
-    fi
-  '';
+  home.file.".bashrc".text = builtins.readFile ./.bashrc;
 }
