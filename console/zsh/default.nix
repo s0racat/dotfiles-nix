@@ -59,7 +59,7 @@ in
     # '';
     initExtra = builtins.readFile ./zshrc.extra;
     localVariables = {
-      PROMPT = "%F{green}%B%~%b%f
+      PROMPT = "%F{#88c0d0}%B%~%b%f
 %# ";
       RPROMPT = "[%F{yellow}%?%f]";
     };
