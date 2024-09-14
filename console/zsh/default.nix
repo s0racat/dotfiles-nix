@@ -11,7 +11,7 @@ in
 {
   programs.zsh = {
     enable = true;
-    package = pkgs.hello;
+    # package = pkgs.hello;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
