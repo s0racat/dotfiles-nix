@@ -79,4 +79,8 @@ in
       marker = "#EBCB8B";
     };
   };
+  home.file.".bashrc".text = ''
+    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+    exec zsh
+  '';
 }

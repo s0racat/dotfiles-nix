@@ -38,7 +38,7 @@
             echo "Updating flake..."
             nix flake update
             echo "Updating home-manager..."
-            nix run nixpkgs#home-manager -- switch --impure --flake .#console
+            nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
             echo "Update complete!"
           ''
         );
