@@ -58,10 +58,15 @@ in
     #   if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
     # '';
     initExtra = builtins.readFile ./zshrc.extra;
+    localVariables = {
+      PROMPT = "%F{blue}%B%~%b%f
+%F{green}%n%f@%F{magenta}%m%f %# ";
+      RPROMPT = "[%F{yellow}%?%f]";
+    };
   };
-  programs.starship = {
-    enable = true;
-  };
+  # programs.starship = {
+  #   enable = true;
+  # };
   programs.fzf = {
     enable = true;
     colors = {
