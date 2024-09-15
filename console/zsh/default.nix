@@ -58,11 +58,18 @@ in
     #   if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then source ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi
     # '';
     initExtra = builtins.readFile ./zshrc.extra;
-    localVariables = {
-      PROMPT = "%F{#88c0d0}%B%~%b%f
-%# ";
-      RPROMPT = "[%F{yellow}%?%f]";
-    };
+    plugins = [
+    {
+    name = "zsh-git-prompt";
+      file = "zshrc.sh";
+      src = pkgs.fetchFromGitHub {
+        owner = "olivierverdier";
+        repo = "zsh-git-prompt";
+        rev = "v0.5";
+        sha256 = "sha256-HBYg4Itohf3FtARJ1CUiJlvaFvtPQ7hPNPlQk4N7oac=";
+      };
+    }
+  ];
   };
   # programs.starship = {
   #   enable = true;
