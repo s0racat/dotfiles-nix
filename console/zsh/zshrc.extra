@@ -1,4 +1,3 @@
-export LANG=C.UTF-8
 git_prompt() {
 	if [[ $? == 0 ]]; then
 		prompt_status=😼
@@ -6,13 +5,12 @@ git_prompt() {
 		prompt_status=😿
 	fi
   if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then
-	  PROMPT="%F{#88c0d0}%B%~%b%f$(git_super_status)
-${prompt_status} ";
+	  PROMPT="%F{#88c0d0}%B%~%b%f$(git_super_status)"$'\n'"${prompt_status} ";
   else
-	  PROMPT="%F{#88c0d0}%B%~%b%f
-${prompt_status} ";
+	  PROMPT="%F{#88c0d0}%B%~%b%f"$'\n'"${prompt_status} ";
   fi
 }
+
 add_newline() {
   if [[ -z $PS1_NEWLINE_LOGIN ]]; then
     PS1_NEWLINE_LOGIN=true

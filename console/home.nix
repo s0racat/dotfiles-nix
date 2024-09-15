@@ -112,6 +112,9 @@ in
     }
     // lib.optionalAttrs isWSL {
       BROWSER = "/mnt/c/Program\\ Files/Mozilla\\ Firefox/firefox.exe";
+    }
+    // lib.optionalAttrs (builtins.getEnv "WSL_DISTRO_NAME" == "Debian") {
+      LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
     };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

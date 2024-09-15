@@ -6,7 +6,7 @@
 }:
 let
   isWSL = import ../../lib/isWSL.nix;
-
+  substituteStrings = import ../../lib/substituteStrings.nix;
 in
 {
   programs.zsh = {
@@ -59,18 +59,31 @@ in
     # '';
     initExtra = builtins.readFile ./zshrc.extra;
     plugins = [
-    {
-    name = "zsh-git-prompt";
-      file = "zshrc.sh";
-      src = pkgs.fetchFromGitHub {
-        owner = "olivierverdier";
-        repo = "zsh-git-prompt";
-        rev = "v0.5";
-        sha256 = "sha256-HBYg4Itohf3FtARJ1CUiJlvaFvtPQ7hPNPlQk4N7oac=";
-      };
-    }
-  ];
+      {
+        name = "zsh-git-prompt";
+        file = "zshrc.sh";
+        src = pkgs.fetchFromGitHub {
+          owner = "olivierverdier";
+          repo = "zsh-git-prompt";
+          rev = "v0.5";
+          sha256 = "sha256-HBYg4Itohf3FtARJ1CUiJlvaFvtPQ7hPNPlQk4N7oac=";
+        };
+      }
+    ];
+    # localVariables = {
+    #   # LANG = "C.UTF-8";
+    #   LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
+    # };
   };
+  # i18n.glibcLocales = pkgs.glibcLocales.override {
+  #   allLocales = false;
+  #   locales = [ "en_US.UTF-8/UTF-8"
+  #   "ja_JP.UTF-8/UTF-8"];
+  #   # extraLocaleSettings = {
+  #   # #   LOCALE_ARCHIVE = "${pkgs.glibc-locales}/lib/locale/locale-archive";
+  #   #   LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
+  #   # };
+  # };
   # programs.starship = {
   #   enable = true;
   # };

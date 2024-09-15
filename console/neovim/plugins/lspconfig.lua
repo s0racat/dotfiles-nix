@@ -57,7 +57,7 @@
       local lspconfig = require('lspconfig')
 
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-      local servers = { 'lua_ls', 'tsserver', 'bashls', 'vimls', 'emmet_language_server', 'gopls', 'nil_ls', 'pyright' }
+      local servers = { 'lua_ls', 'ts_ls', 'bashls', 'vimls', 'emmet_language_server', 'gopls', 'nil_ls', 'pyright' }
       for _, lsp in ipairs(servers) do
         if lsp == 'nil_ls' then
           -- Special configuration for nil_ls
