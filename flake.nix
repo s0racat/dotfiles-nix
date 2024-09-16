@@ -29,7 +29,8 @@
       pkgs = import nixpkgs { inherit system; };
     in
     {
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      # Accessible through 'nix build', 'nix shell', etc
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
       apps.${system} =
         let
           rebuild-home = {
@@ -60,6 +61,17 @@
               ''
             );
           };
+          clean = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "clean-script" ''
+                set -e
+                echo "Running \`nix-collect-garbage -d\`..."
+                nix-collect-garbage -d
+                echo "nix gc complete!"
+              ''
+            );
+          };
 
         };
 
@@ -83,8 +95,14 @@
       };
     };
 }
+# default:
+#   nix run .
+#
 # update:
 #   nix run .#update
 #
 # rebuild-home:
-# nix run .#rebuild-home
+#   nix run .#rebuild-home
+#
+# clean:
+#   nix run .#clean
