@@ -21,3 +21,10 @@ gh auth login
 https://learn.microsoft.com/ja-jp/windows/wsl/systemd
 
 https://docs.docker.com/engine/install/debian/
+
+# Debian systemd user
+
+```bash
+sudo apt install -y dbus-user-session
+sudo loginctl enable-linger $USER
+```
