@@ -30,19 +30,38 @@
     in
     {
       formatter.${system} = pkgs.nixfmt-rfc-style;
-      apps.${system}.update = {
-        type = "app";
-        program = toString (
-          pkgs.writeShellScript "update-script" ''
-            set -e
-            echo "Updating flake..."
-            nix flake update
-            echo "Updating home-manager..."
-            nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
-            echo "Update complete!"
-          ''
-        );
-      };
+      apps.${system} =
+        let
+          rebuild-home = {
+            type = "app";
+            program = builtins.toString (
+              pkgs.writeShellScript "home-manager-script" ''
+                set -e
+                echo "Rebuilding home-manager..."
+                nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
+                echo "home-manager Rebuild complete!"
+              ''
+            );
+          };
+        in
+        {
+          default = rebuild-home;
+          inherit rebuild-home;
+          update = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "update-script" ''
+                set -e
+                echo "Updating flake..."
+                nix flake update
+                echo "Rebuilding home-manager..."
+                nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
+                echo "home-manager Rebuild complete!"
+              ''
+            );
+          };
+
+        };
 
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
@@ -66,3 +85,6 @@
 }
 # update:
 #   nix run .#update
+#
+# rebuild-home:
+# nix run .#rebuild-home
