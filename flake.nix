@@ -39,7 +39,7 @@
               pkgs.writeShellScript "home-manager-script" ''
                 set -e
                 echo "Rebuilding home-manager..."
-                nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
+                home-manager switch --impure -b backup --flake .#console
                 echo "home-manager Rebuild complete!"
               ''
             );
@@ -56,7 +56,7 @@
                 echo "Updating flake..."
                 nix flake update
                 echo "Rebuilding home-manager..."
-                nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
+                home-manager switch --impure -b backup --flake .#console
                 echo "home-manager Rebuild complete!"
               ''
             );
