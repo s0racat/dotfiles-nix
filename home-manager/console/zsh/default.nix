@@ -5,8 +5,8 @@
   ...
 }:
 let
-  isWSL = import ../../lib/isWSL.nix;
-  substituteStrings = import ../../lib/substituteStrings.nix;
+  isWSL = import ../../../lib/isWSL.nix;
+  substituteStrings = import ../../../lib/substituteStrings.nix;
 in
 {
   programs.zsh = {

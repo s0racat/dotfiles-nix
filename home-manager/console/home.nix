@@ -4,11 +4,11 @@
   ...
 }:
 let
-  isWSL = import ../lib/isWSL.nix;
+  isWSL = import ../../lib/isWSL.nix;
 in
 {
   nixpkgs.overlays = [
-    (import ../overlay/skk-dicts.nix)
+    (import ../../overlays/skk-dicts.nix)
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -112,9 +112,9 @@ in
     }
     // lib.optionalAttrs isWSL {
       BROWSER = "/mnt/c/Program\\ Files/Mozilla\\ Firefox/firefox.exe";
-    }
-    // lib.optionalAttrs (builtins.getEnv "WSL_DISTRO_NAME" == "Debian") {
-      LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
+      # }
+      # // lib.optionalAttrs (builtins.getEnv "WSL_DISTRO_NAME" == "Debian") {
+      #   LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
     };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -87,7 +87,7 @@
               {
                 home.username = "takumi";
                 home.homeDirectory = "/home/${config.home.username}";
-                imports = [ ./console/default.nix ];
+                imports = [ ./home-manager/console/default.nix ];
               }
             )
           ];

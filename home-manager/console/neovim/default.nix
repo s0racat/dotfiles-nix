@@ -5,8 +5,8 @@
   ...
 }:
 let
-  concatFiles = import ../../lib/concatFiles.nix;
-  substituteStrings = import ../../lib/substituteStrings.nix;
+  concatFiles = import ../../../lib/concatFiles.nix;
+  substituteStrings = import ../../../lib/substituteStrings.nix;
 in
 {
   programs.neovim = {
