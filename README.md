@@ -7,7 +7,7 @@ cd !$
 nix-shell -p git --run "git clone https://github.com/s0racat/dotfiles-nix"
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run #update
+nix run nixpkgs#home-manager -- switch --impure -b backup --flake .#console
 ```
 
 # gh 
