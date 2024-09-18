@@ -55,6 +55,11 @@ in
     fd
     skk-dicts-latest
     wget
+    # noto-fonts-cjk-sans
+    # noto-fonts-cjk-serif
+    # # noto-fonts-color-emoji
+    # roboto-mono
+    # twemoji-color-font
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -119,4 +124,68 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # fonts = {
+  #   # packages = with pkgs; [
+  #   #   noto-fonts-cjk-sans
+  #   #   noto-fonts-cjk-serif
+  #   #   noto-fonts-color-emoji
+  #   #   roboto-mono
+  #   # ];
+  #   fontconfig = {
+  #     enable = true;
+  #     defaultFonts = {
+  #       sansSerif = [
+  #         "Noto Sans CJK JP"
+  #       ];
+  #       serif = [
+  #         "Noto Sans CJK JP"
+  #       ];
+  #       monospace = [
+  #         "Roboto Mono"
+  #       ];
+  #
+  #       emoji = [
+  #         "Twitter Color Emoji"
+  #       ];
+  #     };
+  #
+  #   };
+  # };
+  # programs.firefox = {
+  #   enable = true;
+  #   profiles = {
+  #     test = {
+  #       bookmarks = [
+  #         {
+  #           name = "wikipedia";
+  #           tags = [ "wiki" ];
+  #           keyword = "wiki";
+  #           url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+  #         }
+  #         {
+  #           name = "kernel.org";
+  #           url = "https://www.kernel.org";
+  #         }
+  #         {
+  #           name = "Nix sites";
+  #           toolbar = true;
+  #           bookmarks = [
+  #             {
+  #               name = "homepage";
+  #               url = "https://nixos.org/";
+  #             }
+  #             {
+  #               name = "wiki";
+  #               tags = [
+  #                 "wiki"
+  #                 "nix"
+  #               ];
+  #               url = "https://wiki.nixos.org/";
+  #             }
+  #           ];
+  #         }
+  #       ];
+  #     };
+  #   };
+  # };
 }

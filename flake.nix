@@ -92,6 +92,22 @@
             )
           ];
         };
+        desktop = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            (
+              { config, ... }:
+              {
+                home.username = "takumi";
+                home.homeDirectory = "/home/${config.home.username}";
+                imports = [ ./home-manager/desktop/default.nix ];
+              }
+            )
+          ];
+        };
       };
     };
 }
