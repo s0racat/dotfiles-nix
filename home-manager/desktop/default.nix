@@ -158,10 +158,11 @@
           "Noto Sans CJK JP"
         ];
         serif = [
-          "Noto Sans CJK JP"
+          "Noto Serif CJK JP"
         ];
         monospace = [
           "JetBrainsMono Nerd Font"
+          "Noto Sans CJK JP"
         ];
         emoji = [
           "Twitter Color Emoji"
