@@ -29,21 +29,19 @@
     twemoji-color-font
     roboto
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    libsForQt5.qtstyleplugin-kvantum
   ];
   home.sessionVariables = {
-      KPXC_CONFIG_LOCAL= "${config.xdg.configHome}/keepassxc/keepassxc.ini";
+    KPXC_CONFIG_LOCAL = "${config.xdg.configHome}/keepassxc/keepassxc.ini";
   };
   programs.zsh.profileExtra = ''
-      if [ -z $DISPLAY ]; then
-      exec sway
+    if [ -z $DISPLAY ]; then
+    	exec sway
     fi
   '';
   home.file.".bashrc".enable = false;
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-
   };
   qt = {
     enable = true;
@@ -61,7 +59,6 @@
       Fonts = {
         fixed = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
         general = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
-
       };
       Appearance = {
         icon_theme = "Papirus-Dark";
@@ -72,7 +69,6 @@
       Fonts = {
         fixed = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
         general = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
-
       };
       Appearance = {
         icon_theme = "Papirus-Dark";
@@ -84,14 +80,12 @@
         shell = "zsh --login -c 'tmux attach || tmux'";
         font = "monospace:size=12";
         dpi-aware = "yes";
-
       };
       cursor = {
         style = "block";
         color = "2e3440 d7dee9";
         blink = "yes";
       };
-
       colors = {
         foreground = "d8dee9";
         background = "2e3440";
@@ -126,11 +120,12 @@
   };
   gtk = {
     enable = true;
+    font.name = "Roboto";
+    font.size = 12;
     cursorTheme = {
       package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
       size = 24;
-
     };
     theme = {
       name = "Nordic-bluish-accent";
@@ -196,6 +191,18 @@
                   "nix"
                 ];
                 url = "https://wiki.nixos.org/";
+              }
+              {
+                name = "unofficial wiki";
+                url = "https://nixos.wiki/";
+              }
+              {
+                name = "Home Manager Option Search";
+                url = "https://home-manager-options.extranix.com/";
+              }
+              {
+                name = "NixOS Search";
+                url = "https://search.nixos.org/packages";
               }
             ];
           }
