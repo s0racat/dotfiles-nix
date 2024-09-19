@@ -85,9 +85,12 @@
             (
               { config, ... }:
               {
-                home.username = "takumi";
+                home.username = "alice";
                 home.homeDirectory = "/home/${config.home.username}";
-                imports = [ ./home-manager/console/default.nix ];
+                imports = [
+                  ./home-manager/console/default.nix
+                  ./home-manager/console/tmux/shell.nix
+                ];
               }
             )
           ];
@@ -101,7 +104,7 @@
             (
               { config, ... }:
               {
-                home.username = "takumi";
+                home.username = "alice";
                 home.homeDirectory = "/home/${config.home.username}";
                 imports = [ ./home-manager/desktop/default.nix ];
               }
