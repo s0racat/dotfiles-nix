@@ -438,12 +438,6 @@
               };
             }
             {
-              command = "floating enable, resize set 800 620, move scratchpad, border pixel 5";
-              criteria = {
-                app_id = "org.keepassxc.KeePassXC";
-              };
-            }
-            {
               command = "floating enable";
               criteria = {
                 title = "Authentication Required";
@@ -461,6 +455,12 @@
               criteria = {
                 app_id = ".*";
                 class = ".*";
+              };
+            }
+            {
+              command = "floating enable, resize set 800 620, move scratchpad, border pixel 5";
+              criteria = {
+                app_id = "org.keepassxc.KeePassXC";
               };
             }
 
