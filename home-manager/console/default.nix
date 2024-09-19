@@ -7,7 +7,6 @@
       tmuxConfig = import ./tmux/default.nix;
       neovimConfig = import ./neovim/default.nix;
       homeConfig = import ./home.nix;
-      nixConfig = import ./nix/default.nix;
       miscConfig = import ./misc/default.nix;
     in
     [
@@ -16,7 +15,6 @@
       zshConfig
       tmuxConfig
       neovimConfig
-      nixConfig
       miscConfig
     ];
 }

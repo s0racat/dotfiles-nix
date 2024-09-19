@@ -3,9 +3,6 @@
   lib,
   ...
 }:
-let
-  isWSL = import ../../../lib/isWSL.nix;
-in
 {
   programs.git = {
     enable = true;
@@ -20,7 +17,7 @@ in
       };
       core = {
         filemode = false;
-      } // lib.optionalAttrs isWSL { sshcommand = "ssh.exe"; };
+      };
     };
     includes = [
       {

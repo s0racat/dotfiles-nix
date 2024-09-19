@@ -10,6 +10,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nixvim = {
     #   url = "github:nix-community/nixvim";
     #   # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
@@ -26,7 +27,10 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       # Accessible through 'nix build', 'nix shell', etc
@@ -75,6 +79,31 @@
 
         };
 
+      nixosConfigurations = {
+        "alice@um690pro" = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = [
+	  ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alice = {
+                imports = [
+                  ./home-manager/console/default.nix
+                  ./home-manager/desktop/default.nix
+                ];
+              };
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+          ];
+          specialArgs = {
+            inherit inputs; # `inputs = inputs;`と等しい
+          };
+        };
+      };
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -89,7 +118,27 @@
                 home.homeDirectory = "/home/${config.home.username}";
                 imports = [
                   ./home-manager/console/default.nix
+                ];
+              }
+            )
+          ];
+        };
+        console-wsl = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            (
+              { config, ... }:
+              {
+                home.username = "alice";
+                home.homeDirectory = "/home/${config.home.username}";
+                imports = [
+                  ./home-manager/console/default.nix
                   ./home-manager/console/tmux/shell.nix
+                  ./home-manager/console/wsl.nix
+                  ./home-manager/console/nix/default.nix
                 ];
               }
             )
@@ -106,7 +155,10 @@
               {
                 home.username = "alice";
                 home.homeDirectory = "/home/${config.home.username}";
-                imports = [ ./home-manager/desktop/default.nix ];
+                imports = [
+                  ./home-manager/console/default.nix
+                  ./home-manager/desktop/default.nix
+                ];
               }
             )
           ];
