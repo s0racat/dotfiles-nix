@@ -29,11 +29,4 @@
     wget
   ];
 
-  home.file =
-    {
-    };
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-  programs.home-manager.enable = true;
 }
