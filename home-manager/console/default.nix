@@ -6,7 +6,7 @@
       gitConfig = import ./git/default.nix;
       tmuxConfig = import ./tmux/default.nix;
       neovimConfig = import ./neovim/default.nix;
-      packageConfig = import ./home.nix;
+      packageConfig = import ./package.nix;
       miscConfig = import ./misc/default.nix;
       defaultHomeConfig = import ../default.nix;
     in
