@@ -311,23 +311,23 @@
         };
         keybindings = lib.mkOptionDefault {
           "${modifier}+q" = "kill";
-          "${modifier}+Shift+f" = "pcmanfm-qt";
+          "${modifier}+Shift+f" = "exec pcmanfm-qt";
           "${modifier}+Shift+r" = "reload";
           "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
           "${modifier}+Shift+e" = ''mode "$mode_system"'';
           "${modifier}+Shift+p" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
           "XF86MonBrightnessDown" = "exec light -U 5";
           "XF86MonBrightnessUp" = "exec light -A 5";
-          "XF86AudioRaiseVolume" = "pamixer -ui 2";
-          "XF86AudioLowerVolume" = "pamixer -ud 2";
-          "XF86AudioMute" = "pamixer --toggle-mute";
-          "${modifier}+period" = "wofi-emoji";
+          "XF86AudioRaiseVolume" = "exec pamixer -ui 2";
+          "XF86AudioLowerVolume" = "exec pamixer -ud 2";
+          "XF86AudioMute" = "exec pamixer --toggle-mute";
+          "${modifier}+period" = "exec wofi-emoji";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioNext" = "exec playerctl next";
         };
         modifier = "Mod4";
-        menu = "wofi --show drun --allow-iamges --columns 2";
+        menu = "wofi --show drun --allow-images --columns 2";
         startup = [
           { command = "lxqt-policykit-agent"; }
           { command = "fcitx5 -r -d"; }

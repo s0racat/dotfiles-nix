@@ -3,7 +3,6 @@
 
 {
   description = "dotfiles";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
@@ -26,29 +25,29 @@
         inherit system;
         config.allowUnfree = true;
       };
-      username = "alice";
     in
     {
-      # Accessible through 'nix build', 'nix shell', etc
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt-rfc-style;
+
       apps.${system} =
         let
           home = {
             type = "app";
             program = toString (
               pkgs.writeShellScript "home-script" ''
-                		set -e
-                                echo "Updating flake..."
-                                nix flake update
-                                echo "Rebuilding home-manager..."
-                                home-manager switch --impure -b backup --flake .#''${1:-console-wsl}
-                                echo "home-manager Rebuild complete!"
+                set -e
+                echo "Updating flake..."
+                nix flake update
+                echo "Rebuilding home-manager..."
+                nix run nixpkgs#home-manager switch -- --impure -b backup --flake .#''${1:-console-wsl}
+                echo "home-manager Rebuild complete!"
               ''
             );
           };
         in
         {
           default = home;
+          inherit home;
           clean = {
             type = "app";
             program = toString (
@@ -60,37 +59,51 @@
               ''
             );
           };
-
         };
+
+      nixosConfigurations = {
+        "alice@um690pro" = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./machines/um690pro.nix
+          ];
+        };
+      };
 
       homeConfigurations = {
         console = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs;
           };
           modules = [
-	  ./home-manager/console
+            ./home-manager/console
           ];
         };
+
         console-wsl = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs;
           };
           modules = [
-	  ./home-manager/console-wsl
+            ./home-manager/console-wsl
           ];
         };
+
         desktop = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs;
           };
           modules = [
-	  ./home-manager/desktop
+            ./home-manager/desktop
           ];
         };
+
       };
     };
 }
