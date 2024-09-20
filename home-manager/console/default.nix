@@ -8,8 +8,10 @@
       neovimConfig = import ./neovim/default.nix;
       homeConfig = import ./home.nix;
       miscConfig = import ./misc/default.nix;
+      defaultHomeConfig = import ../default.nix;
     in
     [
+      defaultHomeConfig
       homeConfig
       gitConfig
       zshConfig

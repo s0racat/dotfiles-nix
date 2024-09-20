@@ -1,4 +1,3 @@
-
 {
   pkgs,
   config,
@@ -81,17 +80,17 @@
       }
       {
         event = "lock";
-        command = "${lib.getExe pkgs.swaylock} -f && playerctl -a -i kdeconnect pause";
+        command = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
       }
       {
         event = "after-resume";
-        command = "swaymsg 'output * power on'";
+        command = "${pkgs.sway-unwrapped}/bin/swaymsg 'output * power on'";
       }
     ];
     timeouts = [
       {
         timeout = 600;
-        command = "swaymsg 'output * power off'";
+        command = "${pkgs.sway-unwrapped}/bin/swaymsg 'output * power off'";
       }
       {
         timeout = 610;

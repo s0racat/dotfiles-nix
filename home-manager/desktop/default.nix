@@ -6,6 +6,8 @@
 }:
 {
   imports = [
+  ../default.nix
+  ../console/default.nix
     ./xdg.nix
     ./envvar.nix
     ./firefox.nix
