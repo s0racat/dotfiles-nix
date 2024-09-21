@@ -13,7 +13,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ../hardware/um690pro.nix
+
   ];
 
   # Use the systemd-boot EFI boot loader.
