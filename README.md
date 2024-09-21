@@ -41,7 +41,7 @@ wpa_cli
 > set_network 0 psk "passphrase"
 > enable_network 0
 sudo -i
-cgdisk
+cgdisk $device
 # NIXBOOT: 500M, LUKS: Remainder of the device
 mkfs.fat -F32 -n NIXBOOT $esp
 cryptsetup luksFormat -v -i 3000 --label LUKS $luks
