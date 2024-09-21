@@ -33,14 +33,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/dfca38ce-528b-4d98-a185-73282485cc7d";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks".device = "/dev/disk/by-uuid/9e979697-0f47-4869-bfe2-b7da50e1096a";
+  boot.initrd.luks.devices."luks".device = "/dev/disk/by-label/LUKS";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E4FA-94B4";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"
