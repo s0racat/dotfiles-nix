@@ -82,18 +82,15 @@
         event = "lock";
         command = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
       }
-      {
-        event = "after-resume";
-        command = "${pkgs.sway-unwrapped}/bin/swaymsg 'output * power on'";
-      }
     ];
     timeouts = [
       {
         timeout = 600;
-        command = "${pkgs.sway-unwrapped}/bin/swaymsg 'output * power off'";
+        command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
       }
       {
-        timeout = 610;
+        timeout = 620;
         command = "loginctl lock-session";
       }
     ];
@@ -104,7 +101,10 @@
       show-failed-attempts = true;
       show-keyboard-layout = true;
       indicator-caps-lock = true;
-      #image = "/usr/share/backgrounds/nordic-wallpapers/pixelcity.png"
+      image = "${pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/kittyboard.png";
+        sha256 = "1i32nsf0zlc417w2ra5cxh3rh63lwxwjlgg0sibi05dr5sgj8pxa";
+      }}";
     };
   };
   wayland.windowManager.sway =
@@ -153,6 +153,17 @@
       enable = true;
       #checkConfig = true;
       config = {
+        output = {
+          "HDMI-A-1" = {
+            bg = "${
+              pkgs.fetchurl {
+                url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/nixos.png";
+                sha256 = "1lvy7bpiqm3pyc47q55vxz01zfwi8sm960jdgqnjsa8cy3afl7lc";
+              }
+            } fill";
+          };
+        };
+
         seat = {
           "*" = {
             hide_cursor = "when-typing enable";

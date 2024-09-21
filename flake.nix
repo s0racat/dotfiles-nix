@@ -62,7 +62,7 @@
         };
 
       nixosConfigurations = {
-        "alice@um690pro" = nixpkgs.lib.nixosSystem {
+        "um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             inherit inputs;

@@ -11,11 +11,10 @@
 }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ../hardware/um690pro.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ../hardware/um690pro.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -174,7 +173,7 @@
   #nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
-      auto-optimise-store = true; 
+      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"

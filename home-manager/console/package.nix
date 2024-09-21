@@ -9,7 +9,6 @@
   ];
 
   home.packages = with pkgs; [
-    bat
     eza
     gnupg
     ghq
