@@ -71,30 +71,34 @@
       };
     };
   };
-  services.swayidle = {
-    enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "loginctl lock-session";
-      }
-      {
-        event = "lock";
-        command = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 600;
-        command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
-      }
-      {
-        timeout = 620;
-        command = "loginctl lock-session";
-      }
-    ];
-  };
+  services.swayidle =
+    let
+      lockCmd = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
+    in
+    {
+      enable = true;
+      events = [
+        {
+          event = "before-sleep";
+          command = "${lockCmd}";
+        }
+        {
+          event = "lock";
+          command = "${lockCmd}";
+        }
+      ];
+      timeouts = [
+        {
+          timeout = 600;
+          command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+        }
+        {
+          timeout = 620;
+          command = "${lockCmd}";
+        }
+      ];
+    };
   programs.swaylock = {
     enable = true;
     settings = {
