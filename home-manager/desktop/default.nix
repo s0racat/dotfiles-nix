@@ -6,17 +6,15 @@
 }:
 {
   imports = [
-    ../default.nix
+    # import base console config
     ../console/default.nix
     ./xdg.nix
     ./envvar.nix
     ./firefox.nix
     ./wm/sway.nix
     ./misc/mpv.nix
-    ./theme/qt.nix
-    ./theme/gtk.nix
-    ./theme/font.nix
+    ./theme
     ./daemon/ssh-agent.nix
-    ./fcitx5/fcitx5.nix
+    ./fcitx5
   ];
 }

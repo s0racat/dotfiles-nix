@@ -1,22 +1,13 @@
 { ... }:
 {
   imports =
-    let
-      zshConfig = import ./zsh/default.nix;
-      gitConfig = import ./git/default.nix;
-      tmuxConfig = import ./tmux/default.nix;
-      neovimConfig = import ./neovim/default.nix;
-      packageConfig = import ./package.nix;
-      miscConfig = import ./misc/default.nix;
-      defaultHomeConfig = import ../default.nix;
-    in
     [
-      defaultHomeConfig
-      packageConfig
-      gitConfig
-      zshConfig
-      tmuxConfig
-      neovimConfig
-      miscConfig
+      ./zsh
+      ./git
+      ./tmux
+      ./neovim
+      ./package.nix
+      ./misc
+      ../home.nix
     ];
 }
