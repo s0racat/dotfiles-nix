@@ -101,6 +101,7 @@
       slurp
       wl-clipboard
       wofi-emoji
+      swappy
     ];
   };
 
