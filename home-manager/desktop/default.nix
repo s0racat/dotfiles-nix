@@ -7,7 +7,7 @@
 {
   imports = [
     # import base console config
-    ../console/default.nix
+    ../console
     ./xdg.nix
     ./envvar.nix
     ./firefox.nix
