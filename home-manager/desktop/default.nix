@@ -16,5 +16,6 @@
     ./theme
     ./daemon/ssh-agent.nix
     ./fcitx5
+    ./keepassxc
   ];
 }
