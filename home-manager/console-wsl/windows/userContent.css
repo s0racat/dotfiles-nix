@@ -1,0 +1,180 @@
+/*──MS Pゴシック──*/
+@font-face {
+    font-family: "MS PGothic";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MS PGothic";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "ＭＳ Ｐゴシック";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "ＭＳ Ｐゴシック";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+/*──MS ゴシック──*/
+@font-face {
+    font-family: "MS Gothic";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MS Gothic";
+    src: local("Noto Sans CJK JP");
+}
+
+@font-face {
+    font-family: "MS Gothic";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "ＭＳ ゴシック";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "ＭＳ ゴシック";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+/*──ＭＳ Ｐ明朝──*/
+@font-face {
+    font-family: "MS PMincho";
+    src: local("Noto Serif CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MS PMincho";
+    src: local("Noto Serif CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "ＭＳ Ｐ明朝";
+    src: local("Noto Serif CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "ＭＳ Ｐ明朝";
+    src: local("Noto Serif CJK JP Bold");
+    font-weight: bold;
+}
+
+/*──ＭＳ 明朝──*/
+@font-face {
+    font-family: "MS Mincho";
+    src: local("Noto Serif CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MS Mincho";
+    src: local("Noto Serif CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "ＭＳ 明朝";
+    src: local("Noto Serif CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "ＭＳ 明朝";
+    src: local("Noto Serif CJK JP Bold");
+    font-weight: bold;
+}
+
+/*──MS UI Gothic──*/
+@font-face {
+    font-family: "MS UI Gothic";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MS UI Gothic";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+/*──メイリオ──*/
+@font-face {
+    font-family: "Meiryo";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Meiryo";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Meiryo UI";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Meiryo UI";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "メイリオ";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "メイリオ";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+/* 游ゴシック Medium */
+@font-face {
+    font-family: "游ゴシック Medium";
+    src: local("Noto Sans CJK JP");
+}
+
+@font-face {
+    font-family: "Yu Gothic";
+    src: local("Noto Sans CJK JP Bold");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "游ゴシック";
+    src: local("Noto Sans CJK JP");
+    font-weight: normal;
+}
+
+/* button,
+input,
+select,
+textarea {
+    font-family: "Noto Sans CJK JP" !important;
+    font-size: 100%;
+} */

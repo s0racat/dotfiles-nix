@@ -10,7 +10,7 @@
     ../console
     ./xdg.nix
     ./envvar.nix
-    ./firefox.nix
+    ./firefox
     ./wm/sway.nix
     ./misc/mpv.nix
     ./theme

@@ -9,5 +9,6 @@
     ../console
     ./wsl.nix
     ./nix.nix
+    ./windows/firefox.nix
   ];
 }

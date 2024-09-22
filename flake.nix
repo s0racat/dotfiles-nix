@@ -39,7 +39,7 @@
                 echo "Updating flake..."
                 nix flake update
                 echo "Rebuilding home-manager..."
-                home-manager switch --impure -b backup --flake .#''${1:-console-wsl}
+                home-manager switch --impure -b hmbak --flake .#''${1:-console-wsl}
                 echo "home-manager Rebuild complete!"
               ''
             );

@@ -6,5 +6,5 @@
     inputs.home-manager.nixosModules.home-manager
   ];
   home-manager.users.alice = import ../home-manager/desktop;
-  home-manager.backupFileExtension = "backup";
+  home-manager.backupFileExtension = "hmbak";
 }
