@@ -6,32 +6,27 @@ let
       UpdateCheckMessageShown = true;
     };
     GUI = {
-      TrayIconAppearnce = "monochrome";
+      TrayIconAppearance = "monochrome";
       MinimizeOnStartup = true;
       CheckForUpdates = false;
     };
     SSHAgent = {
       Enabled = true;
-      UsePagant = false;
+      UsePageant = false;
       UseOpenSSH = true;
     };
     Security = {
       IconDownloadFallback = true;
     };
   };
+  kpcfg = "/mnt/c/Users/takumi/AppData/Roaming/KeePassXC/keepassxc.ini";
+
 in
 {
-  home.activation.copyKeePassXCconfig =
-    let
-      kpcfg = "/mnt/c/Users/takumi/AppData/Roaming/KeePassXC/";
-    in
-    ''
-      if [ ! -d "${kpcfg}" ]; then 
-        mkdir -p "${kpcfg}"
-      fi
+  home.activation.copyKeePassXCconfig = ''
 
-      if [ ! -f "${kpcfg}/keepassxc.ini" ]; then
-        echo "${ini}" > "${kpcfg}/keepassxc.ini"
-      fi
-    '';
+    cd ~/.mozilla/firefox
+    echo 'printf '%s' "${ini}" > ${kpcfg}' > kpxc.sh
+    chmod +x kpxc.sh 
+  '';
 }
