@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    ../hardware/um690pro.nix
+    ../nixos/hardware/um690pro.nix
     ../nixos/configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
