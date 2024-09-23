@@ -10,5 +10,8 @@
     ./wsl.nix
     ./nix.nix
     ./windows/firefox.nix
+    ./windows/wt.nix
+    ./windows/fancywm.nix
+    ./windows/keepassxc.nix
   ];
 }

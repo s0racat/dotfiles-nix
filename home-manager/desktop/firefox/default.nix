@@ -1,4 +1,3 @@
-
 {
   pkgs,
   config,
@@ -6,8 +5,8 @@
   ...
 }:
 {
-imports = [
-./base-config.nix
-./enable-vaapi.nix
-];
+  imports = [
+    ./base-config.nix
+    ./enable-vaapi.nix
+  ];
 }

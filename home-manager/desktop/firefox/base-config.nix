@@ -70,7 +70,7 @@
           "extensions.pocket.enabled" = false;
           # Dark theme
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-	  # set homepage to about:home
+          # set homepage to about:home
           "browser.startup.homepage" = "about:home";
         };
       };
