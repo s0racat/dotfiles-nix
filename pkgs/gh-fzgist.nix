@@ -9,18 +9,16 @@
   gawk,
 }:
 let
-  binPath = lib.makeBinPath (
-    [
-      gh
-      fzf
-      coreutils
-      gawk
-    ]
-  );
+  binPath = lib.makeBinPath ([
+    gh
+    fzf
+    coreutils
+    gawk
+  ]);
 in
 stdenvNoCC.mkDerivation rec {
   pname = "gh-fzgist";
-  version = "0-unstable-2021-12-11";
+  version = "e2d20a9";
 
   src = fetchFromGitHub {
     owner = "Omochice";
@@ -34,8 +32,7 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   installPhase = ''
-    mkdir $out
-      install -D -m755 "gh-fzgist" "$out/bin/gh-fzgist"
+    install -D -m755 "gh-fzgist" "$out/bin/gh-fzgist"
   '';
 
   postFixup = ''
@@ -46,9 +43,8 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/Omochice/gh-fzgist";
     description = "The extension for GitHub CLI to handle gist with fzf";
     maintainers = with maintainers; [ s0racat ];
-    license = licenses.unlicense;
+    license = licenses.mit;
     mainProgram = "gh-fzgist";
     platforms = platforms.all;
   };
 }
-

@@ -171,7 +171,7 @@
         seat = {
           "*" = {
             hide_cursor = "when-typing enable";
-            xcursor_theme = "Nordzy-cursors";
+            xcursor_theme = "Nordzy-cursors 24";
           };
         };
         fonts = {
@@ -343,10 +343,15 @@
         };
         modifier = "Mod4";
         menu = "wofi --show drun --allow-images --columns 2";
-        startup = [
-          { command = "lxqt-policykit-agent"; }
-          { command = "fcitx5 -r -d"; }
-        ];
+        startup =
+          let
+            binpath = "/run/current-system/sw/bin";
+          in
+          [
+            { command = "${binpath}/lxqt-policykit-agent"; }
+            { command = "${binpath}/fcitx5 -r -d"; }
+            { command = "${binpath}/keepassxc"; }
+          ];
       };
     };
   programs.i3status-rust = {

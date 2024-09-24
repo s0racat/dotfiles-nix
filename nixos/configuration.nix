@@ -21,6 +21,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.consoleLogLevel = 3;
   boot.tmp.useTmpfs = true;
+  services.journald.extraConfig = ''
+    SystemMaxUse=50M
+  '';
+  services.tlp = {
+    enable = true;
+  };
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.

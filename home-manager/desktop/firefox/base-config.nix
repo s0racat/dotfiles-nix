@@ -25,7 +25,10 @@
     };
     profiles = {
       default = {
-        search.default = "DuckDuckGo";
+        search = {
+          force = true;
+          default = "DuckDuckGo";
+        };
         settings = {
           # Confirm when downloading files
           "browser.download.always_ask_before_handling_new_types" = true;
