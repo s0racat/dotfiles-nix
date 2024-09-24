@@ -49,7 +49,16 @@
   # programs.lazygit = {
   #   enable = true;
   # };
-  programs.gh = {
-    enable = true;
-  };
+  programs.gh =
+    let
+      gh-fzgist = pkgs.callPackage ../../../pkgs/gh-fzgist.nix { };
+    in
+    {
+      enable = true;
+      extensions = [
+        gh-fzgist
+
+      ];
+
+    };
 }
