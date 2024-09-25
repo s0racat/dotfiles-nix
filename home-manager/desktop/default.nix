@@ -14,7 +14,7 @@
     ./wm/sway.nix
     ./misc/mpv.nix
     ./theme
-    ./daemon/ssh-agent.nix
+    ./daemon
     ./fcitx5
     ./keepassxc
   ];

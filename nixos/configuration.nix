@@ -27,14 +27,17 @@
   services.tlp = {
     enable = true;
   };
+  boot.supportedFilesystems = [ "ntfs" ];
 
+  programs.kdeconnect.enable = true;
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  boot.initrd.systemd.enable = true;
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Asia/Tokyo";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -124,8 +127,9 @@
     playerctl
     killall
     lxqt.pcmanfm-qt
+    sbctl
+    tpm2-tss
   ];
-  programs.kdeconnect.enable = true;
   #programs.thunar.enable = true;
   services.gvfs.enable = true;
   # hardware.opengl = {
@@ -151,7 +155,15 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    # syncthing
+    allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [
+      21027
+      22000
+    ];
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

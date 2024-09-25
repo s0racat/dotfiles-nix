@@ -14,7 +14,6 @@
     enable = true;
     config = {
       theme = "Nord";
-      style = "numbers";
     };
   };
   programs.htop = {
