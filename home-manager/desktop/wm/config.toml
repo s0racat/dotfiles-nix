@@ -1,0 +1,87 @@
+# vi:syntax=toml
+
+# base16-i3status-rust (https://github.com/mystfox/base16-i3status-rust)
+# Nord by arcticicestudio
+
+[theme]
+theme = "solarized-dark"
+
+[theme.overrides]
+idle_bg = "#2E3440"
+idle_fg = "#E5E9F0"
+info_bg = "#88C0D0"
+info_fg = "#2E3440"
+good_bg = "#A3BE8C"
+good_fg = "#2E3440"
+warning_bg = "#EBCB8B"
+warning_fg = "#2E3440"
+critical_bg = "#BF616A"
+critical_fg = "#2E3440"
+# The rest of the theme settings are left at default.
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $frequency.eng(w:3) $utilization "
+[[block.click]]
+button = "left"
+cmd = "@foot@ -e htop"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents.eng(w:1) "
+format_alt = " $icon_swap $swap_used.eng(w:3,u:B,p:M)/$swap_total.eng(w:3,u:B,p:M)($swap_used_percents.eng(w:2)) "
+interval = 30
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+
+[[block]]
+block = "net"
+#device = "wlan0"
+format = " $icon  {$ip|N/A} "
+interval = 5
+
+[[block]]
+block = "kdeconnect"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "@pavucontrol-qt@"
+
+[[block]]
+block = "backlight"
+
+# [[block]]
+# block = "custom"
+# command = "echo ext display $(@ddcutil@ getvcp 10|cut -d'=' -f2|cut -d',' -f1|tr -d '[:space:]')"
+# interval = 1
+
+# [[block.click]]
+# button = "up"
+# cmd = "@ddcutil@ setvcp 10 + 5"
+# [[block.click]]
+# button = "down"
+# cmd = "@ddcutil@ setvcp 10 - 5"
+
+[[block]]
+block = "battery"
+interval = 10
+format = " $icon $percentage $time $power "
+
+[[block]]
+block = "time"
+interval = 60
+format = " $icon $timestamp.datetime(f:'%m/%d %a %R') "
+
+[[block]]
+block = "custom"
+command = "uname -r"
+interval = "once"
+

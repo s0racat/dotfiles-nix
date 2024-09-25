@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  substituteStrings = import ../../../lib/substituteStrings.nix;
+in
 {
   programs.wofi.enable = true;
   services.mako = {
@@ -159,10 +162,22 @@
       config = {
         output = {
           "HDMI-A-1" = {
+            # bg = "${
+            #   pkgs.fetchurl {
+            #     url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/nixos.png";
+            #     sha256 = "1lvy7bpiqm3pyc47q55vxz01zfwi8sm960jdgqnjsa8cy3afl7lc";
+            #   }
+            # } fill";
             bg = "${
               pkgs.fetchurl {
-                url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/nixos.png";
-                sha256 = "1lvy7bpiqm3pyc47q55vxz01zfwi8sm960jdgqnjsa8cy3afl7lc";
+                url = "https://i.pximg.net/img-master/img/2024/09/13/19/05/54/122395805_p0_master1200.jpg";
+                sha256 = "sha256-Zg9kY6oCbtzUfFIUne9Xy2JWeUk9Q4gyoSVRPcS98u8=";
+                curlOptsList = [
+                  "-H"
+                  "User-Agent: Mozilla/5.0"
+                  "-H"
+                  "Referer: https://pixiv.net"
+                ];
               }
             } fill";
           };
@@ -193,10 +208,14 @@
           {
             id = "default";
             #command = "swaybar";
-            statusCommand = "while date +'%Y-%m-%d %X'; do sleep 1; done";
+            #statusCommand = "while date +'%Y-%m-%d %X'; do sleep 1; done";
+            statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rs/config.toml";
             fonts = {
-              names = [ "monospace" ];
-              size = 11.0;
+              names = [
+                "DejaVu Sans Mono"
+                "FontAwesome"
+              ];
+              size = 10.0;
             };
             colors = {
               background = "$base00";
@@ -357,4 +376,26 @@
   programs.i3status-rust = {
     enable = true;
   };
+  xdg.configFile."i3status-rs/config.toml".text = substituteStrings {
+    file = ./config.toml;
+    replacements = [
+      {
+        old = "@ddcutil@";
+        new = "${lib.getExe pkgs.ddcutil}";
+      }
+      {
+        old = "@foot@";
+        new = "${lib.getExe pkgs.foot}";
+      }
+      {
+        old = "@pavucontrol-qt@";
+        new = "${lib.getExe pkgs.lxqt.pavucontrol-qt}";
+      }
+    ];
+  };
+  home.packages = with pkgs; [
+    font-awesome_4
+    ddcutil
+    lxqt.pavucontrol-qt
+  ];
 }

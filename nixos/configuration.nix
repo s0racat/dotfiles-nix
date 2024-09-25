@@ -16,6 +16,7 @@
 
   ];
 
+  hardware.i2c.enable = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -97,6 +98,7 @@
       "wheel"
       "networkmanager"
       "video"
+      "i2c"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
     initialPassword = "123456";
