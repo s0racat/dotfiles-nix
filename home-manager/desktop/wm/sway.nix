@@ -80,6 +80,7 @@ in
     in
     {
       enable = true;
+      systemdTarget = "sway-session.target";
       events = [
         {
           event = "before-sleep";
@@ -359,6 +360,7 @@ in
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioNext" = "exec playerctl next";
+          "${modifier}+x" = "exec cliphist list | wofi --show dmenu | cliphist decode | wl-copy";
         };
         modifier = "Mod4";
         menu = "wofi --show drun --allow-images --columns 2";
@@ -398,4 +400,9 @@ in
     ddcutil
     lxqt.pavucontrol-qt
   ];
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+    systemdTarget = "sway-session.target";
+  };
 }

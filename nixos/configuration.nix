@@ -15,27 +15,58 @@
     # Include the results of the hardware scan.
 
   ];
+  virtualisation.docker.enable = true;
 
-  hardware.i2c.enable = true;
+  # bluetooth
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.udisks2 = {
+    enable = true;
+    settings = {
+      "tcrypt.conf" = { };
+    };
+  };
+
+  # boot
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.consoleLogLevel = 3;
   boot.tmp.useTmpfs = true;
+  boot.initrd.systemd.enable = true;
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  # systemd
+  services.logind.powerKey = "suspend";
   services.journald.extraConfig = ''
     SystemMaxUse=50M
   '';
+
   services.tlp = {
     enable = true;
   };
-  boot.supportedFilesystems = [ "ntfs" ];
 
+  services.gvfs.enable = true;
   programs.kdeconnect.enable = true;
+
+  # networking
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  boot.initrd.systemd.enable = true;
+  networking.firewall = {
+    enable = true;
+    # syncthing
+    allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [
+      21027
+      22000
+    ];
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -54,6 +85,8 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+
+  # ime
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -77,6 +110,8 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
+
+  # pipewire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -90,6 +125,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
+  hardware.i2c.enable = true;
   programs.zsh.enable = true;
   users.users.alice = {
     isNormalUser = true;
@@ -99,11 +135,13 @@
       "networkmanager"
       "video"
       "i2c"
+      "docker"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
     initialPassword = "123456";
   };
 
+  # sway
   services.gnome.gnome-keyring.enable = true;
   programs.sway = {
     enable = true;
@@ -133,7 +171,6 @@
     tpm2-tss
   ];
   #programs.thunar.enable = true;
-  services.gvfs.enable = true;
   # hardware.opengl = {
   #   enable = true;
   #   driSupport = true;
@@ -157,15 +194,6 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall = {
-    enable = true;
-    # syncthing
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [
-      21027
-      22000
-    ];
-  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -207,5 +235,4 @@
       options = "--delete-older-than 7d";
     };
   };
-  services.logind.powerKey = "suspend";
 }

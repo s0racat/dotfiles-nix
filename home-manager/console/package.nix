@@ -26,6 +26,7 @@
     fd
     skk-dicts-latest
     wget
+    grex
   ];
 
 }
