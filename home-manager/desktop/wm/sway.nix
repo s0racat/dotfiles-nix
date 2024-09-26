@@ -209,7 +209,7 @@ in
             id = "default";
             #command = "swaybar";
             #statusCommand = "while date +'%Y-%m-%d %X'; do sleep 1; done";
-            statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rs/config.toml";
+            statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
             fonts = {
               names = [
                 "DejaVu Sans Mono"
@@ -376,7 +376,7 @@ in
   programs.i3status-rust = {
     enable = true;
   };
-  xdg.configFile."i3status-rs/config.toml".text = substituteStrings {
+  xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
     file = ./config.toml;
     replacements = [
       {
