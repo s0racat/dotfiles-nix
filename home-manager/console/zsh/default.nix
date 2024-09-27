@@ -17,6 +17,7 @@ in
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
+      lg = "lazygit";
       ll = "exa -F -alg --time-style=long-iso";
       ls = "exa -F --time-style=long-iso";
       l = "ls";

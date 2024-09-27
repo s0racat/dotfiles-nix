@@ -13,12 +13,16 @@
     #package = null;
     policies = {
       ExtensionSettings = {
+        "keepassxc-browser@keepassxc.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          installation_mode = "normal_installed";
+        };
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "normal_installed";
         };
-        "tridactyl.vim@cmcaine.co.uk" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim/latest.xpi";
+        "tridactyl.vim.betas.nonewtab@cmcaine.co.uk" = {
+          install_url = "https://tridactyl.cmcaine.co.uk/betas/nonewtab/tridactyl_no_new_tab_beta-latest.xpi";
           installation_mode = "normal_installed";
         };
       };

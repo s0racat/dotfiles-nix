@@ -10,7 +10,7 @@
     userName = "Takumi";
     userEmail = "takuoh@tuta.io";
     signing.key = "ECCE3B658A852C82";
-    signing.signByDefault = true;
+    # signing.signByDefault = true;
     extraConfig = {
       init = {
         defaultBranch = "main";
@@ -46,9 +46,9 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
   };
-  # programs.lazygit = {
-  #   enable = true;
-  # };
+  programs.lazygit = {
+    enable = true;
+  };
   programs.gh =
     let
       gh-fzgist = pkgs.callPackage ../../../pkgs/gh-fzgist.nix { };
