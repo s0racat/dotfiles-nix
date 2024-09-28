@@ -14,4 +14,6 @@
   };
   home-manager.users.alice = import ../home-manager/desktop;
   home-manager.backupFileExtension = "hmbak";
+  # use flake's nixpkgs settings.
+  home-manager.useGlobalPkgs = true;
 }
