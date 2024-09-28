@@ -4,9 +4,6 @@
   ...
 }:
 {
-  nixpkgs.overlays = [
-    (import ../../overlays/skk-dicts.nix)
-  ];
 
   home.packages = with pkgs; [
     eza
@@ -24,7 +21,6 @@
     deno
     typescript
     fd
-    skk-dicts-latest
     wget
     grex
   ];

@@ -26,6 +26,7 @@ in
       pyright
       stylua
       nixfmt-rfc-style
+      skk-dicts-latest
     ];
 
     plugins = with pkgs.vimPlugins; [
