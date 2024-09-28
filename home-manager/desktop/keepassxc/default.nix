@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   ini = lib.generators.toINI { } {
     General = {
@@ -31,6 +36,7 @@ let
   };
 in
 {
+  home.packages = [ pkgs.keepassxc ];
   home.activation.copyKeePassXCconfig = ''
     if [ ! -d "${config.xdg.configHome}/keepassxc" ]; then 
       mkdir -p "${config.xdg.configHome}/keepassxc"
