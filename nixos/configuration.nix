@@ -52,6 +52,29 @@
 
   services.gvfs.enable = true;
   programs.kdeconnect.enable = true;
+  programs.firefox = {
+    enable = true;
+    policies = {
+      ExtensionSettings = {
+        "keepassxc-browser@keepassxc.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          installation_mode = "normal_installed";
+        };
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "normal_installed";
+        };
+        "tridactyl.vim.betas.nonewtab@cmcaine.co.uk" = {
+          install_url = "https://tridactyl.cmcaine.co.uk/betas/nonewtab/tridactyl_no_new_tab_beta-latest.xpi";
+          installation_mode = "normal_installed";
+        };
+      };
+    };
+    nativeMessagingHosts.packages = [
+      pkgs.tridactyl-native
+      pkgs.keepassxc
+    ];
+  };
 
   # networking
   # networking.hostName = "nixos"; # Define your hostname.
@@ -152,6 +175,15 @@
       wl-clipboard
       wofi-emoji
       swappy
+      keepassxc
+      lxqt.lxqt-policykit
+      pamixer
+      playerctl
+
+      lxqt.pcmanfm-qt
+      font-awesome_4
+      ddcutil
+      lxqt.pavucontrol-qt
     ];
   };
 
@@ -161,14 +193,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    keepassxc
-    lxqt.lxqt-policykit
-    pamixer
-    playerctl
     killall
-    lxqt.pcmanfm-qt
     sbctl
-    tpm2-tss
   ];
   #programs.thunar.enable = true;
   # hardware.opengl = {

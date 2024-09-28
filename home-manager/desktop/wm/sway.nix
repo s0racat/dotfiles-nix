@@ -120,6 +120,8 @@ in
       modifier = config.wayland.windowManager.sway.config.modifier;
     in
     {
+      #systemd.enable = false;
+
       extraConfigEarly = ''
         set $Locker swaylock -f && sleep 1
 
@@ -371,7 +373,7 @@ in
           [
             { command = "${binpath}/lxqt-policykit-agent"; }
             { command = "${binpath}/fcitx5 -r -d"; }
-            { command = "${binpath}/keepassxc"; }
+            { command = "keepassxc"; }
           ];
       };
     };
@@ -395,14 +397,12 @@ in
       }
     ];
   };
-  home.packages = with pkgs; [
-    font-awesome_4
-    ddcutil
-    lxqt.pavucontrol-qt
-  ];
   services.cliphist = {
     enable = true;
     allowImages = true;
     systemdTarget = "sway-session.target";
+  };
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   };
 }

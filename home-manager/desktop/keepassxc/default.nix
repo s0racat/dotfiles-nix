@@ -36,7 +36,6 @@ let
   };
 in
 {
-  home.packages = [ pkgs.keepassxc ];
   home.activation.copyKeePassXCconfig = ''
     if [ ! -d "${config.xdg.configHome}/keepassxc" ]; then 
       mkdir -p "${config.xdg.configHome}/keepassxc"

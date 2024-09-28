@@ -8,25 +8,11 @@
   # imports = [
   #   ./disable-av1.nix
   # ];
+  # manage firefox settings
   programs.firefox = {
     enable = true;
-    #package = null;
-    policies = {
-      ExtensionSettings = {
-        "keepassxc-browser@keepassxc.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-        "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-        "tridactyl.vim.betas.nonewtab@cmcaine.co.uk" = {
-          install_url = "https://tridactyl.cmcaine.co.uk/betas/nonewtab/tridactyl_no_new_tab_beta-latest.xpi";
-          installation_mode = "normal_installed";
-        };
-      };
-    };
+    package = null;
+
     profiles = {
       default = {
         search = {
