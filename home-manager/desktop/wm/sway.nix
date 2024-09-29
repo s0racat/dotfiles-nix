@@ -405,4 +405,7 @@ in
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
+  home.packages = [
+    pkgs.font-awesome_4
+  ];
 }
