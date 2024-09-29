@@ -20,4 +20,10 @@
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
   };
+  xdg.dataFile = {
+    "fcitx5/themes" = {
+      source = "${pkgs.fcitx5-nord}/share/fcitx5/themes";
+      recursive = true;
+    };
+  };
 }
