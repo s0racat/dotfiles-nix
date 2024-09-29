@@ -30,7 +30,10 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ (import ./overlays/skk-dicts.nix) ];
+        overlays = [
+          (import ./overlays/skk-dicts.nix)
+          (import ./overlays/chromium.nix)
+        ];
       };
     in
     {
