@@ -8,7 +8,7 @@ cd !$
 nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix"
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run nixpkgs#home-manager switch -- --impure -b hmbak --flake .#{homeConfig}
+nix run nixpkgs#home-manager switch -- --impure -b hmbak --flake .#alice@debian-wsl
 chsh -s `which zsh`
 ```
 

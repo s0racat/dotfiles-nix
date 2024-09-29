@@ -38,41 +38,8 @@
     in
     {
       formatter.${system} = pkgs.nixfmt-rfc-style;
-
-      apps.${system} =
-        let
-          home = {
-            type = "app";
-            program = toString (
-              pkgs.writeShellScript "home-script" ''
-                set -e
-                echo "Updating flake..."
-                nix flake update
-                echo "Rebuilding home-manager..."
-                nix run nixpkgs#home-manager switch -- --impure -b hmbak --flake .#''${1:-console-wsl}
-                echo "home-manager Rebuild complete!"
-              ''
-            );
-          };
-        in
-        {
-          default = home;
-          inherit home;
-          clean = {
-            type = "app";
-            program = toString (
-              pkgs.writeShellScript "clean-script" ''
-                set -e
-                echo "Running \`nix-collect-garbage -d\`..."
-                nix-collect-garbage -d
-                echo "nix gc complete!"
-              ''
-            );
-          };
-        };
-
       nixosConfigurations = {
-        "um690pro" = nixpkgs.lib.nixosSystem {
+        "alice@um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             inherit inputs;
@@ -84,17 +51,7 @@
       };
 
       homeConfigurations = {
-        console = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./home-manager/console
-          ];
-        };
-
-        console-wsl = home-manager.lib.homeManagerConfiguration {
+        "alice@debian-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
@@ -103,17 +60,6 @@
             ./home-manager/console-wsl
           ];
         };
-
-        desktop = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./home-manager/desktop
-          ];
-        };
-
       };
     };
 }
