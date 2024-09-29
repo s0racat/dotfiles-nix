@@ -1,5 +1,8 @@
-```bash
-sudo apt update; sudo apt upgrade -y
+# Debian WSL
+
+<details>
+    <summary>Debian WSL</summary>
+    <pre><code>sudo apt update; sudo apt upgrade -y
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
@@ -9,27 +12,14 @@ nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run nixpkgs#home-manager switch -- --impure -b hmbak --flake .#alice@debian-wsl
-chsh -s `which zsh`
-```
-
-# gh 
-
-```bash
-gh auth login
-```
-
-# docker
-
-https://learn.microsoft.com/ja-jp/windows/wsl/systemd
-
-https://docs.docker.com/engine/install/debian/
-
-# systemd user on Debian WSL
-
-```bash
-sudo apt install -y dbus-user-session
-sudo loginctl enable-linger $USER
-```
+chsh -s `which zsh`</pre></code>
+    <h1>docker</h1>
+    <p>https://learn.microsoft.com/ja-jp/windows/wsl/systemd</p>
+<p>https://docs.docker.com/engine/install/debian/</p>
+    <h1>systemd user</h1>
+    <pre><code>sudo apt install -y dbus-user-session
+sudo loginctl enable-linger $USER</pre></code>
+</details>
 
 # install NixOS
 
@@ -50,13 +40,21 @@ cryptsetup luksFormat -v -i 3000 --label LUKS $luks
 cryptsetup open $luks luks
 mount /dev/mapper/luks /mnt
 mount -m $esp /mnt/boot
+# to setup secureboot, see https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md
+
 nix-shell -p gitMinimal
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
-nixos-install --flake .#um690pro
+nixos-install --flake .#alice@um690pro
 reboot
 
 # login with alice, password: 123456
 passwd
 nmtui
+```
+
+# gh 
+
+```bash
+gh auth login
 ```
