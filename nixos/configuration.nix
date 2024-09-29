@@ -124,7 +124,6 @@
       addons = with pkgs; [
         fcitx5-skk
         fcitx5-gtk
-        fcitx5-nord
         libsForQt5.fcitx5-qt
       ];
       waylandFrontend = true;
@@ -185,15 +184,10 @@
       wl-clipboard
       wofi-emoji
       swappy
-      keepassxc
       lxqt.lxqt-policykit
       pamixer
       playerctl
-      chromium
-      lxqt.pcmanfm-qt
       ddcutil
-      lxqt.pavucontrol-qt
-      vscode
     ];
   };
 
@@ -205,6 +199,11 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     killall
     sbctl
+    chromium
+    keepassxc
+    lxqt.pcmanfm-qt
+    lxqt.pavucontrol-qt
+    vscode
   ];
   #programs.thunar.enable = true;
   # hardware.opengl = {
