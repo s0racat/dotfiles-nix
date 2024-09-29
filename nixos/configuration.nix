@@ -75,6 +75,13 @@
       pkgs.keepassxc
     ];
   };
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      "omkfmpieigblcllmkgbflkikinpkodlk" # enhanced-h264ify
+    ];
+  };
 
   # networking
   # networking.hostName = "nixos"; # Define your hostname.
@@ -118,6 +125,7 @@
         fcitx5-skk
         fcitx5-gtk
         fcitx5-nord
+        libsForQt5.fcitx5-qt
       ];
       waylandFrontend = true;
     };
@@ -166,6 +174,8 @@
 
   # sway
   services.gnome.gnome-keyring.enable = true;
+  # pam_gnome_keyring will attempt to automatically unlock the user’s default Gnome keyring upon login. If the user login password does not match their keyring password, Gnome Keyring will prompt separately after login.
+  security.pam.services.login.enableGnomeKeyring = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -179,11 +189,11 @@
       lxqt.lxqt-policykit
       pamixer
       playerctl
-
+      chromium
       lxqt.pcmanfm-qt
-      font-awesome_4
       ddcutil
       lxqt.pavucontrol-qt
+      vscode
     ];
   };
 
