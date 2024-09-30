@@ -16,8 +16,6 @@
     terminal = "tmux-256color";
     historyLimit = 999999999;
     extraConfig = builtins.readFile ./tmux.conf.extra;
-    plugins = with pkgs.tmuxPlugins; [
-      nord
-    ];
+    plugins = with pkgs.tmuxPlugins; [ nord ];
   };
 }

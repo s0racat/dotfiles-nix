@@ -4,9 +4,14 @@
 {
   description = "dotfiles";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    home-manager = {
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    home-manager-unstable = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager?ref=release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -44,9 +49,7 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [
-            ./machines/um690pro.nix
-          ];
+          modules = [ ./machines/um690pro.nix ];
         };
       };
 
@@ -56,9 +59,7 @@
           extraSpecialArgs = {
             inherit inputs;
           };
-          modules = [
-            ./home-manager/console-wsl
-          ];
+          modules = [ ./home-manager/console-wsl ];
         };
       };
     };

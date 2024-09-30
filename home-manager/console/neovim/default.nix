@@ -18,7 +18,8 @@ in
     extraPackages = with pkgs; [
       lua-language-server
       nodePackages.typescript-language-server
-      bash-language-server
+      #bash-language-server
+      nodePackages.bash-language-server
       vim-language-server
       emmet-language-server
       gopls
@@ -29,9 +30,7 @@ in
       skk-dicts-latest
     ];
 
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
+    plugins = with pkgs.vimPlugins; [ lazy-nvim ];
 
     extraLuaConfig =
       let

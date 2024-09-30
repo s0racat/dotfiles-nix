@@ -27,9 +27,7 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-Cweij9Y1qfoqBI8UumTzbMbXDjeqJc3ytISFir7g4Vg=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-  ];
+  nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
     install -D -m755 "gh-fzgist" "$out/bin/gh-fzgist"

@@ -569,21 +569,13 @@ in
   };
 
   config = mkIf cfg.enable (mkMerge [
-    (mkIf (cfg.envExtra != "") {
-      home.file."${relToDotDir ".zshenv"}".text = cfg.envExtra;
-    })
+    (mkIf (cfg.envExtra != "") { home.file."${relToDotDir ".zshenv"}".text = cfg.envExtra; })
 
-    (mkIf (cfg.profileExtra != "") {
-      home.file."${relToDotDir ".zprofile"}".text = cfg.profileExtra;
-    })
+    (mkIf (cfg.profileExtra != "") { home.file."${relToDotDir ".zprofile"}".text = cfg.profileExtra; })
 
-    (mkIf (cfg.loginExtra != "") {
-      home.file."${relToDotDir ".zlogin"}".text = cfg.loginExtra;
-    })
+    (mkIf (cfg.loginExtra != "") { home.file."${relToDotDir ".zlogin"}".text = cfg.loginExtra; })
 
-    (mkIf (cfg.logoutExtra != "") {
-      home.file."${relToDotDir ".zlogout"}".text = cfg.logoutExtra;
-    })
+    (mkIf (cfg.logoutExtra != "") { home.file."${relToDotDir ".zlogout"}".text = cfg.logoutExtra; })
 
     (mkIf cfg.oh-my-zsh.enable {
       home.file."${relToDotDir ".zshenv"}".text = ''

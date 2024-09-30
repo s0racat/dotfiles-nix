@@ -357,9 +357,7 @@ in
       };
     };
 
-  home.packages = [
-    pkgs.font-awesome_4
-  ];
+  home.packages = [ pkgs.font-awesome_4 ];
 
   xdg.configFile = {
     "foot/foot.ini".text = lib.generators.toINI { } {

@@ -1,8 +1,6 @@
 { ... }:
 {
-  disabledModules = [
-    "programs/zsh.nix"
-  ];
+  disabledModules = [ "programs/zsh.nix" ];
   imports = [
     # override home-manager zsh module
     ../../modules/home-manager/zsh.nix

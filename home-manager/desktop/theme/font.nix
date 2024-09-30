@@ -22,16 +22,12 @@
           "Roboto"
           "Noto Sans CJK JP"
         ];
-        serif = [
-          "Noto Serif CJK JP"
-        ];
+        serif = [ "Noto Serif CJK JP" ];
         monospace = [
           "JetBrainsMono Nerd Font"
           "Noto Sans CJK JP"
         ];
-        emoji = [
-          "Twitter Color Emoji"
-        ];
+        emoji = [ "Twitter Color Emoji" ];
       };
 
     };
