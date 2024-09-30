@@ -1,7 +1,7 @@
 # Debian WSL
 
 <details>
-    <summary>Debian WSL</summary>
+    <summary>Click to open</summary>
     <pre><code>sudo apt update; sudo apt upgrade -y
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
