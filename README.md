@@ -35,8 +35,8 @@ wpa_cli
 sudo -i
 cgdisk $device
 # NIXBOOT: 500M, LUKS: Remainder of the device
-$luks=/dev/nvme0n1p2
-$esp=/dev/nvme0n1p1
+luks=/dev/nvme0n1p2
+esp=/dev/nvme0n1p1
 mkfs.fat -F32 -n NIXBOOT $esp
 cryptsetup luksFormat -v -i 3000 --label LUKS $luks
 cryptsetup open $luks luks

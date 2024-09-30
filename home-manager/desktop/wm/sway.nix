@@ -6,9 +6,52 @@
 }:
 let
   substituteStrings = import ../../../lib/substituteStrings.nix;
+  binpath = "/run/current-system/sw/bin";
 in
 {
   programs.wofi.enable = true;
+
+  programs.i3status-rust = {
+    enable = true;
+  };
+
+  xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
+    file = ./config.toml;
+    replacements = [
+      {
+        old = "@ddcutil@";
+        new = "${lib.getExe pkgs.ddcutil}";
+      }
+      {
+        old = "@foot@";
+        new = "${lib.getExe pkgs.foot}";
+      }
+      {
+        old = "@pavucontrol-qt@";
+        new = "${lib.getExe pkgs.lxqt.pavucontrol-qt}";
+      }
+    ];
+  };
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      show-failed-attempts = true;
+      show-keyboard-layout = true;
+      indicator-caps-lock = true;
+      image = "${pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/kittyboard.png";
+        sha256 = "1i32nsf0zlc417w2ra5cxh3rh63lwxwjlgg0sibi05dr5sgj8pxa";
+      }}";
+    };
+  };
+
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+    systemdTarget = "sway-session.target";
+  };
+
   services.mako = {
     enable = true;
     defaultTimeout = 10000;
@@ -25,55 +68,7 @@ in
       border-color=#BF616A
     '';
   };
-  programs.zsh.profileExtra = ''
-    if [ -z $DISPLAY ]; then
-    	exec sway
-    fi
-  '';
-  xdg.configFile = {
-    "foot/foot.ini".text = lib.generators.toINI { } {
-      main = {
-        shell = "zsh --login -c 'tmux attach || tmux'";
-        font = "monospace:size=12";
-        dpi-aware = "yes";
-      };
-      cursor = {
-        style = "block";
-        color = "2e3440 d7dee9";
-        blink = "yes";
-      };
-      colors = {
-        foreground = "d8dee9";
-        background = "2e3440";
-        regular0 = "3b4252";
-        regular1 = "bf616a";
-        regular2 = "a3be8c";
-        regular3 = "ebcb8b";
-        regular4 = "81a1c1";
-        regular5 = "b48ead";
-        regular6 = "88c0d0";
-        regular7 = "e5e9f0";
 
-        bright0 = "4c566a";
-        bright1 = "bf616a";
-        bright2 = "a3be8c";
-        bright3 = "ebcb8b";
-        bright4 = "81a1c1";
-        bright5 = "b48ead";
-        bright6 = "8fbcbb";
-        bright7 = "eceff4";
-
-        dim0 = "373e4d";
-        dim1 = "94545d";
-        dim2 = "809575";
-        dim3 = "b29e75";
-        dim4 = "68809a";
-        dim5 = "8c738c";
-        dim6 = "6d96a5";
-        dim7 = "aeb3bb";
-      };
-    };
-  };
   services.swayidle =
     let
       lockCmd = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
@@ -94,8 +89,8 @@ in
       timeouts = [
         {
           timeout = 600;
-          command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+          command = "${binpath}/swaymsg 'output * power off'";
+          resumeCommand = "${binpath}/swaymsg 'output * power on'";
         }
         {
           timeout = 620;
@@ -103,25 +98,16 @@ in
         }
       ];
     };
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      show-failed-attempts = true;
-      show-keyboard-layout = true;
-      indicator-caps-lock = true;
-      image = "${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/kittyboard.png";
-        sha256 = "1i32nsf0zlc417w2ra5cxh3rh63lwxwjlgg0sibi05dr5sgj8pxa";
-      }}";
-    };
-  };
+
   wayland.windowManager.sway =
     let
       modifier = config.wayland.windowManager.sway.config.modifier;
     in
     {
+      enable = true;
+      package = null;
+      #checkConfig = true;
       #systemd.enable = false;
-
       extraConfigEarly = ''
         set $Locker swaylock -f && sleep 1
 
@@ -159,9 +145,6 @@ in
         set $base0E #B48EAD
         set $base0F #5E81AC
       '';
-      package = null;
-      enable = true;
-      #checkConfig = true;
       config = {
         output = {
           "HDMI-A-1" = {
@@ -366,46 +349,70 @@ in
         };
         modifier = "Mod4";
         menu = "wofi --show drun --allow-images --columns 2";
-        startup =
-          let
-            binpath = "/run/current-system/sw/bin";
-          in
-          [
-            { command = "${binpath}/lxqt-policykit-agent"; }
-            { command = "${binpath}/fcitx5 -r -d"; }
-            { command = "keepassxc"; }
-          ];
+        startup = [
+          { command = "${binpath}/lxqt-policykit-agent"; }
+          { command = "${binpath}/fcitx5 -r -d"; }
+          { command = "keepassxc"; }
+        ];
       };
     };
-  programs.i3status-rust = {
-    enable = true;
-  };
-  xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
-    file = ./config.toml;
-    replacements = [
-      {
-        old = "@ddcutil@";
-        new = "${lib.getExe pkgs.ddcutil}";
-      }
-      {
-        old = "@foot@";
-        new = "${lib.getExe pkgs.foot}";
-      }
-      {
-        old = "@pavucontrol-qt@";
-        new = "${lib.getExe pkgs.lxqt.pavucontrol-qt}";
-      }
-    ];
-  };
-  services.cliphist = {
-    enable = true;
-    allowImages = true;
-    systemdTarget = "sway-session.target";
-  };
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+
   home.packages = [
     pkgs.font-awesome_4
   ];
+
+  xdg.configFile = {
+    "foot/foot.ini".text = lib.generators.toINI { } {
+      main = {
+        shell = "zsh --login -c 'tmux attach || tmux'";
+        font = "monospace:size=12";
+        dpi-aware = "yes";
+      };
+      cursor = {
+        style = "block";
+        color = "2e3440 d7dee9";
+        blink = "yes";
+      };
+      colors = {
+        foreground = "d8dee9";
+        background = "2e3440";
+        regular0 = "3b4252";
+        regular1 = "bf616a";
+        regular2 = "a3be8c";
+        regular3 = "ebcb8b";
+        regular4 = "81a1c1";
+        regular5 = "b48ead";
+        regular6 = "88c0d0";
+        regular7 = "e5e9f0";
+
+        bright0 = "4c566a";
+        bright1 = "bf616a";
+        bright2 = "a3be8c";
+        bright3 = "ebcb8b";
+        bright4 = "81a1c1";
+        bright5 = "b48ead";
+        bright6 = "8fbcbb";
+        bright7 = "eceff4";
+
+        dim0 = "373e4d";
+        dim1 = "94545d";
+        dim2 = "809575";
+        dim3 = "b29e75";
+        dim4 = "68809a";
+        dim5 = "8c738c";
+        dim6 = "6d96a5";
+        dim7 = "aeb3bb";
+      };
+    };
+  };
+
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
+  programs.zsh.profileExtra = ''
+    if [ -z $DISPLAY ]; then
+    	exec sway
+    fi
+  '';
 }
