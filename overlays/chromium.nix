@@ -2,7 +2,7 @@ final: prev:
 let
   chromium_flags = [
     "--start-maximized"
-    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks,WebRTCPipeWireCapturer"
+    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,WebRTCPipeWireCapturer"
     "--password-store=gnome-libsecret"
     "--force-dark-mode"
     "--gtk-version=4"
