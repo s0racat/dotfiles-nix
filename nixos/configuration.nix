@@ -118,22 +118,9 @@
 
   # ime
   # unstable
-  # i18n.inputMethod = {
-  #   enable = true;
-  #   type = "fcitx5";
-  #   fcitx5 = {
-  #     addons = with pkgs; [
-  #       fcitx5-skk
-  #       fcitx5-gtk
-  #       libsForQt5.fcitx5-qt
-  #     ];
-  #     waylandFrontend = true;
-  #   };
-  # };
-
-  # nixos 24.05
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    enable = true;
+    type = "fcitx5";
     fcitx5 = {
       addons = with pkgs; [
         fcitx5-skk
@@ -143,6 +130,19 @@
       waylandFrontend = true;
     };
   };
+
+  # nixos 24.05
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5 = {
+  #     addons = with pkgs; [
+  #       fcitx5-skk
+  #       fcitx5-gtk
+  #       libsForQt5.fcitx5-qt
+  #     ];
+  #     waylandFrontend = true;
+  #   };
+  # };
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
