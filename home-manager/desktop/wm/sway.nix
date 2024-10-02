@@ -11,10 +11,6 @@ in
 {
   programs.wofi.enable = true;
 
-  programs.i3status-rust = {
-    enable = true;
-  };
-
   xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
     file = ./config.toml;
     replacements = [
@@ -357,7 +353,10 @@ in
       };
     };
 
-  home.packages = [ pkgs.font-awesome_4 ];
+  home.packages = [
+    pkgs.font-awesome_4
+    pkgs.i3status-rust
+  ];
 
   xdg.configFile = {
     "foot/foot.ini".text = lib.generators.toINI { } {

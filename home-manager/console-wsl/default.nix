@@ -6,6 +6,7 @@
     ../../modules/home-manager/zsh.nix
     ../console
     ./wsl.nix
+    ../../nixos/nix.nix
     ./nix.nix
   ];
 }

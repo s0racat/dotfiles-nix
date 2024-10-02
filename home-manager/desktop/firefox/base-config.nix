@@ -80,6 +80,8 @@
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
           # set homepage to about:home
           "browser.startup.homepage" = "about:home";
+          # force enable vaapi
+          "media.ffmpeg.vaapi.enabled" = true;
         };
       };
     };

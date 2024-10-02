@@ -13,7 +13,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-
+    ./nix.nix
   ];
   virtualisation.docker.enable = true;
 
@@ -268,19 +268,5 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   #nixpkgs.config.allowUnfree = true;
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
+  nix.gc.dates = "weekly";
 }

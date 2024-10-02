@@ -44,7 +44,7 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [ ./machines/um690pro.nix ];
+          modules = [ ./hosts/um690pro.nix ];
         };
       };
 

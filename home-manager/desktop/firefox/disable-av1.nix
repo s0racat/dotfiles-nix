@@ -8,10 +8,9 @@
   programs.firefox = {
     profiles = {
       default = {
-        settings = { } // {
+        settings = {
           "media.av1.enabled" = false;
         };
-
       };
     };
   };
