@@ -27,7 +27,8 @@ in
       pyright
       stylua
       nixfmt-rfc-style
-      skk-dicts-latest
+      #skk-dicts-latest
+      pkgs.skkDictionaries.l
     ];
 
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
@@ -120,8 +121,8 @@ in
         file = ./plugins/skkeleton.lua;
         replacements = [
           {
-            old = "@skk_dicts@";
-            new = "${pkgs.skk-dicts}";
+            old = "@skk_dictsL@";
+            new = "${pkgs.skkDictionaries.l}";
           }
         ];
       };
