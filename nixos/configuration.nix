@@ -16,6 +16,8 @@
     ./nix.nix
   ];
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # bluetooth
   services.blueman.enable = true;
@@ -179,6 +181,7 @@
       "video"
       "i2c"
       "docker"
+      "libvirtd"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
     initialPassword = "123456";
