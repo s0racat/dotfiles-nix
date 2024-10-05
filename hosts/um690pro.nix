@@ -6,6 +6,7 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
+  networking.hostName = "um690pro";
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
   boot.lanzaboote = {
