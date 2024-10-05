@@ -6,8 +6,6 @@
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
-mkdir -p ~/ghq/github.com/s0racat/
-cd !$
 nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix"
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
