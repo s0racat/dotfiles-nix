@@ -4,9 +4,6 @@
   pkgs,
   ...
 }:
-let
-  substituteStrings = import ../../../lib/substituteStrings.nix;
-in
 {
   programs.zsh = {
     enable = true;

@@ -31,7 +31,6 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          (import ./overlays/skk-dicts.nix)
           (import ./overlays/chromium.nix)
         ];
       };
