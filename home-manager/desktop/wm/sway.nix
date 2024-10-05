@@ -11,6 +11,7 @@ let
 in
 {
   programs.wofi.enable = true;
+  services.swayosd.enable = true;
 
   xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
     file = ./config.toml;
@@ -334,11 +335,11 @@ in
           "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
           "${modifier}+Shift+e" = ''mode "$mode_system"'';
           "${modifier}+Shift+p" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
-          "XF86MonBrightnessDown" = "exec light -U 5";
-          "XF86MonBrightnessUp" = "exec light -A 5";
-          "XF86AudioRaiseVolume" = "exec pamixer -ui 2";
-          "XF86AudioLowerVolume" = "exec pamixer -ud 2";
-          "XF86AudioMute" = "exec pamixer --toggle-mute";
+          "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
+          "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
+          "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";
+          "XF86AudioLowerVolume" = "exec swayosd-client --output-volume lower";
+          "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
           "${modifier}+period" = "exec wofi-emoji";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioPlay" = "exec playerctl play-pause";

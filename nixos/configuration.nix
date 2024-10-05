@@ -201,13 +201,11 @@
       wofi-emoji
       swappy
       lxqt.lxqt-policykit
-      pamixer
       playerctl
       ddcutil
     ];
   };
 
-  programs.light.enable = true;
   #services.xserver.desktopManager.runXdgAutostartIfNone = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
