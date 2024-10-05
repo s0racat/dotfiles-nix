@@ -12,7 +12,7 @@
     ./envvar.nix
     ./firefox
     ./wm/sway.nix
-    ./misc/mpv.nix
+    ./misc
     ./theme
     ./daemon
     ./fcitx5
