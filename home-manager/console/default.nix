@@ -2,7 +2,7 @@
 {
   imports = [
     ./zsh
-    ./git
+    ./git.nix
     ./tmux
     ./neovim
     ./package.nix
