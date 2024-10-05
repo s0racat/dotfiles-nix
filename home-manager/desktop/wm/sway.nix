@@ -7,6 +7,7 @@
 let
   substituteStrings = import ../../../lib/substituteStrings.nix;
   binpath = "/run/current-system/sw/bin";
+  playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify {};
 in
 {
   programs.wofi.enable = true;
@@ -53,6 +54,7 @@ in
     defaultTimeout = 10000;
     font = "monospace 10";
     backgroundColor = "#2E3440";
+    iconPath = "${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}";
     extraConfig = ''
       [urgency=low]
       border-color=#8FBCBB
@@ -348,6 +350,7 @@ in
         startup = [
           { command = "${binpath}/lxqt-policykit-agent"; }
           { command = "${binpath}/fcitx5 -r -d"; }
+          { command = "playerctl-notify"; }
           { command = "keepassxc"; }
         ];
       };
@@ -356,6 +359,7 @@ in
   home.packages = [
     pkgs.font-awesome_4
     pkgs.i3status-rust
+    playerctl-notify
   ];
 
   xdg.configFile = {
