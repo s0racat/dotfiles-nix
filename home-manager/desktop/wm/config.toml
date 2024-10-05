@@ -28,7 +28,7 @@ interval = 1
 format = " $icon $frequency.eng(w:3) $utilization "
 [[block.click]]
 button = "left"
-cmd = "@foot@ -e htop"
+cmd = "foot -e htop"
 
 [[block]]
 block = "memory"
@@ -53,21 +53,21 @@ block = "kdeconnect"
 block = "sound"
 [[block.click]]
 button = "left"
-cmd = "@pavucontrol-qt@"
+cmd = "pavucontrol-qt"
 
 [[block]]
 block = "backlight"
 
 [[block]]
 block = "custom"
-command = "echo \U0001f313 $(@ddcutil@ capabilities --dis 1| head -1)"
+command = "echo \U0001f313 $(ddcutil capabilities --dis 1| head -1)"
 interval = "once"
 [[block.click]]
 button = "up"
-cmd = "@ddcutil@ --dis 1 setvcp 10 + 5"
+cmd = "ddcutil --dis 1 setvcp 10 + 5"
 [[block.click]]
 button = "down"
-cmd = "@ddcutil@ --dis 1 setvcp 10 - 5"
+cmd = "ddcutil --dis 1 setvcp 10 - 5"
 
 [[block]]
 block = "battery"

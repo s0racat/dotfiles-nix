@@ -218,6 +218,7 @@
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
     vscode
+    foot # Recognize foot as a command.
   ];
   #programs.thunar.enable = true;
   # hardware.opengl = {

@@ -13,23 +13,7 @@ in
   programs.wofi.enable = true;
   services.swayosd.enable = true;
 
-  xdg.configFile."i3status-rust/config.toml".text = substituteStrings {
-    file = ./config.toml;
-    replacements = [
-      {
-        old = "@ddcutil@";
-        new = "${lib.getExe pkgs.ddcutil}";
-      }
-      {
-        old = "@foot@";
-        new = "${lib.getExe pkgs.foot}";
-      }
-      {
-        old = "@pavucontrol-qt@";
-        new = "${lib.getExe pkgs.lxqt.pavucontrol-qt}";
-      }
-    ];
-  };
+  xdg.configFile."i3status-rust/config.toml".source = ./config.toml;
 
   programs.swaylock = {
     enable = true;
