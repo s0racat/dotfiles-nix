@@ -17,25 +17,29 @@
         theme = "Nordic-bluish-solid";
       };
     };
-    "qt5ct/qt5ct.conf".text = lib.generators.toINI { } {
-      Fonts = {
-        fixed = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
-        general = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
+    "qt5ct/qt5ct.conf".text =
+      with config.gtk;
+      lib.generators.toINI { } {
+        Fonts = {
+          fixed = ''"${font.name},${toString font.size},-1,5,50,0,0,0,0,0,Regular"'';
+          general = ''"${font.name},${toString font.size},-1,5,50,0,0,0,0,0,Regular"'';
+        };
+        Appearance = {
+          icon_theme = "${iconTheme.name}";
+          style = "${config.qt.style.name}";
+        };
       };
-      Appearance = {
-        icon_theme = "Papirus-Dark";
-        style = "kvantum";
+    "qt6ct/qt6ct.conf".text =
+      with config.gtk;
+      lib.generators.toINI { } {
+        Fonts = {
+          fixed = ''"${font.name},${toString font.size},-1,5,50,0,0,0,0,0,Regular"'';
+          general = ''"${font.name},${toString font.size},-1,5,50,0,0,0,0,0,Regular"'';
+        };
+        Appearance = {
+          icon_theme = "${iconTheme.name}";
+          style = "${config.qt.style.name}";
+        };
       };
-    };
-    "qt6ct/qt6ct.conf".text = lib.generators.toINI { } {
-      Fonts = {
-        fixed = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
-        general = ''"Roboto,12,-1,5,50,0,0,0,0,0,Regular"'';
-      };
-      Appearance = {
-        icon_theme = "Papirus-Dark";
-        style = "kvantum";
-      };
-    };
   };
 }

@@ -7,7 +7,7 @@
 let
   substituteStrings = import ../../../lib/substituteStrings.nix;
   binpath = "/run/current-system/sw/bin";
-  playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify {};
+  playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify { };
 in
 {
   programs.wofi.enable = true;
@@ -171,7 +171,7 @@ in
         seat = {
           "*" = {
             hide_cursor = "when-typing enable";
-            xcursor_theme = "Nordzy-cursors 24";
+            xcursor_theme = with config.gtk.cursorTheme; "${name} ${toString size}";
           };
         };
         fonts = {
