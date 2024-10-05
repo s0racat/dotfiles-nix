@@ -57,7 +57,7 @@
   };
   programs.gh =
     let
-      gh-fzgist = pkgs.callPackage ../../pkgs/gh-fzgist.nix {};
+      gh-fzgist = pkgs.callPackage ../../pkgs/gh-fzgist.nix { };
     in
     {
       enable = true;

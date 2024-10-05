@@ -11,7 +11,7 @@
     ./xdg.nix
     ./envvar.nix
     ./firefox
-    ./wm/sway.nix
+    ./sway
     ./misc
     ./theme
     ./daemon

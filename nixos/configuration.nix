@@ -195,6 +195,7 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      foot # Recognize foot as a command.
       grim
       slurp
       wl-clipboard
@@ -218,7 +219,6 @@
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
     vscode
-    foot # Recognize foot as a command.
   ];
   #programs.thunar.enable = true;
   # hardware.opengl = {

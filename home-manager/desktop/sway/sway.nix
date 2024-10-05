@@ -5,77 +5,8 @@
   ...
 }:
 {
-  programs.wofi.enable = true;
-  services.swayosd.enable = true;
 
   xdg.configFile."i3status-rust/config.toml".source = ./config.toml;
-
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      show-failed-attempts = true;
-      show-keyboard-layout = true;
-      indicator-caps-lock = true;
-      image = "${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/kittyboard.png";
-        sha256 = "1i32nsf0zlc417w2ra5cxh3rh63lwxwjlgg0sibi05dr5sgj8pxa";
-      }}";
-    };
-  };
-
-  services.cliphist = {
-    enable = true;
-    allowImages = true;
-    systemdTarget = "sway-session.target";
-  };
-
-  services.mako = {
-    enable = true;
-    defaultTimeout = 10000;
-    font = "monospace 10";
-    backgroundColor = "#2E3440";
-    iconPath = with config.gtk.iconTheme; "${package}/share/icons/${name}";
-    extraConfig = ''
-      [urgency=low]
-      border-color=#8FBCBB
-
-      [urgency=normal]
-      border-color=#81A1C1
-
-      [urgency=critical]
-      border-color=#BF616A
-    '';
-  };
-
-  services.swayidle =
-    let
-      lockCmd = "swaylock -f && playerctl -a -i kdeconnect pause";
-    in
-    {
-      enable = true;
-      systemdTarget = "sway-session.target";
-      events = [
-        {
-          event = "before-sleep";
-          command = "${lockCmd}";
-        }
-        {
-          event = "lock";
-          command = "${lockCmd}";
-        }
-      ];
-      timeouts = [
-        {
-          timeout = 600;
-          command = "swaymsg 'output * power off'";
-          resumeCommand = "swaymsg 'output * power on'";
-        }
-        {
-          timeout = 620;
-          command = "${lockCmd}";
-        }
-      ];
-    };
 
   wayland.windowManager.sway =
     let
@@ -346,51 +277,6 @@
       pkgs.i3status-rust
       playerctl-notify
     ];
-
-  xdg.configFile = {
-    "foot/foot.ini".text = lib.generators.toINI { } {
-      main = {
-        shell = "zsh --login -c 'tmux attach || tmux'";
-        font = "monospace:size=12";
-        dpi-aware = "yes";
-      };
-      cursor = {
-        style = "block";
-        color = "2e3440 d7dee9";
-        blink = "yes";
-      };
-      colors = {
-        foreground = "d8dee9";
-        background = "2e3440";
-        regular0 = "3b4252";
-        regular1 = "bf616a";
-        regular2 = "a3be8c";
-        regular3 = "ebcb8b";
-        regular4 = "81a1c1";
-        regular5 = "b48ead";
-        regular6 = "88c0d0";
-        regular7 = "e5e9f0";
-
-        bright0 = "4c566a";
-        bright1 = "bf616a";
-        bright2 = "a3be8c";
-        bright3 = "ebcb8b";
-        bright4 = "81a1c1";
-        bright5 = "b48ead";
-        bright6 = "8fbcbb";
-        bright7 = "eceff4";
-
-        dim0 = "373e4d";
-        dim1 = "94545d";
-        dim2 = "809575";
-        dim3 = "b29e75";
-        dim4 = "68809a";
-        dim5 = "8c738c";
-        dim6 = "6d96a5";
-        dim7 = "aeb3bb";
-      };
-    };
-  };
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
