@@ -36,6 +36,16 @@
           };
         };
       }
+      {
+        condition = "gitdir:~/dotfiles-nix/";
+        contents = {
+          user = {
+            name = "soracat";
+            email = "125882337+s0racat@users.noreply.github.com";
+            signingkey = "ECCE3B658A852C82";
+          };
+        };
+      }
     ];
   };
   services.gpg-agent = {
