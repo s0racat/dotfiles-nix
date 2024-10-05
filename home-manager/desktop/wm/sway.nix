@@ -4,11 +4,6 @@
   lib,
   ...
 }:
-let
-  substituteStrings = import ../../../lib/substituteStrings.nix;
-  binpath = "/run/current-system/sw/bin";
-  playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify { };
-in
 {
   programs.wofi.enable = true;
   services.swayosd.enable = true;
@@ -39,7 +34,7 @@ in
     defaultTimeout = 10000;
     font = "monospace 10";
     backgroundColor = "#2E3440";
-    iconPath = "${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}";
+    iconPath = with config.gtk.iconTheme; "${package}/share/icons/${name}";
     extraConfig = ''
       [urgency=low]
       border-color=#8FBCBB
@@ -54,7 +49,7 @@ in
 
   services.swayidle =
     let
-      lockCmd = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
+      lockCmd = "swaylock -f && playerctl -a -i kdeconnect pause";
     in
     {
       enable = true;
@@ -72,8 +67,8 @@ in
       timeouts = [
         {
           timeout = 600;
-          command = "${binpath}/swaymsg 'output * power off'";
-          resumeCommand = "${binpath}/swaymsg 'output * power on'";
+          command = "swaymsg 'output * power off'";
+          resumeCommand = "swaymsg 'output * power on'";
         }
         {
           timeout = 620;
@@ -129,6 +124,7 @@ in
         set $base0F #5E81AC
       '';
       config = {
+        terminal = "foot";
         output = {
           "HDMI-A-1" = {
             # bg = "${
@@ -333,19 +329,23 @@ in
         modifier = "Mod4";
         menu = "wofi --show drun --allow-images --columns 2";
         startup = [
-          { command = "${binpath}/lxqt-policykit-agent"; }
-          { command = "${binpath}/fcitx5 -r -d"; }
+          { command = "lxqt-policykit-agent"; }
+          { command = "fcitx5 -r -d"; }
           { command = "playerctl-notify"; }
           { command = "keepassxc"; }
         ];
       };
     };
 
-  home.packages = [
-    pkgs.font-awesome_4
-    pkgs.i3status-rust
-    playerctl-notify
-  ];
+  home.packages =
+    let
+      playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify { };
+    in
+    [
+      pkgs.font-awesome_4
+      pkgs.i3status-rust
+      playerctl-notify
+    ];
 
   xdg.configFile = {
     "foot/foot.ini".text = lib.generators.toINI { } {
