@@ -16,7 +16,7 @@ let
     gawk
   ]);
 in
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "gh-fzgist";
   version = "e2d20a9";
 

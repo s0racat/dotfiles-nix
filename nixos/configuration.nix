@@ -3,10 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
-  config,
-  lib,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -72,9 +69,9 @@
         };
       };
     };
-    nativeMessagingHosts.packages = [
-      pkgs.tridactyl-native
-      pkgs.keepassxc
+    nativeMessagingHosts.packages = with pkgs; [
+      tridactyl-native
+      keepassxc
     ];
   };
   programs.chromium = {
@@ -161,8 +158,6 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-    alsa.support32Bit = true;
-    alsa.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -218,7 +213,7 @@
     keepassxc
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
-    vscode
+    vscode.fhs
   ];
   #programs.thunar.enable = true;
   # hardware.opengl = {

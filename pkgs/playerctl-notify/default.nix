@@ -9,7 +9,7 @@
 let
   inherit (python3Packages) python pygobject3;
 in
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "playerctl-notify";
   version = "latest";
 
