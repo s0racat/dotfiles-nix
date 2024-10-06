@@ -6,8 +6,6 @@
 }:
 {
 
-  xdg.configFile."i3status-rust/config.toml".source = ./config.toml;
-
   wayland.windowManager.sway =
     let
       modifier = config.wayland.windowManager.sway.config.modifier;
@@ -267,20 +265,6 @@
         ];
       };
     };
-
-  home.packages =
-    let
-      playerctl-notify = pkgs.callPackage ../../../pkgs/playerctl-notify { };
-    in
-    [
-      pkgs.font-awesome_4
-      pkgs.i3status-rust
-      playerctl-notify
-    ];
-
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
 
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ]; then

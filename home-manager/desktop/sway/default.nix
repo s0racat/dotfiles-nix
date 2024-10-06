@@ -8,5 +8,8 @@
     ./cliphist.nix
     ./swayidle.nix
     ./swaylock.nix
+    ./i3status-rust.nix
+    ./envvar.nix
+    ./packages.nix
   ];
 }
