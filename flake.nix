@@ -1,5 +1,6 @@
 # https://github.com/kawarimidoll/dotfiles/blob/master/flake.nix
 # https://zenn.dev/kawarimidoll/articles/9c44ce8b60726f
+# username is defined in flake.nix
 
 {
   description = "dotfiles";
@@ -35,15 +36,15 @@
         ];
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
-      username = "takumi";
     in
     {
       formatter.${system} = pkgs.nixfmt-rfc-style;
       nixosConfigurations = {
-        "${username}@um690pro" = nixpkgs.lib.nixosSystem {
+        "um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
-            inherit inputs username;
+            username = "takumi";
+            inherit inputs;
           };
           modules = [
             ./hosts/um690pro.nix
@@ -59,7 +60,7 @@
       };
 
       homeConfigurations = {
-        "${username}@debian-wsl" = home-manager.lib.homeManagerConfiguration {
+        "debian-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs sources;
@@ -67,7 +68,7 @@
           modules = [
             ./home-manager/console-wsl
             rec {
-              home.username = username;
+              home.username = "takumi";
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = "24.05"; # Please read the comment before changing.
               programs.home-manager.enable = true;

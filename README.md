@@ -10,7 +10,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix"
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run nixpkgs#home-manager switch -- -b hmbak --flake .#takumi@debian-wsl
+nix run nixpkgs#home-manager switch -- -b hmbak --flake .#debian-wsl
 chsh -s `which zsh`</pre></code>
     <h1>docker</h1>
     <p>https://learn.microsoft.com/ja-jp/windows/wsl/systemd</p>
@@ -47,7 +47,7 @@ mount -m $esp /mnt/boot
 nix-shell -p gitMinimal
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
-nixos-install --flake .#takumi@um690pro
+nixos-install --flake .#um690pro
 reboot
 
 # login with takumi, password: 123456
