@@ -34,6 +34,7 @@
           (import ./overlays/chromium.nix)
         ];
       };
+      sources = pkgs.callPackage ./_sources/generated.nix { };
     in
     {
       formatter.${system} = pkgs.nixfmt-rfc-style;
@@ -43,7 +44,16 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [ ./hosts/um690pro.nix ];
+          modules = [
+            ./hosts/um690pro.nix
+            home-manager.nixosModules.home-manager
+            ./nixos/home-manager.nix
+            {
+              home-manager.extraSpecialArgs = {
+                inherit sources;
+              };
+            }
+          ];
         };
       };
 
@@ -51,9 +61,16 @@
         "alice@debian-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs sources;
           };
-          modules = [ ./home-manager/console-wsl ];
+          modules = [
+            ./home-manager/console-wsl
+            {
+              home.stateVersion = "24.05"; # Please read the comment before changing.
+              programs.home-manager.enable = true;
+
+            }
+          ];
         };
       };
     };

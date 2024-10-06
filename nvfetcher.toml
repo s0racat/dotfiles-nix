@@ -1,0 +1,11 @@
+[vimdoc-ja]
+src.git = "https://github.com/vim-jp/vimdoc-ja"
+fetch.github = "vim-jp/vimdoc-ja"
+
+[winresizer]
+src.git = "https://github.com/simeji/winresizer"
+fetch.github = "simeji/winresizer"
+
+[skkeleton]
+src.git = "https://github.com/vim-skk/skkeleton"
+fetch.github = "vim-skk/skkeleton"
