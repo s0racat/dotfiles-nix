@@ -1,11 +1,22 @@
 {
   lib,
   pkgs,
+  sources,
   ...
 }:
 let
   concatFiles = import ../../../lib/concatFiles.nix;
   substituteStrings = import ../../../lib/substituteStrings.nix;
+
+  vimdoc-ja = pkgs.vimUtils.buildVimPlugin {
+    inherit (sources.vimdoc-ja) pname version src;
+  };
+  winresizer-vim = pkgs.vimUtils.buildVimPlugin {
+    inherit (sources.winresizer) pname version src;
+  };
+  skkeleton = pkgs.vimUtils.buildVimPlugin {
+    inherit (sources.skkeleton) pname version src;
+  };
 in
 {
   programs.neovim = {
@@ -38,11 +49,11 @@ in
           gitsigns-nvim
           nvim-lspconfig
           fidget-nvim
-          # vimdoc-ja
+          vimdoc-ja
           nvim-autopairs
           registers-nvim
           nvim-colorizer-lua
-          # winresizer
+          winresizer-vim
           nvim-cmp
           cmp-buffer
           cmp-nvim-lsp
@@ -50,7 +61,7 @@ in
           cmp-cmdline
           cmp_luasnip
           cmp-nvim-lsp-signature-help
-          # skkeleton
+          skkeleton
           denops-vim
           vim-suda
           friendly-snippets
