@@ -2,6 +2,7 @@
   inputs,
   lib,
   pkgs,
+  username,
   ...
 }:
 {
@@ -17,15 +18,8 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-  home-manager.users.alice =
-    { ... }:
-    {
-      imports = [
-        ../home-manager/desktop
-      ];
-      home.stateVersion = "24.05"; # Please read the comment before changing.
-    };
-  users.users.alice = {
+
+  users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
@@ -39,4 +33,13 @@
     packages = with pkgs; [ ];
     initialPassword = "123456";
   };
+
+  home-manager.users."${username}" =
+    { ... }:
+    {
+      imports = [
+        ../home-manager/desktop
+      ];
+      home.stateVersion = "24.05"; # Please read the comment before changing.
+    };
 }

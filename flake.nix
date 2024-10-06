@@ -35,14 +35,15 @@
         ];
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
+      username = "takumi";
     in
     {
       formatter.${system} = pkgs.nixfmt-rfc-style;
       nixosConfigurations = {
-        "alice@um690pro" = nixpkgs.lib.nixosSystem {
+        "${username}@um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
-            inherit inputs;
+            inherit inputs username;
           };
           modules = [
             ./hosts/um690pro.nix
@@ -58,7 +59,7 @@
       };
 
       homeConfigurations = {
-        "alice@debian-wsl" = home-manager.lib.homeManagerConfiguration {
+        "${username}@debian-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs sources;
@@ -66,7 +67,7 @@
           modules = [
             ./home-manager/console-wsl
             rec {
-              home.username = "alice";
+              home.username = username;
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = "24.05"; # Please read the comment before changing.
               programs.home-manager.enable = true;
