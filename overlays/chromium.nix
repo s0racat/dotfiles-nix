@@ -18,5 +18,5 @@ let
 in
 {
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
-  vscode = prev.vscode.override { commandLineArgs = electron_flags; };
+  vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
 }
