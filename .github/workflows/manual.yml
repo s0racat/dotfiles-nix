@@ -20,8 +20,17 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - uses: actions/checkout@v4
+    - name: Configure git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+     
     - uses: cachix/install-nix-action@v27
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix flake update --commit-lock-file
-    - run: git push
+    - run: |
+    nix flake update --commit-lock-file
+         git push origin main
