@@ -1,36 +1,42 @@
-# This is a basic workflow that is manually triggered
+# This is a basic workflow to help you get started with Actions
 
-name: Manual workflow
+name: CI
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
+# Controls when the action will run. 
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 0 1 * *'
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    # Inputs the workflow accepts.
-
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
+  # This workflow contains a single job called "build"
+  build:
     runs-on: ubuntu-latest
-
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - uses: actions/checkout@v4
-    - name: Configure git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Configure git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-
-     
-    - uses: cachix/install-nix-action@v27
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - run: |
-    nix flake update --commit-lock-file
-         git push origin main
+          
+      # Runs a single command using the runners shell
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      
+      - name: Update Nix flake
+        run: |
+          nix flake update --commit-lock-file
+          git push origin main
