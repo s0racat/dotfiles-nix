@@ -13,7 +13,7 @@
     prefix = "c-s";
     terminal = "tmux-256color";
     historyLimit = 999999999;
-    extraConfig = builtins.readFile ./tmux.conf.extra;
+    extraConfig = builtins.readFile ./tmux.conf;
     plugins = with pkgs.tmuxPlugins; [ nord ];
   };
 }
