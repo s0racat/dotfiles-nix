@@ -188,7 +188,7 @@
             {
               command = "floating enable";
               criteria = {
-                title = "Picture-in-Picture";
+                title = "(Picture-in-Picture|ピクチャーインピクチャー)";
               };
             }
             {
