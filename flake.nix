@@ -17,6 +17,7 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
@@ -24,6 +25,7 @@
       self,
       nixpkgs,
       home-manager,
+      treefmt-nix,
       ...
     }@inputs:
     let
@@ -36,15 +38,17 @@
         ];
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
+      username = "takumi";
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in
     {
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      # for `nix fmt`
+      formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
         "um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
-            username = "takumi";
-            inherit inputs;
+            inherit inputs username;
           };
           modules = [
             ./hosts/um690pro.nix
@@ -60,7 +64,7 @@
       };
 
       homeConfigurations = {
-        "debian-wsl" = home-manager.lib.homeManagerConfiguration {
+        "thinkbook-g6a-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs sources;
@@ -68,7 +72,7 @@
           modules = [
             ./home-manager/console-wsl
             rec {
-              home.username = "takumi";
+              home.username = username;
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = "24.05"; # Please read the comment before changing.
               programs.home-manager.enable = true;
