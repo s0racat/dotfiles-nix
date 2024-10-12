@@ -7,7 +7,7 @@
       "file-allocation" = "none";
       "max-concurrent-downloads" = 5;
       "max-connection-per-server" = 5;
-      useragent = "Wget";
+      user-agent = "Wget";
     };
   };
 }
