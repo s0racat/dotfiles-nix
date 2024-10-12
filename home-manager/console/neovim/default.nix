@@ -90,7 +90,7 @@ in
             drv;
         lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
         lazyConfig = substituteStrings {
-          file = ./plugins/lazy-nvim.lua;
+          file = ./lazy-nvim.lua;
           replacements = [
             {
               old = "@lazyPath@";
@@ -125,10 +125,37 @@ in
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   # xdg.configFile."nvim/lua".source = ./lua;
 
-  xdg.configFile."nvim/lua/plugins.lua".text =
+  # xdg.configFile."nvim/lua/plugins.lua".text =
+  #   let
+  #     skkeletonConfig = substituteStrings {
+  #       file = ./skkeleton.lua;
+  #       replacements = [
+  #         {
+  #           old = "@skk_dictsL@";
+  #           new = "${pkgs.skkDictionaries.l}";
+  #         }
+  #       ];
+  #     };
+  #   in
+  #   ''
+  #     return {
+  #     ${concatFiles [
+  #       ./plugins/git.lua
+  #       ./plugins/lspconfig.lua
+  #       ./plugins/misc.lua
+  #       ./plugins/nvim-cmp.lua
+  #       ./plugins/telescope.lua
+  #       ./plugins/theme.lua
+  #       ./plugins/treesitter.lua
+  #       ./plugins/vim-suda.lua
+  #     ]}
+  #     ${skkeletonConfig}
+  #     }
+  #   '';
+  xdg.configFile."nvim/lua/plugins/skkeleton.lua".text =
     let
       skkeletonConfig = substituteStrings {
-        file = ./plugins/skkeleton.lua;
+        file = ./skkeleton.lua;
         replacements = [
           {
             old = "@skk_dictsL@";
@@ -138,20 +165,13 @@ in
       };
     in
     ''
-      return {
-      ${concatFiles [
-        ./plugins/git.lua
-        ./plugins/lspconfig.lua
-        ./plugins/misc.lua
-        ./plugins/nvim-cmp.lua
-        ./plugins/telescope.lua
-        ./plugins/theme.lua
-        ./plugins/treesitter.lua
-        ./plugins/vim-suda.lua
-      ]}
       ${skkeletonConfig}
-      }
     '';
+
+  xdg.configFile."nvim/lua/plugins/" = {
+    source = ./plugins;
+    recursive = true;
+  };
 
   xdg.configFile."nvim/lua/conf" = {
     source = ./conf;
