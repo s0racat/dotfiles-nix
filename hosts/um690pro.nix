@@ -39,6 +39,7 @@
     {
       imports = [
         ../home-manager/desktop
+        ../home-manager/desktop/firefox/enable-av1.nix
       ];
       home.stateVersion = "24.05"; # Please read the comment before changing.
     };
