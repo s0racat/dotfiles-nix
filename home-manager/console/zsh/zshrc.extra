@@ -1,28 +1,29 @@
 git_prompt() {
-	if [[ $? == 0 ]]; then
-		prompt_status=😼
-	else 
-		prompt_status=😿
-	fi
-	if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then
-		PROMPT="%F{#88c0d0}%B%~%b%f$(git_super_status)"$'\n'"${prompt_status} ";
+	if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = true ]; then
+		echo $(git_super_status)
 	else
-		PROMPT="%F{#88c0d0}%B%~%b%f"$'\n'"${prompt_status} ";
+		echo ""
 	fi
 }
 
 add_newline() {
-  if [[ -z $PS1_NEWLINE_LOGIN ]]; then
-    PS1_NEWLINE_LOGIN=true
-  else
-    printf '\n'
-  fi
+	if [[ -z $PS1_NEWLINE_LOGIN ]]; then
+		PS1_NEWLINE_LOGIN=true
+	else
+		printf '\n'
+	fi
 }
 
 precmd() {
-  git_prompt
-  add_newline
+	if [[ $? == 0 ]]; then
+		prompt_status=😼
+	else
+		prompt_status=😿
+	fi
+	PROMPT="%F{#88c0d0}%B%~%b%f$(git_prompt)"$'\n'"${prompt_status} "
+	add_newline
 }
+
 setopt correct
 
 # edit-command-line
