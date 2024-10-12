@@ -1,4 +1,6 @@
 {
+  lib,
+  pkgs,
   ...
 }:
 {
@@ -78,7 +80,9 @@
           # set homepage to about:home
           "browser.startup.homepage" = "about:home";
           # force enable vaapi
-          "media.ffmpeg.vaapi.enabled" = true;
+          "media.ffmpeg.vaapi.enabled" = pkgs.stdenv.isLinux;
+          # disable av1 by default
+          "media.av1.enabled" = lib.mkDefault false;
         };
       };
     };
