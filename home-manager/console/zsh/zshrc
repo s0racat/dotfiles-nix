@@ -1,0 +1,45 @@
+git_prompt() {
+  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = true ]; then
+    echo $(git_super_status)
+  else
+    echo ""
+  fi
+}
+
+add_newline() {
+  if [[ -z $PS1_NEWLINE_LOGIN ]]; then
+    PS1_NEWLINE_LOGIN=true
+  else
+    printf '\n'
+  fi
+}
+
+precmd() {
+  if [[ $? == 0 ]]; then
+    prompt_status=😼
+  else
+    prompt_status=😿
+  fi
+  PROMPT="%F{#88c0d0}%B%~%b%f$(git_prompt)"$'\n'"${prompt_status} "
+  add_newline
+}
+
+setopt correct
+
+# edit-command-line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+# https://wiki.archlinux.org/title/Zsh#Command_completion
+zstyle ':completion:*' menu select
+
+# https://gihyo.jp/dev/serial/01/zsh-book/0005#sec1_h1
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
+
+zstyle ':completion:*:processes' command "ps -au$USER"
+
+command -v exa &>/dev/null && function chpwd() {
+  exa
+}
+export LANG=en_US.UTF-8

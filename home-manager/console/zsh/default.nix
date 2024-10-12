@@ -44,7 +44,7 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    initExtra = builtins.readFile ./zshrc.extra;
+    initExtra = builtins.readFile ./zshrc;
     plugins = [
       {
         name = "zsh-git-prompt";
