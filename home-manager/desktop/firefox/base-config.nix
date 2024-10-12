@@ -80,9 +80,11 @@
           # set homepage to about:home
           "browser.startup.homepage" = "about:home";
           # force enable vaapi
-          "media.ffmpeg.vaapi.enabled" = pkgs.stdenv.isLinux;
+          "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
           # disable av1 by default
           "media.av1.enabled" = lib.mkDefault false;
+          # set language to japanese
+          "intl.locale.requested" = "ja,en-US";
         };
       };
     };
