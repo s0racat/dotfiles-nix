@@ -1,10 +1,10 @@
-git_prompt() {
-  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = true ]; then
-    echo $(git_super_status)
-  else
-    echo ""
-  fi
-}
+# git_prompt() {
+#   if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = true ]; then
+#     echo $(git_super_status)
+#   else
+#     echo ""
+#   fi
+# }
 
 add_newline() {
   if [[ -z $PS1_NEWLINE_LOGIN ]]; then
@@ -20,7 +20,7 @@ precmd() {
   else
     prompt_status=😿
   fi
-  PROMPT="%F{#88c0d0}%B%~%b%f$(git_prompt)"$'\n'"${prompt_status} "
+  PROMPT="%F{#88c0d0}%B%~%b%f"$'\n'"${prompt_status} "
   add_newline
 }
 
