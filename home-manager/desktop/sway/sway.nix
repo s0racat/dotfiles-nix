@@ -54,28 +54,28 @@
       '';
       config = {
         terminal = "foot";
-        output = {
-          "HDMI-A-1" = {
-            # bg = "${
-            #   pkgs.fetchurl {
-            #     url = "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/fd5814f83df436166bbaa68af1d9833181f771f7/wallpapers/nixos.png";
-            #     sha256 = "1lvy7bpiqm3pyc47q55vxz01zfwi8sm960jdgqnjsa8cy3afl7lc";
-            #   }
-            # } fill";
-            bg = "${
-              pkgs.fetchurl {
-                url = "https://i.pximg.net/img-master/img/2024/09/13/19/05/54/122395805_p0_master1200.jpg";
-                sha256 = "sha256-Zg9kY6oCbtzUfFIUne9Xy2JWeUk9Q4gyoSVRPcS98u8=";
-                curlOptsList = [
-                  "-H"
-                  "User-Agent: Mozilla/5.0"
-                  "-H"
-                  "Referer: https://pixiv.net"
-                ];
-              }
-            } fill";
+        output =
+          let
+            bg =
+              toString (
+                pkgs.fetchurl {
+                  url = "https://i.pximg.net/img-master/img/2024/09/13/19/05/54/122395805_p0_master1200.jpg";
+                  sha256 = "sha256-Zg9kY6oCbtzUfFIUne9Xy2JWeUk9Q4gyoSVRPcS98u8=";
+                  curlOptsList = [
+                    "-H"
+                    "User-Agent: Mozilla/5.0"
+                    "-H"
+                    "Referer: https://pixiv.net"
+                  ];
+                }
+              )
+              + " fill";
+          in
+          {
+            "HDMI-A-1" = {
+              inherit bg;
+            };
           };
-        };
 
         seat = {
           "*" = {
