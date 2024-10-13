@@ -34,6 +34,7 @@ def on_play(player, status, manager):
 def on_pause(player, status, manager):
     notify(player, "media-playback-pause")
 
+
 def init_player(name):
     player = Playerctl.Player.new_from_name(name)
     player.connect("playback-status::playing", on_play, manager)

@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation {
   pname = "playerctl-notify";
   version = "latest";
 
-  src = ./playerctl-notify;
+  src = ./playerctl-notify.py;
   nativeBuildInputs = [ gobject-introspection ];
   buildInputs = [
     python
@@ -23,9 +23,10 @@ stdenvNoCC.mkDerivation {
   ];
 
   dontBuild = true;
+  dontUnpack = true;
 
   installPhase = ''
-    install -m555 -Dt $out/bin $src/*
+    install -D -m 755 $src $out/bin/playerctl-notify
   '';
 
   postFixup = ''
