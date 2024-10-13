@@ -2,7 +2,7 @@
 {
   services.swayidle =
     let
-      lockCmd = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
+      command = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
     in
     {
       enable = true;
@@ -10,22 +10,23 @@
       events = [
         {
           event = "before-sleep";
-          command = "${lockCmd}";
+          inherit command;
         }
         {
+          # for loginctl lock-session
           event = "lock";
-          command = "${lockCmd}";
+          inherit command;
         }
       ];
       timeouts = [
+        # {
+        #   timeout = 600;
+        #   command = "${lib.getExe' pkgs.sway "swaymsg"} 'output * power off'";
+        #   resumeCommand = "${lib.getExe' pkgs.sway "swaymsg"} 'output * power on'";
+        # }
         {
           timeout = 600;
-          command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
-        }
-        {
-          timeout = 620;
-          command = "${lockCmd}";
+          command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
         }
       ];
     };
