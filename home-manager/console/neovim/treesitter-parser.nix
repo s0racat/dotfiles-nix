@@ -1,4 +1,5 @@
-  {pkgs,...}:{
+{ pkgs, ... }:
+{
   # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
   xdg.configFile."nvim/parser".source =
     let
@@ -15,4 +16,5 @@
           )).dependencies;
       };
     in
-    "${parsers}/parser";}
+    "${parsers}/parser";
+}
