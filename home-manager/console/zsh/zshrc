@@ -6,23 +6,23 @@
 #   fi
 # }
 
-add_newline() {
-  if [[ -z $PS1_NEWLINE_LOGIN ]]; then
-    PS1_NEWLINE_LOGIN=true
-  else
-    printf '\n'
-  fi
-}
-
-precmd() {
-  if [[ $? == 0 ]]; then
-    prompt_status=😼
-  else
-    prompt_status=😿
-  fi
-  PROMPT="%F{#88c0d0}%B%~%b%f"$'\n'"${prompt_status} "
-  add_newline
-}
+# add_newline() {
+#   if [[ -z $PS1_NEWLINE_LOGIN ]]; then
+#     PS1_NEWLINE_LOGIN=true
+#   else
+#     printf '\n'
+#   fi
+# }
+#
+# precmd() {
+#   if [[ $? == 0 ]]; then
+#     prompt_status=😼
+#   else
+#     prompt_status=😿
+#   fi
+#   PROMPT="%F{#88c0d0}%B%~%b%f"$'\n'"${prompt_status} "
+#   add_newline
+# }
 
 setopt correct
 

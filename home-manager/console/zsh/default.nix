@@ -76,4 +76,13 @@
     };
   };
   programs.zoxide.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        success_symbol = "😼";
+        error_symbol = "😿";
+      };
+    };
+  };
 }
