@@ -27,12 +27,20 @@ local spec = {
 
 	{
 		-- Add indentation guides even on blank lines
-		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
-		main = "ibl",
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help indent_blankline.txt`
-		opts = {},
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("hlchunk").setup({
+				chunk = {
+					enable = true,
+					-- ...
+				},
+				indent = {
+					enable = true,
+					-- ...
+				},
+			})
+		end,
 	},
 }
 return spec

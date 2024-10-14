@@ -12,7 +12,7 @@
     extraPackages = with pkgs; [
       lua-language-server
       nodePackages.typescript-language-server
-      nodePackages.bash-language-server
+      bash-language-server
       vim-language-server
       emmet-language-server
       gopls

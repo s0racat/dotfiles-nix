@@ -16,12 +16,19 @@ let
   skkeleton = pkgs.vimUtils.buildVimPlugin {
     inherit (sources.skkeleton) pname version src;
   };
+  hlchunk-nvim = pkgs.vimUtils.buildVimPlugin {
+    inherit (sources.hlchunk) pname version src;
+  };
+  skkeleton_indicator-nvim = pkgs.vimUtils.buildVimPlugin {
+    inherit (sources.hlchunk) pname version src;
+  };
 in
 {
   programs.neovim.extraLuaConfig =
 
     let
       plugins = with pkgs.vimPlugins; [
+        vim-closetag
         gitsigns-nvim
         nvim-lspconfig
         fidget-nvim
@@ -41,11 +48,13 @@ in
         denops-vim
         vim-suda
         friendly-snippets
-        indent-blankline-nvim
+        #indent-blankline-nvim
         lualine-nvim
+        # おまえらなに
         nvim-treesitter
         nvim-treesitter-textobjects
         nvim-web-devicons
+        # telescope 整理するか
         plenary-nvim
         telescope-fzf-native-nvim
         telescope-nvim
@@ -53,6 +62,18 @@ in
         {
           name = "LuaSnip";
           path = luasnip;
+        }
+        {
+          name = "hlchunk.nvim";
+          path = hlchunk-nvim;
+        }
+        {
+          name = "skkeleton_indicator.nvim";
+          path = skkeleton_indicator-nvim;
+        }
+        {
+          path = dial-nvim;
+          name = "dial.nvim";
         }
       ];
       mkEntryFromDrv =
