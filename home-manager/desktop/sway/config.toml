@@ -83,4 +83,3 @@ format = " $icon $timestamp.datetime(f:'%m/%d %a %R') "
 block = "custom"
 command = "echo \uf17c $(uname -r)"
 interval = "once"
-
