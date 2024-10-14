@@ -259,7 +259,6 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   #nixpkgs.config.allowUnfree = true;
-  nix.gc.dates = "weekly";
   programs.nix-ld = {
     enable = true;
   };

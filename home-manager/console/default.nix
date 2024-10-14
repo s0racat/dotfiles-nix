@@ -7,5 +7,6 @@
     ./neovim
     ./package.nix
     ./misc
+    ../../nixos/nix.nix
   ];
 }
