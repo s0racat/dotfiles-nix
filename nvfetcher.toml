@@ -9,3 +9,11 @@ fetch.github = "simeji/winresizer"
 [skkeleton]
 src.git = "https://github.com/vim-skk/skkeleton"
 fetch.github = "vim-skk/skkeleton"
+
+[hlchunk]
+src.git = "https://github.com/shellRaining/hlchunk.nvim"
+fetch.github = "shellRaining/hlchunk.nvim"
+
+[skkeleton_indicator]
+src.git = "https://github.com/delphinus/skkeleton_indicator.nvim"
+fetch.github = "delphinus/skkeleton_indicator.nvim"
