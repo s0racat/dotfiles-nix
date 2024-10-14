@@ -1,6 +1,4 @@
 {
-  pkgs,
-  lib,
   config,
   ...
 }:
@@ -18,7 +16,6 @@ in
     };
 
     gc = {
-
       ${frequency} = "weekly";
       automatic = true;
       options = "--delete-older-than 7d";
