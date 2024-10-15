@@ -7,7 +7,7 @@ local spec = {
 			"<leader>?",
 			"<leader><space>",
 			"<leader>/",
-			"<leader>gf",
+			"<leader>g",
 			"<leader>sf",
 			"<leader>sh",
 			"<leader>sw",
