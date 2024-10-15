@@ -72,8 +72,16 @@ in
           path = skkeleton_indicator-nvim;
         }
         {
-          path = dial-nvim;
           name = "dial.nvim";
+          path = dial-nvim;
+        }
+        {
+          name = "bufferline.nvim";
+          path = bufferline-nvim;
+        }
+        {
+          name = "telescope-file-browser.nvim";
+          path = telescope-file-browser-nvim;
         }
       ];
       mkEntryFromDrv =

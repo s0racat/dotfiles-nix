@@ -44,7 +44,7 @@ local spec = {
 
 	{
 		"alvan/vim-closetag",
-		ft = { "javascript", "html" },
+		ft = { "html" },
 	},
 }
 return spec
