@@ -18,7 +18,9 @@ in
     gc = {
       ${frequency} = "weekly";
       automatic = true;
-      options = "--delete-older-than 7d";
     };
   };
+  imports = [
+    ./nix-gc-options.nix
+  ];
 }
