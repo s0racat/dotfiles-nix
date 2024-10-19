@@ -45,7 +45,7 @@
       # for `nix fmt`
       apps.${system} =
         let
-          hm-switch =
+          gc =
             let
               gc-opt = (import ./nixos/nix-gc-options.nix).nix.gc.options;
             in
@@ -53,15 +53,14 @@
               type = "app";
               program = toString (
                 pkgs.writeShellScript "home-script" ''
-                  command -v home-manager &> /dev/null && home-manager switch -b hmbak --flake .#''${1:-thinkbook-g6a-wsl} || 
-                  nix run nixpkgs#home-manager switch -- -b hmbak --flake .#''${1:-thinkbook-g6a-wsl}
                   nix-collect-garbage ${gc-opt}
                 ''
               );
             };
         in
         {
-          default = hm-switch;
+          inherit gc;
+          default = gc;
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
