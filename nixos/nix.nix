@@ -13,6 +13,10 @@ in
         "nix-command"
         "flakes"
       ];
+      trusted-users = [
+        "@wheel"
+        "@sudo"
+      ];
     };
 
     gc = {
