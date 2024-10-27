@@ -11,13 +11,15 @@ nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run nixpkgs#home-manager switch -- -b hmbak --flake .#thinkbook-g6a-wsl
-chsh -s `which zsh`</pre></code>
-    <h1>docker</h1>
+chsh -s $(which zsh)</pre></code>
+    <h2>docker</h2>
     <p>https://learn.microsoft.com/ja-jp/windows/wsl/systemd</p>
 <p>https://docs.docker.com/engine/install/debian/</p>
-    <h1>systemd user</h1>
+    <h2>systemd user</h2>
     <pre><code>sudo apt install -y dbus-user-session
 sudo loginctl enable-linger $USER</pre></code>
+    <h2>Change /bin/sh symlink to /bin/bash</h2>
+    <pre><code>sudo update-alternatives --install /bin/sh sh /bin/bash 100</pre></code>
 </details>
 
 # install NixOS
