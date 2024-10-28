@@ -1,7 +1,10 @@
 {
   pkgs,
+  config,
   ...
+
 }:
+let pwd = "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim"; in
 {
   programs.neovim = {
     enable = true;
@@ -26,8 +29,7 @@
   };
 
   xdg.configFile."nvim/lua/conf" = {
-    source = ./conf;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${pwd}/conf";
   };
 
 }
