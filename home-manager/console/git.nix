@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.git = {
+  programs.git = rec {
     enable = true;
     # package = pkgs.hello;
     userName = "Takumi";
@@ -15,38 +15,36 @@
         filemode = false;
       };
     };
-    includes = [
-      {
-        condition = "gitdir:~/ghq/gitlab.com/";
-        contents = {
-          user = {
-            name = "Takumi";
-            email = "13336500-takuoh@users.noreply.gitlab.com";
-            signingkey = "ECCE3B658A852C82";
-          };
-        };
-      }
-      {
-        condition = "gitdir:~/ghq/github.com/";
+    includes =
+      let
         contents = {
           user = {
             name = "soracat";
             email = "125882337+s0racat@users.noreply.github.com";
-            signingkey = "ECCE3B658A852C82";
+            signingkey = signing.key;
           };
         };
-      }
-      {
-        condition = "gitdir:~/dotfiles-nix/";
-        contents = {
-          user = {
-            name = "soracat";
-            email = "125882337+s0racat@users.noreply.github.com";
-            signingkey = "ECCE3B658A852C82";
+      in
+      [
+        {
+          condition = "gitdir:~/ghq/gitlab.com/";
+          contents = {
+            user = {
+              name = "Takumi";
+              email = "13336500-takuoh@users.noreply.gitlab.com";
+              signingkey = signing.key;
+            };
           };
-        };
-      }
-    ];
+        }
+        {
+          condition = "gitdir:~/ghq/github.com/";
+          inherit contents;
+        }
+        {
+          condition = "gitdir:~/dotfiles-nix/";
+          inherit contents;
+        }
+      ];
   };
   services.gpg-agent = {
     enable = true;
@@ -63,8 +61,6 @@
       enable = true;
       extensions = [
         gh-fzgist
-
       ];
-
     };
 }
