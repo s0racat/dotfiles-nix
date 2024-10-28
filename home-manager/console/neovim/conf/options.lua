@@ -44,3 +44,15 @@ vim.o.sidescroll = 1
 vim.o.cmdheight = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+-- expandtab オプションを設定します。タブ文字をスペースに変換します。
+vim.opt.expandtab = true
+
+-- tabstop オプションを設定します。タブ文字の幅を4スペースに設定します。
+vim.opt.tabstop = 4
+
+-- softtabstop オプションを設定します。インサートモードでのタブの幅を4スペースに設定します。
+vim.opt.softtabstop = 4
+
+-- shiftwidth オプションを設定します。インデントに使用するスペースの幅を4スペースに設定します。
+vim.opt.shiftwidth = 4
+
