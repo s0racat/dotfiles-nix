@@ -4,7 +4,7 @@
   ...
 }:
 let
-  ini = lib.generators.toINI { } {
+  KeePassXCcfg = lib.generators.toINI { } {
     General = {
       ConfigVersion = 2;
       LastOpenedDatabases = ''@Invalid()'';
@@ -35,13 +35,13 @@ let
   };
 in
 {
-  home.activation.copyKeePassXCconfig = ''
-    if [ ! -d "${config.xdg.configHome}/keepassxc" ]; then 
-      mkdir -p "${config.xdg.configHome}/keepassxc"
-    fi
-
-    if [ ! -f "${config.xdg.configHome}/keepassxc/keepassxc.ini" ]; then
-      echo "${ini}" > "${config.xdg.configHome}/keepassxc/keepassxc.ini"
+  home.activation.copyKeePassXCconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -f ${config.xdg.configHome}/keepassxc/keepassxc.ini ]; then
+      mkdir -p ${config.xdg.configHome}/keepassxc
+      cat << EOF > ${config.xdg.configHome}/keepassxc/keepassxc.ini
+    ${KeePassXCcfg}
+    EOF
+      chmod 600 ${config.xdg.configHome}/keepassxc/keepassxc.ini
     fi
   '';
 }
