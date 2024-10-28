@@ -4,7 +4,9 @@
   ...
 
 }:
-let pwd = "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim"; in
+let
+  pwd = "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim";
+in
 {
   programs.neovim = {
     enable = true;
