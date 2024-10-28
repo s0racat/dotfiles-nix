@@ -1,8 +1,32 @@
-{ ... }:
+{ pkgs, lib, ... }:
+let
+  cliphist-wrapper = pkgs.writeShellScript "cliphist-wrapper" ''
+    app_id=$(${lib.getExe' pkgs.sway "swaymsg"} -t get_tree | ${lib.getExe pkgs.jq} -r '.. | select(.type?) | select(.focused==true) | .app_id')
+    if [[ $app_id != "org.keepassxc.KeePassXC" ]]; then
+      ${lib.getExe pkgs.cliphist} store
+    fi
+  '';
+  systemdTarget = "sway-session.target";
+in
 {
-  services.cliphist = {
-    enable = true;
-    allowImages = true;
-    systemdTarget = "sway-session.target";
+  systemd.user.services.cliphist = {
+    Unit = {
+      Description = "Clipboard management daemon";
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${cliphist-wrapper}";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "${systemdTarget}" ];
+    };
   };
+  home.packages = with pkgs; [
+    cliphist
+    jq
+  ];
 }
