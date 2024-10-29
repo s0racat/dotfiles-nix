@@ -106,7 +106,7 @@
             statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
             fonts = {
               names = [
-                "DejaVu Sans Mono"
+                "Roboto Mono"
                 "FontAwesome"
               ];
               size = 10.0;

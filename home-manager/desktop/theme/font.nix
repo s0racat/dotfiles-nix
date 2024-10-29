@@ -8,6 +8,7 @@
     noto-fonts-cjk-serif
     twemoji-color-font
     roboto
+    roboto-mono
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
@@ -23,7 +24,7 @@
         serif = [ "Noto Serif CJK JP" ];
         monospace = [
           "JetBrainsMono Nerd Font"
-          "Noto Sans CJK JP"
+          "Noto Sans Mono CJK JP"
         ];
         emoji = [ "Twitter Color Emoji" ];
       };
