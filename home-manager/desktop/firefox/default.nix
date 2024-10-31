@@ -3,6 +3,6 @@
 }:
 {
   imports = [
-    ./base-config.nix
+    ./base.nix
   ];
 }
