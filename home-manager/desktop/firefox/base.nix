@@ -85,6 +85,7 @@
           "media.av1.enabled" = lib.mkDefault false;
           # set language to japanese
           "intl.locale.requested" = "ja,en-US";
+          "browser.tabs.inTitlebar" = 0;
         };
       };
     };
