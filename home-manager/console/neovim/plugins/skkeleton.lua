@@ -3,7 +3,7 @@ local spec = {
 		"vim-skk/skkeleton",
 		config = function()
 			local skk_dicts = {}
-			table.insert(skk_dicts, "@skk_dictsL@" .. "/share/skk/SKK-JISYO.L")
+			table.insert(skk_dicts, "~/.skk/SKK-JISYO.L")
 			vim.fn["skkeleton#config"]({
 				eggLikeNewline = true,
 				globalDictionaries = skk_dicts,
