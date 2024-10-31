@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   sources,
   ...
 }:
@@ -22,6 +23,7 @@ let
   skkeleton_indicator-nvim = pkgs.vimUtils.buildVimPlugin {
     inherit (sources.hlchunk) pname version src;
   };
+  pwd = (import ./pwd.nix { inherit config; }).pwd;
 in
 {
   programs.neovim.extraLuaConfig =
@@ -107,24 +109,10 @@ in
     ''
       ${lazyConfig}
     '';
-  xdg.configFile."nvim/lua/plugins/skkeleton.lua".text =
-    let
-      skkeletonConfig = substituteStrings {
-        file = ./skkeleton.lua;
-        replacements = [
-          {
-            old = "@skk_dictsL@";
-            new = "${pkgs.skkDictionaries.l}";
-          }
-        ];
-      };
-    in
-    ''
-      ${skkeletonConfig}
-    '';
+
+  home.file.".skk/SKK-JISYO.L".source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
 
   xdg.configFile."nvim/lua/plugins/" = {
-    source = ./plugins;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${pwd}/plugins";
   };
 }

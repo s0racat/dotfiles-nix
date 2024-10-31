@@ -5,7 +5,7 @@
 
 }:
 let
-  pwd = "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim";
+  pwd = (import ./pwd.nix { inherit config; }).pwd;
 in
 {
   programs.neovim = {
