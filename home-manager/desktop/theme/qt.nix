@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-{
+rec {
   qt = {
     enable = true;
     platformTheme.name = "qtct";
@@ -26,7 +26,7 @@
         };
         Appearance = {
           icon_theme = "${iconTheme.name}";
-          style = "${config.qt.style.name}";
+          style = "${qt.style.name}";
         };
       };
     "qt6ct/qt6ct.conf".text =
@@ -38,7 +38,7 @@
         };
         Appearance = {
           icon_theme = "${iconTheme.name}";
-          style = "${config.qt.style.name}";
+          style = "${qt.style.name}";
         };
       };
   };
