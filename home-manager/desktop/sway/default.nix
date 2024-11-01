@@ -11,6 +11,5 @@
     ./swaylock.nix
     ./i3status-rust.nix
     ./envvar.nix
-    ./packages.nix
   ];
 }
