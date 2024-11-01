@@ -4,11 +4,13 @@
   lib,
   ...
 }:
+let
+  style = "kvantum";
+in
 rec {
   qt = {
     enable = true;
     platformTheme.name = "qtct";
-    style.name = "kvantum";
   };
   xdg.configFile = {
     "Kvantum/Nordic-bluish-solid".source = "${pkgs.nordic}/share/Kvantum/Nordic-bluish-solid";
@@ -26,7 +28,7 @@ rec {
         };
         Appearance = {
           icon_theme = "${iconTheme.name}";
-          style = "${qt.style.name}";
+          inherit style;
         };
       };
     "qt6ct/qt6ct.conf".text =
@@ -38,8 +40,12 @@ rec {
         };
         Appearance = {
           icon_theme = "${iconTheme.name}";
-          style = "${qt.style.name}";
+          inherit style;
         };
       };
   };
+  home.packages = with pkgs; [
+    libsForQt5.qtstyleplugin-kvantum
+    qt6Packages.qtstyleplugin-kvantum
+  ];
 }
