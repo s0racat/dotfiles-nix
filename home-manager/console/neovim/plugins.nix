@@ -110,7 +110,9 @@ in
       ${lazyConfig}
     '';
 
-  home.file.".skk/SKK-JISYO.L".source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
+  xdg.dataFile = {
+    "skk/SKK-JISYO.L".source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
+  };
 
   xdg.configFile."nvim/lua/plugins/" = {
     source = config.lib.file.mkOutOfStoreSymlink "${pwd}/plugins";
