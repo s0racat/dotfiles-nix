@@ -6,7 +6,7 @@
 {
   programs.mpv = rec {
     enable = true;
-    package = lib.mkIf (builtins.pathExists /usr/bin/mpv) pkgs.emptyDirectory;
+    package = lib.mkIf (builtins.pathExists "/usr/bin/mpv") pkgs.emptyDirectory;
     scripts = lib.mkIf (package == pkgs.mpv) [ pkgs.mpvScripts.mpris ];
     config = {
       keep-open = "yes";

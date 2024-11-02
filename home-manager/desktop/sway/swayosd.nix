@@ -23,7 +23,9 @@ in
         Type = "simple";
         ExecStart = "${lib.getExe' pkgs.swayosd "swayosd-server"}";
         Restart = "always";
-        Environment = lib.mkIf (!isNixOS) [ "/usr/share:${config.home.profileDirectory}/share" ];
+        Environment = lib.mkIf (!isNixOS) [
+          "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share"
+        ];
       };
 
       Install = {

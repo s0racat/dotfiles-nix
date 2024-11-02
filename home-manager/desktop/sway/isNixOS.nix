@@ -1,3 +1,3 @@
 {
-isNixOS = builtins.pathExists "/usr/bin/sway";
+  isNixOS = !(builtins.pathExists "/usr/bin/sway");
 }
