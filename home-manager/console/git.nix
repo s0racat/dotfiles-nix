@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.git = rec {
     enable = true;
@@ -8,6 +8,7 @@
     signing.key = "ECCE3B658A852C82";
     # signing.signByDefault = true;
     extraConfig = {
+      ghq.root = "${config.home.homeDirectory}/ghq";
       init = {
         defaultBranch = "main";
       };
@@ -27,7 +28,7 @@
       in
       [
         {
-          condition = "gitdir:~/ghq/gitlab.com/";
+          condition = "gitdir:${extraConfig.ghq.root}/gitlab.com/";
           contents = {
             user = {
               name = "Takumi";
@@ -37,11 +38,11 @@
           };
         }
         {
-          condition = "gitdir:~/ghq/github.com/";
+          condition = "gitdir:${extraConfig.ghq.root}/github.com/";
           inherit contents;
         }
         {
-          condition = "gitdir:~/dotfiles-nix/";
+          condition = "gitdir:${config.home.homeDirectory}/dotfiles-nix/";
           inherit contents;
         }
       ];
