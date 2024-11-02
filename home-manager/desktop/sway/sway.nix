@@ -9,12 +9,13 @@
   wayland.windowManager.sway =
     let
       modifier = config.wayland.windowManager.sway.config.modifier;
+      isNixOS = (import ./isNixOS.nix).isNixOS;
     in
     {
       enable = true;
       package = null;
       #checkConfig = true;
-      #systemd.enable = false;
+      systemd.enable = if isNixOS then true else false;
       extraConfigEarly = ''
         set $Locker swaylock -f && sleep 1
 

@@ -1,28 +1,31 @@
 { pkgs, lib, ... }:
+let
+  isNixOS = (import ./isNixOS.nix).isNixOS;
+  swayidle = if isNixOS then lib.getExe pkgs.swayidle else "/usr/bin/swayidle";
+  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
+  systemdTarget = "sway-session.target";
+  command = "${swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
+  suspendCommand =
+    if isNixOS then lib.getExe' pkgs.systemd "systemctl" + "suspend" else "/usr/bin/systemctl suspend";
+in
 {
-  services.swayidle =
-    let
-      command = "${lib.getExe pkgs.swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
-    in
-    {
-      enable = true;
-      systemdTarget = "sway-session.target";
-      events = [
-        {
-          event = "before-sleep";
-          inherit command;
-        }
-        {
-          # for loginctl lock-session
-          event = "lock";
-          inherit command;
-        }
-      ];
-      timeouts = [
-        {
-          timeout = 600;
-          command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
-        }
-      ];
+  systemd.user.services.swayidle = {
+    Unit = {
+      Description = "Idle manager for Wayland";
+      Documentation = "man:swayidle(1)";
+      PartOf = [ "graphical-session.target" ];
     };
+
+    Service = {
+      Type = "simple";
+      Restart = "always";
+      # swayidle executes commands using "sh -c", so the PATH needs to contain a shell.
+      Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash ]}" ];
+      ExecStart = "${swayidle} -w 'timeout 600 ${suspendCommand}' 'before-sleep ${command}' 'event lock'";
+    };
+
+    Install = {
+      WantedBy = [ "${systemdTarget}" ];
+    };
+  };
 }

@@ -1,7 +1,11 @@
 { pkgs, ... }:
+let
+  isNixOS = (import ./isNixOS.nix).isNixOS;
+in
 {
   programs.swaylock = {
     enable = true;
+    package = if isNixOS then pkgs.swaylock else pkgs.emptyDirectory;
     settings =
       let
         image = toString (

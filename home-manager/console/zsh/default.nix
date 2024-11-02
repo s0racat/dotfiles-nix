@@ -1,12 +1,13 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
   programs.zsh = {
     enable = true;
-    # package = pkgs.hello;
+    package = lib.mkIf (builtins.pathExists "/usr/bin/zsh") pkgs.emptyDirectory;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;

@@ -1,7 +1,11 @@
-{ config, ... }:
+{ config, pkgs, ... }:
+let
+  isNixOS = (import ./isNixOS.nix).isNixOS;
+in
 {
   services.mako = {
     enable = true;
+    package = if isNixOS then pkgs.mako else pkgs.emptyDirectory;
     defaultTimeout = 10000;
     font = "monospace 10";
     backgroundColor = "#2E3440";

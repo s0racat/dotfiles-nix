@@ -1,6 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   systemdTarget = "sway-session.target";
+  isNixOS = (import ./isNixOS.nix).isNixOS;
 in
 {
   systemd.user = {
@@ -17,6 +23,7 @@ in
         Type = "simple";
         ExecStart = "${lib.getExe' pkgs.swayosd "swayosd-server"}";
         Restart = "always";
+        Environment = lib.mkIf (!isNixOS) [ "/usr/share:${config.home.profileDirectory}/share" ];
       };
 
       Install = {
