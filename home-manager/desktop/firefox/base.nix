@@ -4,9 +4,6 @@
   ...
 }:
 {
-  # imports = [
-  #   ./disable-av1.nix
-  # ];
   # manage firefox settings
   xdg.mimeApps = {
     enable = true;

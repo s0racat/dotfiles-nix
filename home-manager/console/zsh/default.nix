@@ -45,18 +45,6 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
     initExtra = builtins.readFile ./zshrc;
-    # plugins = [
-    #   {
-    #     name = "zsh-git-prompt";
-    #     file = "zshrc.sh";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "olivierverdier";
-    #       repo = "zsh-git-prompt";
-    #       rev = "v0.5";
-    #       sha256 = "sha256-HBYg4Itohf3FtARJ1CUiJlvaFvtPQ7hPNPlQk4N7oac=";
-    #     };
-    #   }
-    # ];
   };
   programs.fzf = {
     enable = true;

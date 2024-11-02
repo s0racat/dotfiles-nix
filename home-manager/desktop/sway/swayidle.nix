@@ -19,11 +19,6 @@
         }
       ];
       timeouts = [
-        # {
-        #   timeout = 600;
-        #   command = "${lib.getExe' pkgs.sway "swaymsg"} 'output * power off'";
-        #   resumeCommand = "${lib.getExe' pkgs.sway "swaymsg"} 'output * power on'";
-        # }
         {
           timeout = 600;
           command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";

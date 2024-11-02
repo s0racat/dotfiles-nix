@@ -92,8 +92,6 @@
   };
 
   # networking
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.firewall = {
@@ -125,7 +123,6 @@
   # services.xserver.enable = true;
 
   # ime
-  # unstable
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -139,18 +136,6 @@
     };
   };
 
-  # nixos 24.05
-  # i18n.inputMethod = {
-  #   enabled = "fcitx5";
-  #   fcitx5 = {
-  #     addons = with pkgs; [
-  #       fcitx5-skk
-  #       fcitx5-gtk
-  #       libsForQt5.fcitx5-qt
-  #     ];
-  #     waylandFrontend = true;
-  #   };
-  # };
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -172,15 +157,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-
   hardware.i2c.enable = true;
   programs.zsh.enable = true;
 
   # sway
   services.gnome.gnome-keyring.enable = true;
-  # pam_gnome_keyring will attempt to automatically unlock the user’s default Gnome keyring upon login. If the user login password does not match their keyring password, Gnome Keyring will prompt separately after login.
-  security.pam.services.login.enableGnomeKeyring = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -197,7 +178,6 @@
     ];
   };
 
-  #services.xserver.desktopManager.runXdgAutostartIfNone = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -213,13 +193,8 @@
     # native wayland support (unstable)
     wineWowPackages.waylandFull
     vscode.fhs
+
   ];
-  #programs.thunar.enable = true;
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -263,7 +238,6 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  #nixpkgs.config.allowUnfree = true;
   programs.nix-ld = {
     enable = true;
   };

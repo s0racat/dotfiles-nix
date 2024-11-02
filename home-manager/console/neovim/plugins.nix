@@ -50,13 +50,10 @@ in
         denops-vim
         vim-suda
         friendly-snippets
-        #indent-blankline-nvim
         lualine-nvim
-        # おまえらなに
         nvim-treesitter
         nvim-treesitter-textobjects
         nvim-web-devicons
-        # telescope 整理するか
         plenary-nvim
         telescope-fzf-native-nvim
         telescope-nvim
