@@ -96,13 +96,8 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.firewall = {
     enable = true;
-    # syncthing
-    allowedTCPPorts = [ 22000 ];
-    allowedUDPPorts = [
-      21027
-      22000
-    ];
   };
+  services.syncthing.openDefaultPorts = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
