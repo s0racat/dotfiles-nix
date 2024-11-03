@@ -9,7 +9,6 @@
     };
   };
   programs.zsh = {
-    package = null;
     profileExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then source ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
     '';
