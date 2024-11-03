@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  isNixOS,
   ...
 }:
 {
   programs.zsh = {
     enable = true;
-    package = lib.mkIf (builtins.pathExists "/usr/bin/zsh") pkgs.emptyDirectory;
+    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;

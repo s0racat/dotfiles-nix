@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-let
-  isNixOS = (import ./isNixOS.nix).isNixOS;
-in
+{
+  config,
+  pkgs,
+  isNixOS,
+  ...
+}:
 {
   services.mako = {
     enable = true;

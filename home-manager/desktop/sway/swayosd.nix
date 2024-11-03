@@ -2,11 +2,11 @@
   pkgs,
   lib,
   config,
+  isNixOS,
   ...
 }:
 let
   systemdTarget = "sway-session.target";
-  isNixOS = (import ./isNixOS.nix).isNixOS;
 in
 {
   systemd.user = {

@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  isNixOS,
   ...
 }:
 {
@@ -9,7 +10,6 @@
   wayland.windowManager.sway =
     let
       modifier = config.wayland.windowManager.sway.config.modifier;
-      isNixOS = (import ./isNixOS.nix).isNixOS;
     in
     {
       enable = true;

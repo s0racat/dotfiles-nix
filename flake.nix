@@ -91,6 +91,7 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs sources;
+            isNixOS = false;
           };
           modules = [
             ./home-manager/console-wsl

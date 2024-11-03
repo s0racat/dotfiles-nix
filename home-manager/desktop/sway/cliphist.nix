@@ -1,6 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  isNixOS,
+  ...
+}:
 let
-  isNixOS = (import ./isNixOS.nix).isNixOS;
   swaymsg = if isNixOS then lib.getExe' pkgs.sway "swaymsg" else "/usr/bin/swaymsg";
   wl-paste = if isNixOS then lib.getExe' pkgs.wl-clipboard "wl-paste" else "/usr/bin/wl-paste";
   cliphist-wrapper = pkgs.writeShellScript "cliphist-wrapper" ''

@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  isNixOS = (import ./isNixOS.nix).isNixOS;
-in
+{ pkgs, isNixOS, ... }:
 {
   programs.swaylock = {
     enable = true;
