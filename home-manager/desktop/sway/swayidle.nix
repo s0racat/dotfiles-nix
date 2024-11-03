@@ -6,7 +6,7 @@ let
   systemdTarget = "sway-session.target";
   command = "${swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
   suspendCommand =
-    if isNixOS then lib.getExe' pkgs.systemd "systemctl" + "suspend" else "/usr/bin/systemctl suspend";
+    if isNixOS then lib.getExe' pkgs.systemd "systemctl" + " suspend" else "/usr/bin/systemctl suspend";
 in
 {
   systemd.user.services.swayidle = {
