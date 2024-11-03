@@ -44,6 +44,7 @@
       sources = pkgs.callPackage ./_sources/generated.nix { };
       username = "takumi";
       treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      isNixOS = true;
     in
     {
       # for `nix fmt`
@@ -79,7 +80,7 @@
             ./nixos/home-manager.nix
             {
               home-manager.extraSpecialArgs = {
-                inherit sources;
+                inherit isNixOS sources;
               };
             }
           ];

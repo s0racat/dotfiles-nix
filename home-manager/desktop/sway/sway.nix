@@ -265,6 +265,10 @@
           { command = "keepassxc"; }
         ];
       };
+      extraConfig = lib.mkIf (!isNixOS) ''
+        include /etc/sway/config.d/*
+        exec_always systemctl --user start sway-session.target
+      '';
     };
 
   programs.zsh.profileExtra = ''

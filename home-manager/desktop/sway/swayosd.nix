@@ -21,7 +21,12 @@ in
 
       Service = {
         Type = "simple";
-        ExecStart = "${lib.getExe' pkgs.swayosd "swayosd-server"}";
+        ExecStart = ''
+          ${lib.getExe' pkgs.swayosd "swayosd-server"} ${
+            lib.optionalString (!isNixOS) "-s ${pkgs.swayosd}/etc/xdg/swayosd/style.css"
+          }
+        '';
+
         Restart = "always";
         Environment = lib.mkIf (!isNixOS) [
           "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share"
