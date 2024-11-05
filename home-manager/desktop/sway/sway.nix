@@ -187,7 +187,7 @@
         window = {
           commands = [
             {
-              command = "floating enable";
+              command = "sticky enable";
               criteria = {
                 title = "(Picture-in-Picture|ピクチャーインピクチャー)";
               };
@@ -214,6 +214,11 @@
               command = "border pixel 2";
               criteria = {
                 app_id = "^.*";
+              };
+            }
+            {
+              command = "border pixel 2";
+              criteria = {
                 class = "^.*";
               };
             }
@@ -221,6 +226,11 @@
               command = "inhibit_idle fullscreen";
               criteria = {
                 app_id = ".*";
+              };
+            }
+            {
+              command = "inhibit_idle fullscreen";
+              criteria = {
                 class = ".*";
               };
             }
