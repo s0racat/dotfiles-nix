@@ -5,11 +5,12 @@
   isNixOS,
   ...
 }:
+let cfg = config.wayland.windowManager.sway; in
 {
 
   wayland.windowManager.sway =
     let
-      modifier = config.wayland.windowManager.sway.config.modifier;
+      modifier = cfg.config.modifier;
     in
     {
       enable = true;
@@ -282,9 +283,6 @@
     };
 
   systemd.user.targets.sway-session =
-    let
-      cfg = config.wayland.windowManager.sway;
-    in
     lib.mkIf (cfg.systemd.enable == false) {
       Unit = {
         Description = "sway compositor session";
