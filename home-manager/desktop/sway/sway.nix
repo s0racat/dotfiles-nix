@@ -281,6 +281,23 @@
       '';
     };
 
+  systemd.user.targets.sway-session =
+    let
+      cfg = config.wayland.windowManager.sway;
+    in
+    lib.mkIf (cfg.systemd.enable == false) {
+      Unit = {
+        Description = "sway compositor session";
+        Documentation = [ "man:systemd.special(7)" ];
+        BindsTo = [ "graphical-session.target" ];
+        Wants = [
+          "graphical-session-pre.target"
+        ] ++ lib.optional cfg.systemd.xdgAutostart "xdg-desktop-autostart.target";
+        After = [ "graphical-session-pre.target" ];
+        Before = lib.optional cfg.systemd.xdgAutostart "xdg-desktop-autostart.target";
+      };
+    };
+
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ]; then
     	exec sway
