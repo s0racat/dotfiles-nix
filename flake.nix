@@ -69,7 +69,7 @@
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
-        "um690pro" = nixpkgs.lib.nixosSystem {
+        "${username}@um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             inherit inputs username;
@@ -88,7 +88,7 @@
       };
 
       homeConfigurations = {
-        "thinkbook-g6a-wsl" = home-manager.lib.homeManagerConfiguration {
+        "${username}@debian-wsl" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs sources;
