@@ -49,7 +49,7 @@ mount -m $esp /mnt/boot
 nix-shell -p gitMinimal
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
-nixos-install --flake .#takumi@um690pro
+nixos-install --flake .#um690pro
 reboot
 
 # login with takumi, password: 123456

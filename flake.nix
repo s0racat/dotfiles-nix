@@ -69,7 +69,7 @@
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
-        "${username}@um690pro" = nixpkgs.lib.nixosSystem {
+        "um690pro" = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             inherit inputs username;
