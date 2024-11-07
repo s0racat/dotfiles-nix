@@ -2,10 +2,11 @@
   pkgs,
   config,
   lib,
-  isNixOS,
   ...
 }:
-let cfg = config.wayland.windowManager.sway; in
+let
+  cfg = config.wayland.windowManager.sway;
+in
 {
 
   wayland.windowManager.sway =
@@ -16,7 +17,6 @@ let cfg = config.wayland.windowManager.sway; in
       enable = true;
       package = null;
       #checkConfig = true;
-      systemd.enable = if isNixOS then true else false;
       extraConfigEarly = ''
         set $Locker swaylock -f && sleep 1
 
@@ -275,24 +275,6 @@ let cfg = config.wayland.windowManager.sway; in
           { command = "playerctl-notify"; }
           { command = "keepassxc"; }
         ];
-      };
-      extraConfig = lib.mkIf (!isNixOS) ''
-        include /etc/sway/config.d/*
-        exec_always systemctl --user start sway-session.target
-      '';
-    };
-
-  systemd.user.targets.sway-session =
-    lib.mkIf (cfg.systemd.enable == false) {
-      Unit = {
-        Description = "sway compositor session";
-        Documentation = [ "man:systemd.special(7)" ];
-        BindsTo = [ "graphical-session.target" ];
-        Wants = [
-          "graphical-session-pre.target"
-        ] ++ lib.optional cfg.systemd.xdgAutostart "xdg-desktop-autostart.target";
-        After = [ "graphical-session-pre.target" ];
-        Before = lib.optional cfg.systemd.xdgAutostart "xdg-desktop-autostart.target";
       };
     };
 
