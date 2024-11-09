@@ -25,7 +25,7 @@ in
       Restart = "always";
       # swayidle executes commands using "sh -c", so the PATH needs to contain a shell.
       Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash ]}" ];
-      ExecStart = "${swayidle} -w timeout 600 '${suspendCommand}' before-sleep '${command}' lock '${command}'";
+      ExecStart = "${swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
     };
 
     Install = {

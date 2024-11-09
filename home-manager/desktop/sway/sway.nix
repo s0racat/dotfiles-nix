@@ -46,7 +46,7 @@ in
             "${modifier}+Shift+f" = "exec pcmanfm-qt";
             "${modifier}+Shift+r" = "reload";
             "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-            "${modifier}+Shift+e" = ''mode "${system}"'';
+            "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
             "${modifier}+Shift+p" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
             "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
             "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
@@ -75,6 +75,15 @@ in
               Return = "mode default";
               Escape = "mode default";
             };
+
+          modes.resize = {
+            Down = "resize grow height 10 px or 10 ppt";
+            Escape = "mode default";
+            Left = "resize shrink width 10 px or 10 ppt";
+            Return = "mode default";
+            Right = "resize grow width 10 px or 10 ppt";
+            Up = "resize shrink height 10 px or 10 ppt";
+          };
           terminal = "foot";
           output =
             let
