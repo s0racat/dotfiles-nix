@@ -29,16 +29,10 @@
       ...
     }@inputs:
     let
-      overlaysDir = builtins.readDir ./overlays;
-      itemNames = builtins.attrNames overlaysDir;
-      isImportable =
-        f:
-        builtins.match ".*\\.nix" f != null
-        || builtins.pathExists (./overlays + ("/" + f + "/default.nix"));
-      overlays = map (f: import (./overlays + ("/" + f))) (builtins.filter isImportable itemNames);
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit system overlays;
+        overlays = [ (import ./overlays) ];
+        inherit system;
         config.allowUnfree = true;
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
