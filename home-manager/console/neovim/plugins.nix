@@ -21,7 +21,7 @@ let
     inherit (sources.hlchunk) pname version src;
   };
   skkeleton_indicator-nvim = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.hlchunk) pname version src;
+    inherit (sources.skkeleton_indicator) pname version src;
   };
   pwd = (import ./pwd.nix { inherit config; }).pwd;
 in
