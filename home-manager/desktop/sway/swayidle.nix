@@ -6,7 +6,7 @@
 }:
 let
   swayidle = if isNixOS then lib.getExe pkgs.swayidle else "/usr/bin/swayidle";
-  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock -f";
+  swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
   systemdTarget = "sway-session.target";
   command = "${swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
   suspendCommand =
