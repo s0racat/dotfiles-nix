@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./ssh-agent.nix

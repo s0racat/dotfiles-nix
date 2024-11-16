@@ -35,7 +35,6 @@
   };
 
   home-manager.users."${username}" =
-    { ... }:
     {
       imports = [
         ../home-manager/desktop

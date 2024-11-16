@@ -1,4 +1,3 @@
-{ ... }:
 {
   home-manager.backupFileExtension = "hmbak";
   # use flake's nixpkgs settings.

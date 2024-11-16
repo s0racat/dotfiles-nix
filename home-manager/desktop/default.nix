@@ -1,7 +1,4 @@
 {
-  ...
-}:
-{
   imports = [
     # import base console config
     ../console

@@ -1,7 +1,4 @@
 {
-  ...
-}:
-{
   services.kdeconnect = {
     enable = true;
   };

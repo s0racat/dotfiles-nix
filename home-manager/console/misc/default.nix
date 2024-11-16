@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./bat.nix
