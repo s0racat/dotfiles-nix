@@ -80,8 +80,6 @@
           "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
           # disable av1 by default
           "media.av1.enabled" = lib.mkDefault false;
-          # set language to japanese
-          "intl.locale.requested" = "ja,en-US";
           "browser.tabs.inTitlebar" = 0;
         };
       };
