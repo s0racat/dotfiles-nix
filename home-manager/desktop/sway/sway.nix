@@ -60,7 +60,8 @@ in
             "${modifier}+x" = "exec cliphist list | wofi --show dmenu | cliphist decode | wl-copy";
           };
 
-          modes = lib.mkOptionDefault { # default値を引き継いでくれるらしい
+          modes = lib.mkOptionDefault {
+            # default値を引き継いでくれるらしい
             ${system} =
               let
                 locker = "swaylock -f && sleep 1";
