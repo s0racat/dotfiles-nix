@@ -8,7 +8,7 @@
   programs.mpv = rec {
     enable = true;
     package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
-    scripts = lib.mkIf (package == pkgs.mpv) [ pkgs.mpvScripts.mpris ];
+    scripts = lib.mkIf (package != pkgs.emptyDirectory) [ pkgs.mpvScripts.mpris ];
     config = {
       keep-open = "yes";
       hwdec = "auto";
