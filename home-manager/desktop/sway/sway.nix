@@ -60,30 +60,25 @@ in
             "${modifier}+x" = "exec cliphist list | wofi --show dmenu | cliphist decode | wl-copy";
           };
 
-          modes.${system} =
-            let
-              locker = "swaylock -f && sleep 1";
-            in
-            {
-              l = "exec ${locker}, mode default";
-              e = "exec swaymsg exit, mode default";
-              s = "exec ${locker} && systemctl suspend, mode default";
-              h = "exec ${locker} && systemctl hibernate, mode default";
-              r = "exec systemctl reboot, mode default";
-              "Shift+s" = "exec systemctl poweroff -i, mode default";
-              # back to normal: Enter or Escape
-              Return = "mode default";
-              Escape = "mode default";
-            };
+          modes = lib.mkOptionDefault { # default値を引き継いでくれるらしい
+            ${system} =
+              let
+                locker = "swaylock -f && sleep 1";
+              in
+              {
+                l = "exec ${locker}, mode default";
+                e = "exec swaymsg exit, mode default";
+                s = "exec ${locker} && systemctl suspend, mode default";
+                h = "exec ${locker} && systemctl hibernate, mode default";
+                r = "exec systemctl reboot, mode default";
+                "Shift+s" = "exec systemctl poweroff -i, mode default";
+                # back to normal: Enter or Escape
+                Return = "mode default";
+                Escape = "mode default";
+              };
 
-          modes.resize = {
-            Down = "resize grow height 10 px or 10 ppt";
-            Escape = "mode default";
-            Left = "resize shrink width 10 px or 10 ppt";
-            Return = "mode default";
-            Right = "resize grow width 10 px or 10 ppt";
-            Up = "resize shrink height 10 px or 10 ppt";
           };
+
           terminal = "foot";
           output =
             let
