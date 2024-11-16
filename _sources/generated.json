@@ -61,7 +61,7 @@
     },
     "vimdoc-ja": {
         "cargoLocks": null,
-        "date": "2024-11-15",
+        "date": "2024-11-16",
         "extract": null,
         "name": "vimdoc-ja",
         "passthru": null,
@@ -73,11 +73,11 @@
             "name": null,
             "owner": "vim-jp",
             "repo": "vimdoc-ja",
-            "rev": "e8295d23759b929819d023c1147879644ed4a4d0",
-            "sha256": "sha256-EnHM1NZBB408CICXDeNs5z6qnNBu/SZeGPDpjcrqisQ=",
+            "rev": "9322e0191fb68c21c71219758f5fe1ad87ea82c8",
+            "sha256": "sha256-T2uVLSkDHpZ19xiEpmopebexwqb1oKZ5gFfyLzIHto8=",
             "type": "github"
         },
-        "version": "e8295d23759b929819d023c1147879644ed4a4d0"
+        "version": "9322e0191fb68c21c71219758f5fe1ad87ea82c8"
     },
     "winresizer": {
         "cargoLocks": null,
