@@ -1,8 +1,14 @@
-{ pkgs, isNixOS, ... }:
+{
+  pkgs,
+  isNixOS,
+  lib,
+  ...
+}:
 {
   programs.swaylock = {
     enable = true;
-    package = if isNixOS then pkgs.swaylock else pkgs.emptyDirectory;
+    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
+
     settings =
       let
         image = toString (

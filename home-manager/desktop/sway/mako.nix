@@ -2,12 +2,14 @@
   config,
   pkgs,
   isNixOS,
+  lib,
   ...
 }:
 {
   services.mako = {
     enable = true;
-    package = if isNixOS then pkgs.mako else pkgs.emptyDirectory;
+    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
+
     defaultTimeout = 10000;
     font = "monospace 10";
     backgroundColor = "#2E3440";
