@@ -98,7 +98,7 @@
               rec {
                 home.username = username;
                 home.homeDirectory = "/home/${home.username}";
-                home.stateVersion = "24.05"; # Please read the comment before changing.
+                home.stateVersion = "25.05"; # Please read the comment before changing.
                 programs.home-manager.enable = true;
                 nix.package = pkgs.nix;
               }
