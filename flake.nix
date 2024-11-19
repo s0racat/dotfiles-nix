@@ -17,7 +17,10 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
