@@ -66,22 +66,26 @@
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
-        "um690pro" = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = {
-            inherit inputs username;
+        "um690pro" =
+          let
+            stateVersion = "25.05";
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit pkgs;
+            specialArgs = {
+              inherit inputs username stateVersion;
+            };
+            modules = [
+              ./hosts/um690pro.nix
+              home-manager.nixosModules.home-manager
+              ./nixos/home-manager.nix
+              {
+                home-manager.extraSpecialArgs = {
+                  inherit isNixOS sources stateVersion;
+                };
+              }
+            ];
           };
-          modules = [
-            ./hosts/um690pro.nix
-            home-manager.nixosModules.home-manager
-            ./nixos/home-manager.nix
-            {
-              home-manager.extraSpecialArgs = {
-                inherit isNixOS sources;
-              };
-            }
-          ];
-        };
       };
 
       homeConfigurations = {
@@ -98,7 +102,7 @@
               rec {
                 home.username = username;
                 home.homeDirectory = "/home/${home.username}";
-                home.stateVersion = "25.05"; # Please read the comment before changing.
+                home.stateVersion = "25.05";
                 programs.home-manager.enable = true;
                 nix.package = pkgs.nix;
               }

@@ -3,6 +3,7 @@
   lib,
   pkgs,
   username,
+  stateVersion,
   ...
 }:
 {
@@ -39,6 +40,6 @@
       ../home-manager/desktop
       ../home-manager/desktop/firefox/enable-av1.nix
     ];
-    home.stateVersion = "25.05"; # Please read the comment before changing.
+    home.stateVersion = stateVersion; # Please read the comment before changing.
   };
 }
