@@ -5,6 +5,7 @@
 {
   pkgs,
   stateVersion,
+  config,
   ...
 }:
 
@@ -20,6 +21,20 @@
   };
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  systemd.services.libvirtd-default-network = {
+    enable = config.virtualisation.libvirtd.enable;
+    description = "libvirt default network autostart";
+    after = [ "libvirtd.service" ];
+    requires = [ "libvirtd.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = ''
+        ${pkgs.libvirt}/bin/virsh net-start default
+      '';
+    };
+  };
 
   # bluetooth
   services.blueman.enable = true;
@@ -163,6 +178,7 @@
 
   # sway
   services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -194,7 +210,6 @@
     # native wayland support (unstable)
     wineWowPackages.waylandFull
     vscode.fhs
-
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
