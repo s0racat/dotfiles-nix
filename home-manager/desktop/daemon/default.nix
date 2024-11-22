@@ -1,6 +1,6 @@
 {
   imports = [
-    ./ssh-agent.nix
+    ./gnome-keyring.nix
     ./kdeconnect.nix
     ./syncthing.nix
   ];
