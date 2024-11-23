@@ -3,15 +3,15 @@
 {
   hlchunk = {
     pname = "hlchunk";
-    version = "ba6e2347177fec8ec6af4ae26d11a468c9e0ca72";
+    version = "5465dd33ade8676d63f6e8493252283060cd72ca";
     src = fetchFromGitHub {
       owner = "shellRaining";
       repo = "hlchunk.nvim";
-      rev = "ba6e2347177fec8ec6af4ae26d11a468c9e0ca72";
+      rev = "5465dd33ade8676d63f6e8493252283060cd72ca";
       fetchSubmodules = false;
-      sha256 = "sha256-Rx5kpjfpiH9i/IvOXx+wEWSO4gdfmXdhULDxbcBJQAY=";
+      sha256 = "sha256-f5VVfpfVZk6ULBWVSVEzXBN9F4ROTzhomV1F2mKIem4=";
     };
-    date = "2024-10-02";
+    date = "2024-11-23";
   };
   skkeleton = {
     pname = "skkeleton";
