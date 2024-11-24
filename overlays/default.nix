@@ -9,11 +9,21 @@ let
   chromium_flags = [
     electron_flags
     "--start-maximized"
-    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,WebRTCPipeWireCapturer"
+    "--enable-features=${
+      builtins.concatStringsSep "," [
+        "VaapiVideoDecoder"
+        "VaapiIgnoreDriverChecks"
+        "Vulkan"
+        "DefaultANGLEVulkan"
+        "VulkanFromANGLE"
+        "WebRTCPipeWireCapturer"
+      ]
+    }"
     "--force-dark-mode"
   ];
 in
 {
+  # https://wiki.archlinux.org/title/Chromium
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
   # https://github.com/NixOS/nixpkgs/pull/354218
