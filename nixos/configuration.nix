@@ -61,6 +61,10 @@
   boot.tmp.useTmpfs = true;
   boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelParams = [
+    # fix tofu in systemd boot log
+    "locale.LANG=en_US.UTF-8"
+  ];
 
   # systemd
   services.logind.powerKey = "suspend";
