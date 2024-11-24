@@ -24,5 +24,4 @@
       recursive = true;
     };
   };
-  home.packages = [ pkgs.fcitx5-nord ];
 }
