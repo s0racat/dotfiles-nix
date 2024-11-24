@@ -54,15 +54,27 @@
             {
               type = "app";
               program = toString (
-                pkgs.writeShellScript "home-script" ''
+                pkgs.writeShellScript "gc-script" ''
                   nix-collect-garbage ${gc-opt}
+                ''
+              );
+            };
+          hm-switch =
+            let
+              backupFileExt = (import ./nixos/home-manager.nix).home-manager.backupFileExtension;
+            in
+            {
+              type = "app";
+              program = toString (
+                pkgs.writeShellScript "home-script" ''
+                  ${pkgs.home-manager}/bin/home-manager switch -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
                 ''
               );
             };
         in
         {
-          inherit gc;
-          default = gc;
+          inherit gc hm-switch;
+          default = hm-switch;
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
       nixosConfigurations = {
