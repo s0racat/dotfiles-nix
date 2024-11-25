@@ -1,3 +1,5 @@
-{imports = [
-./keep-flake-inputs.nix
-];}
+{
+  imports = [
+    ./keep-flake-inputs.nix
+  ];
+}
