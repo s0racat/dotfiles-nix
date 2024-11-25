@@ -93,7 +93,12 @@
               ./nixos/home-manager.nix
               {
                 home-manager.extraSpecialArgs = {
-                  inherit isNixOS sources stateVersion;
+                  inherit
+                    inputs
+                    isNixOS
+                    sources
+                    stateVersion
+                    ;
                 };
               }
             ];
