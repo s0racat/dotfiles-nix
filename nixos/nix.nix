@@ -14,19 +14,15 @@ in
         "nix-command"
         "flakes"
       ];
-      trusted-users = [
-        "@wheel"
-        "@sudo"
-      ];
     };
 
     gc = {
       ${frequency} = "weekly";
+      options = "--delete-older-than 7d";
+
       automatic = true;
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   };
-  imports = [
-    ./nix-gc-options.nix
-  ];
+
 }

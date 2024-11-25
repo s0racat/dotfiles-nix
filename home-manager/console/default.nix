@@ -7,6 +7,6 @@
     ./package.nix
     ./misc
     ../../nixos/nix.nix
-    ./keep-flake-inputs.nix
+    ../common
   ];
 }

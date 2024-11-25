@@ -47,18 +47,6 @@
       # for `nix fmt`
       apps.${system} =
         let
-          gc =
-            let
-              gc-opt = (import ./nixos/nix-gc-options.nix).nix.gc.options;
-            in
-            {
-              type = "app";
-              program = toString (
-                pkgs.writeShellScript "gc-script" ''
-                  nix-collect-garbage ${gc-opt}
-                ''
-              );
-            };
           hm-switch =
             let
               backupFileExt = (import ./nixos/home-manager.nix).home-manager.backupFileExtension;
@@ -73,7 +61,7 @@
             };
         in
         {
-          inherit gc hm-switch;
+          inherit hm-switch;
           default = hm-switch;
         };
       formatter.${system} = treefmtEval.config.build.wrapper;
