@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   ...
 }:
 let
@@ -23,6 +24,7 @@ in
       ${frequency} = "weekly";
       automatic = true;
     };
+    nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   };
   imports = [
     ./nix-gc-options.nix
