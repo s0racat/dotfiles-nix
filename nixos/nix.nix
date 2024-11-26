@@ -22,7 +22,6 @@ in
 
       automatic = true;
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   };
 
 }

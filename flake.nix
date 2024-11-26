@@ -32,6 +32,7 @@
         overlays = [ (import ./overlays) ];
         inherit system;
         config.allowUnfree = true;
+        flake.setNixPath = true;
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
       username = "takumi"; # username is defined in flake.nix
