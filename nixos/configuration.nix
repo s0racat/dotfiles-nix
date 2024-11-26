@@ -11,7 +11,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./nix.nix
   ];
   virtualisation.docker.enable = true;
@@ -81,9 +80,9 @@
   programs.firefox = {
     enable = true;
     languagePacks = [ "ja" ];
-    # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/blob/72e20d2777ce1f68e57dbffbb16026be43411b82/PKGBUILD#L210-211
     autoConfig = ''
       // Use LANG environment variable to choose locale
+      // https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/blob/72e20d2777ce1f68e57dbffbb16026be43411b82/PKGBUILD#L210-211
       pref("intl.locale.requested", "");
     '';
     policies = {
@@ -209,10 +208,8 @@
     keepassxc
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
-    # winetricks (all versions)
-    winetricks
-    # native wayland support (unstable)
-    wineWowPackages.waylandFull
+    winetricks # winetricks (all versions)
+    wineWowPackages.waylandFull # native wayland support (unstable)
     vscode.fhs
   ];
 

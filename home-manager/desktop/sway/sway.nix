@@ -126,8 +126,6 @@ in
           bars = [
             {
               id = "default";
-              #command = "swaybar";
-              #statusCommand = "while date +'%Y-%m-%d %X'; do sleep 1; done";
               statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
               fonts = {
                 names = [

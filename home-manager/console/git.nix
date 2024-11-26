@@ -2,7 +2,6 @@
 {
   programs.git = rec {
     enable = true;
-    # package = pkgs.hello;
     userName = "Takumi";
     userEmail = "takuoh@tuta.io";
     signing.key = "ECCE3B658A852C82";

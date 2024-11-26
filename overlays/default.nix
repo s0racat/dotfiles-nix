@@ -1,4 +1,5 @@
 final: prev:
+# https://wiki.archlinux.org/title/Chromium
 let
   electron_flags = [
     "--password-store=gnome-libsecret"
@@ -23,10 +24,8 @@ let
   ];
 in
 {
-  # https://wiki.archlinux.org/title/Chromium
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
-  # https://github.com/NixOS/nixpkgs/pull/354218
   tmuxPlugins.nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: {
     postInstall =
       (oldAttrs.postInstall or "")

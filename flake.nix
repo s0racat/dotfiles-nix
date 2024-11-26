@@ -1,7 +1,3 @@
-# https://github.com/kawarimidoll/dotfiles/blob/master/flake.nix
-# https://zenn.dev/kawarimidoll/articles/9c44ce8b60726f
-# username is defined in flake.nix
-
 {
   description = "dotfiles";
   inputs = {
@@ -13,7 +9,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -39,12 +34,11 @@
         config.allowUnfree = true;
       };
       sources = pkgs.callPackage ./_sources/generated.nix { };
-      username = "takumi";
+      username = "takumi"; # username is defined in flake.nix
       treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       isNixOS = true;
     in
     {
-      # for `nix fmt`
       apps.${system} =
         let
           hm-switch =
