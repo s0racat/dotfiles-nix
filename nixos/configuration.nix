@@ -260,7 +260,6 @@
   };
   nix.settings.trusted-users = [
     "@wheel"
-    "root"
   ];
 
 }
