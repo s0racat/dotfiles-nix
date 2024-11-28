@@ -9,7 +9,7 @@
     twemoji-color-font
     roboto
     roboto-mono
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
 
   fonts = {
