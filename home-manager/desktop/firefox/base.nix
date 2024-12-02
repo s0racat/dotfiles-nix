@@ -79,8 +79,6 @@
           "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
           # disable av1 by default
           "media.av1.enabled" = lib.mkDefault false;
-          # enable titlebar
-          "browser.tabs.inTitlebar" = 0;
         };
       };
     };
