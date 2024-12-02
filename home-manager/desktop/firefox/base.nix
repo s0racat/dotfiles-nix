@@ -62,7 +62,7 @@
           "browser.urlbar.showSearchSuggestionsFirst" = false;
           # Enable Tab Unloading feature
           "browser.tabs.unloadOnLowMemory" = true;
-          # Enable fractional scaling via fractional-scale-v1 protocol 
+          # Enable fractional scaling via fractional-scale-v1 protocol
           # "widget.wayland.fractional-scale.enabled" = true;
           # Bring back old Clear All History dialog
           "privacy.sanitize.useOldClearHistoryDialog" = true;

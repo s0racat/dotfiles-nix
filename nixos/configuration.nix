@@ -29,16 +29,14 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart =
-        let
-          script = pkgs.writeShellScript "libvirtd-default-network" ''
-            if ! ${pkgs.libvirt}/bin/virsh net-info default | ${pkgs.gnugrep}/bin/grep -q 'Active.*yes'; then
-                ${pkgs.libvirt}/bin/virsh net-start default
-            fi
-          '';
-        in
-        script;
+      ExecStart = ''
+        ${pkgs.libvirt}/bin/virsh net-start default
+      '';
+      ExecStop = ''
+        ${pkgs.libvirt}/bin/virsh net-destroy default
+      '';
     };
+    restartIfChanged = false;
   };
 
   # bluetooth
