@@ -32,9 +32,6 @@
       ExecStart = ''
         ${pkgs.libvirt}/bin/virsh net-start default
       '';
-      ExecStop = ''
-        ${pkgs.libvirt}/bin/virsh net-destroy default
-      '';
     };
     restartIfChanged = false;
   };
