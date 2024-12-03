@@ -18,7 +18,11 @@
     "ip" = "127.0.0.1";
     "bip" = "172.18.0.1/24";
   };
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+  };
   programs.virt-manager.enable = true;
   systemd.services.libvirtd-default-network = {
     enable = config.virtualisation.libvirtd.enable;
