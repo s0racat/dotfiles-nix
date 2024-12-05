@@ -34,4 +34,9 @@ in
         patchShebangs .
       '';
   });
+  sources = prev.callPackage ../_sources/generated.nix { };
+  gh-fzgist = prev.callPackage ../pkgs/gh-fzgist.nix { };
+
+  playerctl-notify = prev.callPackage ../pkgs/playerctl-notify { };
+
 }
