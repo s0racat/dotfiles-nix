@@ -2,28 +2,18 @@
   pkgs,
   lib,
   config,
-  sources,
   ...
 }:
 let
   substituteStrings = import ../../../lib/substituteStrings.nix;
 
-  vimdoc-ja = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.vimdoc-ja) pname version src;
-  };
-  winresizer-vim = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.winresizer) pname version src;
-  };
-  skkeleton = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.skkeleton) pname version src;
-  };
-  hlchunk-nvim = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.hlchunk) pname version src;
-  };
-  skkeleton_indicator-nvim = pkgs.vimUtils.buildVimPlugin {
-    inherit (sources.skkeleton_indicator) pname version src;
-  };
   pwd = (import ./pwd.nix { inherit config; }).pwd;
+  buildPlugin =
+    name:
+    pkgs.vimUtils.buildVimPlugin {
+      inherit (pkgs.sources.${name}) pname version src;
+    };
+
 in
 {
   programs.neovim.extraLuaConfig =
@@ -34,11 +24,11 @@ in
         gitsigns-nvim
         nvim-lspconfig
         fidget-nvim
-        vimdoc-ja
+        (buildPlugin "vimdoc-ja")
         nvim-autopairs
         registers-nvim
         nvim-colorizer-lua
-        winresizer-vim
+        (buildPlugin "winresizer")
         nvim-cmp
         cmp-buffer
         cmp-nvim-lsp
@@ -46,7 +36,7 @@ in
         cmp-cmdline
         cmp_luasnip
         cmp-nvim-lsp-signature-help
-        skkeleton
+        (buildPlugin "skkeleton")
         denops-vim
         vim-suda
         friendly-snippets
@@ -64,11 +54,11 @@ in
         }
         {
           name = "hlchunk.nvim";
-          path = hlchunk-nvim;
+          path = (buildPlugin "hlchunk");
         }
         {
           name = "skkeleton_indicator.nvim";
-          path = skkeleton_indicator-nvim;
+          path = (buildPlugin "skkeleton_indicator");
         }
         {
           name = "dial.nvim";
