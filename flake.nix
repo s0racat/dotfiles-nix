@@ -90,16 +90,29 @@
           stateVersion ? "25.05",
           extraModules ? [ ],
         }:
+        let
+          splittedSystem = nixpkgs.lib.splitString "-" system;
+          os = builtins.elemAt splittedSystem 1;
+          # systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+          systemConfig = nixpkgs.lib.nixosSystem;
+          hmModule =
+            if os == "darwin" then
+              home-manager.darwinModules.home-manager
+            else
+              home-manager.nixosModules.home-manager;
+
+        in
+
         {
           inherit name;
-          value = nixpkgs.lib.nixosSystem {
+          value = systemConfig {
             pkgs = nixpkgsFor.${system};
             specialArgs = specialArgs // {
               inherit username stateVersion;
             };
             modules = [
               ./hosts/${name}.nix
-              home-manager.nixosModules.home-manager
+              hmModule
               ./nixos/home-manager.nix
               {
                 networking.hostName = name;
