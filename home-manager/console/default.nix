@@ -1,3 +1,4 @@
+{ self, ... }:
 {
   imports = [
     ./zsh
@@ -6,7 +7,7 @@
     ./neovim
     ./package.nix
     ./misc
-    ../../nixos/nix.nix
-    ../common
+    "${self}/nixos/nix.nix"
+    "${self}/home-manager/common"
   ];
 }

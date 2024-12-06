@@ -1,7 +1,8 @@
+{ self, ... }:
 {
   imports = [
-    ../console
+    "${self}/home-manager/console"
     ./wsl.nix
-    ../../nixos/nix.nix
+    "${self}/nixos/nix.nix"
   ];
 }

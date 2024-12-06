@@ -1,7 +1,8 @@
+{ self, ... }:
 {
   imports = [
     # import base console config
-    ../console
+    "${self}/home-manager/console"
     ./xdg.nix
     ./envvar.nix
     ./firefox

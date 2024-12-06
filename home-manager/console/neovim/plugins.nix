@@ -2,10 +2,11 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }:
 let
-  substituteStrings = import ../../../lib/substituteStrings.nix;
+  substituteStrings = import "${self}/lib/substituteStrings.nix";
 
   pwd = (import ./pwd.nix { inherit config; }).pwd;
   buildPlugin =

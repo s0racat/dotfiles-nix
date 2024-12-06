@@ -1,3 +1,4 @@
+{ self }:
 final: prev:
 # https://wiki.archlinux.org/title/Chromium
 let
@@ -34,9 +35,9 @@ in
         patchShebangs .
       '';
   });
-  sources = prev.callPackage ../_sources/generated.nix { };
-  gh-fzgist = prev.callPackage ../pkgs/gh-fzgist.nix { };
+  sources = prev.callPackage "${self}/_sources/generated.nix" { };
+  gh-fzgist = prev.callPackage "${self}/pkgs/gh-fzgist.nix" { };
 
-  playerctl-notify = prev.callPackage ../pkgs/playerctl-notify { };
+  playerctl-notify = prev.callPackage "${self}/pkgs/playerctl-notify" { };
 
 }

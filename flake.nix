@@ -48,7 +48,7 @@
         {
           name,
           system ? "x86_64-linux",
-          extraSpecialArgs ? { inherit inputs; },
+          extraSpecialArgs ? { inherit inputs self; },
           isNixOS ? false,
           stateVersion ? "25.05",
           extraModules ? [ ],
@@ -84,8 +84,8 @@
           name,
           username ? "takumi",
           system ? "x86_64-linux",
-          specialArgs ? { inherit inputs; },
-          extraSpecialArgs ? { inherit inputs; },
+          specialArgs ? { inherit inputs self; },
+          extraSpecialArgs ? { inherit inputs self; },
           isNixOS ? true,
           stateVersion ? "25.05",
           extraModules ? [ ],
@@ -115,7 +115,7 @@
     {
 
       overlays.default = [
-        (import ./overlays)
+        (import ./overlays { inherit self; })
       ];
 
       apps = forAllSystems (system: {
@@ -128,7 +128,9 @@
             type = "app";
             program = toString (
               pkgs.writeShellScript "home-script" ''
-                ${pkgs.home-manager}/bin/home-manager switch -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
+                ${
+                  home-manager.defaultPackage.${system}
+                }/bin/home-manager switch -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
               ''
             );
           };

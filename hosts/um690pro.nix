@@ -4,12 +4,13 @@
   pkgs,
   username,
   stateVersion,
+  self,
   ...
 }:
 {
   imports = [
-    ../nixos/hardware/um690pro.nix
-    ../nixos/configuration.nix
+    "${self}/nixos/hardware/um690pro.nix"
+    "${self}/nixos/configuration.nix"
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -36,8 +37,8 @@
 
   home-manager.users."${username}" = {
     imports = [
-      ../home-manager/desktop
-      ../home-manager/desktop/firefox/enable-av1.nix
+      "${self}/home-manager/desktop"
+      "${self}/home-manager/desktop/firefox/enable-av1.nix"
     ];
     home.stateVersion = stateVersion; # Please read the comment before changing.
   };
