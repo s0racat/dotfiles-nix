@@ -16,6 +16,13 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+      pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.gitignore.follows = "gitignore";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      };
   };
 
   outputs =
@@ -142,6 +149,15 @@
         in
         (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
       );
+
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+          treefmt.enable = (inputs ? treefmt-nix);
+          };
+        };
+      });
 
       nixosConfigurations = builtins.listToAttrs [
         (mkSystem { name = "um690pro"; })
