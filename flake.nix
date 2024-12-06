@@ -26,6 +26,7 @@
       treefmt-nix,
       ...
     }@inputs:
+
     let
       supportedSystems = [
         "x86_64-linux"
@@ -42,6 +43,7 @@
           config.allowUnfree = true;
         }
       );
+
       mkHome =
         {
           name,
@@ -74,9 +76,7 @@
                 }
               )
             ] ++ extraModules;
-
           };
-
         };
 
       mkSystem =
@@ -106,15 +106,18 @@
                 home-manager.extraSpecialArgs = extraSpecialArgs // {
                   inherit isNixOS;
                 };
-
               }
             ] ++ extraModules;
-
           };
-
         };
     in
+
     {
+
+      overlays.default = [
+        (import ./overlays)
+      ];
+
       apps = forAllSystems (system: {
         hm-switch =
           let
@@ -131,6 +134,7 @@
           };
         default = self.apps.${system}.hm-switch;
       });
+
       formatter = forAllSystems (
         system:
         let
@@ -138,18 +142,17 @@
         in
         (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
       );
-      overlays.default = [
-        (import ./overlays)
-      ];
 
       nixosConfigurations = builtins.listToAttrs [
         (mkSystem { name = "um690pro"; })
       ];
+
       homeConfigurations = builtins.listToAttrs [
         (mkHome {
           name = "takumi@debian-wsl";
           extraModules = [ ./home-manager/console-wsl ];
         })
       ];
+
     };
 }
