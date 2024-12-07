@@ -47,7 +47,8 @@ in
             "${modifier}+Shift+r" = "reload";
             "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
             "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
-            "${modifier}+Shift+p" = ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
+            "${modifier}+Shift+p" =
+              ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
             "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
             "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
             "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";

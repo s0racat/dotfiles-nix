@@ -61,13 +61,12 @@
           in
           {
             type = "app";
-            program = toString (
-              pkgs.writeShellScript "home-script" ''
+            program =
+              (pkgs.writeShellScript "home-script" ''
                 ${
                   home-manager.defaultPackage.${system}
                 }/bin/home-manager switch -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
-              ''
-            );
+              '').outPath;
           };
         default = self.apps.${system}.hm-switch;
       });
