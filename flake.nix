@@ -49,22 +49,30 @@
         (import ./overlays { inherit self; })
       ];
 
-      apps = forAllSystems (system: {
-        hm-switch =
-          let
-            pkgs = nixpkgsFor.${system};
-            backupFileExt = (import ./nixos/home-manager.nix).home-manager.backupFileExtension;
-          in
-          {
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          hm-switch = {
             type = "app";
             program =
               (pkgs.writeShellScript "home-script" ''
-                ${home-manager.defaultPackage.${system}}/bin/home-manager switch \
-                -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
+                ${home-manager.defaultPackage.${system}}/bin/home-manager switch --flake .#''${1:-takumi@debian-wsl}
               '').outPath;
           };
-        default = self.apps.${system}.hm-switch;
-      });
+          alejandra = {
+            type = "app";
+            program =
+              (pkgs.writeShellScript "alejandra" ''
+                ${pkgs.alejandra}/bin/alejandra -e ./_sources .
+              '').outPath;
+          };
+
+          default = self.apps.${system}.hm-switch;
+        }
+      );
 
       formatter = forAllSystems (
         system:

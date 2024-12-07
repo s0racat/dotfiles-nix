@@ -4,6 +4,7 @@
   ...
 }:
 let
+  backupFileExt = "hmbak";
   inherit (inputs)
     nixpkgs
     home-manager
@@ -32,6 +33,7 @@ in
         extraSpecialArgs = extraSpecialArgs // {
           inherit isNixOS;
         };
+        backupFileExtension = backupFileExt;
         modules = [
           (
             { pkgs, ... }:
@@ -78,11 +80,16 @@ in
         modules = [
           "${self}/hosts/${name}.nix"
           hmModule
-          "${self}/nixos/home-manager.nix"
           {
             networking.hostName = name;
-            home-manager.extraSpecialArgs = extraSpecialArgs // {
-              inherit isNixOS;
+            home-manager = {
+              backupFileExtension = backupFileExt;
+              # use flake's nixpkgs settings.
+              useGlobalPkgs = true;
+
+              extraSpecialArgs = extraSpecialArgs // {
+                inherit isNixOS;
+              };
             };
           }
         ] ++ extraModules;
