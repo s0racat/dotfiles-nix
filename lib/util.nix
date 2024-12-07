@@ -13,6 +13,7 @@ let
     ;
 in
 {
+  inherit backupFileExt;
   mkHome =
     {
       name,
@@ -33,7 +34,8 @@ in
         extraSpecialArgs = extraSpecialArgs // {
           inherit isNixOS;
         };
-        backupFileExtension = backupFileExt;
+        # https://github.com/nix-community/home-manager/issues/5649
+        # backupFileExtension = backupFileExt;
         modules = [
           (
             { pkgs, ... }:

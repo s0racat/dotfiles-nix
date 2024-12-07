@@ -59,7 +59,8 @@
             type = "app";
             program =
               (pkgs.writeShellScript "home-script" ''
-                ${home-manager.defaultPackage.${system}}/bin/home-manager switch --flake .#''${1:-takumi@debian-wsl}
+                ${home-manager.defaultPackage.${system}}/bin/home-manager switch \
+                -b ${util.backupFileExt} --flake .#''${1:-takumi@debian-wsl}
               '').outPath;
           };
           alejandra = {
