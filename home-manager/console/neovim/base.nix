@@ -2,7 +2,6 @@
   pkgs,
   config,
   ...
-
 }:
 let
   pwd = (import ./pwd.nix { inherit config; }).pwd;
@@ -33,5 +32,4 @@ in
   xdg.configFile."nvim/lua/conf" = {
     source = config.lib.file.mkOutOfStoreSymlink "${pwd}/conf";
   };
-
 }

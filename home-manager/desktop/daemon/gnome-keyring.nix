@@ -1,4 +1,8 @@
-{ isNixOS, lib, ... }:
+{
+  isNixOS,
+  lib,
+  ...
+}:
 {
   services.gnome-keyring = {
     enable = isNixOS;

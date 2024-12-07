@@ -9,12 +9,12 @@
   gawk,
 }:
 let
-  binPath = lib.makeBinPath ([
+  binPath = lib.makeBinPath [
     gh
     fzf
     coreutils
     gawk
-  ]);
+  ];
 in
 stdenvNoCC.mkDerivation {
   pname = "gh-fzgist";

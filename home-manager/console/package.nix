@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   home.packages = with pkgs; [
     eza
     gnupg
@@ -20,5 +19,4 @@
     wget
     grex
   ];
-
 }

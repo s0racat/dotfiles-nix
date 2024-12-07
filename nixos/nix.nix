@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   frequency = if config.nix.gc ? "dates" then "dates" else "frequency";
 in
@@ -18,9 +15,7 @@ in
     gc = {
       ${frequency} = "weekly";
       options = "--delete-older-than 7d";
-
       automatic = true;
     };
   };
-
 }

@@ -26,7 +26,6 @@
       treefmt-nix,
       ...
     }@inputs:
-
     let
       supportedSystems = [
         "x86_64-linux"
@@ -43,12 +42,9 @@
           config.allowUnfree = true;
         }
       );
-
       util = import ./lib/util.nix { inherit inputs nixpkgsFor; };
     in
-
     {
-
       overlays.default = [
         (import ./overlays { inherit self; })
       ];
@@ -63,9 +59,8 @@
             type = "app";
             program =
               (pkgs.writeShellScript "home-script" ''
-                ${
-                  home-manager.defaultPackage.${system}
-                }/bin/home-manager switch -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
+                ${home-manager.defaultPackage.${system}}/bin/home-manager switch \
+                -b ${backupFileExt} --flake .#''${1:-takumi@debian-wsl}
               '').outPath;
           };
         default = self.apps.${system}.hm-switch;
@@ -89,6 +84,5 @@
           extraModules = [ ./home-manager/console-wsl ];
         })
       ];
-
     };
 }

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   gtk = {
     enable = true;
@@ -18,8 +15,7 @@
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = (pkgs.papirus-nord.override { accent = "frostblue3"; });
+      package = pkgs.papirus-nord.override { accent = "frostblue3"; };
     };
   };
-
 }

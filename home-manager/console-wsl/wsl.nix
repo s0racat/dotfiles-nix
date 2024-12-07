@@ -13,5 +13,4 @@
       ssh-add = "ssh-add.exe";
     };
   };
-
 }

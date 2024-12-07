@@ -8,7 +8,6 @@ let
   cfg = config.wayland.windowManager.sway;
 in
 {
-
   wayland.windowManager.sway =
     let
       modifier = cfg.config.modifier;
@@ -37,7 +36,6 @@ in
             "base0D" = "#81A1C1";
             "base0E" = "#B48EAD";
             "base0F" = "#5E81AC";
-
           };
         in
         {
@@ -78,7 +76,6 @@ in
                 Return = "mode default";
                 Escape = "mode default";
               };
-
           };
 
           terminal = "foot";
@@ -188,7 +185,6 @@ in
               text = "${colors.base05}";
               indicator = "${colors.base01}";
               childBorder = "${colors.base01}";
-
             };
             urgent = {
               border = "${colors.base08}";
@@ -196,7 +192,6 @@ in
               text = "${colors.base00}";
               indicator = "${colors.base08}";
               childBorder = "${colors.base08}";
-
             };
             placeholder = {
               border = "${colors.base00}";
@@ -217,7 +212,6 @@ in
             }
             {
               title = "Authentication Required";
-
             }
           ];
           window = {
@@ -235,7 +229,6 @@ in
                   app_id = "org.keepassxc.KeePassXC";
                 };
               }
-
             ];
           };
           focus.followMouse = false;
@@ -255,7 +248,6 @@ in
       extraConfig = ''
         for_window [all] inhibit_idle fullscreen
       '';
-
     };
 
   programs.zsh.profileExtra = ''

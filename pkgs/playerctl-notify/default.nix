@@ -5,7 +5,6 @@
   gobject-introspection,
   playerctl,
 }:
-
 let
   inherit (python3Packages) python pygobject3;
 in

@@ -23,7 +23,6 @@ let
         inherit style color_scheme_path custom_palette;
       };
     };
-
 in
 {
   qt = {

@@ -1,6 +1,9 @@
 let
   substituteStrings =
-    { file, replacements }:
+    {
+      file,
+      replacements,
+    }:
     let
       fileContent = builtins.readFile file;
       # Replacements には (oldValue, newValue) のペアのリストを渡す

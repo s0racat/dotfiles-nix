@@ -1,4 +1,8 @@
-{ inputs, nixpkgsFor, ... }:
+{
+  inputs,
+  nixpkgsFor,
+  ...
+}:
 let
   inherit (inputs)
     nixpkgs
@@ -57,16 +61,13 @@ in
     let
       splittedSystem = nixpkgs.lib.splitString "-" system;
       os = builtins.elemAt splittedSystem 1;
-      # systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
-      systemConfig = nixpkgs.lib.nixosSystem;
+      systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
       hmModule =
         if os == "darwin" then
           home-manager.darwinModules.home-manager
         else
           home-manager.nixosModules.home-manager;
-
     in
-
     {
       inherit name;
       value = systemConfig {
@@ -87,5 +88,4 @@ in
         ] ++ extraModules;
       };
     };
-
 }

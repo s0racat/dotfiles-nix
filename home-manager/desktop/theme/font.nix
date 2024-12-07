@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     noto-fonts-cjk-sans
@@ -16,7 +13,6 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-
         sansSerif = [
           "Roboto"
           "Noto Sans CJK JP"
@@ -28,7 +24,6 @@
         ];
         emoji = [ "Twitter Color Emoji" ];
       };
-
     };
   };
 }

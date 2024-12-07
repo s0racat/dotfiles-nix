@@ -14,11 +14,9 @@ let
     pkgs.vimUtils.buildVimPlugin {
       inherit (pkgs.sources.${name}) pname version src;
     };
-
 in
 {
   programs.neovim.extraLuaConfig =
-
     let
       plugins = with pkgs.vimPlugins; [
         vim-closetag
@@ -55,11 +53,11 @@ in
         }
         {
           name = "hlchunk.nvim";
-          path = (buildPlugin "hlchunk");
+          path = buildPlugin "hlchunk";
         }
         {
           name = "skkeleton_indicator.nvim";
-          path = (buildPlugin "skkeleton_indicator");
+          path = buildPlugin "skkeleton_indicator";
         }
         {
           name = "dial.nvim";

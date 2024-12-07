@@ -3,6 +3,7 @@
   projectRootFile = "flake.nix";
   programs = {
     nixfmt.enable = true;
+    # alejandra.enable = true;
     shfmt.enable = true;
     jsonfmt.enable = true;
     stylua.enable = true;
