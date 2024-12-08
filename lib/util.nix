@@ -5,6 +5,18 @@
 }:
 let
   backupFileExt = "hmbak";
+  hm =
+    pkgs:
+    pkgs.symlinkJoin {
+      name = "home-manager";
+      paths = [ pkgs.home-manager ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/home-manager \
+        --add-flags "-b ${backupFileExt}"
+      '';
+    };
+
   inherit (inputs)
     nixpkgs
     home-manager
@@ -13,7 +25,7 @@ let
     ;
 in
 {
-  inherit backupFileExt;
+  inherit hm;
   mkHome =
     {
       name,
@@ -43,8 +55,8 @@ in
               home.username = username;
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = stateVersion;
-              programs.home-manager.enable = true;
               nix.package = pkgs.nix;
+              home.packages = [ (hm pkgs) ];
             }
           )
         ] ++ extraModules;
