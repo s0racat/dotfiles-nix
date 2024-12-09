@@ -232,6 +232,7 @@ in
             ];
           };
           focus.followMouse = false;
+          focus.mouseWarping = "container";
           gaps = {
             smartGaps = true;
             inner = 14;
