@@ -5,6 +5,7 @@
   pkgs,
   stateVersion,
   config,
+  lib,
   ...
 }:
 {
