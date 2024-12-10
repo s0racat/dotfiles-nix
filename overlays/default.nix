@@ -35,7 +35,7 @@ in
         patchShebangs .
       '';
   });
-  sources = prev.callPackage "${self}/_sources/generated.nix" { };
-  gh-fzgist = prev.callPackage "${self}/pkgs/gh-fzgist.nix" { };
-  playerctl-notify = prev.callPackage "${self}/pkgs/playerctl-notify" { };
+  sources = final.callPackage "${self}/_sources/generated.nix" { };
+  gh-fzgist = final.callPackage "${self}/pkgs/gh-fzgist.nix" { };
+  playerctl-notify = final.callPackage "${self}/pkgs/playerctl-notify" { };
 }
