@@ -13,3 +13,5 @@ jobs:
         with:
           name: deadnix
       - uses: astro/deadnix-action@main
+        with:
+          flags: "--exclude _sources"
