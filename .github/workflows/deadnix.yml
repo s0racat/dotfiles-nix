@@ -14,4 +14,4 @@ jobs:
           name: deadnix
       - uses: astro/deadnix-action@main
         with:
-          flags: "--edit --exclude _sources"
+          flags: "--edit --exclude=./_sources"
