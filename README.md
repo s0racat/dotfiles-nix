@@ -26,8 +26,8 @@ sudo loginctl enable-linger $USER</pre></code>
 
 ```bash
 sudo systemctl start wpa_supplicant.service
-wpa_cli 
-> scan 
+wpa_cli
+> scan
 > scan_results
 > add_network
 > set_network 0 ssid "MYSSID"
@@ -58,7 +58,7 @@ nmtui
 sudo systemd-cryptenroll --tpm2-device=auto $luks
 ```
 
-# gh 
+# gh
 
 ```bash
 gh auth login
