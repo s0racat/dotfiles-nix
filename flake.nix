@@ -22,7 +22,6 @@
     {
       self,
       nixpkgs,
-      home-manager,
       treefmt-nix,
       ...
     }@inputs:
