@@ -7,8 +7,7 @@
 }:
 let
   substituteStrings = import "${self}/lib/substituteStrings.nix";
-
-  pwd = (import ./pwd.nix { inherit config; }).pwd;
+  pwd = import ./pwd.nix { inherit config; };
   buildPlugin =
     name:
     pkgs.vimUtils.buildVimPlugin {

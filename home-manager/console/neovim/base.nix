@@ -4,7 +4,7 @@
   ...
 }:
 let
-  pwd = (import ./pwd.nix { inherit config; }).pwd;
+  pwd = import ./pwd.nix { inherit config; };
 in
 {
   programs.neovim = {

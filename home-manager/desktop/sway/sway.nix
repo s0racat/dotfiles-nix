@@ -10,7 +10,7 @@ in
 {
   wayland.windowManager.sway =
     let
-      modifier = cfg.config.modifier;
+      inherit (cfg.config) modifier;
     in
     {
       enable = true;

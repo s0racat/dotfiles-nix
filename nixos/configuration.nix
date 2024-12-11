@@ -23,7 +23,7 @@
   };
   programs.virt-manager.enable = true;
   systemd.services.libvirtd-default-network = {
-    enable = config.virtualisation.libvirtd.enable;
+    inherit (config.virtualisation.libvirtd) enable;
     description = "libvirt default network autostart";
     after = [ "libvirtd.service" ];
     requires = [ "libvirtd.service" ];
