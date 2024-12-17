@@ -36,7 +36,7 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram "$out/makeUSB.sh" --prefix PATH : "${binPath}" \
+    makeWrapper "$out/makeUSB.sh" "$out/bin/makeUSB.sh" --prefix PATH : "${binPath}" \
       --set GRUB_EFI ${lib.getExe' grub2_efi "grub-install"} \
       --set GRUB_PC ${lib.getExe' grub2 "grub-install"}
     patchShebangs .
