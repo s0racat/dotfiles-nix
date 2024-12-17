@@ -214,6 +214,9 @@
     winetricks # winetricks (all versions)
     wineWowPackages.waylandFull # native wayland support (unstable)
     vscode.fhs
+    mbusb
+    gparted
+    exfatprogs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -9,6 +9,7 @@
   gnutar,
   grub2,
   grub2_efi,
+  exfatprogs,
 }:
 let
   binPath = lib.makeBinPath [
@@ -16,17 +17,18 @@ let
     gptfdisk
     curl
     gnutar
+    exfatprogs
   ];
 in
 stdenvNoCC.mkDerivation rec {
   pname = "mbusb";
-  version = "b00fb02";
+  version = "851464e";
 
   src = fetchFromGitHub {
     owner = "s0racat";
     repo = "multibootusb";
     rev = version;
-    hash = "sha256-OVHN7CGwUW+cVNJ3KfqIGwhjofceiDoEAtQ5HQUGKsU=";
+    hash = "sha256-Htp33Wl+8DmuSyxRIf0dRfmSTdrKsEKcwIhF+3KRiRM=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
@@ -37,8 +39,8 @@ stdenvNoCC.mkDerivation rec {
 
   postFixup = ''
     makeWrapper "$out/makeUSB.sh" "$out/bin/makeUSB.sh" --prefix PATH : "${binPath}" \
-      --set GRUB_EFI ${lib.getExe' grub2_efi "grub-install"} \
-      --set GRUB_PC ${lib.getExe' grub2 "grub-install"}
+      --set GRUB_EFI ${grub2_efi}/bin/grub-install \
+      --set GRUB_PC ${grub2}/bin/grub-install
     patchShebangs .
   '';
 
