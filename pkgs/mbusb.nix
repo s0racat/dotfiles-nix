@@ -7,7 +7,7 @@
   gptfdisk,
   curl,
   gnutar,
-  grub2,
+  gnused,
   grub2_efi,
   exfatprogs,
 }:
@@ -18,17 +18,18 @@ let
     curl
     gnutar
     exfatprogs
+    gnused
   ];
 in
 stdenvNoCC.mkDerivation rec {
   pname = "mbusb";
-  version = "851464e";
+  version = "5ef0835";
 
   src = fetchFromGitHub {
     owner = "s0racat";
     repo = "multibootusb";
     rev = version;
-    hash = "sha256-Htp33Wl+8DmuSyxRIf0dRfmSTdrKsEKcwIhF+3KRiRM=";
+    hash = "sha256-jGWaBfmHEsuQK9504ooQx8v+3AoLH9VODhlOx0ugswk=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
@@ -39,8 +40,7 @@ stdenvNoCC.mkDerivation rec {
 
   postFixup = ''
     makeWrapper "$out/makeUSB.sh" "$out/bin/makeUSB.sh" --prefix PATH : "${binPath}" \
-      --set GRUB_EFI ${grub2_efi}/bin/grub-install \
-      --set GRUB_PC ${grub2}/bin/grub-install
+      --set GRUB_EFI ${grub2_efi}/bin/grub-install
     patchShebangs .
   '';
 

@@ -82,16 +82,14 @@ in
           output =
             let
               wallpaper = pkgs.fetchurl {
-                # url = "https://i.pximg.net/img-master/img/2024/09/13/19/05/54/122395805_p0_master1200.jpg";
-                url = "https://webusstatic.yo-star.com/bluearchive_jp_web/fankit/162687961120015004/01.jpg";
-                # sha256 = "sha256-Zg9kY6oCbtzUfFIUne9Xy2JWeUk9Q4gyoSVRPcS98u8=";
-                sha256 = "sha256-5Dbkanay+KP8BXou9NE5jXSzu2itqch8hnNrE7eWQzA=";
-                # curlOptsList = [
-                #   "-H"
-                #   "User-Agent: Mozilla/5.0"
-                #   "-H"
-                #   "Referer: https://pixiv.net"
-                # ];
+                url = "https://i.pximg.net/img-master/img/2024/09/13/19/05/54/122395805_p0_master1200.jpg";
+                hash = "sha256-Zg9kY6oCbtzUfFIUne9Xy2JWeUk9Q4gyoSVRPcS98u8=";
+                curlOptsList = [
+                  "-H"
+                  "User-Agent: Mozilla/5.0"
+                  "-H"
+                  "Referer: https://pixiv.net"
+                ];
               };
             in
             {
