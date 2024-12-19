@@ -18,5 +18,8 @@
     fd
     wget
     grex
+    p7zip
+    unzip
+    rm-improved
   ];
 }

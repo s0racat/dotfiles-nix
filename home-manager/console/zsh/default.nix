@@ -15,6 +15,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
+      rm = "rip";
       gparted = "sudo -E gparted";
       lg = "lazygit";
       ll = "exa -F -alg --time-style=long-iso";
@@ -24,7 +25,7 @@
       tree = "exa -T --time-style=long-iso";
       cp = "cp -v";
       mv = "mv -v";
-      rm = "rm -vi";
+      # rm = "rm -vi";
       mkdir = "mkdir -vp";
       cat = "bat";
       diff = "diff --color=auto";

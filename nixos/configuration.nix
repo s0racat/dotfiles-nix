@@ -73,6 +73,9 @@
   services.journald.extraConfig = ''
     SystemMaxUse=50M
   '';
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
 
   services.tlp = {
     enable = true;
