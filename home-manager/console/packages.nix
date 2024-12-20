@@ -21,5 +21,6 @@
     p7zip
     unzip
     rm-improved
+    pandoc
   ];
 }
