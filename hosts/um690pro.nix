@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    "${self}/nixos/hardware/um690pro.nix"
+    "${self}/hardware/um690pro.nix"
     "${self}/nixos/misc.nix"
     "${self}/nixos/nix.nix"
     "${self}/nixos/programs/firefox.nix"
