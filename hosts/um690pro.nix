@@ -10,7 +10,23 @@
 {
   imports = [
     "${self}/nixos/hardware/um690pro.nix"
-    "${self}/nixos/configuration.nix"
+    "${self}/nixos/misc.nix"
+    "${self}/nixos/nix.nix"
+    "${self}/nixos/programs/firefox.nix"
+    "${self}/nixos/programs/chromium.nix"
+    "${self}/nixos/boot.nix"
+    "${self}/nixos/systemd.nix"
+    "${self}/nixos/packages.nix"
+    "${self}/nixos/networking.nix"
+    "${self}/nixos/desktop/ime.nix"
+    "${self}/nixos/desktop/sway.nix"
+    "${self}/nixos/services/tlp.nix"
+    "${self}/nixos/services/gvfs.nix"
+    "${self}/nixos/services/udisks2.nix"
+    "${self}/nixos/services/pipewire.nix"
+    "${self}/nixos/services/bluetooth.nix"
+    "${self}/nixos/virtualisation/docker.nix"
+    "${self}/nixos/virtualisation/libvirtd.nix"
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
   boot.loader.systemd-boot.enable = lib.mkForce false;

@@ -5,7 +5,7 @@
     ./git.nix
     ./tmux
     ./neovim
-    ./package.nix
+    ./packages.nix
     ./misc
     "${self}/nixos/nix.nix"
     "${self}/home-manager/common"
