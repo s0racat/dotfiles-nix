@@ -34,12 +34,13 @@ wpa_cli
 > set_network 0 psk "passphrase"
 > enable_network 0
 sudo -i
+device=/dev/nvme0n1
 cgdisk $device
 # NIXBOOT: 500M, LUKS: Remainder of the device
-luks=/dev/nvme0n1p2
-esp=/dev/nvme0n1p1
+luks=${device}p2
+esp=${device}p1
 mkfs.fat -F32 -n NIXBOOT $esp
-cryptsetup luksFormat -v -i 3000 --label LUKS $luks
+cryptsetup luksFormat -v --label LUKS $luks
 cryptsetup open $luks luks
 mkfs.ext4 -L NIXROOT /dev/mapper/luks
 mount /dev/mapper/luks /mnt
