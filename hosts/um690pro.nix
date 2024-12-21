@@ -29,6 +29,8 @@
     "${self}/nixos/virtualisation/libvirtd.nix"
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
+
+  # comment to disable lanzaboote
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
   boot.lanzaboote = {
