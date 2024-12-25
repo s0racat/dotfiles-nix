@@ -12,5 +12,6 @@
     ./daemon
     ./fcitx5
     ./keepassxc
+    ./libreoffice.nix
   ];
 }

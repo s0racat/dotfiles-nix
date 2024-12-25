@@ -6,7 +6,9 @@
     twemoji-color-font
     roboto
     roboto-mono
-    nerd-fonts.jetbrains-mono
+    # unstable
+    # nerd-fonts.jetbrains-mono
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   fonts = {

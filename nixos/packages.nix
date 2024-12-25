@@ -16,5 +16,6 @@
     mbusb
     gparted
     exfatprogs
+    quickemu
   ];
 }

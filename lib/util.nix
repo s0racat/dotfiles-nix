@@ -32,7 +32,7 @@ in
       system ? "x86_64-linux",
       extraSpecialArgs ? { inherit inputs self; },
       isNixOS ? false,
-      stateVersion ? "25.05",
+      stateVersion ? "24.11",
       extraModules ? [ ],
     }:
     let
@@ -71,7 +71,7 @@ in
       specialArgs ? { inherit inputs self; },
       extraSpecialArgs ? { inherit inputs self; },
       isNixOS ? true,
-      stateVersion ? "25.05",
+      stateVersion ? "24.11",
       extraModules ? [ ],
     }:
     let

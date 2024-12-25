@@ -1,9 +1,19 @@
 { config, pkgs, ... }:
 {
+  # download and mount https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+  # execute .\virtio-win-guest-tools.exe
   virtualisation.libvirtd = {
     enable = true;
     onBoot = "ignore";
     onShutdown = "shutdown";
+    qemu = {
+      swtpm.enable = true;
+      runAsRoot = true;
+      ovmf = {
+        enable = true;
+        packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
   };
   programs.virt-manager.enable = true;
   systemd.services.libvirtd-default-network = {
