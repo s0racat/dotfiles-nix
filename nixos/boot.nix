@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 {
   # boot
   # Use the systemd-boot EFI boot loader.
@@ -15,4 +15,5 @@ _:
     # fix tofu in systemd boot log
     "locale.LANG=en_US.UTF-8"
   ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }

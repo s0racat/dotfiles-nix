@@ -7,6 +7,7 @@
   gptfdisk,
   curl,
   gnutar,
+  unzip,
   gnused,
   grub2_efi,
   exfatprogs,
@@ -19,17 +20,18 @@ let
     gnutar
     exfatprogs
     gnused
+    unzip
   ];
 in
 stdenvNoCC.mkDerivation rec {
   pname = "mbusb";
-  version = "be555c1";
+  version = "e782535";
 
   src = fetchFromGitHub {
     owner = "s0racat";
     repo = "multibootusb";
     rev = version;
-    hash = "sha256-BbJg2VL/2wGyhu0+EyFkVeYhyWu/LaYW7yFM4ofnUnk";
+    hash = "sha256-35GUZ47ch+Ajy9qNffN9AYwRmlUbwDgaYATYPMEuty8=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
