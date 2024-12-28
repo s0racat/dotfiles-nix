@@ -16,4 +16,8 @@
     "locale.LANG=en_US.UTF-8"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernel.sysctl = {
+    "vm.dirty_bytes" = 600 * 1024 * 1024;
+    "vm.dirty_background_bytes" = 300 * 1024 * 1024;
+  };
 }
