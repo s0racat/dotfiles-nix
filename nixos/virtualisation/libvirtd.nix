@@ -31,4 +31,5 @@
     };
     restartIfChanged = false;
   };
+  services.spice-vdagentd.enable = true;
 }
