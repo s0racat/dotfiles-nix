@@ -22,6 +22,7 @@ let
     home-manager
     self
     nix-darwin
+    nix-index-database
     ;
 in
 {
@@ -49,6 +50,7 @@ in
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
         modules = [
+          nix-index-database.hmModules.nix-index
           (
             { pkgs, ... }:
             rec {
@@ -78,11 +80,17 @@ in
       splittedSystem = nixpkgs.lib.splitString "-" system;
       os = builtins.elemAt splittedSystem 1;
       systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
-      hmModule =
+      hmModules =
         if os == "darwin" then
-          home-manager.darwinModules.home-manager
+          [
+            home-manager.darwinModules.home-manager
+            nix-index-database.darwinModules.nix-index
+          ]
         else
-          home-manager.nixosModules.home-manager;
+          [
+            home-manager.nixosModules.home-manager
+            nix-index-database.nixosModules.nix-index
+          ];
     in
     {
       inherit name;
@@ -91,22 +99,24 @@ in
         specialArgs = specialArgs // {
           inherit username stateVersion;
         };
-        modules = [
-          "${self}/hosts/${name}.nix"
-          hmModule
-          {
-            networking.hostName = name;
-            home-manager = {
-              backupFileExtension = backupFileExt;
-              # use flake's nixpkgs settings.
-              useGlobalPkgs = true;
+        modules =
+          [
+            "${self}/hosts/${name}.nix"
+            {
+              networking.hostName = name;
+              home-manager = {
+                backupFileExtension = backupFileExt;
+                # use flake's nixpkgs settings.
+                useGlobalPkgs = true;
 
-              extraSpecialArgs = extraSpecialArgs // {
-                inherit isNixOS;
+                extraSpecialArgs = extraSpecialArgs // {
+                  inherit isNixOS;
+                };
               };
-            };
-          }
-        ] ++ extraModules;
+            }
+          ]
+          ++ hmModules
+          ++ extraModules;
       };
     };
 }
