@@ -19,5 +19,6 @@
     quickemu
     xfce.xfce4-terminal
     lxqt.lxqt-archiver
+    lsof
   ];
 }
