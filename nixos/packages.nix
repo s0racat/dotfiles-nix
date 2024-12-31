@@ -17,5 +17,7 @@
     gparted
     exfatprogs
     quickemu
+    xfce.xfce4-terminal
+    lxqt.lxqt-archiver
   ];
 }
