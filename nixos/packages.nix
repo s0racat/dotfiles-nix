@@ -21,4 +21,5 @@
     lxqt.lxqt-archiver
     lsof
   ];
+
 }

@@ -16,7 +16,6 @@
     defaultKeymap = "emacs";
     shellAliases = {
       rm = "rip";
-      gparted = "sudo -E gparted";
       lg = "lazygit";
       ll = "exa -F -alg --time-style=long-iso";
       ls = "exa -F --time-style=long-iso";

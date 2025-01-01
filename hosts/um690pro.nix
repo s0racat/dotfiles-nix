@@ -20,6 +20,7 @@
     "${self}/nixos/networking.nix"
     "${self}/nixos/desktop/ime.nix"
     "${self}/nixos/desktop/sway.nix"
+    "${self}/nixos/desktop/font.nix"
     "${self}/nixos/services/tlp.nix"
     "${self}/nixos/services/gvfs.nix"
     "${self}/nixos/services/udisks2.nix"
