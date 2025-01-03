@@ -2,13 +2,14 @@
   pkgs,
   lib,
   isNixOS,
+  config,
   ...
 }:
 {
-  programs.mpv = rec {
+  programs.mpv = {
     enable = true;
     package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
-    scripts = lib.mkIf (package != pkgs.emptyDirectory) [ pkgs.mpvScripts.mpris ];
+    scripts = lib.mkIf (config.programs.mpv.package != pkgs.emptyDirectory) [ pkgs.mpvScripts.mpris ];
     config = {
       keep-open = "yes";
       hwdec = "auto";
