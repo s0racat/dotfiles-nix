@@ -31,5 +31,7 @@
     };
     restartIfChanged = false;
   };
-  services.spice-vdagentd.enable = true;
+  # enable spice-vdagentd in guest(not host)
+  # services.spice-vdagentd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 }
