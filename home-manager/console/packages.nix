@@ -22,5 +22,7 @@
     unzip
     rm-improved
     pandoc
+    yt-dlp
+
   ];
 }

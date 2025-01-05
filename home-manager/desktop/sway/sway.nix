@@ -122,7 +122,7 @@ in
           bars = [
             {
               id = "default";
-              statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rust/config.toml";
+              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
               fonts = {
                 names = [
                   "Roboto Mono"
@@ -240,7 +240,7 @@ in
           startup = [
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
-            { command = "playerctl-notify"; }
+            { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "keepassxc"; }
           ];
         };
@@ -257,7 +257,5 @@ in
 
   home.packages = [
     pkgs.font-awesome_4
-    pkgs.i3status-rust
-    pkgs.playerctl-notify
   ];
 }

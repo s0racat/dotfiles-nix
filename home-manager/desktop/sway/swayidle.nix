@@ -14,22 +14,12 @@ let
 in
 {
   systemd.user.services.swayidle = {
-    Unit = {
-      Description = "Idle manager for Wayland";
-      Documentation = "man:swayidle(1)";
-      PartOf = [ "graphical-session.target" ];
-    };
-
     Service = {
-      Type = "simple";
-      Restart = "always";
-      # swayidle executes commands using "sh -c", so the PATH needs to contain a shell.
-      Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash ]}" ];
-      ExecStart = "${swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
+      ExecStart = lib.mkForce "${swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
     };
-
     Install = {
-      WantedBy = [ "${systemdTarget}" ];
+      WantedBy = lib.mkForce [ "${systemdTarget}" ];
     };
   };
+  services.swayidle.enable = true;
 }

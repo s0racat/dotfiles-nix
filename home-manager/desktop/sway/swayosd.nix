@@ -12,31 +12,26 @@ in
   systemd.user = {
     services.swayosd = {
       Unit = {
-        Description = "Volume/backlight OSD indicator";
-        PartOf = [ "${systemdTarget}" ];
-        After = [ "${systemdTarget}" ];
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-        Documentation = "man:swayosd(1)";
+        PartOf = lib.mkForce [ "${systemdTarget}" ];
+        After = lib.mkForce [ "${systemdTarget}" ];
       };
 
       Service = {
-        Type = "simple";
-        ExecStart = ''
+        ExecStart = lib.mkForce ''
           ${lib.getExe' pkgs.swayosd "swayosd-server"} ${
             lib.optionalString (!isNixOS) "-s ${pkgs.swayosd}/etc/xdg/swayosd/style.css"
           }
         '';
+        Environment = lib.mkIf (!isNixOS) (
+          lib.mkForce [ "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share" ]
+        );
 
-        Restart = "always";
-        Environment = lib.mkIf (!isNixOS) [
-          "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share"
-        ];
       };
-
       Install = {
-        WantedBy = [ "${systemdTarget}" ];
+        WantedBy = lib.mkForce [ "${systemdTarget}" ];
       };
     };
   };
-  home.packages = [ pkgs.swayosd ];
+
+  services.swayosd.enable = true;
 }

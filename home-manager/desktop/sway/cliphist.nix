@@ -17,23 +17,14 @@ let
 in
 {
   systemd.user.services.cliphist = {
-    Unit = {
-      Description = "Clipboard management daemon";
-      PartOf = [ "graphical-session.target" ];
-    };
-
     Service = {
-      Type = "simple";
-      ExecStart = "${wl-paste} --watch ${cliphist-wrapper}";
-      Restart = "on-failure";
+      ExecStart = lib.mkForce "${wl-paste} --watch ${cliphist-wrapper}";
     };
 
     Install = {
-      WantedBy = [ "${systemdTarget}" ];
+      WantedBy = lib.mkForce [ "${systemdTarget}" ];
     };
   };
-  home.packages = with pkgs; [
-    cliphist
-    jq
-  ];
+  services.cliphist.enable = true;
+
 }

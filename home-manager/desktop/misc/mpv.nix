@@ -18,5 +18,4 @@
       ao = "pipewire";
     };
   };
-  home.packages = [ pkgs.yt-dlp ];
 }
