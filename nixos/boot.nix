@@ -1,5 +1,4 @@
-_:
-{
+_: {
   # boot
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {

@@ -15,6 +15,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
+      nix-shell = "nix-shell --command /bin/zsh";
       rm = "rip";
       lg = "lazygit";
       ll = "exa -F -alg --time-style=long-iso";
@@ -77,6 +78,7 @@
         "$git_branch"
         "$git_state"
         "$git_status"
+        "$nix_shell"
         "$cmd_duration"
         "$line_break"
         "$character"
