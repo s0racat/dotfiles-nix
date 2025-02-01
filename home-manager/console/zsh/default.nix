@@ -15,7 +15,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
-      nix-shell = "nix-shell --command /bin/zsh";
+      nix-shell = "nix-shell --command $(command -v zsh)";
       rm = "rip";
       lg = "lazygit";
       ll = "exa -F -alg --time-style=long-iso";
