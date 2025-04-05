@@ -1,7 +1,7 @@
 {
     "hlchunk": {
         "cargoLocks": null,
-        "date": "2024-11-23",
+        "date": "2025-04-05",
         "extract": null,
         "name": "hlchunk",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "shellRaining",
             "repo": "hlchunk.nvim",
-            "rev": "5465dd33ade8676d63f6e8493252283060cd72ca",
-            "sha256": "sha256-f5VVfpfVZk6ULBWVSVEzXBN9F4ROTzhomV1F2mKIem4=",
+            "rev": "19bf4090ab8619fffe07b73a4f92348324f35c98",
+            "sha256": "sha256-d4bGGQ27Tc5fJ6lzmL5nd/+TSWWWE1xJ707Pz+wcY3o=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "5465dd33ade8676d63f6e8493252283060cd72ca"
+        "version": "19bf4090ab8619fffe07b73a4f92348324f35c98"
     },
     "skkeleton": {
         "cargoLocks": null,
