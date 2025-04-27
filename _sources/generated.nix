@@ -15,15 +15,15 @@
   };
   skkeleton = {
     pname = "skkeleton";
-    version = "5fe0e4f82ae25dbb7c24b999b95f90311d77e5c9";
+    version = "dcd538c1cb63026543665d762feb4740d591ddf5";
     src = fetchFromGitHub {
       owner = "vim-skk";
       repo = "skkeleton";
-      rev = "5fe0e4f82ae25dbb7c24b999b95f90311d77e5c9";
+      rev = "dcd538c1cb63026543665d762feb4740d591ddf5";
       fetchSubmodules = false;
       sha256 = "sha256-u5fWC8a4HBGgWinGH5KCmusRJSalrVv7ke4YUkBj+zs=";
     };
-    date = "2025-04-26";
+    date = "2025-04-27";
   };
   skkeleton_indicator = {
     pname = "skkeleton_indicator";
@@ -39,15 +39,15 @@
   };
   vimdoc-ja = {
     pname = "vimdoc-ja";
-    version = "2dcca3e4fb3d0134fa4bf1ca269b93807332fe37";
+    version = "5d249c2a3d7aff9218bd7b14292732de6fc55fd2";
     src = fetchFromGitHub {
       owner = "vim-jp";
       repo = "vimdoc-ja";
-      rev = "2dcca3e4fb3d0134fa4bf1ca269b93807332fe37";
+      rev = "5d249c2a3d7aff9218bd7b14292732de6fc55fd2";
       fetchSubmodules = false;
-      sha256 = "sha256-ZROA5Te0kF3aGxapBX1pUd5m9ZGlb1XZihFh1fyZNZU=";
+      sha256 = "sha256-WfP/Ergh0/G8OKKejsowtr7TNASr7qEGgVbH42lrKpY=";
     };
-    date = "2025-04-26";
+    date = "2025-04-27";
   };
   winresizer = {
     pname = "winresizer";
