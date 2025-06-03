@@ -39,15 +39,15 @@
   };
   vimdoc-ja = {
     pname = "vimdoc-ja";
-    version = "2a3e9a4d6b89dd33a8cd85a4afed43dc11118dc4";
+    version = "f6cf439fb58220f7bc3ee25c5531a53a2cd1a8d3";
     src = fetchFromGitHub {
       owner = "vim-jp";
       repo = "vimdoc-ja";
-      rev = "2a3e9a4d6b89dd33a8cd85a4afed43dc11118dc4";
+      rev = "f6cf439fb58220f7bc3ee25c5531a53a2cd1a8d3";
       fetchSubmodules = false;
-      sha256 = "sha256-x1gNAA0Pj24Aan9bLykUKV+0kGQiSJEW/OY3FDBUqck=";
+      sha256 = "sha256-DXyDEbxMYed+zrdLHKcd6Ojs9NDd0ff2ecLkRn7Ahp4=";
     };
-    date = "2025-06-02";
+    date = "2025-06-03";
   };
   winresizer = {
     pname = "winresizer";
