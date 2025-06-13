@@ -54,10 +54,10 @@ in
           name = "hlchunk.nvim";
           path = buildPlugin "hlchunk";
         }
-        {
-          name = "skkeleton_indicator.nvim";
-          path = buildPlugin "skkeleton_indicator";
-        }
+        # {
+        #   name = "skkeleton_indicator.nvim";
+        #   path = buildPlugin "skkeleton_indicator";
+        # }
         {
           name = "dial.nvim";
           path = dial-nvim;
