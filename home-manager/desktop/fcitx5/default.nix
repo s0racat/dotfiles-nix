@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  fcitxEnv = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+  };
+in
 {
   xdg.configFile = {
     "fcitx5" = {
@@ -11,10 +17,8 @@
       recursive = true;
     };
   };
-  home.sessionVariables = {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-  };
+  home.sessionVariables = fcitxEnv;
+  systemd.user.sessionVariables = fcitxEnv;
   xdg.dataFile = {
     "fcitx5/themes" = {
       source = "${pkgs.fcitx5-nord}/share/fcitx5/themes";

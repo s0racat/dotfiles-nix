@@ -25,13 +25,13 @@ let
 in
 stdenvNoCC.mkDerivation rec {
   pname = "mbusb";
-  version = "0190bdc";
+  version = "4973c1e";
 
   src = fetchFromGitHub {
     owner = "s0racat";
     repo = "multibootusb";
     rev = version;
-    hash = "sha256-HMkNXJZZLUyKgmYEg31UsARKRniSQlh5G9WBvHd0T9w=";
+    hash = "sha256-PWhaD35fRSEtPOr2g9ADW9NLGmxItJ3M7BH3AvUlLqw=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

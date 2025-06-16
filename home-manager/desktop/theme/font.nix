@@ -17,11 +17,16 @@
         sansSerif = [
           "Roboto"
           "Noto Sans CJK JP"
+          "Noto Color Emoji"
         ];
-        serif = [ "Noto Serif CJK JP" ];
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
         monospace = [
           "JetBrainsMono Nerd Font"
           "Noto Sans Mono CJK JP"
+          "Noto Color Emoji"
         ];
         emoji = [ "Noto Color Emoji" ];
       };
