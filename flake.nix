@@ -97,6 +97,10 @@
           name = "takumi@debian-wsl";
           extraModules = [ ./home-manager/console-wsl ];
         })
+        (util.mkHome {
+          name = "takumi@linuxmint";
+          extraModules = [ ./home-manager/desktop ];
+        })
       ];
     };
 }

@@ -26,5 +26,6 @@ in
     };
   };
   services.cliphist.enable = true;
+  services.cliphist.allowImages = false;
 
 }

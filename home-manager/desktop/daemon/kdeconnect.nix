@@ -1,5 +1,6 @@
+{ isNixOS, ... }:
 {
   services.kdeconnect = {
-    enable = true;
+    enable = isNixOS;
   };
 }

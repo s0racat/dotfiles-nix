@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    twemoji-color-font
+    noto-fonts-emoji
     roboto
     roboto-mono
     nerd-fonts.jetbrains-mono
@@ -23,7 +23,7 @@
           "JetBrainsMono Nerd Font"
           "Noto Sans Mono CJK JP"
         ];
-        emoji = [ "Twitter Color Emoji" ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };

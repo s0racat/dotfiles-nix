@@ -12,7 +12,6 @@
     ./daemon
     ./fcitx5
     ./keepassxc
-    ./libreoffice.nix
     ./pcmanfm-qt/pcmanfm-qt.nix
   ];
 }
