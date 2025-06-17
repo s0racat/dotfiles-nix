@@ -13,5 +13,6 @@
     ./fcitx5
     ./keepassxc
     ./pcmanfm-qt/pcmanfm-qt.nix
+    ./alacritty
   ];
 }
