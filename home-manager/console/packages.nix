@@ -25,4 +25,7 @@
     yt-dlp
 
   ];
+  home.extraDependencies = with pkgs; [
+    stdenv
+  ];
 }

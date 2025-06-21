@@ -1,4 +1,4 @@
-{ pkgs,...}:
+{ pkgs, ... }:
 {
   xdg.configFile = {
     "alacritty/alacritty.toml".source = pkgs.fetchurl {
