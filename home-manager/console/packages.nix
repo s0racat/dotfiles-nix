@@ -23,7 +23,8 @@
     rm-improved
     pandoc
     yt-dlp
-
+    jq
+    textlint
   ];
   home.extraDependencies = with pkgs; [
     stdenv
