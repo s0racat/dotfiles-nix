@@ -10,7 +10,7 @@
       size = 24;
     };
     theme = {
-      name = "Nordic-bluish-accent";
+      name = "Nordic-bluish-accent-standard-buttons";
       package = pkgs.nordic;
     };
     iconTheme = {
