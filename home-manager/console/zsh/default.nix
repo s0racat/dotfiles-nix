@@ -15,6 +15,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
+      cz = "git cz";
       nix-shell = "nix-shell --command $(command -v zsh)";
       rm = "rip";
       lg = "lazygit";
