@@ -98,8 +98,9 @@
           extraModules = [ ./home-manager/console-wsl ];
         })
         (util.mkHome {
-          name = "takumi@linuxmint";
+          name = "takumi@um690pro-lm";
           extraModules = [ ./home-manager/desktop ];
+          av1Support = true;
         })
       ];
     };
