@@ -55,9 +55,7 @@
 
   home-manager.users."${username}" = {
     imports = [
-      "${self}/home-manager/desktop"
-      "${self}/home-manager/desktop/firefox/enable-av1.nix"
-    ];
+      "${self}/home-manager/desktop"    ];
     home.stateVersion = stateVersion; # Please read the comment before changing.
   };
 }

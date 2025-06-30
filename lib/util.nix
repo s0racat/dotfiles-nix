@@ -35,6 +35,7 @@ in
       isNixOS ? false,
       stateVersion ? "25.05",
       extraModules ? [ ],
+      av1Support ? false,
     }:
     let
       splittedName = nixpkgs.lib.splitString "@" name;
@@ -45,7 +46,7 @@ in
       value = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgsFor.${system};
         extraSpecialArgs = extraSpecialArgs // {
-          inherit isNixOS;
+          inherit isNixOS av1Support;
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -75,6 +76,7 @@ in
       isNixOS ? true,
       stateVersion ? "25.05",
       extraModules ? [ ],
+      av1Support ? false,
     }:
     let
       splittedSystem = nixpkgs.lib.splitString "-" system;
@@ -110,7 +112,7 @@ in
                 useGlobalPkgs = true;
 
                 extraSpecialArgs = extraSpecialArgs // {
-                  inherit isNixOS;
+                  inherit isNixOS av1Support;
                 };
               };
             }

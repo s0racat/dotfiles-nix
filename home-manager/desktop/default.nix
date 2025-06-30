@@ -5,14 +5,14 @@
     "${self}/home-manager/console"
     ./xdg.nix
     ./envvar.nix
-    ./firefox
+    ./firefox.nix
     ./sway
-    ./misc
+    ./mpv.nix
     ./theme
-    ./daemon
+    ./services
     ./fcitx5
-    ./keepassxc
+    ./keepassxc.nix
     ./pcmanfm-qt/pcmanfm-qt.nix
-    ./alacritty
+    ./alacritty.nix
   ];
 }

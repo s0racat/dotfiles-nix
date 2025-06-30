@@ -6,7 +6,9 @@
     ./tmux
     ./neovim
     ./packages.nix
-    ./misc
+    ./aria2.nix
+    ./bat.nix
+    ./htop.nix
     "${self}/nixos/nix.nix"
     "${self}/home-manager/common"
   ];

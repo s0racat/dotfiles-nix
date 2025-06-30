@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  av1Support,
   ...
 }:
 {
@@ -79,7 +80,7 @@
           # force enable vaapi
           "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
           # disable av1 by default
-          "media.av1.enabled" = lib.mkDefault false;
+          "media.av1.enabled" = av1Support;
         };
       };
     };
