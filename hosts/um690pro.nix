@@ -56,7 +56,8 @@
 
   home-manager.users."${username}" = {
     imports = [
-      "${self}/home-manager/desktop"    ];
+      "${self}/home-manager/desktop"
+    ];
     home.stateVersion = stateVersion; # Please read the comment before changing.
   };
 }

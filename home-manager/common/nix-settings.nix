@@ -1,3 +1,3 @@
 {
-nix.gc.frequency = "weekly";
+  nix.gc.frequency = "weekly";
 }
