@@ -9,7 +9,7 @@
     ./aria2.nix
     ./bat.nix
     ./htop.nix
-    "${self}/nixos/nix.nix"
+    "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];
 }

@@ -11,10 +11,11 @@
   imports = [
     "${self}/hardware/um690pro.nix"
     "${self}/nixos/misc.nix"
-    "${self}/nixos/nix.nix"
+    "${self}/common/nix-settings.nix"
     "${self}/nixos/programs/firefox.nix"
     "${self}/nixos/programs/chromium.nix"
     "${self}/nixos/boot.nix"
+    "${self}/nixos/nix-settings.nix"
     "${self}/nixos/systemd.nix"
     "${self}/nixos/packages.nix"
     "${self}/nixos/networking.nix"
