@@ -25,7 +25,6 @@
     yt-dlp
     jq
     textlint
-    commitizen
   ];
   home.extraDependencies = with pkgs; [
     stdenv
