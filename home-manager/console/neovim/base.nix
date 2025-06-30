@@ -3,9 +3,6 @@
   config,
   ...
 }:
-let
-  pwd = import ./pwd.nix { inherit config; };
-in
 {
   programs.neovim = {
     enable = true;
@@ -30,6 +27,6 @@ in
   };
 
   xdg.configFile."nvim/lua/conf" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${pwd}/conf";
+    source = ./conf;
   };
 }

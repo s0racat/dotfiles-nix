@@ -7,7 +7,6 @@
 }:
 let
   substituteStrings = import "${self}/lib/substituteStrings.nix";
-  pwd = import ./pwd.nix { inherit config; };
   buildPlugin =
     name:
     pkgs.vimUtils.buildVimPlugin {
@@ -100,6 +99,6 @@ in
   };
 
   xdg.configFile."nvim/lua/plugins/" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${pwd}/plugins";
+    source = ./plugins;
   };
 }
