@@ -6,9 +6,9 @@
 {
   programs.git = rec {
     enable = true;
-    userName = "Takumi";
-    userEmail = "takuoh@tuta.io";
     signing.key = "ECCE3B658A852C82";
+    userName = "soracat";
+    userEmail = "125882337+s0racat@users.noreply.github.com";
     # signing.signByDefault = true;
     extraConfig = {
       ghq.root = "${config.home.homeDirectory}/ghq";
@@ -19,36 +19,18 @@
         filemode = false;
       };
     };
-    includes =
-      let
+    includes = [
+      {
+        condition = "gitdir:${extraConfig.ghq.root}/gitlab.com/";
         contents = {
           user = {
-            name = "soracat";
-            email = "125882337+s0racat@users.noreply.github.com";
+            name = "Takumi";
+            email = "13336500-takuoh@users.noreply.gitlab.com";
             signingkey = signing.key;
           };
         };
-      in
-      [
-        {
-          condition = "gitdir:${extraConfig.ghq.root}/gitlab.com/";
-          contents = {
-            user = {
-              name = "Takumi";
-              email = "13336500-takuoh@users.noreply.gitlab.com";
-              signingkey = signing.key;
-            };
-          };
-        }
-        {
-          condition = "gitdir:${extraConfig.ghq.root}/github.com/";
-          inherit contents;
-        }
-        {
-          condition = "gitdir:${config.home.homeDirectory}/dotfiles-nix/";
-          inherit contents;
-        }
-      ];
+      }
+    ];
   };
   services.gpg-agent = {
     enable = true;
@@ -57,7 +39,8 @@
   programs.lazygit = {
     enable = true;
     settings = {
-    os.editPreset = "nvim";
+      gui.language = "ja";
+      os.editPreset = "nvim";
       git.parseEmoji = true;
       customCommands = [
         {
