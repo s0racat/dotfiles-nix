@@ -1,5 +1,4 @@
-_:
-{
+_: {
   nix = {
     settings = {
       auto-optimise-store = true;

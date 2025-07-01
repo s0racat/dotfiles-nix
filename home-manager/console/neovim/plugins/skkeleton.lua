@@ -10,7 +10,7 @@ local spec = {
 			})
 		end,
 		cond = function()
-            return vim.fn.has('wsl') ~= 1
+			return vim.fn.has("wsl") ~= 1
 		end,
 		dependencies = {
 			"vim-denops/denops.vim",

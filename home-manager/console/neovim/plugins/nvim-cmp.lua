@@ -60,7 +60,7 @@ local spec = {
 					{
 						name = "cmdline",
 						option = {
-							ignore_cmds = { "Man", "!" ,"terminal"},
+							ignore_cmds = { "Man", "!", "terminal" },
 						},
 					},
 				}),

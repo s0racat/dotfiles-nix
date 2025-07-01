@@ -12,24 +12,24 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("n", "<leader>s", ":%s///g<Left><Left>", { silent = false })
-vim.keymap.set({"n", "v"}, "<leader>y", '"+y', { silent = true }) -- 選択範囲をシステムクリップボードにコピー
-vim.keymap.set("n", "<leader>Y", '"+Y', { silent = true })        -- 行全体をシステムクリップボードにコピー
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { silent = true }) -- 選択範囲をシステムクリップボードにコピー
+vim.keymap.set("n", "<leader>Y", '"+Y', { silent = true }) -- 行全体をシステムクリップボードにコピー
 vim.keymap.set("n", "<C-q>", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local buffers = vim.fn.getbufinfo({buflisted = 1})
-  local count = 0
-  for _, buf in ipairs(buffers) do
-    if buf.bufnr ~= bufnr then
-      count = count + 1
-    end
-  end
+	local bufnr = vim.api.nvim_get_current_buf()
+	local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+	local count = 0
+	for _, buf in ipairs(buffers) do
+		if buf.bufnr ~= bufnr then
+			count = count + 1
+		end
+	end
 
-  -- 開いているバッファが他にあればバッファ削除、なければウィンドウ閉じる
-  if count > 0 then
-    vim.cmd("bdelete")
-  else
-    vim.cmd("q")
-  end
+	-- 開いているバッファが他にあればバッファ削除、なければウィンドウ閉じる
+	if count > 0 then
+		vim.cmd("bdelete")
+	else
+		vim.cmd("q")
+	end
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })

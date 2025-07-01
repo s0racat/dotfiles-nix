@@ -31,7 +31,7 @@ in
     {
       name,
       system ? "x86_64-linux",
-      extraSpecialArgs ? {  },
+      extraSpecialArgs ? { },
       isNixOS ? false,
       stateVersion ? "25.05",
       extraModules ? [ ],
@@ -46,7 +46,12 @@ in
       value = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgsFor.${system};
         extraSpecialArgs = extraSpecialArgs // {
-          inherit isNixOS av1Support inputs self;
+          inherit
+            isNixOS
+            av1Support
+            inputs
+            self
+            ;
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -71,8 +76,8 @@ in
       name,
       username ? "takumi",
       system ? "x86_64-linux",
-      specialArgs ? {  },
-      extraSpecialArgs ? {  },
+      specialArgs ? { },
+      extraSpecialArgs ? { },
       isNixOS ? true,
       stateVersion ? "25.05",
       extraModules ? [ ],
@@ -99,7 +104,12 @@ in
       value = systemConfig {
         pkgs = nixpkgsFor.${system};
         specialArgs = specialArgs // {
-          inherit username stateVersion inputs self;
+          inherit
+            username
+            stateVersion
+            inputs
+            self
+            ;
         };
         modules =
           [
@@ -112,7 +122,12 @@ in
                 useGlobalPkgs = true;
 
                 extraSpecialArgs = extraSpecialArgs // {
-                  inherit isNixOS av1Support inputs self;
+                  inherit
+                    isNixOS
+                    av1Support
+                    inputs
+                    self
+                    ;
                 };
               };
             }

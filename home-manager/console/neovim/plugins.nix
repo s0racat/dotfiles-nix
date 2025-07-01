@@ -72,8 +72,8 @@ in
           path = telescope-file-browser-nvim;
         }
         {
-        name= "lazygit.nvim";
-        path = (buildPlugin "lazygit_nvim");
+          name = "lazygit.nvim";
+          path = buildPlugin "lazygit_nvim";
         }
       ];
       mkEntryFromDrv =
