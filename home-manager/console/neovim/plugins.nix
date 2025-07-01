@@ -11,6 +11,9 @@ let
     pkgs.vimUtils.buildVimPlugin {
       inherit (pkgs.sources.${name}) pname version src;
     };
+  skkeleton_indicator = (buildPlugin "skkeleton_indicator").overrideAttrs {
+    nvimRequireCheck = "skkeleton_indicator";
+  };
 in
 {
   programs.neovim.extraLuaConfig =
@@ -52,10 +55,10 @@ in
           name = "hlchunk.nvim";
           path = buildPlugin "hlchunk";
         }
-        # {
-        #   name = "skkeleton_indicator.nvim";
-        #   path = buildPlugin "skkeleton_indicator";
-        # }
+        {
+          name = "skkeleton_indicator.nvim";
+          path = skkeleton_indicator;
+        }
         {
           name = "dial.nvim";
           path = dial-nvim;
