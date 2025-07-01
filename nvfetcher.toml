@@ -17,3 +17,7 @@ fetch.github = "shellRaining/hlchunk.nvim"
 [skkeleton_indicator]
 src.git = "https://github.com/delphinus/skkeleton_indicator.nvim"
 fetch.github = "delphinus/skkeleton_indicator.nvim"
+
+[lazygit_nvim]
+src.git = "https://github.com/kdheepak/lazygit.nvim"
+fetch.github = "kdheepak/lazygit.nvim"

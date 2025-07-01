@@ -20,6 +20,27 @@
         },
         "version": "474ec5d0f220158afa83aaefab32402e710d3032"
     },
+    "lazygit_nvim": {
+        "cargoLocks": null,
+        "date": "2025-06-13",
+        "extract": null,
+        "name": "lazygit_nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "kdheepak",
+            "repo": "lazygit.nvim",
+            "rev": "4839ab642962cc76bb1bf278427dc4c59be15072",
+            "sha256": "sha256-c6ewjFDI2+ARe++vQevM3EMdQg63ik6BpkZ4GbcfDAg=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "4839ab642962cc76bb1bf278427dc4c59be15072"
+    },
     "skkeleton": {
         "cargoLocks": null,
         "date": "2025-05-05",

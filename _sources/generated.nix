@@ -13,6 +13,18 @@
     };
     date = "2025-05-06";
   };
+  lazygit_nvim = {
+    pname = "lazygit_nvim";
+    version = "4839ab642962cc76bb1bf278427dc4c59be15072";
+    src = fetchFromGitHub {
+      owner = "kdheepak";
+      repo = "lazygit.nvim";
+      rev = "4839ab642962cc76bb1bf278427dc4c59be15072";
+      fetchSubmodules = false;
+      sha256 = "sha256-c6ewjFDI2+ARe++vQevM3EMdQg63ik6BpkZ4GbcfDAg=";
+    };
+    date = "2025-06-13";
+  };
   skkeleton = {
     pname = "skkeleton";
     version = "3e019b331fbf9bd1d4539e7bd650a1c543125cee";
