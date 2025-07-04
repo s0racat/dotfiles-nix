@@ -73,11 +73,11 @@ local spec = {
 						capabilities = capabilities,
 						settings = {
 							["nil"] = {
-                                nix = {
-                                    flake ={
-                                        autoArchive = false,
-                                    },
-                                },
+								nix = {
+									flake = {
+										autoArchive = false,
+									},
+								},
 								formatting = {
 									command = { "nixfmt" },
 								},

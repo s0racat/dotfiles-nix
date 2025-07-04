@@ -4,9 +4,9 @@
   ...
 }:
 {
-home.sessionVariables = {
-"GH_TOKEN" = "$(gh.exe auth token)";
-};
+  home.sessionVariables = {
+    "GH_TOKEN" = "$(gh.exe auth token)";
+  };
   programs.git = rec {
     enable = true;
     signing.key = "ECCE3B658A852C82";
