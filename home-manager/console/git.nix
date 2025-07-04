@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 {
@@ -11,6 +12,9 @@
     userEmail = "125882337+s0racat@users.noreply.github.com";
     # signing.signByDefault = true;
     extraConfig = {
+    credential."https://gist.github.com".helper=lib.mkForce "gh.exe auth git-credential";
+credential."https://github.com".helper=lib.mkForce "gh.exe auth git-credential";
+      url."git@github.com".pushInsteadOf = "https://github.com";
       ghq.root = "${config.home.homeDirectory}/ghq";
       init = {
         defaultBranch = "main";
@@ -134,6 +138,7 @@
 
   programs.gh = {
     enable = true;
+    package = pkgs.emptyDirectory;
     extensions = [
       pkgs.gh-fzgist
     ];
