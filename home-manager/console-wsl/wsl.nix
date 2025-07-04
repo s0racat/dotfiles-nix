@@ -12,6 +12,7 @@
   # select en_US.UTF-8
   home.sessionVariables = {
     BROWSER = "firefox";
+    GH_TOKEN = "$(gh.exe auth token)";
   };
   programs.git = {
     extraConfig = {
