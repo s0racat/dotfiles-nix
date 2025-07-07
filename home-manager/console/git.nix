@@ -13,6 +13,7 @@
     extraConfig = {
       url."https://github.com".pushInsteadOf = "git@github.com";
       ghq.root = "${config.home.homeDirectory}/ghq";
+      ghq.user = "s0racat";
       init = {
         defaultBranch = "main";
       };
