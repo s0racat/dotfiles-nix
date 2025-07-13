@@ -256,7 +256,7 @@ in
 
 
   programs.zsh.profileExtra = ''
-    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
     	exec sway
     fi
   '';
