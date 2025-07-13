@@ -5,7 +5,6 @@
   ...
 }:
 let
-  swayidle = if isNixOS then lib.getExe pkgs.swayidle else "/usr/bin/swayidle";
   swaylock = if isNixOS then lib.getExe pkgs.swaylock else "/usr/bin/swaylock";
   systemdTarget = "sway-session.target";
   command = "${swaylock} -f && ${lib.getExe pkgs.playerctl} -a -i kdeconnect pause";
@@ -15,7 +14,7 @@ in
 {
   systemd.user.services.swayidle = {
     Service = {
-      ExecStart = lib.mkForce "${swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
+      ExecStart = lib.mkForce "${lib.getExe pkgs.swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
     };
     Install = {
       WantedBy = lib.mkForce [ "${systemdTarget}" ];

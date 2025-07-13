@@ -8,6 +8,11 @@ let
   cfg = config.wayland.windowManager.sway;
 in
 {
+# /usr/share/wayland-sessions/sway.desktop
+# < Exec=sway
+# ---
+# > Exec=bash -l -c "sway"
+
   wayland.windowManager.sway =
     let
       inherit (cfg.config) modifier;
@@ -125,7 +130,7 @@ in
               statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
               fonts = {
                 names = [
-                  "Roboto Mono"
+                  "DejaVu Sans Mono"
                   "FontAwesome"
                 ];
                 size = 10.0;
@@ -248,6 +253,7 @@ in
         for_window [all] inhibit_idle fullscreen
       '';
     };
+
 
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
