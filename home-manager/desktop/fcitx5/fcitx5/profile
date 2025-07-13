@@ -4,11 +4,11 @@ Name=Default
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=skk
+DefaultIM=mozc
 
 [Groups/0/Items/0]
 # Name
-Name=skk
+Name=mozc
 # Layout
 Layout=
 
