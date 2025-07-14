@@ -56,7 +56,7 @@ in
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
         modules = [
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           (
             { pkgs, ... }:
             rec {
