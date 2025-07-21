@@ -15,15 +15,15 @@
   };
   lazygit_nvim = {
     pname = "lazygit_nvim";
-    version = "ac4a400b256a63ae9d533b022db9b98d3358ef55";
+    version = "b4229a094bdebe82d6f0b9aa69fea23a9e4b6b61";
     src = fetchFromGitHub {
       owner = "kdheepak";
       repo = "lazygit.nvim";
-      rev = "ac4a400b256a63ae9d533b022db9b98d3358ef55";
+      rev = "b4229a094bdebe82d6f0b9aa69fea23a9e4b6b61";
       fetchSubmodules = false;
-      sha256 = "sha256-a8BnVb6K28C/IZHlNK/OSIhhBxXZnfdyVdtU+nHarag=";
+      sha256 = "sha256-97dmncdGevliapa7EiaBMEMCbpxKTT7tPvdfEVnY8u4=";
     };
-    date = "2025-07-19";
+    date = "2025-07-21";
   };
   skkeleton = {
     pname = "skkeleton";
@@ -51,15 +51,15 @@
   };
   vimdoc-ja = {
     pname = "vimdoc-ja";
-    version = "7bde6fe4b9f1c9096144a040924820c0535e9526";
+    version = "7add2028ee895ababad3f86afc5ef182ca602f0d";
     src = fetchFromGitHub {
       owner = "vim-jp";
       repo = "vimdoc-ja";
-      rev = "7bde6fe4b9f1c9096144a040924820c0535e9526";
+      rev = "7add2028ee895ababad3f86afc5ef182ca602f0d";
       fetchSubmodules = false;
-      sha256 = "sha256-D5Tr996a4OGFYpDmSjyDRbbHa0uVFJWmsR/NxtNCNZk=";
+      sha256 = "sha256-gPymc5qpdU91A86BAkGB9QJ5M3DgHdA3Id7uH6Uv79U=";
     };
-    date = "2025-07-20";
+    date = "2025-07-21";
   };
   winresizer = {
     pname = "winresizer";
