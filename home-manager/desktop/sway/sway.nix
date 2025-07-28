@@ -8,10 +8,10 @@ let
   cfg = config.wayland.windowManager.sway;
 in
 {
-# /usr/share/wayland-sessions/sway.desktop
-# < Exec=sway
-# ---
-# > Exec=bash -l -c "sway"
+  # /usr/share/wayland-sessions/sway.desktop
+  # < Exec=sway
+  # ---
+  # > Exec=bash -l -c "sway"
 
   wayland.windowManager.sway =
     let
@@ -253,7 +253,6 @@ in
         for_window [all] inhibit_idle fullscreen
       '';
     };
-
 
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
