@@ -8,11 +8,8 @@ let
   cfg = config.wayland.windowManager.sway;
 in
 {
-  # /usr/share/wayland-sessions/sway.desktop
-  # < Exec=sway
-  # ---
-  # > Exec=bash -l -c "sway"
-
+  # sudo dpkg-reconfigure gdm3
+  # select lightdm
   wayland.windowManager.sway =
     let
       inherit (cfg.config) modifier;
