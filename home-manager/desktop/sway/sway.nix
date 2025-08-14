@@ -241,6 +241,7 @@ in
           modifier = "Mod4";
           menu = "fuzzel";
           startup = [
+            # apt install lxqt-policykit
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
             { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
@@ -260,5 +261,6 @@ in
 
   home.packages = [
     pkgs.font-awesome_4
+    pkgs.wl-clipboard
   ];
 }
