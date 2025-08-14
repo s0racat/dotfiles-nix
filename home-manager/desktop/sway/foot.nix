@@ -6,6 +6,7 @@
         shell = "zsh --login -c 'tmux attach || tmux'";
         font = "monospace:size=12";
         dpi-aware = "yes";
+        term = "tmux-256color";
       };
       cursor = {
         style = "block";
