@@ -58,7 +58,8 @@ in
             "XF86AudioPrev" = "exec playerctl previous";
             "XF86AudioPlay" = "exec playerctl play-pause";
             "XF86AudioNext" = "exec playerctl next";
-            "${modifier}+x" = "exec cliphist list | wofi --show dmenu | cliphist decode | wl-copy";
+            "${modifier}+x" =
+              "exec cliphist list | fuzzel -d | cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy";
           };
 
           modes = lib.mkOptionDefault {
@@ -238,7 +239,7 @@ in
             inner = 14;
           };
           modifier = "Mod4";
-          menu = "wofi --show drun --allow-images --columns 2";
+          menu = "fuzzel";
           startup = [
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
