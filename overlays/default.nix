@@ -28,12 +28,10 @@ in
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
   tmuxPlugins.nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: {
-    postInstall =
-      (oldAttrs.postInstall or "")
-      + ''
-        sed -i '1i#!/bin/bash' $out/share/tmux-plugins/nord/nord.tmux
-        patchShebangs .
-      '';
+    postInstall = (oldAttrs.postInstall or "") + ''
+      sed -i '1i#!/bin/bash' $out/share/tmux-plugins/nord/nord.tmux
+      patchShebangs .
+    '';
   });
   sources = final.callPackage "${self}/_sources/generated.nix" { };
   gh-fzgist = final.callPackage "${self}/pkgs/gh-fzgist.nix" { };

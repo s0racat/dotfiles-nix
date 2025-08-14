@@ -9,13 +9,14 @@
   ...
 }:
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix") ]
-    ++ (with inputs.nixos-hardware.nixosModules; [
-      common-cpu-amd
-      common-gpu-amd
-      common-pc-ssd
-    ]);
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-gpu-amd
+    common-pc-ssd
+  ]);
 
   boot.initrd.availableKernelModules = [
     "nvme"

@@ -67,7 +67,8 @@ in
               home.packages = [ (hm pkgs) ];
             }
           )
-        ] ++ extraModules;
+        ]
+        ++ extraModules;
       };
     };
 
@@ -111,29 +112,28 @@ in
             self
             ;
         };
-        modules =
-          [
-            "${self}/hosts/${name}.nix"
-            {
-              networking.hostName = name;
-              home-manager = {
-                backupFileExtension = backupFileExt;
-                # use flake's nixpkgs settings.
-                useGlobalPkgs = true;
+        modules = [
+          "${self}/hosts/${name}.nix"
+          {
+            networking.hostName = name;
+            home-manager = {
+              backupFileExtension = backupFileExt;
+              # use flake's nixpkgs settings.
+              useGlobalPkgs = true;
 
-                extraSpecialArgs = extraSpecialArgs // {
-                  inherit
-                    isNixOS
-                    av1Support
-                    inputs
-                    self
-                    ;
-                };
+              extraSpecialArgs = extraSpecialArgs // {
+                inherit
+                  isNixOS
+                  av1Support
+                  inputs
+                  self
+                  ;
               };
-            }
-          ]
-          ++ hmModules
-          ++ extraModules;
+            };
+          }
+        ]
+        ++ hmModules
+        ++ extraModules;
       };
     };
 }
