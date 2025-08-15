@@ -214,6 +214,9 @@ in
             {
               title = "Authentication Required";
             }
+            {
+              app_id = "lxqt-policykit-agent";
+            }
           ];
           window = {
             titlebar = false;
