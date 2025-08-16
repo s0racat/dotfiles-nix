@@ -27,15 +27,15 @@
   };
   skkeleton = {
     pname = "skkeleton";
-    version = "995c2e4581e0250a5b26f0e09293a96cae925cea";
+    version = "0010d30b5fbbdf89d7286a7192a0108bc569bfca";
     src = fetchFromGitHub {
       owner = "vim-skk";
       repo = "skkeleton";
-      rev = "995c2e4581e0250a5b26f0e09293a96cae925cea";
+      rev = "0010d30b5fbbdf89d7286a7192a0108bc569bfca";
       fetchSubmodules = false;
-      sha256 = "sha256-3ZGpwE8zv/A1Mg57R7CgjwT8FHYBnxhTUcGH5rKf7Ag=";
+      sha256 = "sha256-TsNIviccfrXeizB42FCxm/uG9E6wMHAubTcYxu2H0V8=";
     };
-    date = "2025-08-15";
+    date = "2025-08-16";
   };
   skkeleton_indicator = {
     pname = "skkeleton_indicator";
