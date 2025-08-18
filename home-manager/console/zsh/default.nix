@@ -15,6 +15,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     shellAliases = {
+      gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
       npm = "pnpm";
       cz = "git cz";
       nix-shell = "nix-shell --command $(command -v zsh)";
