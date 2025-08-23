@@ -97,12 +97,12 @@
             "name": null,
             "owner": "vim-jp",
             "repo": "vimdoc-ja",
-            "rev": "bafe7f9d9850aa65022fed58993c7b8e8eeda0ac",
-            "sha256": "sha256-XgUsaVPnmo17TJ4rocT8jb3Ij1OICUe9WlU6HPSTk7Y=",
+            "rev": "f6e7227d8277cc1a558912fc1f9eb58cfec342fe",
+            "sha256": "sha256-BxVWNwvQ+EpSSFFxa21fuOTwlD612+8MJ0VRyYvq4y4=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "bafe7f9d9850aa65022fed58993c7b8e8eeda0ac"
+        "version": "f6e7227d8277cc1a558912fc1f9eb58cfec342fe"
     },
     "winresizer": {
         "cargoLocks": null,
