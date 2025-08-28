@@ -63,9 +63,6 @@ let
       };
     };
 
-    general = {
-      imports = [ "~/.config/alacritty/nord.toml" ];
-    };
 
     cursor.style = {
       blinking = "Always";
