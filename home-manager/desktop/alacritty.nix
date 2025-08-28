@@ -511,7 +511,7 @@ let
       }
     ];
 
-    shell = {
+    terminal.shell = {
       program = "/usr/bin/zsh";
       args = [
         "--login"
