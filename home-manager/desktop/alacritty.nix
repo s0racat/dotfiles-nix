@@ -526,7 +526,7 @@ in
 {
   xdg.configFile = {
     "alacritty/alacritty.toml".source = (tomlFormat.generate "alacritty.toml" settings).overrideAttrs (
-      finalAttrs: prevAttrs: {
+      _finalAttrs: prevAttrs: {
         buildCommand = lib.concatStringsSep "\n" [
           prevAttrs.buildCommand
           # TODO: why is this needed? Is there a better way to retain escape sequences?
