@@ -6,5 +6,21 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+    "org/gnome/shell" = {
+      # お気に入りのアプリ
+      favorite-apps = [
+        "Alacritty.desktop"
+        "firefox.desktop"
+        "org.keepassxc.KeePassXC.desktop"
+        "nemo.desktop"
+        "xed.desktop"
+        # "chromium-browser.desktop"
+        # "code.desktop"
+        # "org.gnome.Nautilus.desktop"
+        "gnome-system-monitor.desktop"
+        "org.gnome.Console.desktop"
+        # "org.gnome.TextEditor.desktop"
+      ];
+    };
   };
 }
