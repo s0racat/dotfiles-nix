@@ -63,7 +63,6 @@ let
       };
     };
 
-
     cursor.style = {
       blinking = "Always";
       shape = "Block";
@@ -511,7 +510,7 @@ let
       }
     ];
 
-    terminal.shell = {
+    shell = {
       program = "/usr/bin/zsh";
       args = [
         "--login"
