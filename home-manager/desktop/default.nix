@@ -14,5 +14,6 @@
     ./keepassxc.nix
     ./pcmanfm-qt/pcmanfm-qt.nix
     ./alacritty.nix
+    ./gnome
   ];
 }
