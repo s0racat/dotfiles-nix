@@ -1,9 +1,7 @@
 { pkgs, ... }:
 let
-  left = "h";
   down = "j";
   up = "k";
-  right = "l";
 in
 {
   dconf.settings = {
