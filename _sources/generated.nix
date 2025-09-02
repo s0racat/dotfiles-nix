@@ -15,15 +15,15 @@
   };
   lazygit_nvim = {
     pname = "lazygit_nvim";
-    version = "3c524ebec6072568064235c407195e9f9fd0cb8a";
+    version = "0a1ec57f91ecc9c5e97fb26edb2574cf8b13c7cc";
     src = fetchFromGitHub {
       owner = "kdheepak";
       repo = "lazygit.nvim";
-      rev = "3c524ebec6072568064235c407195e9f9fd0cb8a";
+      rev = "0a1ec57f91ecc9c5e97fb26edb2574cf8b13c7cc";
       fetchSubmodules = false;
-      sha256 = "sha256-L+1nyhr4+JnIsVsjzymVonOA1AOJVLmh5LM+FbggLQY=";
+      sha256 = "sha256-S1QGX7Czepmmo+hQ1KUbHcC0TRbXx9RHucLY7PxEAD8=";
     };
-    date = "2025-08-07";
+    date = "2025-09-02";
   };
   skkeleton = {
     pname = "skkeleton";
