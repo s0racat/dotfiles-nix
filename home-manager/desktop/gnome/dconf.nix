@@ -57,8 +57,8 @@ in
     };
     "org/gnome/desktop/wm/keybindings" = {
       minimize = [ "<Super>comma" ];
-      switch-to-workspace-left = [ ];
-      switch-to-workspace-right = [ ];
+      switch-to-workspace-left = [ "<Control><Super>Down" ];
+      switch-to-workspace-right = [ "<Control><Super>Up" ];
       maximize = [ ];
       unmaximize = [ ];
       move-to-monitor-up = [ ];
@@ -67,14 +67,14 @@ in
       move-to-workspace-down = [ ];
       move-to-workspace-up = [ ];
       move-to-monitor-right = [ ];
-      switch-to-workspace-down = [
-        "<Primary><Super>Down"
-        "<Primary><Super>${down}"
-      ];
-      switch-to-workspace-up = [
-        "<Primary><Super>Up"
-        "<Primary><Super>${up}"
-      ];
+      # switch-to-workspace-down = [
+      #   "<Primary><Super>Down"
+      #   "<Primary><Super>${down}"
+      # ];
+      # switch-to-workspace-up = [
+      #   "<Primary><Super>Up"
+      #   "<Primary><Super>${up}"
+      # ];
       toggle-maximized = [ "<Super>m" ];
       close = [
         "<Super>q"
@@ -91,13 +91,14 @@ in
       toggle-tiled-right = [ ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      screensaver = [ "<Super>Escape" ];
+      screensaver = [ "<Super>z" ];
       home = [ "<Super>f" ];
       email = [ "<Super>e" ];
       www = [ "<Super>b" ];
-
+      # sudo update-alternatives --config x-terminal-emulator
       terminal = [ "<Super>t" ];
       rotate-video-lock-static = [ ];
+      search = [ "<Super>d" ];
     };
 
   };

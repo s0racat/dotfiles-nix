@@ -15,5 +15,6 @@
     ./pcmanfm-qt/pcmanfm-qt.nix
     ./alacritty.nix
     ./gnome
+    ./mimeapps.nix
   ];
 }

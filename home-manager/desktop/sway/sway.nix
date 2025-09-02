@@ -58,7 +58,7 @@ in
             "XF86AudioPrev" = "exec playerctl previous";
             "XF86AudioPlay" = "exec playerctl play-pause";
             "XF86AudioNext" = "exec playerctl next";
-            "${modifier}+x" =
+            "${modifier}+c" =
               "exec cliphist list | fuzzel -d | cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy";
           };
 
