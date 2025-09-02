@@ -2,7 +2,10 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = "nemo.desktop";
+      "inode/directory" = [
+        "nemo.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
     };
   };
 }
