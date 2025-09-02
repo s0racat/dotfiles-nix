@@ -1,8 +1,4 @@
 { pkgs, ... }:
-let
-  down = "j";
-  up = "k";
-in
 {
   dconf.settings = {
     "org/gnome/shell" = {
