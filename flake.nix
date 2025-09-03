@@ -61,11 +61,12 @@
           pkgs = nixpkgsFor.${system};
         in
         {
-          hm-switch = {
+          hm = {
             type = "app";
             program =
-              (pkgs.writeShellScript "hm-script" ''
-                ${util.hm pkgs}/bin/home-manager switch --flake .#''${1:-takumi@debian-wsl}
+              (pkgs.writeShellScript "hm" ''
+                name=$(whoami)@$(hostname)
+                ${util.hm pkgs}/bin/home-manager switch --flake .#$name
               '').outPath;
           };
           alejandra = {
@@ -76,7 +77,7 @@
               '').outPath;
           };
 
-          default = self.apps.${system}.hm-switch;
+          default = self.apps.${system}.hm;
         }
       );
 
@@ -94,11 +95,11 @@
 
       homeConfigurations = builtins.listToAttrs [
         (util.mkHome {
-          name = "takumi@debian-wsl";
+          name = "takumi@sub-laptop";
           extraModules = [ ./home-manager/console-wsl ];
         })
         (util.mkHome {
-          name = "takumi@um690pro-lm";
+          name = "takumi@takumi-Venus-series";
           extraModules = [ ./home-manager/desktop ];
           av1Support = true;
         })
