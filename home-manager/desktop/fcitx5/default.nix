@@ -25,4 +25,13 @@ in
       recursive = true;
     };
   };
+  # Decode
+  # src=$(nix build nixpkgs#mozc.src --no-link --print-out-paths)
+  # nix shell nixpkgs#protobuf --command \
+  # protoc --proto_path=$src/src/protocol \
+  #        --decode "mozc.config.Config" \
+  #        $src/src/protocol/config.proto \
+  #        < ~/.config/mozc/config1.db \
+  #        > ~/.mozc.config1.txt
+  xdg.configFile."mozc/config1.db".source = ./config1.db;
 }

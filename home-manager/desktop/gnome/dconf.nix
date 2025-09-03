@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   dconf.settings = {
     "org/gnome/shell" = {
@@ -95,6 +95,10 @@
       terminal = [ "<Super>t" ];
       rotate-video-lock-static = [ ];
       search = [ "<Super>d" ];
+    };
+    "org/gnome/desktop/peripherals/keyboard" = {
+      repeat-interval = lib.hm.gvariant.mkUint32 30;
+      delay = lib.hm.gvariant.mkUint32 280;
     };
 
   };
