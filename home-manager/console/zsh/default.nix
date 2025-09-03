@@ -14,6 +14,9 @@
     syntaxHighlighting.enable = true;
     autocd = true;
     defaultKeymap = "emacs";
+    localVariables = {
+      WORDCHARS = "*?_-.[]~=&;!#$%^(){}<>";
+    };
     shellAliases = {
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
       npm = "pnpm";
