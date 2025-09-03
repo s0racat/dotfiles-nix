@@ -88,13 +88,28 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       screensaver = [ "<Super>z" ];
-      home = [ "<Super>f" ];
-      email = [ "<Super>e" ];
-      www = [ "<Super>b" ];
-      # sudo update-alternatives --config x-terminal-emulator
-      terminal = [ "<Super>t" ];
+      # home = [ "<Super>f" ];
+      # email = [ "<Super>e" ];
+      # www = [ "<Super>b" ];
+      # terminal = [ "<Super>t" ];
       rotate-video-lock-static = [ ];
       search = [ "<Super>d" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>t";
+      command = "alacritty";
+      name = "terminal";
+
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>e";
+      command = "nemo";
+      name = "file manager";
+
     };
     "org/gnome/desktop/peripherals/keyboard" = {
       repeat-interval = lib.hm.gvariant.mkUint32 30;
