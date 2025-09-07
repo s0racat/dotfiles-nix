@@ -10,7 +10,8 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix"
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run # set HM variable to override home-manager profile
+# set HM variable to override home-manager profile
+nix run
 chsh -s $(which zsh)</pre></code>
     <h2>docker</h2>
     <p>https://learn.microsoft.com/ja-jp/windows/wsl/systemd</p>
