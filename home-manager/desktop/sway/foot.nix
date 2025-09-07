@@ -1,7 +1,10 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
-  xdg.configFile = {
-    "foot/foot.ini".text = lib.generators.toINI { } {
+  programs.foot = {
+    enable = true;
+    package = pkgs.emptyDirectory;
+    settings = {
+
       main = {
         shell = "zsh --login -c 'tmux attach || tmux'";
         font = "monospace:size=12";

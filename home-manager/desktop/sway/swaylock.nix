@@ -7,7 +7,7 @@
 {
   programs.swaylock = {
     enable = true;
-    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
+    package = lib.mkIf (!isNixOS) null;
 
     settings =
       let
