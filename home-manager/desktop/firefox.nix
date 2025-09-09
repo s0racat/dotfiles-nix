@@ -69,8 +69,10 @@
           # Bring back old Clear All History dialog
           "privacy.sanitize.useOldClearHistoryDialog" = true;
           # Enable verticalTabs
-          "sidebar.revamp" = true;
-          "sidebar.verticalTabs" = true;
+          #"sidebar.revamp" = true;
+          #"sidebar.verticalTabs" = true;
+          # move sidebar to Right
+          "sidebar.position_start" = true;
           # Disable pocket
           "extensions.pocket.enabled" = false;
           # Dark theme

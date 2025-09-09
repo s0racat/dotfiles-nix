@@ -13,7 +13,6 @@ in
     services.swayosd = {
 
       Service = {
-        ExecStart = lib.mkForce ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';
         Environment = lib.mkIf (!isNixOS) (
           lib.mkForce [ "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share" ]
         );
