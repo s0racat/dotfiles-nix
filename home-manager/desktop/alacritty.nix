@@ -7,7 +7,7 @@ in
     enable = true;
     package = null;
     settings = {
-      general.import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/${theme}.toml" ];
+      import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/${theme}.toml" ];
       cursor.style = {
         blinking = "Always";
         shape = "Block";
@@ -18,7 +18,7 @@ in
       };
 
       font = {
-        size = 11;
+        size = 12;
         bold.family = "monospace";
         bold_italic.family = "monospace";
         italic.family = "monospace";
