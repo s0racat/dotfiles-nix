@@ -12,7 +12,6 @@ let
       ${lib.getExe pkgs.cliphist} store
     fi
   '';
-  systemdTarget = "sway-session.target";
 in
 {
   systemd.user.services.cliphist = {
