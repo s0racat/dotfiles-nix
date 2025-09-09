@@ -20,9 +20,6 @@ in
       ExecStart = lib.mkForce "${pkgs.wl-clipboard}/bin/wl-paste --watch ${cliphist-wrapper}";
     };
 
-    Install = {
-      WantedBy = lib.mkForce [ "${systemdTarget}" ];
-    };
   };
   services.cliphist.enable = true;
   services.cliphist.allowImages = false;

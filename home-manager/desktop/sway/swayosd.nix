@@ -11,27 +11,17 @@ in
 {
   systemd.user = {
     services.swayosd = {
-      Unit = {
-        PartOf = lib.mkForce [ "${systemdTarget}" ];
-        After = lib.mkForce [ "${systemdTarget}" ];
-      };
 
       Service = {
-        ExecStart = lib.mkForce ''
-          ${lib.getExe' pkgs.swayosd "swayosd-server"} ${
-            lib.optionalString (!isNixOS) "-s ${pkgs.swayosd}/etc/xdg/swayosd/style.css"
-          }
-        '';
+        ExecStart = lib.mkForce ''${lib.getExe' pkgs.swayosd "swayosd-server"}'';
         Environment = lib.mkIf (!isNixOS) (
           lib.mkForce [ "XDG_DATA_DIRS=/usr/share:${config.home.profileDirectory}/share" ]
         );
 
       };
-      Install = {
-        WantedBy = lib.mkForce [ "${systemdTarget}" ];
-      };
     };
   };
 
   services.swayosd.enable = true;
+  services.swayosd.stylePath = "${pkgs.swayosd}/etc/xdg/swayosd/style.css";
 }

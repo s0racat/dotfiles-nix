@@ -8,6 +8,7 @@ let
   cfg = config.wayland.windowManager.sway;
 in
 {
+  wayland.systemd.target = "sway-session.target";
   # sudo dpkg-reconfigure gdm3
   # select lightdm
   wayland.windowManager.sway =

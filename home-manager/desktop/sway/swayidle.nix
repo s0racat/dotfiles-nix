@@ -16,9 +16,6 @@ in
     Service = {
       ExecStart = lib.mkForce "${lib.getExe pkgs.swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
     };
-    Install = {
-      WantedBy = lib.mkForce [ "${systemdTarget}" ];
-    };
   };
   services.swayidle.enable = true;
 }
