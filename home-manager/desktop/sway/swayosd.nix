@@ -5,9 +5,6 @@
   isNixOS,
   ...
 }:
-let
-  systemdTarget = "sway-session.target";
-in
 {
   systemd.user = {
     services.swayosd = {
