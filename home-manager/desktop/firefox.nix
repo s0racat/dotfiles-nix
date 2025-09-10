@@ -72,7 +72,7 @@
           #"sidebar.revamp" = true;
           #"sidebar.verticalTabs" = true;
           # move sidebar to Right
-          "sidebar.position_start" = true;
+          "sidebar.position_start" = false;
           # Disable pocket
           "extensions.pocket.enabled" = false;
           # Dark theme
