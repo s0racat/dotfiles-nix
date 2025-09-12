@@ -15,12 +15,12 @@
         "firefox.desktop"
         "org.keepassxc.KeePassXC.desktop"
         "nemo.desktop"
-        "xed.desktop"
+        "org.x.editor.desktop"
         # "chromium-browser.desktop"
         # "code.desktop"
         # "org.gnome.Nautilus.desktop"
-        "gnome-system-monitor.desktop"
-        "org.gnome.Console.desktop"
+        "org.gnome.SystemMonitor.desktop"
+        "org.gnome.Terminal.desktop"
         # "org.gnome.TextEditor.desktop"
       ];
     };
