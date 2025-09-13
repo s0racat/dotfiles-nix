@@ -1,8 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
-  isNixOS,
   ...
 }:
 {
