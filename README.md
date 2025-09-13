@@ -16,7 +16,6 @@ chsh -s $(which zsh)
 
 ## docker
     https://learn.microsoft.com/ja-jp/windows/wsl/systemd
-
 https://docs.docker.com/engine/install/debian/
 
 
