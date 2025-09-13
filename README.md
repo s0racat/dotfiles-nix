@@ -14,7 +14,7 @@ nix run
 chsh -s $(which zsh)
 ```
 
-## docker
+# docker
 
 [https://learn.microsoft.com/ja-jp/windows/wsl/systemd](https://learn.microsoft.com/ja-jp/windows/wsl/systemd)
 
