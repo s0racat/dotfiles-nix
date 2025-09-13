@@ -1,8 +1,7 @@
 # Debian WSL
 
-<details>
-    <summary>Click to open</summary>
-    <pre><code>sudo passwd -d takumi
+```bash
+sudo passwd -d takumi
 sudo apt update; sudo apt upgrade -y
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
@@ -12,16 +11,14 @@ cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
 # set HM variable to override home-manager profile
 nix run
-chsh -s $(which zsh)</pre></code>
-    <h2>docker</h2>
-    <p>https://learn.microsoft.com/ja-jp/windows/wsl/systemd</p>
-<p>https://docs.docker.com/engine/install/debian/</p>
-    <h2>systemd user</h2>
-    <pre><code>sudo apt install -y dbus-user-session
-sudo loginctl enable-linger $USER</pre></code>
-    <h2>Change /bin/sh symlink to /bin/bash</h2>
-    <pre><code>sudo update-alternatives --install /bin/sh sh /bin/bash 100</pre></code>
-</details>
+chsh -s $(which zsh)
+```
+
+## docker
+    [https://learn.microsoft.com/ja-jp/windows/wsl/systemd](https://learn.microsoft.com/ja-jp/windows/wsl/systemd)
+
+[https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
+
 
 # install NixOS
 
