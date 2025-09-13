@@ -82,6 +82,7 @@ in
               };
           };
 
+          defaultWorkspace = "workspace number 1";
           terminal = "foot";
           output =
             let
@@ -248,7 +249,7 @@ in
             # apt install lxqt-policykit
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
-            { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
+            # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "keepassxc"; }
           ];
         };

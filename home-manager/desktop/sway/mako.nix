@@ -8,7 +8,6 @@
 {
   services.mako = {
     enable = true;
-    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
     settings = {
       default-timeout = 10000;
       font = "monospace 10";

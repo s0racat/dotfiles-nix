@@ -11,10 +11,23 @@ let
     if isNixOS then lib.getExe' pkgs.systemd "systemctl" + " suspend" else "/usr/bin/systemctl suspend";
 in
 {
-  systemd.user.services.swayidle = {
-    Service = {
-      ExecStart = lib.mkForce "${lib.getExe pkgs.swayidle} -w timeout 600 ${lib.escapeShellArg suspendCommand} before-sleep ${lib.escapeShellArg command} lock ${lib.escapeShellArg command}";
-    };
+  services.swayidle = {
+    events = [
+      {
+        event = "before-sleep";
+        inherit command;
+      }
+      {
+        event = "lock";
+        inherit command;
+      }
+    ];
+    timeouts = [
+      {
+        timeout = 600;
+        command = suspendCommand;
+      }
+    ];
   };
   services.swayidle.enable = true;
 }
