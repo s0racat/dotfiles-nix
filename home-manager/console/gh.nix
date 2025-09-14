@@ -1,6 +1,9 @@
-{pkgs,...}:{programs.gh = {
+{ pkgs, ... }:
+{
+  programs.gh = {
     enable = true;
     extensions = [
       pkgs.gh-fzgist
     ];
-  };}
+  };
+}

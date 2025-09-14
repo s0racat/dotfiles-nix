@@ -57,6 +57,5 @@
     };
     initContent = builtins.readFile ./zshrc;
   };
-  
 
 }

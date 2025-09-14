@@ -29,5 +29,5 @@ let
   };
 in
 {
-xdg.configFile."keepassxc/keepassxc.ini".text = KeePassXCcfg;
+  xdg.configFile."keepassxc/keepassxc.ini".text = KeePassXCcfg;
 }

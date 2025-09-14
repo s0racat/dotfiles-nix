@@ -1,5 +1,6 @@
-  
-  {lib,...}:{programs.starship = {
+{ lib, ... }:
+{
+  programs.starship = {
     enable = true;
     settings = {
       format = lib.concatStrings [
@@ -19,4 +20,5 @@
         error_symbol = "😿";
       };
     };
-  };}
+  };
+}

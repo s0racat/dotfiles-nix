@@ -102,7 +102,7 @@ in
         else
           drv;
       lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
-   lazyConfig = substituteStrings {
+      lazyConfig = substituteStrings {
         file = ./lua/init-lazy.lua;
         replacements = [
           {

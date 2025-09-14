@@ -3,7 +3,7 @@
   programs.firefox = {
     enable = true;
     languagePacks = [ "ja" ];
-nativeMessagingHosts.packages= with pkgs; [
+    nativeMessagingHosts.packages = with pkgs; [
       tridactyl-native
       keepassxc
     ];

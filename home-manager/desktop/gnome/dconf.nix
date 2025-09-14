@@ -115,7 +115,7 @@
       repeat-interval = lib.hm.gvariant.mkUint32 30;
       delay = lib.hm.gvariant.mkUint32 280;
     };
-    "org/gnome/desktop/input-sources".xkb-options = ["caps:none"];
+    "org/gnome/desktop/input-sources".xkb-options = [ "caps:none" ];
 
   };
 }

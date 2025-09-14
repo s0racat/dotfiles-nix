@@ -1,5 +1,5 @@
 {
-    programs.fzf = {
+  programs.fzf = {
     enable = true;
     colors = {
       fg = "#D8DEE9";
@@ -15,4 +15,5 @@
       prompt = "#81A1C1";
       marker = "#EBCB8B";
     };
-  };}
+  };
+}

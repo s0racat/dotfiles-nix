@@ -2,6 +2,7 @@
   pkgs,
   lib,
   isNixOS,
+  config,
   ...
 }:
 let
@@ -12,15 +13,27 @@ let
       ${lib.getExe pkgs.cliphist} store
     fi
   '';
+  inherit (config.wayland.systemd) target;
 in
 {
-  systemd.user.services.cliphist = {
-    Service = {
-      ExecStart = lib.mkForce "${pkgs.wl-clipboard}/bin/wl-paste --watch ${cliphist-wrapper}";
+  home.packages = [ pkgs.cliphist ];
+
+  systemd.user.services.mycliphist = {
+    Unit = {
+      Description = "Clipboard management daemon";
+      PartOf = lib.toList target;
+      After = lib.toList target;
     };
 
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${cliphist-wrapper}";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = lib.toList target;
+    };
   };
-  services.cliphist.enable = true;
-  services.cliphist.allowImages = false;
 
 }
