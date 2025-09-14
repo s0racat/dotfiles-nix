@@ -9,23 +9,10 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraPackages = with pkgs; [
-      lua-language-server
-      nodePackages.typescript-language-server
-      bash-language-server
-      vim-language-server
-      emmet-language-server
-      gopls
-      nil
-      pyright
-      stylua
-      nixfmt-rfc-style
-      skkDictionaries.l
-    ];
-    plugins = with pkgs.vimPlugins; [ lazy-nvim ];
+    extraLuaConfig = builtins.readFile ./lua/init.lua;
   };
 
   xdg.configFile."nvim/lua/conf" = {
-    source = ./conf;
+    source = ./lua/conf;
   };
 }

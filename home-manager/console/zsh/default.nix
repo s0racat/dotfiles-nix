@@ -18,6 +18,7 @@
       WORDCHARS = "*?_-[]~&!$%^(){}<>";
     };
     shellAliases = {
+      cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
       npm = "pnpm";
       cz = "git cz";
@@ -56,43 +57,6 @@
     };
     initContent = builtins.readFile ./zshrc;
   };
-  programs.fzf = {
-    enable = true;
-    colors = {
-      fg = "#D8DEE9";
-      bg = "#2E3440";
-      hl = "#A3BE8C";
-      "fg+" = "#D8DEE9";
-      "bg+" = "#434C5E";
-      "hl+" = "#A3BE8C";
-      pointer = "#BF616A";
-      info = "#4C566A";
-      spinner = "#4C566A";
-      header = "#4C566A";
-      prompt = "#81A1C1";
-      marker = "#EBCB8B";
-    };
-  };
-  programs.zoxide.enable = true;
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = lib.concatStrings [
-        "$username"
-        "$hostname"
-        "$directory"
-        "$git_branch"
-        "$git_state"
-        "$git_status"
-        "$nix_shell"
-        "$cmd_duration"
-        "$line_break"
-        "$character"
-      ];
-      character = {
-        success_symbol = "😼";
-        error_symbol = "😿";
-      };
-    };
-  };
+  
+
 }

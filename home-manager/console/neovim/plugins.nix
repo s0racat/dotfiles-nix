@@ -16,6 +16,22 @@ let
   };
 in
 {
+  programs.neovim = {
+    extraPackages = with pkgs; [
+      lua-language-server
+      nodePackages.typescript-language-server
+      bash-language-server
+      vim-language-server
+      emmet-language-server
+      gopls
+      nil
+      pyright
+      stylua
+      nixfmt-rfc-style
+      skkDictionaries.l
+    ];
+    plugins = with pkgs.vimPlugins; [ lazy-nvim ];
+  };
   programs.neovim.extraLuaConfig =
     let
       plugins = with pkgs.vimPlugins; [
@@ -86,8 +102,8 @@ in
         else
           drv;
       lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
-      lazyConfig = substituteStrings {
-        file = ./init.lua;
+   lazyConfig = substituteStrings {
+        file = ./lua/init-lazy.lua;
         replacements = [
           {
             old = "@lazyPath@";
@@ -95,6 +111,7 @@ in
           }
         ];
       };
+
     in
     ''
       ${lazyConfig}
@@ -105,6 +122,6 @@ in
   };
 
   xdg.configFile."nvim/lua/plugins/" = {
-    source = ./plugins;
+    source = ./lua/plugins;
   };
 }

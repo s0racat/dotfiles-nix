@@ -1,7 +1,3 @@
-require("conf.options")
-require("conf.keymap")
-require("conf.yank")
-
 require("lazy").setup("plugins", {
 	defaults = {
 		lazy = true,

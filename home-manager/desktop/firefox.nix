@@ -24,7 +24,6 @@
     enable = true;
     package = null;
     # profileVersion = null;
-
     profiles = {
       default = {
         search = {

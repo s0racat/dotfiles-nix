@@ -83,7 +83,7 @@ in
           };
 
           defaultWorkspace = "workspace number 1";
-          terminal = "foot";
+          terminal = "alacritty";
           output =
             let
               wallpaper = pkgs.fetchurl {

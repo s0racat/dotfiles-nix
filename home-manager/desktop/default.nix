@@ -16,5 +16,6 @@
     ./alacritty.nix
     ./gnome
     ./mimeapps.nix
+    ./xsession.nix
   ];
 }

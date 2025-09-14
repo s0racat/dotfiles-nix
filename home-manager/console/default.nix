@@ -9,6 +9,12 @@
     ./aria2.nix
     ./bat.nix
     ./htop.nix
+    ./fzf.nix
+    ./gh.nix
+    ./gpg-agent.nix
+    ./lazygit.nix
+    ./starship.nix
+    ./zoxide.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];

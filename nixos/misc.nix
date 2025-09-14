@@ -88,7 +88,5 @@
   programs.nix-ld = {
     enable = true;
   };
-  nix.settings.trusted-users = [
-    "@wheel"
-  ];
+  
 }

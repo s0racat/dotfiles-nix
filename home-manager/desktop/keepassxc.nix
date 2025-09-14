@@ -7,12 +7,8 @@ let
   KeePassXCcfg = lib.generators.toINI { } {
     General = {
       ConfigVersion = 2;
-      LastOpenedDatabases = ''@Invalid()'';
     };
     Browser = {
-      AlwaysAllowAccess = true;
-      CustomBrowserLocation = "";
-      CustomBrowserType = 2;
       CustomProxyLocation = "";
       Enabled = true;
     };
@@ -25,23 +21,13 @@ let
       ExcludedChars = "";
     };
     SSHAgent = {
-      AuthSockOverride = "";
       Enabled = true;
-      SecurityKeyProviderOverride = "";
     };
     Security = {
-      IconDownloadFallback = true;
+      IconDownloadFallback = false;
     };
   };
 in
 {
-  home.activation.copyKeePassXCconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ ! -f ${config.xdg.configHome}/keepassxc/keepassxc.ini ]; then
-      mkdir -p ${config.xdg.configHome}/keepassxc
-      cat << EOF > ${config.xdg.configHome}/keepassxc/keepassxc.ini
-    ${KeePassXCcfg}
-    EOF
-      chmod 600 ${config.xdg.configHome}/keepassxc/keepassxc.ini
-    fi
-  '';
+xdg.configFile."keepassxc/keepassxc.ini".text = KeePassXCcfg;
 }

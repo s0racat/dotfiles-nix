@@ -8,7 +8,7 @@ in
 {
   xdg.configFile = {
     "fcitx5" = {
-      source = ./fcitx5;
+      source = ./config;
       recursive = true;
       force = true;
     };
