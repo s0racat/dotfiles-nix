@@ -1,3 +1,4 @@
+# apt: require mpv
 {
   pkgs,
   lib,
