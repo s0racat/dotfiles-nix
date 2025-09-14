@@ -1,3 +1,4 @@
+# apt: require foot
 { pkgs, lib,isNixOS,... }:
 {
   programs.foot = {
