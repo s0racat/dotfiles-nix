@@ -1,3 +1,4 @@
+# apt: require swaylock
 {
   pkgs,
   lib,
