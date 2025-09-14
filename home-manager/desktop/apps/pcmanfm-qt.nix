@@ -1,3 +1,4 @@
+# apt: require pcmanfm-qt
 { lib, config, ... }:
 {
 
