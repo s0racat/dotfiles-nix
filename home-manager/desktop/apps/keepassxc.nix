@@ -1,3 +1,4 @@
+# apt: require keepassxc
 {
   lib,
   ...
