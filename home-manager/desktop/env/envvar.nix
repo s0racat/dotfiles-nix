@@ -9,5 +9,6 @@ let
 in
 {
   home.sessionVariables = envvar;
+  systemd.user.sessionVariables = builtins.removeAttrs config.home.sessionVariables ["NIX_PATH"];
 
 }
