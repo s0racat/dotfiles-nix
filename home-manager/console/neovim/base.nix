@@ -1,4 +1,4 @@
-_:
+{ lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -6,7 +6,7 @@ _:
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = builtins.readFile ./lua/init.lua;
+    extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
   };
 
   xdg.configFile."nvim/lua/conf" = {

@@ -113,7 +113,7 @@ in
       };
 
     in
-    ''
+    lib.mkAfter ''
       ${lazyConfig}
     '';
 
