@@ -1,8 +1,9 @@
- {pkgs,...}:{
+{ pkgs, ... }:
+{
 
- environment.systemPackages = [
+  environment.systemPackages = [
 
-pkgs.ddcutil
- ];
+    pkgs.ddcutil
+  ];
   hardware.i2c.enable = true;
- }
+}

@@ -1,5 +1,10 @@
-{
-  home.sessionVariables = {
+let
+  envvar = {
     NIXOS_OZONE_WL = "1";
   };
+in
+{
+  home.sessionVariables = envvar;
+
+  systemd.user.sessionVariables = envvar;
 }

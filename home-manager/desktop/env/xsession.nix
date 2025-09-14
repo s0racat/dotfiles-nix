@@ -1,4 +1,4 @@
-# apt: require gnome-session 
+# apt: require gnome-session
 {
   xsession.enable = true;
   xsession.windowManager.command = ''

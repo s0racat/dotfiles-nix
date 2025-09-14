@@ -1,5 +1,10 @@
 # apt: require foot
-{ pkgs, lib,isNixOS,... }:
+{
+  pkgs,
+  lib,
+  isNixOS,
+  ...
+}:
 {
   programs.foot = {
     enable = true;

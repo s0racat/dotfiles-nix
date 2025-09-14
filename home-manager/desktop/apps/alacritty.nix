@@ -1,5 +1,10 @@
-# apt: require alacritty 
-{ pkgs, lib,isNixOS,... }:
+# apt: require alacritty
+{
+  pkgs,
+  lib,
+  isNixOS,
+  ...
+}:
 let
   theme = "nord";
 in

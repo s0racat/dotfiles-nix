@@ -43,26 +43,32 @@ in
           };
         in
         {
-          keybindings = lib.mkOptionDefault {
-            "${modifier}+q" = "kill";
-            "${modifier}+Shift+f" = "exec pcmanfm-qt";
-            "${modifier}+Shift+r" = "reload";
-            "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-            "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
-            "${modifier}+Shift+p" =
-              ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
-            "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
-            "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
-            "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";
-            "XF86AudioLowerVolume" = "exec swayosd-client --output-volume lower";
-            "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
-            "${modifier}+period" = "exec wofi-emoji";
-            "XF86AudioPrev" = "exec playerctl previous";
-            "XF86AudioPlay" = "exec playerctl play-pause";
-            "XF86AudioNext" = "exec playerctl next";
-            "${modifier}+c" =
-              "exec cliphist list | fuzzel -d | cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy";
-          };
+          keybindings =
+            let
+              swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
+              playerctl = lib.getExe pkgs.playerctl;
+              cliphist = lib.getExe pkgs.cliphist;
+            in
+            lib.mkOptionDefault {
+              "${modifier}+q" = "kill";
+              "${modifier}+Shift+f" = "exec pcmanfm-qt";
+              "${modifier}+Shift+r" = "reload";
+              "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+              "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
+              "${modifier}+Shift+p" =
+                ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
+              "XF86MonBrightnessDown" = "exec ${swayosd-client} --brightness lower";
+              "XF86MonBrightnessUp" = "exec ${swayosd-client} --brightness raise";
+              "XF86AudioRaiseVolume" = "exec ${swayosd-client} --output-volume raise";
+              "XF86AudioLowerVolume" = "exec ${swayosd-client} --output-volume lower";
+              "XF86AudioMute" = "exec ${swayosd-client} --output-volume mute-toggle";
+              # "${modifier}+period" = "exec wofi-emoji";
+              "XF86AudioPrev" = "exec ${playerctl} previous";
+              "XF86AudioPlay" = "exec ${playerctl} play-pause";
+              "XF86AudioNext" = "exec ${playerctl} next";
+              "${modifier}+c" =
+                "exec ${cliphist} list | ${pkgs.fuzzel}/bin/fuzzel -d | ${cliphist} decode | ${pkgs.wl-clipboard}/bin/wl-copy";
+            };
 
           modes = lib.mkOptionDefault {
             # default値を引き継いでくれるらしい
@@ -245,7 +251,7 @@ in
             inner = 14;
           };
           modifier = "Mod4";
-          menu = "fuzzel";
+          menu = "${pkgs.fuzzel}/bin/fuzzel";
           startup = [
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
