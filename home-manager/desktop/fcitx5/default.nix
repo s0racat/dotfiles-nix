@@ -1,3 +1,4 @@
+# apt: require fcitx5
 { pkgs, ... }:
 let
   fcitxEnv = {
