@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib,isNixOS,... }:
 {
   programs.foot = {
     enable = true;
-    package = pkgs.emptyDirectory;
+    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
     settings = {
 
       main = {

@@ -7,29 +7,52 @@
   self,
   ...
 }:
+let
+  nixosDir = "${self}/nixos";
+  serviceModules = [
+
+    "${nixosDir}/services/bluetooth.nix"
+    "${nixosDir}/services/gvfs.nix"
+    "${nixosDir}/services/pipewire.nix"
+    "${nixosDir}/services/tlp.nix"
+    "${nixosDir}/services/udisks2.nix"
+
+  ];
+  commonModules = [
+    "${self}/common/nix-settings.nix"
+    "${nixosDir}/boot.nix"
+    "${nixosDir}/locale.nix"
+    "${nixosDir}/networking.nix"
+    "${nixosDir}/nix-settings.nix"
+    "${nixosDir}/packages.nix"
+    "${nixosDir}/systemd.nix"
+  ];
+  desktopModules = [
+
+    "${nixosDir}/desktop/ime.nix"
+    "${nixosDir}/desktop/sway.nix"
+    "${nixosDir}/apps/chromium.nix"
+    "${nixosDir}/apps/ddcutil.nix"
+    "${nixosDir}/apps/firefox.nix"
+    "${nixosDir}/apps/misc.nix"
+    "${nixosDir}/apps/nix-ld.nix"
+
+  ];
+  virtModules = [
+
+    "${nixosDir}/virtualisation/docker.nix"
+    "${nixosDir}/virtualisation/libvirtd.nix"
+  ];
+in
 {
   imports = [
     "${self}/hardware/um690pro.nix"
-    "${self}/nixos/misc.nix"
-    "${self}/common/nix-settings.nix"
-    "${self}/nixos/programs/firefox.nix"
-    "${self}/nixos/programs/chromium.nix"
-    "${self}/nixos/boot.nix"
-    "${self}/nixos/nix-settings.nix"
-    "${self}/nixos/systemd.nix"
-    "${self}/nixos/packages.nix"
-    "${self}/nixos/networking.nix"
-    "${self}/nixos/desktop/ime.nix"
-    "${self}/nixos/desktop/sway.nix"
-    "${self}/nixos/services/tlp.nix"
-    "${self}/nixos/services/gvfs.nix"
-    "${self}/nixos/services/udisks2.nix"
-    "${self}/nixos/services/pipewire.nix"
-    "${self}/nixos/services/bluetooth.nix"
-    "${self}/nixos/virtualisation/docker.nix"
-    "${self}/nixos/virtualisation/libvirtd.nix"
     inputs.lanzaboote.nixosModules.lanzaboote
-  ];
+  ]
+  ++ commonModules
+  ++ virtModules
+  ++ desktopModules
+  ++ serviceModules;
 
   # comment to disable lanzaboote
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -38,6 +61,8 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
+
+  system.stateVersion = stateVersion; # Did you read the comment?
 
   users.users."${username}" = {
     isNormalUser = true;

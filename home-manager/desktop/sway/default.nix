@@ -2,7 +2,7 @@
   imports = [
     ./foot.nix
     ./mako.nix
-    ./misc.nix
+    ./fuzzel.nix
     ./sway.nix
     ./cliphist.nix
     ./swayosd.nix

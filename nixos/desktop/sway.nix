@@ -12,7 +12,6 @@
       swappy
       lxqt.lxqt-policykit
       playerctl
-      ddcutil
     ];
   };
 }

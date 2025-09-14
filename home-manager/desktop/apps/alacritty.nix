@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib,isNixOS,... }:
 let
   theme = "nord";
 in
 {
   programs.alacritty = {
     enable = true;
-    package = null;
+    package = lib.mkIf (!isNixOS) null;
     settings = {
       import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/${theme}.toml" ];
       cursor.style = {
