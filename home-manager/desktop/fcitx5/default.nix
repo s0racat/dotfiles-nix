@@ -20,7 +20,6 @@ in
     };
   };
   home.sessionVariables = fcitxEnv;
-  systemd.user.sessionVariables = fcitxEnv;
   xdg.dataFile = {
     "fcitx5/themes" = {
       source = "${pkgs.fcitx5-nord}/share/fcitx5/themes";

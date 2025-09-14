@@ -9,6 +9,5 @@ let
 in
 {
   home.sessionVariables = envvar;
-  systemd.user.sessionVariables = envvar;
 
 }
