@@ -1,3 +1,4 @@
+# apt: require gnome-keyring
 {
   isNixOS,
   ...
