@@ -1,3 +1,4 @@
+# apt: require firefox
 {
   lib,
   pkgs,
