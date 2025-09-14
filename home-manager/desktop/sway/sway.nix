@@ -1,3 +1,4 @@
+# apt: require lxqt-policykit, grim, slurp, swappy
 {
   pkgs,
   config,
@@ -246,7 +247,6 @@ in
           modifier = "Mod4";
           menu = "fuzzel";
           startup = [
-            # apt install lxqt-policykit
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
