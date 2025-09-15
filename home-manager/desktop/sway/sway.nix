@@ -237,9 +237,10 @@ in
                 };
               }
               {
-                command = "floating enable, resize set 800 620, move scratchpad, border pixel 5";
+                command = "resize set 800 620, move scratchpad, border pixel 5";
                 criteria = {
                   app_id = "org.keepassxc.KeePassXC";
+                  title = "(!?.*KeePassXC).*";
                 };
               }
             ];
