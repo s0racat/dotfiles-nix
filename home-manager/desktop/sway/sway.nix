@@ -1,4 +1,4 @@
-# apt: require lxqt-policykit, grim, slurp, swappy
+# apt: require lxqt-policykit
 {
   pkgs,
   config,
@@ -53,7 +53,8 @@ in
               "${modifier}+q" = "kill";
               "${modifier}+Shift+f" = "exec pcmanfm-qt";
               "${modifier}+Shift+r" = "reload";
-              "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+              "${modifier}+Shift+s" =
+                ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
               "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
               "${modifier}+Shift+p" =
                 ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
@@ -275,5 +276,6 @@ in
     pkgs.font-awesome_4
     pkgs.wl-clipboard
     pkgs.playerctl
+    pkgs.lxqt.pavucontrol-qt
   ];
 }

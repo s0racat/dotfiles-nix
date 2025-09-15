@@ -1,6 +1,6 @@
-# apt: require pcmanfm-qt
-{ lib, config, ... }:
+{ lib, pkgs, ... }:
 {
+  home.packages = [ pkgs.pcmanfm-qt ];
 
   xdg.configFile."pcmanfm-qt/default/settings.conf".text = lib.generators.toINI { } {
     Behavior = {
@@ -25,9 +25,6 @@
       DesktopIconSize = 48;
       DesktopShortcuts = "@Invalid()";
       FgColor = "#ffffff";
-      Font =
-        with config.gtk;
-        "${font.name},${builtins.toString font.size},-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular";
       HideItems = false;
       LastSlide = "";
       OpenWithDefaultFileManager = false;

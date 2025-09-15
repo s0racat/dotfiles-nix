@@ -1,4 +1,4 @@
-# apt: require pavucontrol-qt, ddcutil, alacritty
+# apt: require alacritty
 # vi:syntax=toml
 
 # base16-i3status-rust (https://github.com/mystfox/base16-i3status-rust)
@@ -59,16 +59,16 @@ cmd = "pavucontrol-qt"
 [[block]]
 block = "backlight"
 
-[[block]]
-block = "custom"
-command = "echo \U0001f313 $(ddcutil capabilities --dis 1| head -1)"
-interval = "once"
-[[block.click]]
-button = "up"
-cmd = "ddcutil --dis 1 setvcp 10 + 5"
-[[block.click]]
-button = "down"
-cmd = "ddcutil --dis 1 setvcp 10 - 5"
+# [[block]]
+# block = "custom"
+# command = "echo \U0001f313 $(ddcutil capabilities --dis 1| head -1)"
+# interval = "once"
+# [[block.click]]
+# button = "up"
+# cmd = "ddcutil --dis 1 setvcp 10 + 5"
+# [[block.click]]
+# button = "down"
+# cmd = "ddcutil --dis 1 setvcp 10 - 5"
 
 [[block]]
 block = "battery"
