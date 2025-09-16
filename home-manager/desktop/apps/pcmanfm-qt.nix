@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
 
   xdg.configFile."pcmanfm-qt/default/settings.conf".text = lib.generators.toINI { } {
