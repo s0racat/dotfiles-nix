@@ -94,8 +94,8 @@ in
           output =
             let
               wallpaper = pkgs.fetchurl {
-                url = "https://i.pximg.net/img-master/img/2025/06/11/19/56/13/131440287_p0_master1200.jpg";
-                hash = "sha256-rzDr2jH+N9Crae2q9WicaL25EUy8k04WFhwYFQIOHGg=";
+                url = "https://i.pximg.net/img-original/img/2025/06/11/19/56/13/131440287_p0.png";
+                hash = "sha256-C9xNGuHZMDArWOE6McjSMnAaurjc3/l1NQq6cqD5zpE=";
                 curlOptsList = [
                   "-H"
                   "User-Agent: Mozilla/5.0"
