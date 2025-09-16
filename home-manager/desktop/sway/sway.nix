@@ -51,7 +51,6 @@ in
             in
             lib.mkOptionDefault {
               "${modifier}+q" = "kill";
-              "${modifier}+Shift+f" = "exec pcmanfm-qt";
               "${modifier}+Shift+r" = "reload";
               "${modifier}+Shift+s" =
                 ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';

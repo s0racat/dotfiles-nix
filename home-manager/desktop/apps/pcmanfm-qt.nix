@@ -1,6 +1,5 @@
 { lib, pkgs, ... }:
 {
-  home.packages = [ pkgs.pcmanfm-qt ];
 
   xdg.configFile."pcmanfm-qt/default/settings.conf".text = lib.generators.toINI { } {
     Behavior = {
