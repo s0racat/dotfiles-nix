@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  # a = outputs.homeConfigurations."takumi@takumi-Venus-series".config.home.packages
+  # lib.unique (builtins.map(x: lib.getName x) a)
   home.packages = with pkgs; [
     eza
     gnupg
