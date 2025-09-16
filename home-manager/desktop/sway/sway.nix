@@ -274,7 +274,6 @@ in
   home.packages = [
     pkgs.font-awesome_4
     pkgs.wl-clipboard
-    pkgs.playerctl
     pkgs.lxqt.pavucontrol-qt
   ];
 }

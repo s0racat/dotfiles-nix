@@ -46,7 +46,7 @@ let
 in
 {
   imports = [
-    "${self}/hardware/um690pro.nix"
+    "${self}/nixos/hardware/um690pro.nix"
     inputs.lanzaboote.nixosModules.lanzaboote
   ]
   ++ commonModules
