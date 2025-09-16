@@ -6,6 +6,8 @@
       main = {
         width = 50;
         icon-theme = config.gtk.iconTheme.name;
+        filter-desktop = true;
+        font = "monospace:size=14";
       };
       colors = {
 
