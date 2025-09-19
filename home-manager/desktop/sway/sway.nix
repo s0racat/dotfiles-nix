@@ -240,7 +240,8 @@ in
                 command = "resize set 800 620, move scratchpad, border pixel 5";
                 criteria = {
                   app_id = "org.keepassxc.KeePassXC";
-                  title = "(!?.*KeePassXC).*";
+                  # title = "(!?.*KeePassXC).*";
+                  title = "^.*\\.kdbx\\ \\[(ロック|Locked)\\]\\ -\\ KeePassXC$|^KeePassXC$";
                 };
               }
             ];
