@@ -1,6 +1,7 @@
 # apt: require keepassxc
 {
   lib,
+  config,
   ...
 }:
 let
@@ -29,5 +30,13 @@ let
   };
 in
 {
-  xdg.configFile."keepassxc/keepassxc.ini".text = KeePassXCcfg;
+  home.activation.copyKeePassXCconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -f ${config.xdg.configHome}/keepassxc/keepassxc.ini ]; then
+      mkdir -p ${config.xdg.configHome}/keepassxc
+      cat << EOF > ${config.xdg.configHome}/keepassxc/keepassxc.ini
+    ${KeePassXCcfg}
+    EOF
+      chmod 600 ${config.xdg.configHome}/keepassxc/keepassxc.ini
+    fi
+  '';
 }
