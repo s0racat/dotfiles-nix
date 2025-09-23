@@ -4,7 +4,6 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
 
-
       # お気に入りのアプリ
       favorite-apps = [
         "Alacritty.desktop"
@@ -42,17 +41,16 @@
       }
     }";
 
-
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-left = [ "<Control><Super>Left" ];
       switch-to-workspace-right = [ "<Control><Super>Right" ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       screensaver = [ "<Super>z" ];
-      home = [  ];
-      email = [  ];
-      www = [  ];
-      terminal = [  ];
+      home = [ ];
+      email = [ ];
+      www = [ ];
+      terminal = [ ];
       search = [ "<Super>d" ];
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
