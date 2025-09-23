@@ -3,6 +3,11 @@
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
+      disabled-extensions = [ ];
+      enabled-extensions = [
+        "pop-shell@system76.com"
+        "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+      ];
 
       # お気に入りのアプリ
       favorite-apps = [
