@@ -1,17 +1,8 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    (pkgs.writeShellApplication {
-      name = "firefox";
-      text = ''
-        /mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe "$@"
-      '';
-    })
-  ];
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
   home.sessionVariables = {
-    BROWSER = "firefox";
     GH_TOKEN = "$(gh.exe auth token)";
   };
   programs.git = {
