@@ -11,6 +11,7 @@
         "$git_state"
         "$git_status"
         "$nix_shell"
+        "$python"
         "$cmd_duration"
         "$line_break"
         "$character"
