@@ -78,7 +78,7 @@
           # Dark theme
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
           # set homepage to about:home
-          "browser.startup.homepage" = "about:home";
+          # "browser.startup.homepage" = "about:home";
           # force enable vaapi
           "media.ffmpeg.vaapi.enabled" = lib.mkIf pkgs.stdenv.isLinux true;
           # disable av1 by default
