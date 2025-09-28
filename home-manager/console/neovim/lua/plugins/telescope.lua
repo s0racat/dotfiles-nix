@@ -19,6 +19,7 @@ local spec = {
 				defaults = {
 					mappings = {
 						i = {
+							["<esc>"] = require("telescope.actions").close,
 							["<C-u>"] = false,
 							["<C-d>"] = false,
 						},

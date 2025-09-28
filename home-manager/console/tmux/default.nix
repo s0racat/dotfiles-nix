@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.tmux = {
     enable = true;
     escapeTime = 0;

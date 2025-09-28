@@ -1,5 +1,4 @@
-_:
-{
+_: {
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
   home.sessionVariables = {

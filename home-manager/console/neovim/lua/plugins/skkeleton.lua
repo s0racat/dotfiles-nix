@@ -1,7 +1,7 @@
 local spec = {
 	{
 		"vim-skk/skkeleton",
-		event = "InsertEnter",
+		event = "VeryLazy",
 		config = function()
 			local skk_dicts = {}
 			table.insert(skk_dicts, "~/.local/share/skk/SKK-JISYO.L")
@@ -10,9 +10,9 @@ local spec = {
 				globalDictionaries = skk_dicts,
 			})
 		end,
-		-- cond = function()
-		-- 	return vim.fn.has("wsl") ~= 1
-		-- end,
+		cond = function()
+			return vim.fn.has("wsl") ~= 1
+		end,
 		dependencies = {
 			"vim-denops/denops.vim",
 		},

@@ -2,6 +2,7 @@
   pkgs,
   lib,
   self,
+  unstable,
   ...
 }:
 let
@@ -10,6 +11,7 @@ let
     name:
     pkgs.vimUtils.buildVimPlugin {
       inherit (pkgs.sources.${name}) pname version src;
+
     };
 in
 {
@@ -37,6 +39,7 @@ in
         nvim-lspconfig
         fidget-nvim
         (buildPlugin "vimdoc-ja")
+        (buildPlugin "denops-vim")
         nvim-autopairs
         registers-nvim
         nvim-colorizer-lua
@@ -49,7 +52,6 @@ in
         cmp_luasnip
         cmp-nvim-lsp-signature-help
         (buildPlugin "skkeleton")
-        # denops-vim
         vim-suda
         friendly-snippets
         lualine-nvim
