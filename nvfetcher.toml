@@ -21,3 +21,7 @@ fetch.github = "delphinus/skkeleton_indicator.nvim"
 [lazygit_nvim]
 src.git = "https://github.com/kdheepak/lazygit.nvim"
 fetch.github = "kdheepak/lazygit.nvim"
+
+[denops-vim]
+src.git = "https://github.com/vim-denops/denops.vim"
+fetch.github = "https://github.com/vim-denops/denops.vim"

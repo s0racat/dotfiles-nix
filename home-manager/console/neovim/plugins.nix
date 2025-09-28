@@ -49,7 +49,7 @@ in
         cmp_luasnip
         cmp-nvim-lsp-signature-help
         (buildPlugin "skkeleton")
-        denops-vim
+        # denops-vim
         vim-suda
         friendly-snippets
         lualine-nvim
