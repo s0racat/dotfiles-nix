@@ -2,7 +2,6 @@
   pkgs,
   lib,
   self,
-  unstable,
   ...
 }:
 let
