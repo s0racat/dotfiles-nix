@@ -33,6 +33,15 @@ in
       patchShebangs .
     '';
   });
+  # tmux = prev.tmux.overrideAttrs (oldAttrs: {
+  #   src = prev.fetchFromGitHub {
+  #     owner = "tmux";
+  #     repo = "tmux";
+  #     rev = "3e28777";
+  #     hash = "sha256-EIytv4wIxLnvTE9fXIJIbrxABAaEHnHpQ9irc3bRxSI=";
+  #   };
+  # });
+
   sources = final.callPackage "${self}/_sources/generated.nix" { };
   gh-fzgist = final.callPackage "${self}/pkgs/gh-fzgist.nix" { };
   playerctl-notify = final.callPackage "${self}/pkgs/playerctl-notify" { };
