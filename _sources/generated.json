@@ -1,4 +1,25 @@
 {
+    "denops-vim": {
+        "cargoLocks": null,
+        "date": "2025-08-24",
+        "extract": null,
+        "name": "denops-vim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "vim-denops",
+            "repo": "denops.vim",
+            "rev": "a278b8342459e4687f24d4d575d72ff593326cee",
+            "sha256": "sha256-JIRV9xfOqX6GLqBAeYqOePqaFWSyAr157958hBxmP8w=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "a278b8342459e4687f24d4d575d72ff593326cee"
+    },
     "hlchunk": {
         "cargoLocks": null,
         "date": "2025-05-06",
