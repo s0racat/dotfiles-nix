@@ -24,4 +24,4 @@ fetch.github = "kdheepak/lazygit.nvim"
 
 [denops-vim]
 src.git = "https://github.com/vim-denops/denops.vim"
-fetch.github = "https://github.com/vim-denops/denops.vim"
+fetch.github = "vim-denops/denops.vim"
