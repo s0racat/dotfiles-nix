@@ -68,6 +68,10 @@ in
           path = luasnip;
         }
         {
+          name = "rainbow-delimiters.nvim";
+          path = rainbow-delimiters-nvim;
+        }
+        {
           name = "hlchunk.nvim";
           path = buildPlugin "hlchunk";
         }

@@ -26,23 +26,24 @@ local spec = {
 
 	{ "nvim-tree/nvim-web-devicons", opt = true },
 
-	-- {
-	-- 	-- Add indentation guides even on blank lines
-	-- 	"shellRaining/hlchunk.nvim",
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	config = function()
-	-- 		require("hlchunk").setup({
-	-- 			chunk = {
-	-- 				enable = true,
-	-- 				-- ...
-	-- 			},
-	-- 			indent = {
-	-- 				enable = true,
-	-- 				-- ...
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		-- Add indentation guides even on blank lines
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("hlchunk").setup({
+				chunk = {
+					enable = true,
+					-- ...
+				},
+				indent = {
+					enable = true,
+					-- ...
+				},
+			})
+		end,
+	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
 		event = { "BufReadPost", "BufNewFile" },
