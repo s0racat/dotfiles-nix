@@ -12,8 +12,8 @@
     historyLimit = 999999999;
     sensibleOnTop = false;
     extraConfig = builtins.readFile ./tmux.conf;
-    plugins = with pkgs.tmuxPlugins; [
-      nord
-    ];
+    # plugins = with pkgs.tmuxPlugins; [
+    #   nord
+    # ];
   };
 }

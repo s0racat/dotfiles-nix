@@ -12,6 +12,7 @@
               nix
               tsx
               bash
+              python
             ]
           )).dependencies;
       };

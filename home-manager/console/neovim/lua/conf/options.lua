@@ -42,6 +42,7 @@ vim.o.sidescrolloff = 16
 
 vim.o.sidescroll = 1
 vim.o.cmdheight = 0
+vim.o.laststatus = 3
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- expandtab オプションを設定します。タブ文字をスペースに変換します。
