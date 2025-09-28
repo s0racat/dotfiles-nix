@@ -23,6 +23,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-unstable.url = "nixpkgs/nixos-unstable-small";
   };
 
   outputs =

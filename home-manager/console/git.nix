@@ -9,6 +9,14 @@
     userName = "soracat";
     userEmail = "125882337+s0racat@users.noreply.github.com";
     # signing.signByDefault = true;
+    delta = {
+      enable = true;
+      options = {
+        features = "side-by-side line-numbers decorations";
+        whitespace-error-style = "22 reverse";
+        syntax-theme = "Nord";
+      };
+    };
     extraConfig = {
       # url."https://github.com".pushInsteadOf = "git@github.com";
       ghq.root = "${config.home.homeDirectory}/ghq";

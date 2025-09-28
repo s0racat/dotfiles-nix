@@ -23,6 +23,7 @@ let
     self
     nix-darwin
     nix-index-database
+    nixos-unstable
     ;
 in
 {
@@ -52,6 +53,7 @@ in
             inputs
             self
             ;
+          unstable = nixos-unstable.legacyPackages.${system};
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -128,6 +130,7 @@ in
                   inputs
                   self
                   ;
+                unstable = nixos-unstable.legacyPackages.${system};
               };
             };
           }
