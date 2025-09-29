@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   dconf.settings = {
     "org/gnome/shell" = {
@@ -78,7 +83,9 @@
       repeat-interval = lib.hm.gvariant.mkUint32 30;
       delay = lib.hm.gvariant.mkUint32 280;
     };
-    "org/gnome/desktop/input-sources".xkb-options = [ "caps:none" ];
+    "org/gnome/desktop/input-sources".xkb-options = [
+      config.wayland.windowManager.sway.config.input."type:keyboard".xkb_options
+    ];
 
   };
 }
