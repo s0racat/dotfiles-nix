@@ -38,7 +38,7 @@ in
     shellAliases = {
       ssh = winexe "/mnt/c/Program Files/OpenSSH/ssh.exe";
       ssh-add = winexe "/mnt/c/Program Files/OpenSSH/ssh-add.exe";
-      code = winexe "/mnt/c/Users/takumi/AppData/Local/Programs/Microsoft VS Code/bin/code";
+      code = winexe "/mnt/c/Users/${config.home.username}/AppData/Local/Programs/Microsoft VS Code/bin/code";
       firefox = winexe "/mnt/c/Program Files/Mozilla Firefox/firefox.exe";
     };
     initContent = ''
