@@ -14,6 +14,10 @@ nix run
 chsh -s $(which zsh)
 ```
 
+# Disable appendWindowsPath
+
+https://yanor.net/wiki/?Windows/WSL/%E7%9B%B8%E4%BA%92%E9%81%8B%E7%94%A8/Windows%E3%81%AEPATH%E3%82%92Linux%E3%81%A7%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%8F%E3%81%99%E3%82%8B
+
 # docker
 
 [https://learn.microsoft.com/ja-jp/windows/wsl/systemd](https://learn.microsoft.com/ja-jp/windows/wsl/systemd)
