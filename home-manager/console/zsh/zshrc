@@ -17,3 +17,5 @@ command -v exa &>/dev/null && function chpwd() {
   exa
 }
 export LANG=en_US.UTF-8
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
