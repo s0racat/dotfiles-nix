@@ -24,7 +24,7 @@ in
       };
 
       font = {
-        size = 12;
+        size = 13;
         bold.family = "monospace";
         bold_italic.family = "monospace";
         italic.family = "monospace";

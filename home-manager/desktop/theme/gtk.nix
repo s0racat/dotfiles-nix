@@ -3,7 +3,7 @@
   gtk = {
     enable = true;
     font.name = "Roboto";
-    font.size = 12;
+    font.size = 13;
     cursorTheme = {
       package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
