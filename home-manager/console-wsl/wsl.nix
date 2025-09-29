@@ -5,6 +5,9 @@
   ...
 }:
 let
+  winexeBin =
+    path:
+    toString (pkgs.writeShellScriptBin (builtins.baseNameOf path) ''${lib.escapeShellArg path} $@'');
   winexe =
     path:
     toString (
@@ -17,6 +20,11 @@ in
   # wslpath 'C:\...'
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
+  home.packages = [
+    (winexeBin "/mnt/c/Windows/explorer.exe")
+    (winexeBin "/mnt/c/Windows/System32/rundll32.exe")
+
+  ];
   home.sessionVariables = {
     GH_TOKEN = "$(${winexe "/mnt/c/Program Files/GitHub CLI/gh.exe"} auth token)";
     WIN_HOME = "/mnt/c/Users/${config.home.username}";
@@ -31,7 +39,6 @@ in
       ssh = winexe "/mnt/c/Program Files/OpenSSH/ssh.exe";
       ssh-add = winexe "/mnt/c/Program Files/OpenSSH/ssh-add.exe";
       code = winexe "/mnt/c/Users/takumi/AppData/Local/Programs/Microsoft VS Code/bin/code";
-      explorer = winexe "/mnt/c/Windows/explorer.exe";
       firefox = winexe "/mnt/c/Program Files/Mozilla Firefox/firefox.exe";
     };
     initContent = ''
