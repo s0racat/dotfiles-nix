@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   winexe =
     path:
@@ -9,10 +14,12 @@ let
     );
 in
 {
+  # wslpath 'C:\...'
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
   home.sessionVariables = {
     GH_TOKEN = "$(${winexe "/mnt/c/Program Files/GitHub CLI/gh.exe"} auth token)";
+    WIN_HOME = "/mnt/c/Users/${config.home.username}";
   };
   programs.git = {
     extraConfig = {
