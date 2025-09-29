@@ -20,7 +20,7 @@ in
       };
 
       env = {
-        TERM = "tmux-256color";
+        TERM = "alacritty";
       };
 
       font = {
@@ -462,9 +462,8 @@ in
       ];
 
       shell = {
-        program = "/usr/bin/zsh";
+        program = "sh";
         args = [
-          "--login"
           "-c"
           "tmux attach || tmux"
         ];

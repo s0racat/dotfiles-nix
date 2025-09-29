@@ -9,6 +9,7 @@ local spec = {
 				ensure_installed = {}, -- 必要な言語を指定
 				highlight = {
 					enable = true,
+					additional_vim_regex_highlighting = false,
 				},
 				indent = {
 					enable = true,

@@ -38,7 +38,10 @@ in
         nvim-lspconfig
         fidget-nvim
         (buildPlugin "vimdoc-ja")
-        (buildPlugin "denops-vim")
+        {
+          name = "denops.vim";
+          path = buildPlugin "denops-vim";
+        }
         nvim-autopairs
         registers-nvim
         nvim-colorizer-lua

@@ -12,10 +12,10 @@
     settings = {
 
       main = {
-        shell = "zsh --login -c 'tmux attach || tmux'";
+        shell = "sh -c 'tmux attach || tmux'";
         font = "monospace:size=12";
         dpi-aware = "yes";
-        term = "tmux-256color";
+        term = "foot";
       };
       cursor = {
         style = "block";
