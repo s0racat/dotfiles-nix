@@ -34,6 +34,9 @@ in
     };
   };
   programs.zsh = {
+    sessionVariables = {
+      GH_TOKEN = "$(gh.exe auth token)";
+    };
     shellAliases = {
       ssh = "ssh.exe";
       ssh-add = "ssh-add.exe";
@@ -41,7 +44,6 @@ in
       firefox = "firefox.exe";
     };
     initContent = ''
-      export GH_TOKEN=$(gh.exe auth token)
       wwhich() {
         /mnt/c/Windows/System32/where.exe "$1" 2>/dev/null |
           sed 's/\r$//' |
