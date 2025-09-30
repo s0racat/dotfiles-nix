@@ -21,17 +21,22 @@ local function skkeleton()
 end
 local spec = {
     {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            triggers = {
+                { "<leader>", mode = { "n", "v" } },
+            }
+        },
+    },
+    {
         "monkoose/matchparen.nvim",
         event        = 'VeryLazy',
         dependencies = {
             "nvim-treesitter/nvim-treesitter"
         },
         config       = function()
-            vim.api.nvim_set_hl(0, "MatchParen", {
-                fg = "#eceff4",
-                bg = "#5e81ac",
-                bold = true,
-            })
+            vim.api.nvim_set_hl(0, "MatchParen", {fg = "#eceff4",bg = "#5e81ac",bold = true,})
         end
     },
     {
@@ -39,7 +44,12 @@ local spec = {
         priority = 1000,
         lazy = false,
         config = function()
-            vim.g.nord_italic = false
+            -- vim.g.nord_italic = false
+            vim.api.nvim_set_hl(0, "MatchParen", {
+                fg = "#eceff4",
+                bg = "#5e81ac",
+                bold = true,
+            })
             require("nord").set()
         end,
     },

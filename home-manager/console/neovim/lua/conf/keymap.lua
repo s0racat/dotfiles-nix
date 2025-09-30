@@ -4,10 +4,11 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "<esc><esc>", ":nohlsearch<cr>")
-vim.keymap.set("n", "<c-p>", ":bprev<cr>")
-vim.keymap.set("n", "<c-n>", ":bnext<cr>")
+vim.keymap.set("n", "gT", ":bprev<cr>")
+vim.keymap.set("n", "gt", ":bnext<cr>")
+vim.keymap.set("n", "<leader>n", ":enew<cr>", { desc = "New buffer" })
 vim.keymap.set("n", "<c-q>", ":bdelete<cr>")
-vim.keymap.set("t", "<c-]>", "<c-\\><c-n>", { noremap = true, silent = true })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
@@ -33,11 +34,6 @@ vim.keymap.set("n", "<C-q>", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
--- ウィンドウ移動は Ctrl + h/j/k/l
-vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
 -- ノーマルモード
 vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "c", '"_c')
@@ -50,4 +46,7 @@ vim.keymap.set("n", "S", '"_S')
 vim.keymap.set("v", "d", '"_d')
 vim.keymap.set("v", "c", '"_c')
 vim.keymap.set("v", "x", '"_x')
+
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { silent = true })
 

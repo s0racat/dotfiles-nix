@@ -33,7 +33,7 @@ in
   programs.neovim.extraLuaConfig =
     let
       plugins = with pkgs.vimPlugins; [
-        vim-closetag
+        nvim-ts-autotag
         gitsigns-nvim
         nvim-lspconfig
         fidget-nvim
@@ -47,6 +47,10 @@ in
           path = buildPlugin "matchparen_nvim";
         }
         nvim-autopairs
+        {
+          name ="which-key.nvim";
+          path = which-key-nvim;
+        }
         registers-nvim
         nvim-colorizer-lua
         (buildPlugin "winresizer")
