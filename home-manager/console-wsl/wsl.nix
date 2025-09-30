@@ -14,7 +14,7 @@ in
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
   home.packages = [
-    (pkgs.writeShellScriptBin "clip.exe" ''${pkgs.iconv}/bin/iconv -t sjis | ${lib.escapeShellArg "/mnt/c/Windows/System32/clip.exe"} $@'')
+    (pkgs.writeShellScriptBin "clip.exe" ''${pkgs.iconv}/bin/iconv -t utf16le | ${lib.escapeShellArg "/mnt/c/Windows/System32/clip.exe"} $@'')
   ]
   ++ winExes [
     "/mnt/c/Windows/explorer.exe"
