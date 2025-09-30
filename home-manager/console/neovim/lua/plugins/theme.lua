@@ -21,23 +21,6 @@ local function skkeleton()
 end
 local spec = {
 	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {
-			triggers = {
-				{ "<leader>", mode = { "n", "v" } },
-			},
-		},
-	},
-	{
-		"monkoose/matchparen.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {},
-	},
-	{
 		"shaunsingh/nord.nvim",
 		priority = 1000,
 		lazy = false,
@@ -72,31 +55,6 @@ local spec = {
 
 	{ "nvim-tree/nvim-web-devicons", opt = true },
 
-	{
-		-- Add indentation guides even on blank lines
-		"shellRaining/hlchunk.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("hlchunk").setup({
-				chunk = {
-					enable = true,
-					-- ...
-				},
-				indent = {
-					enable = true,
-					-- ...
-				},
-			})
-		end,
-	},
-	{
-		"hiphish/rainbow-delimiters.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		main = "rainbow-delimiters.setup",
-		opts = {},
-	},
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",

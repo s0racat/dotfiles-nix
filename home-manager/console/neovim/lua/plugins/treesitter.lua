@@ -1,9 +1,7 @@
 local spec = {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
+
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {}, -- 必要な言語を指定
@@ -17,8 +15,10 @@ local spec = {
 			})
 		end,
 	},
+
 	{
 		"windwp/nvim-ts-autotag",
+		ft = { "html" },
 		config = function()
 			require("nvim-ts-autotag").setup({
 				opts = {
@@ -30,11 +30,11 @@ local spec = {
 				-- Also override individual filetype configs, these take priority.
 				-- Empty by default, useful if one of the "opts" global settings
 				-- doesn't work well in a specific filetype
-				per_filetype = {
-					["html"] = {
-						enable_close = false,
-					},
-				},
+				-- per_filetype = {
+				-- 	["html"] = {
+				-- 		enable_close = false,
+				-- 	},
+				-- },
 			})
 		end,
 	},

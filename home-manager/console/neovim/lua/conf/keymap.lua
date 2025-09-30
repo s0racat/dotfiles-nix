@@ -42,7 +42,6 @@ vim.keymap.set("n", "S", '"_S')
 
 -- ビジュアルモード
 vim.keymap.set("v", "d", '"_d')
-vim.keymap.set("v", "c", '"_c')
 vim.keymap.set("v", "x", '"_x')
 
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { silent = true })

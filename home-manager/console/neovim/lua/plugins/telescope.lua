@@ -15,6 +15,8 @@ local spec = {
 			"<leader>x",
 		},
 		config = function()
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
 			require("telescope").setup({
 				defaults = {
 					mappings = {
@@ -22,6 +24,23 @@ local spec = {
 							["<esc>"] = require("telescope.actions").close,
 							["<C-u>"] = false,
 							["<C-d>"] = false,
+							["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
+							["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+							["<CR>"] = function(prompt_bufnr)
+								local picker = action_state.get_current_picker(prompt_bufnr)
+								local multi = picker:get_multi_selection()
+								if vim.tbl_isempty(multi) then
+									actions.select_default(prompt_bufnr) -- 1個だけなら普通に開く
+								else
+									actions.close(prompt_bufnr)
+									for _, entry in ipairs(multi) do
+										-- バッファとして順番に開く
+										vim.cmd("badd " .. vim.fn.fnameescape(entry.value))
+									end
+									-- 最初に選んだやつに移動
+									vim.cmd("buffer " .. vim.fn.fnameescape(multi[1].value))
+								end
+							end,
 						},
 					},
 				},
