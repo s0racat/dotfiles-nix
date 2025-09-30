@@ -12,7 +12,7 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "<leader>s", ":%s///g<Left><Left>", { silent = false })
+vim.keymap.set("n", "<leader>s", ":%s///g<Left><Left><Left>", { silent = false })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { silent = true }) -- 選択範囲をシステムクリップボードにコピー
 vim.keymap.set("n", "<leader>Y", '"+Y', { silent = true }) -- 行全体をシステムクリップボードにコピー
 vim.keymap.set("n", "<C-q>", function()
@@ -36,10 +36,8 @@ end, { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
 -- ノーマルモード
 vim.keymap.set("n", "d", '"_d')
-vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "s", '"_s')
-vim.keymap.set("n", "C", '"_C')
 vim.keymap.set("n", "S", '"_S')
 
 -- ビジュアルモード
@@ -49,4 +47,3 @@ vim.keymap.set("v", "x", '"_x')
 
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { silent = true })
-

@@ -84,6 +84,18 @@ local spec = {
 							},
 						},
 					})
+				elseif lsp == "lua_ls" then
+					lspconfig[lsp].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { "vim" },
+								},
+							},
+						},
+					})
 				else
 					lspconfig[lsp].setup({
 						on_attach = on_attach,

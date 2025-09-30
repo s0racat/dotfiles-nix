@@ -48,7 +48,7 @@ in
         }
         nvim-autopairs
         {
-          name ="which-key.nvim";
+          name = "which-key.nvim";
           path = which-key-nvim;
         }
         registers-nvim
