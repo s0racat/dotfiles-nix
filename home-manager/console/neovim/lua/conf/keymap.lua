@@ -38,3 +38,16 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+-- ノーマルモード
+vim.keymap.set("n", "d", '"_d')
+vim.keymap.set("n", "c", '"_c')
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("n", "s", '"_s')
+vim.keymap.set("n", "C", '"_C')
+vim.keymap.set("n", "S", '"_S')
+
+-- ビジュアルモード
+vim.keymap.set("v", "d", '"_d')
+vim.keymap.set("v", "c", '"_c')
+vim.keymap.set("v", "x", '"_x')
+

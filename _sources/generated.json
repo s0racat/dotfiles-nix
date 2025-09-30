@@ -62,6 +62,27 @@
         },
         "version": "2305deed25bc61b866d5d39189e9105a45cf1cfb"
     },
+    "matchparen_nvim": {
+        "cargoLocks": null,
+        "date": "2025-06-28",
+        "extract": null,
+        "name": "matchparen_nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "monkoose",
+            "repo": "matchparen.nvim",
+            "rev": "1a2dcbd026bf99b20b89345883d54823f80a2bee",
+            "sha256": "sha256-ur3WJRwBb3+8UPICPJFKW6ye1mlIVwh/ZhXmtm9xI8Y=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "1a2dcbd026bf99b20b89345883d54823f80a2bee"
+    },
     "skkeleton": {
         "cargoLocks": null,
         "date": "2025-09-27",

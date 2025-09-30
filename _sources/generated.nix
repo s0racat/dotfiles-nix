@@ -37,6 +37,18 @@
     };
     date = "2025-09-11";
   };
+  matchparen_nvim = {
+    pname = "matchparen_nvim";
+    version = "1a2dcbd026bf99b20b89345883d54823f80a2bee";
+    src = fetchFromGitHub {
+      owner = "monkoose";
+      repo = "matchparen.nvim";
+      rev = "1a2dcbd026bf99b20b89345883d54823f80a2bee";
+      fetchSubmodules = false;
+      sha256 = "sha256-ur3WJRwBb3+8UPICPJFKW6ye1mlIVwh/ZhXmtm9xI8Y=";
+    };
+    date = "2025-06-28";
+  };
   skkeleton = {
     pname = "skkeleton";
     version = "8fa36fc8065d600706d5edeeb1008a5233eb1d51";

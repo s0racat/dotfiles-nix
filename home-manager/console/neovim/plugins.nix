@@ -42,6 +42,10 @@ in
           name = "denops.vim";
           path = buildPlugin "denops-vim";
         }
+        {
+          name = "matchparen.nvim";
+          path = buildPlugin "matchparen_nvim";
+        }
         nvim-autopairs
         registers-nvim
         nvim-colorizer-lua

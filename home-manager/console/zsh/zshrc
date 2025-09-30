@@ -1,4 +1,5 @@
 setopt correct
+setopt interactivecomments
 
 # edit-command-line
 autoload -U edit-command-line

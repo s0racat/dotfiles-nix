@@ -56,3 +56,4 @@ vim.opt.softtabstop = 4
 
 -- shiftwidth オプションを設定します。インデントに使用するスペースの幅を4スペースに設定します。
 vim.opt.shiftwidth = 4
+vim.o.helpheight = 999
