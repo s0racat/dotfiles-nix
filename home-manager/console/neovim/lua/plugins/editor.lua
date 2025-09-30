@@ -55,6 +55,14 @@ local spec = {
 		end,
 	},
 	{
+		"monkoose/matchparen.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		opts = {},
+	},
+	{
 		"hiphish/rainbow-delimiters.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
