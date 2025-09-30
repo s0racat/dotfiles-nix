@@ -6,8 +6,7 @@
 }:
 let
   winexe =
-    path:
-    toString (pkgs.writeShellScriptBin (builtins.baseNameOf path) ''${lib.escapeShellArg path} $@'');
+    path: pkgs.writeShellScriptBin (builtins.baseNameOf path) ''${lib.escapeShellArg path} $@'';
   winExes = paths: builtins.map winexe paths;
 in
 {
@@ -27,7 +26,6 @@ in
     "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
   ];
   home.sessionVariables = {
-    GH_TOKEN = "$(gh.exe auth token)";
     WIN_HOME = "/mnt/c/Users/${config.home.username}";
   };
   programs.git = {
@@ -43,6 +41,7 @@ in
       firefox = "firefox.exe";
     };
     initContent = ''
+      export GH_TOKEN=$(gh.exe auth token)
       wwhich() {
         /mnt/c/Windows/System32/where.exe "$1" 2>/dev/null |
           sed 's/\r$//' |
