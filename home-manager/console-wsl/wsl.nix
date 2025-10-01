@@ -5,16 +5,21 @@
   ...
 }:
 let
-  winexe =
-    path: pkgs.writeShellScriptBin (builtins.baseNameOf path) ''${lib.escapeShellArg path} $@'';
-  winExes = paths: builtins.map winexe paths;
+
+  winExes =
+    let
+      winexe =
+        path: pkgs.writeShellScriptBin (builtins.baseNameOf path) ''${lib.escapeShellArg path} $@'';
+    in
+    paths: builtins.map winexe paths;
+  code = pkgs.writeShellScriptBin "code.exe" ''${lib.escapeShellArg "/mnt/c/Users/${config.home.username}/AppData/Local/Programs/Microsoft VS Code/bin/code"} $@'';
 in
 {
   # wslpath 'C:\...'
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
   home.packages = [
-    (pkgs.writeShellScriptBin "clip.exe" ''${pkgs.iconv}/bin/iconv -t utf16le | ${lib.escapeShellArg "/mnt/c/Windows/System32/clip.exe"} $@'')
+    code
   ]
   ++ winExes [
     "/mnt/c/Windows/explorer.exe"
@@ -22,8 +27,8 @@ in
     "/mnt/c/Program Files/GitHub CLI/gh.exe"
     "/mnt/c/Program Files/OpenSSH/ssh.exe"
     "/mnt/c/Program Files/OpenSSH/ssh-add.exe"
-    "/mnt/c/Users/${config.home.username}/AppData/Local/Programs/Microsoft VS Code/bin/code"
     "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+    "/mnt/c/Users/${config.home.username}/scoop/shims/win32yank.exe"
   ];
   home.sessionVariables = {
     WIN_HOME = "/mnt/c/Users/${config.home.username}";
@@ -40,7 +45,7 @@ in
     shellAliases = {
       ssh = "ssh.exe";
       ssh-add = "ssh-add.exe";
-      code = "code";
+      code = "code.exe";
       firefox = "firefox.exe";
     };
     initContent = ''

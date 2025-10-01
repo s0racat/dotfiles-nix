@@ -18,7 +18,7 @@
       WORDCHARS = "*?_-[]~&!$%^(){}<>";
     };
     sessionVariables = {
-      LANG = "en-US.UTF-8";
+      LANG = "en_US.UTF-8";
     };
     completionInit = "autoload -U compinit && compinit -C";
     shellAliases = {
