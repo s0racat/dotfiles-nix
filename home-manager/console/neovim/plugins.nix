@@ -2,6 +2,7 @@
   pkgs,
   lib,
   self,
+  config,
   ...
 }:
 let
@@ -131,6 +132,6 @@ in
   };
 
   xdg.configFile."nvim/lua/plugins/" = {
-    source = ./lua/plugins;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim/lua/plugins";
   };
 }

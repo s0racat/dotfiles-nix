@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -10,6 +10,6 @@
   };
 
   xdg.configFile."nvim/lua/conf" = {
-    source = ./lua/conf;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles-nix/home-manager/console/neovim/lua/conf";
   };
 }
