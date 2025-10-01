@@ -7,7 +7,6 @@ vim.keymap.set("n", "<esc><esc>", ":nohlsearch<cr>")
 vim.keymap.set("n", "gT", ":bprev<cr>")
 vim.keymap.set("n", "gt", ":bnext<cr>")
 vim.keymap.set("n", "<leader>n", ":enew<cr>", { desc = "New buffer" })
-vim.keymap.set("n", "<c-q>", ":bdelete<cr>")
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
@@ -15,7 +14,7 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<leader>s", ":%s///g<Left><Left><Left>", { silent = false })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { silent = true }) -- 選択範囲をシステムクリップボードにコピー
 vim.keymap.set("n", "<leader>Y", '"+Y', { silent = true }) -- 行全体をシステムクリップボードにコピー
-vim.keymap.set("n", "<C-q>", function()
+vim.keymap.set("n", "<leader>q", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local buffers = vim.fn.getbufinfo({ buflisted = 1 })
 	local count = 0
