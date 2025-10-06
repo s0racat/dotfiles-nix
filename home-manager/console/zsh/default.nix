@@ -6,6 +6,7 @@
   ...
 }:
 {
+  programs.dircolors.enable = true;
   programs.zsh = {
     enable = true;
     package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
@@ -15,7 +16,7 @@
     autocd = true;
     defaultKeymap = "emacs";
     localVariables = {
-      WORDCHARS = "*?_-[]~&!$%^(){}<>";
+      WORDCHARS = "*?_[]~&!$%^(){}<>";
     };
     sessionVariables = {
       LANG = "en_US.UTF-8";
