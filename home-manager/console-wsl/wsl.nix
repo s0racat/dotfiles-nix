@@ -19,23 +19,18 @@ let
         '';
     in
     paths: builtins.map winexe paths;
-  ssh = pkgs.writeShellScriptBin "ssh.exe" ''
-    ${lib.escapeShellArg "/mnt/c/Program Files/OpenSSH/ssh.exe"} -F ~/.ssh/config $@
-  '';
 
 in
 {
   # wslpath 'C:\...'
   # $ dpkg-reconfigure locales
   # select en_US.UTF-8
-  home.packages = [
-    ssh
-  ]
-  ++ winExes [
+  home.packages = winExes [
     "/mnt/c/Windows/explorer.exe"
     "/mnt/c/Windows/System32/rundll32.exe"
     "/mnt/c/Program Files/GitHub CLI/gh.exe"
     "/mnt/c/Program Files/OpenSSH/ssh-add.exe"
+    "/mnt/c/Program Files/OpenSSH/ssh.exe"
     "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
     "/mnt/c/Users/${config.home.username}/scoop/shims/win32yank.exe"
     "/mnt/c/Users/${config.home.username}/AppData/Local/Programs/Microsoft VS Code/bin/code"
