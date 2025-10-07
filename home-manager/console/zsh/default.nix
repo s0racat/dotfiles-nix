@@ -7,6 +7,9 @@
 }:
 {
   programs.dircolors.enable = true;
+  programs.dircolors.settings = {
+      OTHER_WRITABLE = "30;46";
+  };
   programs.zsh = {
     enable = true;
     package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
