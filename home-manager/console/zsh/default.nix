@@ -8,7 +8,7 @@
 {
   programs.dircolors.enable = true;
   programs.dircolors.settings = {
-      OTHER_WRITABLE = "30;46";
+    OTHER_WRITABLE = "30;46";
   };
   programs.zsh = {
     enable = true;
@@ -33,7 +33,7 @@
       nix-shell = "nix-shell --command $(command -v zsh)";
       rm = "rip";
       lg = "lazygit";
-      ll = "exa -F -alg --time-style=long-iso";
+      ll = "exa -F -oalg --time-style=long-iso";
       ls = "exa -F --time-style=long-iso";
       l = "ls";
       la = "exa -F -a --time-style=long-iso";
