@@ -19,21 +19,6 @@ let
         '';
     in
     paths: builtins.map winexe paths;
-
-  funcs =
-    exes:
-    let
-      func =
-        exe:
-        let
-          name = lib.removeSuffix ".exe" (builtins.baseNameOf exe);
-        in
-        ''
-          function ${name}() { ${name}.exe "$@" }
-          compdef ${name}=${name}
-        '';
-    in
-    lib.concatStringsSep "\n" (builtins.map func exes);
   ssh = pkgs.writeShellScriptBin "ssh.exe" ''
     ${lib.escapeShellArg "/mnt/c/Program Files/OpenSSH/ssh.exe"} -F ~/.ssh/config $@
   '';
