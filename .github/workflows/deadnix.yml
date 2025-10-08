@@ -1,5 +1,9 @@
 on: [push]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 name: Dead code analysis
 
 jobs:
