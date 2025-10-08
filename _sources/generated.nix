@@ -15,15 +15,15 @@
   };
   hlchunk = {
     pname = "hlchunk";
-    version = "474ec5d0f220158afa83aaefab32402e710d3032";
+    version = "937135185f99a30cb1413fff76a5c971f250b1a7";
     src = fetchFromGitHub {
       owner = "shellRaining";
       repo = "hlchunk.nvim";
-      rev = "474ec5d0f220158afa83aaefab32402e710d3032";
+      rev = "937135185f99a30cb1413fff76a5c971f250b1a7";
       fetchSubmodules = false;
-      sha256 = "sha256-zXWMwUNvofGNjLVYK/pPW7b062zP/yqUMk6lj3zgZqs=";
+      sha256 = "sha256-HqW0A/P1FqoEeecFsEAeNiQK/8mzxd47V+wtxpypGX8=";
     };
-    date = "2025-05-06";
+    date = "2025-10-08";
   };
   lazygit_nvim = {
     pname = "lazygit_nvim";
