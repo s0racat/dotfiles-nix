@@ -46,4 +46,5 @@ in
   gh-fzgist = final.callPackage "${self}/pkgs/gh-fzgist.nix" { };
   playerctl-notify = final.callPackage "${self}/pkgs/playerctl-notify" { };
   mbusb = final.callPackage "${self}/pkgs/mbusb.nix" { };
+  win32yank = final.callPackage "${self}/pkgs/win32yank.nix" { };
 }
