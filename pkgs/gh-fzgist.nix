@@ -17,8 +17,8 @@ let
   ];
 in
 stdenvNoCC.mkDerivation {
-  inherit (sources.gh-fzgist) pname src version;
-
+  inherit (sources.gh-fzgist) pname src;
+version = lib.substring 0 7 mbusb.version;
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
