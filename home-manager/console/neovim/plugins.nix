@@ -7,12 +7,6 @@
 }:
 let
   substituteStrings = import "${self}/lib/substituteStrings.nix";
-  buildPlugin =
-    name:
-    pkgs.vimUtils.buildVimPlugin {
-      inherit (pkgs.sources.${name}) pname version src;
-
-    };
 in
 {
   programs.neovim = {
