@@ -25,6 +25,8 @@ jobs:
           create_pr: false
           flags: "--edit --exclude=./_sources"
       - name: create pr
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr create \
             --base main \
