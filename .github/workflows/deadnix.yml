@@ -19,14 +19,6 @@ jobs:
           name: deadnix
       - uses: astro/deadnix-action@main
         with:
-          create_pr: false
+          create_pr: true
           flags: "--edit --exclude=./_sources"
-      - name: create pr
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --base main \
-            --head ${{ github.ref_name }} \
-            --title "Auto-generated PR for ${{ github.ref_name }}" \
-            --body "This PR was created automatically by GitHub Actions."
+     
