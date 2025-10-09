@@ -1,34 +1,15 @@
-on:
-  push:
-  workflow_dispatch:
-
-
-
-name: Dead code analysis
+name: Open new issue
+on: workflow_dispatch
 
 jobs:
-  deadnix:
-    name: Deadnix
+  open-issue:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
+      issues: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v25
-      - uses: cachix/cachix-action@v14
-        with:
-          name: deadnix
-      - uses: astro/deadnix-action@main
-        with:
-          create_pr: false
-          flags: "--edit --exclude=./_sources"
-      - name: create pr
+      - run: |
+          gh issue --repo ${{ github.repository }} \
+            create --title "Issue title" --body "Issue body"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --base main \
-            --head ${{ github.ref_name }} \
-            --title "Auto-generated PR for ${{ github.ref_name }}" \
-            --body "This PR was created automatically by GitHub Actions."
