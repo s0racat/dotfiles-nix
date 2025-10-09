@@ -2,9 +2,7 @@ on:
   push:
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
+
 
 name: Dead code analysis
 
@@ -12,6 +10,9 @@ jobs:
   deadnix:
     name: Deadnix
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v25
