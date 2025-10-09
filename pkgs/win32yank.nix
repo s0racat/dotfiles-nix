@@ -8,7 +8,7 @@ let
   inherit (sources) win32yank;
 in
 stdenvNoCC.mkDerivation {
-  inherit (win32yank) pname;
+  inherit (win32yank) pname src;
   nativeBuildInputs = [ unzip ];
   version = lib.removePrefix "v" win32yank.version;
 
@@ -26,10 +26,6 @@ stdenvNoCC.mkDerivation {
     install -D -m755 "win32yank.exe" "$out/bin/win32yank.exe"
       runHook postInstall
   '';
-
-  src = win32yank.src // {
-    stripRoot = false;
-  };
 
   meta = with lib; {
     homepage = "https://github.com/equalsraf/win32yank";

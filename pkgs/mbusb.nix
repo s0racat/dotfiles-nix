@@ -1,6 +1,5 @@
 {
   lib,
-  fetchFromGitHub,
   stdenvNoCC,
   makeWrapper,
   coreutils,
@@ -23,19 +22,11 @@ let
     gnused
     unzip
   ];
+  inherit (sources) mbusb;
 in
-stdenvNoCC.mkDerivation rec {
-  inherit (sources.mbusb) src pname version;
-
-  pname = "mbusb";
-  version = "4973c1e";
-
-  src = fetchFromGitHub {
-    owner = "s0racat";
-    repo = "multibootusb";
-    rev = version;
-    hash = "sha256-PWhaD35fRSEtPOr2g9ADW9NLGmxItJ3M7BH3AvUlLqw=";
-  };
+stdenvNoCC.mkDerivation {
+  inherit (mbusb) src pname;
+  version = lib.substring 0 7 mbusb.version;
 
   nativeBuildInputs = [ makeWrapper ];
 
