@@ -15,11 +15,11 @@ let
     coreutils
     gawk
   ];
-gh-fzgist = sources.gh-fzgist;
+  inherit (sources) gh-fzgist;
 in
 stdenvNoCC.mkDerivation {
   inherit (gh-fzgist) pname src;
-version = lib.substring 0 7 gh-fzgist.version;
+  version = lib.substring 0 7 gh-fzgist.version;
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
