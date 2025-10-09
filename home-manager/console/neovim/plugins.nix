@@ -7,7 +7,6 @@
 }:
 let
   substituteStrings = import "${self}/lib/substituteStrings.nix";
-a = "a";
 in
 {
   programs.neovim = {
