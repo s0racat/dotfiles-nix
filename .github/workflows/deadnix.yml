@@ -1,8 +1,8 @@
-on: [push]
-
-permissions:
-  contents: write
-  pull-requests: write
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 name: Dead code analysis
 
