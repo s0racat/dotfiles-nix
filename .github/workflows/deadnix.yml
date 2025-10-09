@@ -22,4 +22,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          create_pr: false
           flags: "--edit --exclude=./_sources"
+      - name: create pr
+        run: |
+          gh pr create \
+            --base main \
+            --head ${{ github.ref_name }} \
+            --title "Auto-generated PR for ${{ github.ref_name }}" \
+            --body "This PR was created automatically by GitHub Actions."
