@@ -1,21 +1,35 @@
 {
   lib,
-  fetchzip,
   stdenvNoCC,
+  sources,
+  unzip,
 }:
-stdenvNoCC.mkDerivation rec {
-  pname = "win32yank";
-  version = "0.1.1";
+let
+  inherit (sources) win32yank;
+in
+stdenvNoCC.mkDerivation {
+  inherit (win32yank) pname;
+  nativeBuildInputs = [ unzip ];
+  version = lib.removePrefix "v" win32yank.version;
 
-  src = fetchzip {
-    url = "https://github.com/equalsraf/win32yank/releases/download/v${version}/win32yank-x64.zip";
-    hash = "sha256-4ivE1cYZhYs4ibx5oiYMOhbse9bdOomk7RjgdVl5lD0=";
+  unpackPhase = ''
+    runHook preUnpack
+
+    unzip $src -d $PWD
+
+    runHook postUnpack
+  '';
+  installPhase = ''
+      runHook preInstall
+
+
+    install -D -m755 "win32yank.exe" "$out/bin/win32yank.exe"
+      runHook postInstall
+  '';
+
+  src = win32yank.src // {
     stripRoot = false;
   };
-
-  installPhase = ''
-    install -D -m755 "win32yank.exe" "$out/bin/win32yank.exe"
-  '';
 
   meta = with lib; {
     homepage = "https://github.com/equalsraf/win32yank";

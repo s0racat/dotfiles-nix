@@ -11,6 +11,7 @@
   gnused,
   grub2_efi,
   exfatprogs,
+  sources,
 }:
 let
   binPath = lib.makeBinPath [
@@ -24,6 +25,8 @@ let
   ];
 in
 stdenvNoCC.mkDerivation rec {
+  inherit (sources.mbusb) src pname version;
+
   pname = "mbusb";
   version = "4973c1e";
 

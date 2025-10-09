@@ -34,73 +34,9 @@ in
   programs.neovim.extraLuaConfig =
     let
       plugins = with pkgs.vimPlugins; [
-        nvim-ts-autotag
-        gitsigns-nvim
-        nvim-lspconfig
-        fidget-nvim
-        (buildPlugin "vimdoc-ja")
-        {
-          name = "denops.vim";
-          path = buildPlugin "denops-vim";
-        }
-        {
-          name = "matchparen.nvim";
-          path = buildPlugin "matchparen_nvim";
-        }
-        nvim-autopairs
-        {
-          name = "which-key.nvim";
-          path = which-key-nvim;
-        }
-        registers-nvim
-        nvim-colorizer-lua
-        (buildPlugin "winresizer")
-        nvim-cmp
-        cmp-buffer
-        cmp-nvim-lsp
-        cmp-path
-        cmp-cmdline
-        cmp_luasnip
-        cmp-nvim-lsp-signature-help
-        (buildPlugin "skkeleton")
-        vim-suda
-        friendly-snippets
-        lualine-nvim
-        nvim-treesitter
-        nvim-treesitter-textobjects
-        nvim-web-devicons
-        plenary-nvim
+
         telescope-fzf-native-nvim
-        telescope-nvim
-        nord-nvim
-        {
-          name = "LuaSnip";
-          path = luasnip;
-        }
-        {
-          name = "rainbow-delimiters.nvim";
-          path = rainbow-delimiters-nvim;
-        }
-        {
-          name = "hlchunk.nvim";
-          path = buildPlugin "hlchunk";
-        }
-        {
-          name = "dial.nvim";
-          path = dial-nvim;
-        }
-        {
-          name = "bufferline.nvim";
-          path = bufferline-nvim;
-        }
-        {
-          name = "telescope-file-browser.nvim";
-          path = telescope-file-browser-nvim;
-        }
-        {
-          name = "lazygit.nvim";
-          path = buildPlugin "lazygit_nvim";
-        }
+
       ];
       mkEntryFromDrv =
         drv:
