@@ -4,7 +4,7 @@ on:
 
 permissions:
   contents: write
-  pull_requests: write
+  pull-requests: write
 
 name: Dead code analysis
 
@@ -19,5 +19,7 @@ jobs:
         with:
           name: deadnix
       - uses: astro/deadnix-action@main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           flags: "--edit --exclude=./_sources"
