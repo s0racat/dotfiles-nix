@@ -10,7 +10,6 @@ jobs:
   deadnix:
     name: Deadnix
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v25
