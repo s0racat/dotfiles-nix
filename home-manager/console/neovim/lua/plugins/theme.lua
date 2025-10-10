@@ -40,6 +40,7 @@ local spec = {
 		"nvim-lualine/lualine.nvim",
 		-- See `:help lualine.txt`
 		event = "VeryLazy",
+		enabled = false,
 		opts = {
 			options = {
 				icons_enabled = true,

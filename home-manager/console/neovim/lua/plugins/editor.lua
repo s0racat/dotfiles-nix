@@ -24,7 +24,19 @@ local spec = {
 		config = function()
 			require("colorizer").setup()
 		end,
-		ft = { "lua", "css", "html", "sass", "less", "typescriptreact", "conf", "vim", "i3config", "swayconfig" },
+		ft = {
+			"lua",
+			"css",
+			"html",
+			"sass",
+			"less",
+			"typescriptreact",
+			"conf",
+			"vim",
+			"i3config",
+			"swayconfig",
+			"tmux",
+		},
 	},
 
 	{
