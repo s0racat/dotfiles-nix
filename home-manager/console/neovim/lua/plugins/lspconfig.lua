@@ -60,48 +60,40 @@ local spec = {
 			-- Add additional capabilities supported by nvim-cmp
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-
 			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 			local servers =
 				{ "lua_ls", "ts_ls", "bashls", "vimls", "emmet_language_server", "gopls", "nil_ls", "pyright" }
+			vim.lsp.config["nix_ls"] = {
+
+				settings = {
+					["nil"] = {
+						nix = {
+							flake = {
+								autoArchive = false,
+							},
+						},
+						formatting = {
+							command = { "nixfmt" },
+						},
+					},
+				},
+			}
+			vim.lsp.config["lua_ls"] = {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			}
+			vim.lsp.config["*"] = {
+				capabilities = capabilities,
+				on_attach = on_attach,
+			}
+
 			for _, lsp in ipairs(servers) do
-				if lsp == "nil_ls" then
-					-- Special configuration for nil_ls
-					lspconfig[lsp].setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-						settings = {
-							["nil"] = {
-								nix = {
-									flake = {
-										autoArchive = false,
-									},
-								},
-								formatting = {
-									command = { "nixfmt" },
-								},
-							},
-						},
-					})
-				elseif lsp == "lua_ls" then
-					lspconfig[lsp].setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-						},
-					})
-				else
-					lspconfig[lsp].setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
-					})
-				end
+				vim.lsp.enable(lsp)
 			end
 
 			--

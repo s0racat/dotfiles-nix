@@ -13,6 +13,5 @@ local spec = {
 			"<C-e>",
 		},
 	},
-	
 }
 return spec
