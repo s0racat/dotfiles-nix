@@ -15,15 +15,15 @@
   };
   mbusb = {
     pname = "mbusb";
-    version = "b98008b8dde5a2960f9e7f15c8f532c502a486bd";
+    version = "ea3c1e840be5719e779ad202a8fb05d976cf3f90";
     src = fetchFromGitHub {
       owner = "s0racat";
       repo = "multibootusb";
-      rev = "b98008b8dde5a2960f9e7f15c8f532c502a486bd";
+      rev = "ea3c1e840be5719e779ad202a8fb05d976cf3f90";
       fetchSubmodules = false;
-      sha256 = "sha256-1mQ5TuQMKqkcQF64nPN7EkrA8HmQTglYXb6FA8+AhE0=";
+      sha256 = "sha256-F0AVoCSbr82tpwl02fBzUycOUPbdl/UfdKzf9eKauNk=";
     };
-    date = "2025-10-09";
+    date = "2025-10-12";
   };
   win32yank = {
     pname = "win32yank";
