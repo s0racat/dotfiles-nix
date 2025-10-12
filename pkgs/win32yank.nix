@@ -20,11 +20,10 @@ stdenvNoCC.mkDerivation {
     runHook postUnpack
   '';
   installPhase = ''
-      runHook preInstall
-
+    runHook preInstall
 
     install -D -m755 "win32yank.exe" "$out/bin/win32yank.exe"
-      runHook postInstall
+    runHook postInstall
   '';
 
   meta = with lib; {
