@@ -31,6 +31,7 @@
       self,
       nixpkgs,
       treefmt-nix,
+    nixos-unstable,
       ...
     }@inputs:
     let
@@ -44,6 +45,14 @@
       nixpkgsFor = forAllSystems (
         system:
         import nixpkgs {
+          inherit system;
+          overlays = self.overlays.default;
+          config.allowUnfree = true;
+        }
+      );
+      nixpkgsMiniFor = forAllSystems (
+        system:
+        import nixos-unstable{
           inherit system;
           overlays = self.overlays.default;
           config.allowUnfree = true;
@@ -98,11 +107,13 @@
         (util.mkHome {
           name = "takumi@sub-laptop";
           extraModules = [ ./home-manager/console-wsl ];
+          pkgs = nixpkgsMiniFor."x86_64-linux";
         })
         (util.mkHome {
           name = "takumi@takumi-Venus-series";
           extraModules = [ ./home-manager/desktop ];
           av1Support = true;
+          pkgs = nixpkgsMiniFor."x86_64-linux";
         })
       ];
     };

@@ -24,7 +24,21 @@
     sessionVariables = {
       LANG = "en_US.UTF-8";
     };
-    completionInit = "autoload -U compinit && compinit -C";
+    # completionInit= ''
+    #   setopt EXTENDED_GLOB
+    #   autoload -U compinit
+    #   for dump in ''${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+1); do
+    #     compinit
+    #     # if [[ -s "$dump" && (! -s "$dump.zwc" || "$dump" -nt "$dump.zwc") ]]; then
+    #     #   touch "$dump"
+    #     #   zcompile "$dump"
+    #     # else
+    #     #   touch "$dump"
+    #     #   touch "$dump.zwc"
+    #     # fi
+    #   done
+    #   compinit -C
+    # '';
     shellAliases = {
       cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
@@ -33,11 +47,11 @@
       nix-shell = "nix-shell --command $(command -v zsh)";
       rm = "rip";
       lg = "lazygit";
-      ll = "exa -F -oalg --time-style=long-iso";
-      ls = "exa -F --time-style=long-iso";
+      ll = "eza -F -oalg --time-style=long-iso";
+      ls = "eza -F --time-style=long-iso";
       l = "ls";
-      la = "exa -F -a --time-style=long-iso";
-      tree = "exa -T --time-style=long-iso";
+      la = "eza -F -a --time-style=long-iso";
+      tree = "eza -T --time-style=long-iso";
       cp = "cp -v";
       mv = "mv -v";
       # rm = "rm -vi";
