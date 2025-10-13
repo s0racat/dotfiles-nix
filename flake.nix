@@ -31,7 +31,7 @@
       self,
       nixpkgs,
       treefmt-nix,
-    nixos-unstable,
+      nixos-unstable,
       ...
     }@inputs:
     let
@@ -52,7 +52,7 @@
       );
       nixpkgsMiniFor = forAllSystems (
         system:
-        import nixos-unstable{
+        import nixos-unstable {
           inherit system;
           overlays = self.overlays.default;
           config.allowUnfree = true;

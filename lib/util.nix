@@ -31,7 +31,7 @@ in
   mkHome =
     {
       name,
-    pkgs,
+      pkgs,
       extraSpecialArgs ? { },
       isNixOS ? false,
       stateVersion ? "25.05",
@@ -77,7 +77,7 @@ in
     {
       name,
       username ? "takumi",
-    pkgs,
+      pkgs,
       specialArgs ? { },
       extraSpecialArgs ? { },
       isNixOS ? true,
