@@ -23,7 +23,7 @@ let
     self
     nix-darwin
     nix-index-database
-    nixos-unstable
+    nixpkgs-small
     ;
 in
 {
@@ -34,7 +34,7 @@ in
       system ? "x86_64-linux",
       extraSpecialArgs ? { },
       isNixOS ? false,
-      stateVersion ? "25.05",
+      stateVersion ? "25.11",
       extraModules ? [ ],
       av1Support ? false,
     }:
@@ -53,7 +53,7 @@ in
             inputs
             self
             ;
-          unstable = nixos-unstable.legacyPackages.${system};
+          stable = nixpkgs-small.legacyPackages.${system};
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -130,7 +130,7 @@ in
                   inputs
                   self
                   ;
-                unstable = nixos-unstable.legacyPackages.${system};
+                stable = nixpkgs-small.legacyPackages.${system};
               };
             };
           }
