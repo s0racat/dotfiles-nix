@@ -31,7 +31,7 @@ in
   mkHome =
     {
       name,
-      pkgs,
+      system ? "x86_64-linux",
       extraSpecialArgs ? { },
       isNixOS ? false,
       stateVersion ? "25.05",
@@ -45,7 +45,7 @@ in
     {
       inherit name;
       value = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgsFor.${system};
         extraSpecialArgs = extraSpecialArgs // {
           inherit
             isNixOS
@@ -53,6 +53,7 @@ in
             inputs
             self
             ;
+          unstable = nixos-unstable.legacyPackages.${system};
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -77,7 +78,7 @@ in
     {
       name,
       username ? "takumi",
-      pkgs,
+      system ? "x86_64-linux",
       specialArgs ? { },
       extraSpecialArgs ? { },
       isNixOS ? true,
@@ -86,7 +87,7 @@ in
       av1Support ? false,
     }:
     let
-      splittedSystem = nixpkgs.lib.splitString "-" pkgs.system;
+      splittedSystem = nixpkgs.lib.splitString "-" system;
       os = builtins.elemAt splittedSystem 1;
       systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
       hmModules =
@@ -104,7 +105,7 @@ in
     {
       inherit name;
       value = systemConfig {
-        inherit pkgs;
+        pkgs = nixpkgsFor.${system};
         specialArgs = specialArgs // {
           inherit
             username
@@ -129,6 +130,7 @@ in
                   inputs
                   self
                   ;
+                unstable = nixos-unstable.legacyPackages.${system};
               };
             };
           }

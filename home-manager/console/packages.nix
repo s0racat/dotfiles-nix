@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   # a = outputs.homeConfigurations."takumi@takumi-Venus-series".config.home.packages
   # lib.unique (builtins.map(x: lib.getName x) a)
@@ -15,8 +15,7 @@
     xdg-utils
     ripgrep
     file
-    # unstable.deno
-    deno
+    unstable.deno
     typescript
     fd
     wget
