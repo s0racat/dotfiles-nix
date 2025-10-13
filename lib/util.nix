@@ -1,6 +1,5 @@
 {
   inputs,
-  nixpkgsFor,
   ...
 }:
 let
@@ -23,7 +22,6 @@ let
     self
     nix-darwin
     nix-index-database
-    nixos-unstable
     ;
 in
 {
