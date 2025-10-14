@@ -15,6 +15,7 @@
     ./packages.nix
     ./starship.nix
     ./zoxide.nix
+    ./nix-index.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];

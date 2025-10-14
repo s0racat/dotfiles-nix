@@ -17,8 +17,8 @@ zstyle ':completion:*:processes' command "ps -au$USER"
 
 zstyle ":completion:*" list-colors "${LS_COLORS}ma=48;2;94;129;172"
 
-command -v exa &>/dev/null && function chpwd() {
-  [ "$PWD" != "$WIN_HOME" ] && exa
+function chpwd() {
+  [ "$PWD" != "$WIN_HOME" ] && eza
 }
 
 bindkey "^[[1;5C" forward-word

@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   programs.starship = {
+    enableZshIntegration = false;
     enable = true;
     settings = {
       format = lib.concatStrings [

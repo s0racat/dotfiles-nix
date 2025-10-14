@@ -6,25 +6,26 @@
   ...
 }:
 {
-  programs.dircolors.enable = true;
-  programs.dircolors.settings = {
-    OTHER_WRITABLE = "30;46";
+  programs.dircolors = {
+    enable = true;
+    enableZshIntegration = false;
+    settings = {
+      OTHER_WRITABLE = "30;46";
+    };
   };
+
   programs.zsh = {
     enable = true;
     package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    autocd = true;
+    completionInit = "";
     defaultKeymap = "emacs";
+    autocd = true;
     localVariables = {
       WORDCHARS = "*?_[]~&!$%^(){}<>";
     };
     sessionVariables = {
       LANG = "en_US.UTF-8";
     };
-    completionInit = "autoload -U compinit && compinit -C";
     shellAliases = {
       cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
@@ -33,11 +34,11 @@
       nix-shell = "nix-shell --command $(command -v zsh)";
       rm = "rip";
       lg = "lazygit";
-      ll = "exa -F -oalg --time-style=long-iso";
-      ls = "exa -F --time-style=long-iso";
+      ll = "eza -F -oalg --time-style=long-iso";
+      ls = "eza -F --time-style=long-iso";
       l = "ls";
-      la = "exa -F -a --time-style=long-iso";
-      tree = "exa -T --time-style=long-iso";
+      la = "eza -F -a --time-style=long-iso";
+      tree = "eza -T --time-style=long-iso";
       cp = "cp -v";
       mv = "mv -v";
       # rm = "rm -vi";
@@ -59,11 +60,29 @@
       gl = "git pull";
       oct = "stat -c '%A %a %n'";
     };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-    initContent = builtins.readFile ./zshrc;
+    # zprof.enable = true;
+    initContent =
+      let
+        dircolors = builtins.readFile (
+          pkgs.runCommandNoCCLocal "dircolors" { }
+            "${pkgs.coreutils}/bin/dircolors -b ${config.home.file.".dir_colors".source} > $out"
+        );
+        zoxide = pkgs.runCommandNoCCLocal "zoxide" { } "${pkgs.zoxide}/bin/zoxide init zsh > $out";
+        starship = pkgs.runCommandNoCCLocal "starship" { } "${pkgs.starship}/bin/starship init zsh > $out";
+      in
+      ''
+        source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
+        source ${starship}
+        zsh-defer source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+        ${dircolors}
+        zsh-defer source ${zoxide}
+        autoload -U compinit &&  zsh-defer compinit
+        source ${config.programs.nix-index.package}/etc/profile.d/command-not-found.sh
+        zsh-defer source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+        zsh-defer source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      ''
+      + builtins.readFile ./zshrc;
+
   };
 
 }

@@ -1,6 +1,7 @@
 {
   programs.fzf = {
     enable = true;
+    enableZshIntegration = false;
     colors = {
       fg = "#D8DEE9";
       bg = "#2E3440";
