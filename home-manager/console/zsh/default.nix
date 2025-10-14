@@ -71,7 +71,7 @@ in
       gl = "git pull";
       oct = "stat -c '%A %a %n'";
     };
-    # zprof.enable = true;
+    zprof.enable = true;
     initContent = ''
       function source {
         ensure_zcompiled $1
@@ -84,9 +84,11 @@ in
           zcompile $1
         fi
       }
-      ensure_zcompiled ~/.zshrc
+      # ensure_zcompiled ~/.zshrc
+      # ensure_zcompiled ~/.zshenv
       source ${config.xdg.cacheHome}/sheldon.zsh
       ${dircolors}
+      zsh-defer unfunction source
     ''
     + builtins.readFile ./zshrc;
 
