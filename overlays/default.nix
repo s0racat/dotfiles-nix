@@ -36,6 +36,7 @@ in
   # https://github.com/NixOS/nixpkgs/pull/426978/files
   papirus-nord = prev.papirus-nord.overrideAttrs (_: {
     dontFixup = true;
+    dontDropIconThemeCache = true;
   });
   # tmux = prev.tmux.overrideAttrs (oldAttrs: {
   #   src = prev.fetchFromGitHub {
