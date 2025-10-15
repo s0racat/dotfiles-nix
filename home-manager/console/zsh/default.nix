@@ -40,8 +40,6 @@ in
     autocd = true;
     localVariables = {
       WORDCHARS = "*?_[]~&!$%^(){}<>";
-    };
-    sessionVariables = {
       LANG = "en_US.UTF-8";
     };
     shellAliases = {

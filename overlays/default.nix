@@ -33,6 +33,10 @@ in
       patchShebangs .
     '';
   });
+  # https://github.com/NixOS/nixpkgs/pull/426978/files
+  papirus-nord = prev.papirus-nord.overrideAttrs (_: {
+    dontFixup = true;
+  });
   # tmux = prev.tmux.overrideAttrs (oldAttrs: {
   #   src = prev.fetchFromGitHub {
   #     owner = "tmux";

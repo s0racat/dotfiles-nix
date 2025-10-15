@@ -86,6 +86,7 @@
     "org/gnome/desktop/input-sources".xkb-options = [
       config.wayland.windowManager.sway.config.input."type:keyboard".xkb_options
     ];
+    "org/gnome/desktop/a11y".always-show-universal-access-status = true;
 
   };
 }
