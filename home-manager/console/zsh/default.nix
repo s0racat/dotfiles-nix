@@ -77,7 +77,6 @@ in
       ga = "git add";
       gl = "git pull";
       oct = "stat -c '%A %a %n'";
-      aaa = "win32yank.exe -o";
     };
     # zprof.enable = true;
     setOptions = [
@@ -147,6 +146,10 @@ in
 
       [plugins.zsh-defer]
       github = "romkatv/zsh-defer"
+
+      [plugins.zsh-autopair]
+      github = "hlissner/zsh-autopair"
+      apply = ["defer"]
 
       [plugins.starship]
       inline = "source ~/.config/sheldon/sync/starship.zsh"
