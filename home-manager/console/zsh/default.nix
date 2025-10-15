@@ -104,7 +104,7 @@ in
 
     # sheldon plugins.toml 更新
     sheldon_cache=${config.xdg.cacheHome}/sheldon.zsh
-    [ ! -f "$cache" ] && ${pkgs.sheldon}/bin/sheldon source --update &>/dev/null > "$sheldon_cache"
+    [ ! -f "$sheldon_cache" ] && ${pkgs.sheldon}/bin/sheldon source --update &>/dev/null > "$sheldon_cache"
     if [ ! -f "${config.xdg.cacheHome}/sheldon.zsh.zwc" ] || [ "${config.xdg.cacheHome}/sheldon.zsh" -nt "${config.xdg.cacheHome}/sheldon.zsh.zwc" ]; then
       ${zshBin} -c "zcompile -R '${config.xdg.cacheHome}/sheldon.zsh'"
     fi
