@@ -1,7 +1,3 @@
-setopt correct
-setopt interactivecomments
-setopt no_beep
-
 # edit-command-line
 autoload -U edit-command-line
 zle -N edit-command-line
