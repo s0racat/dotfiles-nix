@@ -88,52 +88,49 @@ in
 
   };
 
-  home.file."${relToDotDir ".zshrc"}" = {
-    onChange = ''
-      ${zshBin} -c '[ "${relToDotDir ".zshrc"}" -nt "${relToDotDir ".zshrc"}.zwc" ] && zcompile "${relToDotDir ".zshrc"}"'
-    '';
-  };
+  home.activation.zshScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    for file in \
+      ${relToDotDir ".zshrc"} \
+      ${relToDotDir ".zshenv"} \
+      $HOME/.config/sheldon/sync/starship.zsh \
+      $HOME/.config/sheldon/async/fzf.zsh \
+      $HOME/.config/sheldon/async/zoxide.zsh \
+      $HOME/.config/sheldon/async/command-not-found.zsh
+    do
+      if [ -f "$file" ] && { [ ! -f "$file.zwc" ] || [ "$file" -nt "$file.zwc" ]; }; then
+        ${zshBin} -c "zcompile '$file'"
+      fi
+    done
 
-  home.file."${relToDotDir ".zshenv"}" = {
-    onChange = ''
-      ${zshBin} -c '[ "${relToDotDir ".zshenv"}" -nt "${relToDotDir ".zshenv"}.zwc" ] && zcompile "${relToDotDir ".zshenv"}"'
-    '';
-  };
+    # sheldon plugins.toml 更新
+    sheldon_cache=${config.xdg.cacheHome}/sheldon.zsh
+    [ ! -f "$cache" ] && ${pkgs.sheldon}/bin/sheldon source --update &>/dev/null > "$sheldon_cache"
+    if [ ! -f "${config.xdg.cacheHome}/sheldon.zsh.zwc" ] || [ "${config.xdg.cacheHome}/sheldon.zsh" -nt "${config.xdg.cacheHome}/sheldon.zsh.zwc" ]; then
+      ${zshBin} -c "zcompile -R '${config.xdg.cacheHome}/sheldon.zsh'"
+    fi
+  '';
 
   home.packages = [ pkgs.sheldon ];
 
   xdg.configFile."sheldon/sync/starship.zsh" = {
     source = starship;
-    onChange = ''
-      ${zshBin} -c '[ "$HOME/.config/sheldon/sync/starship.zsh" -nt "$HOME/.config/sheldon/sync/starship.zsh.zwc" ] && zcompile "$HOME/.config/sheldon/sync/starship.zsh"'
-    '';
   };
 
   xdg.configFile."sheldon/async/fzf.zsh" = {
     source = fzf;
-    onChange = ''
-      ${zshBin} -c '[ "$HOME/.config/sheldon/async/fzf.zsh" -nt "$HOME/.config/sheldon/async/fzf.zsh.zwc" ] && zcompile "$HOME/.config/sheldon/async/fzf.zsh"'
-    '';
   };
 
   xdg.configFile."sheldon/async/zoxide.zsh" = {
     source = zoxide;
-    onChange = ''
-      ${zshBin} -c '[ "$HOME/.config/sheldon/async/zoxide.zsh" -nt "$HOME/.config/sheldon/async/zoxide.zsh.zwc" ] && zcompile "$HOME/.config/sheldon/async/zoxide.zsh"'
-    '';
   };
 
   xdg.configFile."sheldon/async/command-not-found.zsh" = {
     source = "${config.programs.nix-index.package}/etc/profile.d/command-not-found.sh";
-    onChange = ''
-      ${zshBin} -c '[ "$HOME/.config/sheldon/async/command-not-found.zsh" -nt "$HOME/.config/sheldon/async/command-not-found.zsh.zwc" ] && zcompile "$HOME/.config/sheldon/async/command-not-found.zsh"'
-    '';
   };
 
   xdg.configFile."sheldon/plugins.toml" = {
     onChange = ''
-      ${pkgs.sheldon}/bin/sheldon source --update 2>/dev/null > "${config.xdg.cacheHome}/sheldon.zsh"
-      ${zshBin} -c '[ "${config.xdg.cacheHome}/sheldon.zsh" -nt "${config.xdg.cacheHome}/sheldon.zsh.zwc" ] && zcompile -R "${config.xdg.cacheHome}/sheldon.zsh"'
+      ${pkgs.sheldon}/bin/sheldon source --update &>/dev/null > "${config.xdg.cacheHome}/sheldon.zsh"
     '';
     text = ''
       shell = "zsh"
