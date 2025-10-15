@@ -97,7 +97,7 @@ in
       $HOME/.config/sheldon/async/zoxide.zsh \
       $HOME/.config/sheldon/async/command-not-found.zsh
     do
-      if [ -f "$file" ] && { [ ! -f "$file.zwc" ] || [ "$file" -nt "$file.zwc" ]; }; then
+      if [ ! -f "$file.zwc" ] || [ "$file" -ot "$file.zwc" ]; then
         ${zshBin} -c "zcompile '$file'"
       fi
     done
@@ -105,7 +105,7 @@ in
     # sheldon plugins.toml 更新
     sheldon_cache=${config.xdg.cacheHome}/sheldon.zsh
     [ ! -f "$sheldon_cache" ] && ${pkgs.sheldon}/bin/sheldon source --update &>/dev/null > "$sheldon_cache"
-    if [ ! -f "${config.xdg.cacheHome}/sheldon.zsh.zwc" ] || [ "${config.xdg.cacheHome}/sheldon.zsh" -nt "${config.xdg.cacheHome}/sheldon.zsh.zwc" ]; then
+    if [ ! -f "${config.xdg.cacheHome}/sheldon.zsh.zwc" ] || [ "${config.xdg.cacheHome}/sheldon.zsh" -ot "${config.xdg.cacheHome}/sheldon.zsh.zwc" ]; then
       ${zshBin} -c "zcompile -R '${config.xdg.cacheHome}/sheldon.zsh'"
     fi
   '';

@@ -52,6 +52,7 @@ in
     shellAliases = {
       ssh = "ssh.exe";
       ssh-add = "ssh-add.exe";
+      clip = "win32yank.exe -i --crlf";
     };
     initContent = ''
       wwhich() {
