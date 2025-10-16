@@ -29,8 +29,7 @@ in
   vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
   tmuxPlugins.nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: {
     postInstall = (oldAttrs.postInstall or "") + ''
-      sed -i '1i#!/bin/bash' $out/share/tmux-plugins/nord/nord.tmux
-      patchShebangs .
+      sed -i '1i#!${prev.stdenv.shell}' $out/share/tmux-plugins/nord/nord.tmux
     '';
   });
   # https://github.com/NixOS/nixpkgs/pull/426978/files
