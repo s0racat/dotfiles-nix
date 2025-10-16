@@ -13,7 +13,7 @@ in
     enable = true;
     package = lib.mkIf (!isNixOS) null;
     settings = {
-      import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/${theme}.toml" ];
+
       cursor.style = {
         blinking = "Always";
         shape = "Block";
@@ -471,6 +471,9 @@ in
 
       window.opacity = 1.0;
 
-    };
+    }
+    // builtins.fromTOML (
+      builtins.readFile "${pkgs.alacritty-theme}/share/alacritty-theme/${theme}.toml"
+    );
   };
 }
