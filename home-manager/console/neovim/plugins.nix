@@ -17,11 +17,11 @@ in
       vim-language-server
       emmet-language-server
       gopls
-      nil
       pyright
       stylua
       nixfmt-rfc-style
       skkDictionaries.l
+      nixd
     ];
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
   };

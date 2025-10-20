@@ -28,6 +28,7 @@
     yt-dlp
     jq
     textlint
+    nixd
   ];
   home.extraDependencies = with pkgs; [
     stdenv

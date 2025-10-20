@@ -62,27 +62,34 @@ local spec = {
 
 			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 			local servers =
-				{ "lua_ls", "ts_ls", "bashls", "vimls", "emmet_language_server", "gopls", "nil_ls", "pyright" }
-			vim.lsp.config["nix_ls"] = {
-
-				settings = {
-					["nil"] = {
-						nix = {
-							flake = {
-								autoArchive = false,
-							},
-						},
-						formatting = {
-							command = { "nixfmt" },
-						},
-					},
-				},
-			}
+				{ "lua_ls", "ts_ls", "bashls", "vimls", "emmet_language_server", "gopls", "nixd", "pyright" }
 			vim.lsp.config["lua_ls"] = {
 				settings = {
 					Lua = {
 						diagnostics = {
 							globals = { "vim" },
+						},
+					},
+				},
+			}
+			vim.lsp.config["nixd"] = {
+
+				cmd = { "nixd" },
+				settings = {
+					nixd = {
+						nixpkgs = {
+							expr = "import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs {}",
+						},
+						formatting = {
+							command = { "nixfmt" },
+						},
+						options = {
+							home_manager = {
+								expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.um690pro.options.home-manager.users.type.getSubOptions []",
+							},
+							nixos = {
+								expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.um690pro.options",
+							},
 						},
 					},
 				},
