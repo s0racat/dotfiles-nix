@@ -41,7 +41,7 @@ in
     WIN_HOME = "/mnt/c/Users/${config.home.username}";
   };
   programs.git = {
-    extraConfig = {
+    settings = {
       core.sshcommand = "ssh.exe";
     };
   };
