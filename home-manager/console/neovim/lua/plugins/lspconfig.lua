@@ -72,23 +72,24 @@ local spec = {
 					},
 				},
 			}
+            --  https://github.com/PriceHiller/dots/blob/5a836299a74205c8babb46f443eb0679c58bdb43/users/price/dots/.config/nvim/lsp/nixd.lua
 			vim.lsp.config["nixd"] = {
 
 				cmd = { "nixd" },
 				settings = {
 					nixd = {
 						nixpkgs = {
-							expr = "import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs {}",
+							expr = "import <nixpkgs> {}",
 						},
 						formatting = {
 							command = { "nixfmt" },
 						},
 						options = {
 							home_manager = {
-								expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.um690pro.options.home-manager.users.type.getSubOptions []",
+								expr = "(let pkgs = import <nixpkgs> { }; lib = import ~/.local/share/nix/inputs/home-manager/modules/lib/stdlib-extended.nix pkgs.lib; in (lib.evalModules { modules = (import ~/.local/share/nix/inputs/home-manager/modules/modules.nix) { inherit lib pkgs; check = false; }; })).options",
 							},
 							nixos = {
-								expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.um690pro.options",
+								expr = "(let pkgs = import <nixpkgs> { }; in (pkgs.lib.evalModules { modules = (import <nixpkgs/nixos/modules/module-list.nix>) ++ [ ({...}: { nixpkgs.hostPlatform = builtins.currentSystem;} ) ] ; })).options",
 							},
 						},
 					},
