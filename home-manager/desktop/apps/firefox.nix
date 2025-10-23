@@ -84,7 +84,7 @@
           # disable av1 by default
           "media.av1.enabled" = av1Support;
           # https://wiki.mozilla.org/Media/block-autoplay
-          "media.autoplay.blocking_policy" = 1;
+          "media.autoplay.blocking_policy" = 2;
         };
       };
     };
