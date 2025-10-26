@@ -22,7 +22,7 @@
     },
     "mbusb": {
         "cargoLocks": null,
-        "date": "2025-10-12",
+        "date": "2025-10-26",
         "extract": null,
         "name": "mbusb",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "s0racat",
             "repo": "multibootusb",
-            "rev": "ea3c1e840be5719e779ad202a8fb05d976cf3f90",
-            "sha256": "sha256-F0AVoCSbr82tpwl02fBzUycOUPbdl/UfdKzf9eKauNk=",
+            "rev": "c9d8dbf5f1fa1f2f0b38e879dcd8a2992f80f9bc",
+            "sha256": "sha256-43FYEsnRs/z5Pg3xlSd/pxvKVgWntsV62JAJYhN9K9k=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "ea3c1e840be5719e779ad202a8fb05d976cf3f90"
+        "version": "c9d8dbf5f1fa1f2f0b38e879dcd8a2992f80f9bc"
     },
     "win32yank": {
         "cargoLocks": null,
