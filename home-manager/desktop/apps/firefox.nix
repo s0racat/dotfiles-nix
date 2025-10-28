@@ -33,7 +33,7 @@
         };
         settings = {
           # Confirm when downloading files
-          "browser.download.always_ask_before_handling_new_types" = true;
+          # "browser.download.always_ask_before_handling_new_types" = true;
           # Do not save passwords
           "signon.rememberSignons" = false;
           # Enable HTTPS-Only Mode in all windows
