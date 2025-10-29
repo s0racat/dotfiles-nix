@@ -32,11 +32,10 @@ function __wezterm_osc7() {
 
 # Hook to execute the function after every interactive command
 precmd_functions+=(__wezterm_osc7)
-if [ -z "$TMUX" ]; then
-    if tmux has-session 2>/dev/null; then
-        exec tmux attach
-    else
-        exec tmux
-    fi
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "WezTerm" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
+  if tmux has-session 2>/dev/null; then
+    exec tmux attach
+  else
+    exec tmux
+  fi
 fi
-
