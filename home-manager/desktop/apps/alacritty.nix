@@ -461,13 +461,13 @@ in
         }
       ];
 
-      shell = {
-        program = "sh";
-        args = [
-          "-c"
-          "tmux attach || tmux"
-        ];
-      };
+      # shell = {
+      #   program = "sh";
+      #   args = [
+      #     "-c"
+      #     "tmux attach || tmux"
+      #   ];
+      # };
 
       window.opacity = 1.0;
 

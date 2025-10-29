@@ -12,7 +12,7 @@
     settings = {
 
       main = {
-        shell = "sh -c 'tmux attach || tmux'";
+        # shell = "sh -c 'tmux attach || tmux'";
         font = "monospace:size=12";
         dpi-aware = "yes";
         term = "foot";

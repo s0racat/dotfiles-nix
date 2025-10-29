@@ -72,7 +72,7 @@ local spec = {
 					},
 				},
 			}
-            --  https://github.com/PriceHiller/dots/blob/5a836299a74205c8babb46f443eb0679c58bdb43/users/price/dots/.config/nvim/lsp/nixd.lua
+			--  https://github.com/PriceHiller/dots/blob/5a836299a74205c8babb46f443eb0679c58bdb43/users/price/dots/.config/nvim/lsp/nixd.lua
 			vim.lsp.config["nixd"] = {
 
 				cmd = { "nixd" },

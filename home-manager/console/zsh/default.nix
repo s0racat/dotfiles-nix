@@ -49,7 +49,7 @@ in
       cz = "git cz";
       nix-shell = "nix-shell --command ${zshBin}";
       rm = "rip";
-      lg = "lazygit";
+      # lg = "lazygit";
       ll = "eza -F -oalg --time-style=long-iso";
       ls = "eza -F --time-style=long-iso";
       l = "ls";
@@ -108,6 +108,8 @@ in
     fi
   '';
 
+  home.file."${relToDotDir ".zshrc"}".onChange = "${zshBin} -c 'zcompile ~/.zshrc'";
+  home.file."${relToDotDir ".zshenv"}".onChange = "${zshBin} -c 'zcompile ~/.zshenv'";
   home.packages = [ pkgs.sheldon ];
 
   xdg.configFile."sheldon/sync/starship.zsh" = {
