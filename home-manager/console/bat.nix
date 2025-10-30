@@ -3,6 +3,7 @@ _: {
     enable = true;
     config = {
       theme = "Nord";
+      style = ["header" "numbers"];
     };
   };
 
