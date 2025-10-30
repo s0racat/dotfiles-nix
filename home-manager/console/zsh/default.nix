@@ -14,11 +14,11 @@ let
     else
       "${config.home.file.".dir_colors".source}";
   dircolors = builtins.readFile (
-    pkgs.runCommandNoCC "dircolors" { } "${pkgs.coreutils}/bin/dircolors -b ${dircolorsPath} > $out"
+    pkgs.runCommand "dircolors" { } "${pkgs.coreutils}/bin/dircolors -b ${dircolorsPath} > $out"
   );
-  zoxide = pkgs.runCommandNoCC "zoxide" { } "${pkgs.zoxide}/bin/zoxide init zsh > $out";
-  starship = pkgs.runCommandNoCC "starship" { } "${pkgs.starship}/bin/starship init zsh > $out";
-  fzf = pkgs.runCommandNoCC "fzf" { } "${pkgs.fzf}/bin/fzf --zsh > $out";
+  zoxide = pkgs.runCommand "zoxide" { } "${pkgs.zoxide}/bin/zoxide init zsh > $out";
+  starship = pkgs.runCommand "starship" { } "${pkgs.starship}/bin/starship init zsh > $out";
+  fzf = pkgs.runCommand "fzf" { } "${pkgs.fzf}/bin/fzf --zsh > $out";
   relToDotDir = file: (lib.optionalString (cfg.dotDir != null) (cfg.dotDir + "/")) + file;
   zshBin = if isNixOS then "${pkgs.zsh}/bin/zsh" else "/bin/zsh";
 in
