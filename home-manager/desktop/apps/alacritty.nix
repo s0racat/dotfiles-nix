@@ -21,6 +21,7 @@ in
 
       env = {
         TERM = "alacritty";
+        _ALACRITTY = true;
       };
 
       font = {
