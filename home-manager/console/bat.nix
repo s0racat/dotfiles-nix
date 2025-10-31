@@ -1,11 +1,11 @@
-{ stable, ... }:
+{ pkgs, ... }:
 let
   theme = "OneHalfDark";
 in
 {
   programs.bat = {
     enable = true;
-    extraPackages = with stable.pkgs.bat-extras; [
+    extraPackages = with pkgs.stable.bat-extras; [
       (batman.overrideAttrs (oldAttrs: {
         installPhase = ''
           ${oldAttrs.installPhase}

@@ -1,4 +1,4 @@
-{ self }:
+{ self, inputs, ... }:
 final: prev:
 # https://wiki.archlinux.org/title/Chromium
 let
@@ -25,6 +25,9 @@ let
   ];
 in
 {
+  stable = import inputs.nixpkgs-small {
+    inherit (final) system overlays config;
+  };
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
   tmuxPlugins.nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: {

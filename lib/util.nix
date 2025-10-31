@@ -53,7 +53,6 @@ in
             inputs
             self
             ;
-          stable = nixpkgs-small.legacyPackages.${system};
         };
         # https://github.com/nix-community/home-manager/issues/5649
         # backupFileExtension = backupFileExt;
@@ -130,7 +129,6 @@ in
                   inputs
                   self
                   ;
-                stable = nixpkgs-small.legacyPackages.${system};
               };
             };
           }

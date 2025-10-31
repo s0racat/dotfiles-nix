@@ -52,7 +52,7 @@
     in
     {
       overlays.default = [
-        (import ./overlays { inherit self; })
+        (import ./overlays { inherit self inputs; })
       ];
 
       apps = forAllSystems (
