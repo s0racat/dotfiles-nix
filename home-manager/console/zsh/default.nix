@@ -41,8 +41,14 @@ in
     localVariables = {
       WORDCHARS = "*?_[]~&!$%^(){}<>";
       LANG = "en_US.UTF-8";
+
+    };
+    sessionVariables = {
+      LESS = "-FRi";
+
     };
     shellAliases = {
+      le = "less";
       rg = "batgrep";
       man = "batman";
       cd = "z";
@@ -52,11 +58,11 @@ in
       nix-shell = "nix-shell --command ${zshBin}";
       rm = "rip";
       # lg = "lazygit";
-      ll = "eza -F -oalg --time-style=long-iso";
-      ls = "eza -F --time-style=long-iso";
+      ll = "eza -F -oalg --time-style=long-iso --color=always";
+      ls = "eza -F --time-style=long-iso --color=always";
       l = "ls";
-      la = "eza -F -a --time-style=long-iso";
-      tree = "eza -T --time-style=long-iso";
+      la = "eza -F -a --time-style=long-iso --color=always";
+      tree = "eza -T --time-style=long-iso --color=always";
       cp = "cp -v";
       mv = "mv -v";
       # rm = "rm -vi";
