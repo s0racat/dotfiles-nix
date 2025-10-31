@@ -1,4 +1,7 @@
 { stable, ... }:
+let
+  theme = "OneHalfDark";
+in
 {
   programs.bat = {
     enable = true;
@@ -8,7 +11,7 @@
           ${oldAttrs.installPhase}
 
           wrapProgram $out/bin/batman \
-            --set BAT_THEME OneHalfDark
+            --set BAT_THEME ${theme}
         '';
       }))
       batgrep
@@ -17,6 +20,9 @@
       theme = "Nord";
       wrap = "never";
     };
+  };
+  programs.zsh.shellGlobalAliases = {
+    "--help" = "--help 2>&1 | bat --language=help --style=plain --theme ${theme}";
   };
 
 }
