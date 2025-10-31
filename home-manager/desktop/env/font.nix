@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     roboto
     roboto-mono
     nerd-fonts.jetbrains-mono
