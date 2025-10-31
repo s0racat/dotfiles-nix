@@ -23,7 +23,6 @@ let
     self
     nix-darwin
     nix-index-database
-    nixpkgs-small
     ;
 in
 {
