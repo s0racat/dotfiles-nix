@@ -43,6 +43,8 @@ in
       LANG = "en_US.UTF-8";
     };
     shellAliases = {
+      rg = "batgrep";
+      man = "batman";
       cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
       npm = "pnpm";
