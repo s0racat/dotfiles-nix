@@ -168,9 +168,9 @@ in
 
       [plugins.compinit]
       inline = """
-        autoload -U compinit && zsh-defer compinit
-        compdef _rg batgrep
-        compdef _man batman
+      autoload -U compinit && zsh-defer compinit
+      compdef _rg batgrep
+      compdef _man batman
       """
 
       [plugins.fzf]
