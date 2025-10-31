@@ -90,12 +90,13 @@ in
       "interactivecomments"
       "no_beep"
     ];
-    initContent = ''
-      source ${config.xdg.cacheHome}/sheldon.zsh
-      ${dircolors}
-    ''
-    + builtins.readFile ./zshrc;
-
+    initContent = lib.mkMerge [
+      ''
+        source ${config.xdg.cacheHome}/sheldon.zsh
+        ${dircolors}
+      ''
+      (lib.mkAfter (builtins.readFile ./zshrc))
+    ];
   };
 
   home.activation.zshScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -166,7 +167,11 @@ in
       inline = "zsh-defer source ~/.config/sheldon/async/zoxide.zsh"
 
       [plugins.compinit]
-      inline = "autoload -U compinit && zsh-defer compinit"
+      inline = """
+        autoload -U compinit && zsh-defer compinit
+        compdef _rg batgrep
+        compdef _man batman
+      """
 
       [plugins.fzf]
       inline = "zsh-defer source ~/.config/sheldon/async/fzf.zsh"

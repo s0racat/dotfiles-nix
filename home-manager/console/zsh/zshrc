@@ -14,7 +14,10 @@ zstyle ':completion:*:processes' command "ps -au$USER"
 zstyle ":completion:*" list-colors "${LS_COLORS}ma=48;2;94;129;172"
 
 function chpwd() {
-  [ "$PWD" != "$WIN_HOME" ] && eza
+  case "$PWD" in
+  /mnt* | /nix*) return ;;
+  *) eza ;;
+  esac
 }
 
 bindkey "^[[1;5C" forward-word
