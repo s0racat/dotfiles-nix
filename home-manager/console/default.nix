@@ -16,6 +16,7 @@
     ./starship.nix
     ./zoxide.nix
     ./nix-index.nix
+    ./tealdeer.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];
