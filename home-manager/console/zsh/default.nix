@@ -51,7 +51,7 @@ in
     shellAliases = {
       le = "less";
       rg = "batgrep";
-      man = "batman";
+      man = "batman -L ja_JP.UTF-8";
       cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
       npm = "pnpm";

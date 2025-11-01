@@ -12,7 +12,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}' 'r:|=*' 
 zstyle ':completion:*:processes' command "ps -u $USER -o pid,comm="
 zstyle ':completion:*:processes-names' command "ps -u $USER -o comm="
 
-
 zstyle ":completion:*" list-colors "${LS_COLORS}ma=48;2;94;129;172"
 zstyle -e ':completion:*:default' list-colors '
   reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${LS_COLORS}ma=48;2;94;129;172")'

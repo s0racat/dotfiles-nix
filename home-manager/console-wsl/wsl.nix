@@ -24,7 +24,7 @@ in
 {
   # wslpath 'C:\...'
   # $ dpkg-reconfigure locales
-  # select en_US.UTF-8
+  # select en_US.UTF-8, ja_JP.UTF-8
   home.packages = [
     pkgs.win32yank
   ]

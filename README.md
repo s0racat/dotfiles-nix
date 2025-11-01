@@ -3,7 +3,7 @@
 ```bash
 sudo passwd -d takumi
 sudo apt update; sudo apt upgrade -y
-sudo dpkg-reconfigure locales # select en_US.UTF-8
+sudo dpkg-reconfigure locales # select en_US.UTF-8, ja_JP.UTF-8
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
