@@ -12,4 +12,5 @@ fetch.github = "s0racat/multibootusb"
 
 ["man-pages-ja"]
 fetch.url = "https://github.com/linux-jm/manual/releases/download/v$ver/man-pages-ja-$ver.tar.gz"
-src.cmd = "curl -s https://api.github.com/repos/linux-jm/manual/releases/latest | jq -r .tag_name | sed 's/^v//'"
+src.github_tag = "linux-jm/manual"
+src.prefix = "v"
