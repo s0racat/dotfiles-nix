@@ -4,7 +4,6 @@
   # lib.unique (builtins.map(x: lib.getName x) a)
   home.packages = with pkgs; [
     eza
-    nil
     gnupg
     ghq
     gcc
