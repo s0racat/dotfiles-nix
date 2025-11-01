@@ -29,6 +29,7 @@
     jq
     textlint
     nixd
+    man-pages-ja
   ];
   home.extraDependencies = with pkgs; [
     stdenv

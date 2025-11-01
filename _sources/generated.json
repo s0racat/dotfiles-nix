@@ -20,6 +20,21 @@
         },
         "version": "e2d20a91bbd19de1dc1cd8c603b366dd63c92158"
     },
+    "man-pages-ja": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "man-pages-ja",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-oSWAYYJ1DF+PaDTgh2UDzjrblNNzAS0kk4sEPTQ59hw=",
+            "type": "url",
+            "url": "https://github.com/linux-jm/manual/releases/download/v20251017/man-pages-ja-20251017.tar.gz"
+        },
+        "version": "20251017"
+    },
     "mbusb": {
         "cargoLocks": null,
         "date": "2025-10-28",

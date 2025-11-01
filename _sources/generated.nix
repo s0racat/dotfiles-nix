@@ -13,6 +13,14 @@
     };
     date = "2021-12-11";
   };
+  man-pages-ja = {
+    pname = "man-pages-ja";
+    version = "20251017";
+    src = fetchurl {
+      url = "https://github.com/linux-jm/manual/releases/download/v20251017/man-pages-ja-20251017.tar.gz";
+      sha256 = "sha256-oSWAYYJ1DF+PaDTgh2UDzjrblNNzAS0kk4sEPTQ59hw=";
+    };
+  };
   mbusb = {
     pname = "mbusb";
     version = "f76a2108bf505722d3c65ba710dd705a9e85c40d";

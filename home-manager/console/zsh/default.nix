@@ -45,6 +45,7 @@ in
     };
     sessionVariables = {
       LESS = "-FRi";
+      BROWSER = "xdg-open";
 
     };
     shellAliases = {

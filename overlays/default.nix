@@ -54,4 +54,5 @@ in
   playerctl-notify = final.callPackage "${self}/pkgs/playerctl-notify" { };
   mbusb = final.callPackage "${self}/pkgs/mbusb.nix" { };
   win32yank = final.callPackage "${self}/pkgs/win32yank.nix" { };
+  man-pages-ja = final.callPackage "${self}/pkgs/man-pages-ja.nix" { };
 }
