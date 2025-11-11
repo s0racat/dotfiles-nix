@@ -3,7 +3,7 @@ _: {
     enable = true;
     escapeTime = 0;
     aggressiveResize = true;
-    mouse = false;
+    mouse = true;
     baseIndex = 1;
     keyMode = "vi";
     prefix = "c-s";
