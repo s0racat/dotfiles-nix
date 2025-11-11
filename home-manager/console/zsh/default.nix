@@ -44,7 +44,7 @@ in
 
     };
     sessionVariables = {
-      LESS = "-FRi";
+      LESS = "-FRi --mouse";
       BROWSER = "xdg-open";
 
     };
