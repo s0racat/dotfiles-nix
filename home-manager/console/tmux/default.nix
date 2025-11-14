@@ -19,14 +19,10 @@
     ];
     extraConfig =
       let
-        tmux_commands_with_legacy_scroll = "nano less more man git";
         bg2 = "#3B4252";
-        bg1 = "default";
         default_fg = "#D8DEE9";
-        session_fg = "#A3BE8C";
         session_selection_fg = "#3B4252";
         session_selection_bg = "#81A1C1";
-        active_window_fg = "#88C0D0";
         active_pane_border = "#abb2bf";
       in
       lib.mkMerge [
