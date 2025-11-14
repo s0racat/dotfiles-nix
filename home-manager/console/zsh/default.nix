@@ -44,7 +44,7 @@ in
 
     };
     sessionVariables = rec {
-      LESS = "-FRXi --mouse";
+      LESS = "-FRi";
       BROWSER = "xdg-open";
       BAT_PAGER = "less ${LESS}";
 

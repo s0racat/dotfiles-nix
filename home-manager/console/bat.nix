@@ -19,6 +19,7 @@ in
     config = {
       theme = "Nord";
       wrap = "never";
+      style = "numbers,changes,header-filename";
     };
   };
   programs.zsh.shellGlobalAliases = {
