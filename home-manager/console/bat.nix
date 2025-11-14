@@ -19,7 +19,7 @@ in
     config = {
       theme = "Nord";
       wrap = "never";
-      pager = "less +S";
+      pager = "less -X";
     };
   };
   programs.zsh.shellGlobalAliases = {
