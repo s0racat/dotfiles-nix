@@ -29,12 +29,15 @@ in
     inherit (final) system overlays config;
   };
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
-  vscode.fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
-  tmuxPlugins.nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: {
-    postInstall = (oldAttrs.postInstall or "") + ''
-      sed -i '1i#!${prev.stdenv.shell}' $out/share/tmux-plugins/nord/nord.tmux
-    '';
-  });
+  vscode-fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
+  tmuxPlugins = prev.tmuxPlugins // {
+    nord = prev.tmuxPlugins.nord.overrideAttrs (oldAttrs: rec {
+      postInstall = (oldAttrs.postInstall or "") + ''
+        sed -i '1i#!${prev.stdenv.shell}' $out/share/tmux-plugins/nord/nord.tmux
+      '';
+    });
+  };
+
   # https://github.com/NixOS/nixpkgs/pull/426978/files
   papirus-nord = prev.papirus-nord.overrideAttrs (_: {
     dontFixup = true;

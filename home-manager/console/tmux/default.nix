@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -11,6 +11,12 @@
     terminal = "tmux-256color";
     historyLimit = 999999999;
     sensibleOnTop = false;
+    plugins = with pkgs; [
+      {
+        plugin = tmuxPlugins.better-mouse-mode;
+        extraConfig = "set -g @emulate-scroll-for-no-mouse-alternate-buffer 'on'";
+      }
+    ];
     extraConfig =
       let
         tmux_commands_with_legacy_scroll = "nano less more man git";
@@ -25,19 +31,6 @@
       in
       lib.mkMerge [
         ''
-          # https://github.com/tmux/tmux/issues/1320#issuecomment-381952082
-          bind-key -T root WheelUpPane \
-          	if-shell -Ft= '#{?mouse_any_flag,1,#{pane_in_mode}}' \
-          		'send -Mt=' \
-          		'if-shell -t= "#{?alternate_on,true,false} || echo \"${tmux_commands_with_legacy_scroll}\" | grep -q \"#{pane_current_command}\"" \
-          			"send -t= Up" "copy-mode -et="'
-
-          bind-key -T root WheelDownPane \
-          	if-shell -Ft = '#{?pane_in_mode,1,#{mouse_any_flag}}' \
-          		'send -Mt=' \
-          		'if-shell -t= "#{?alternate_on,true,false} || echo \"${tmux_commands_with_legacy_scroll}\" | grep -q \"#{pane_current_command}\"" \
-          			"send -t= Down" "send -Mt="'
-
           # theme
           set -g status-style "bg=default,fg=${default_fg}"
           set -g window-status-current-format "#[fg=${default_fg},bg=${bg2}] #I: #W "
@@ -52,9 +45,5 @@
         (lib.mkBefore (builtins.readFile ./tmux.conf))
 
       ];
-
-    # plugins = with pkgs.tmuxPlugins; [
-    #   nord
-    # ];
   };
 }

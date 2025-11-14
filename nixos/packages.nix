@@ -12,7 +12,7 @@
     lxqt.pavucontrol-qt
     winetricks # winetricks (all versions)
     wineWowPackages.waylandFull # native wayland support (unstable)
-    vscode.fhs
+    vscode-fhs
     mbusb
     gparted
     exfatprogs
