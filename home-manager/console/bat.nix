@@ -19,7 +19,11 @@ in
     config = {
       theme = "Nord";
       wrap = "never";
-      style = builtins.concatStringsSep "," [ "numbers" "changes" "header-filename"];
+      style = builtins.concatStringsSep "," [
+        "numbers"
+        "changes"
+        "header-filename"
+      ];
     };
   };
   programs.zsh.shellGlobalAliases = {
