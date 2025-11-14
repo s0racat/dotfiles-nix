@@ -54,7 +54,7 @@ in
       ssh-add = "ssh-add.exe";
       clip = "win32yank.exe -i --crlf";
     };
-    initContent = ''
+    initContent = lib.mkAfter ''
       wwhich() {
         /mnt/c/Windows/System32/where.exe "$1" 2>/dev/null |
           sed 's/\r$//' |

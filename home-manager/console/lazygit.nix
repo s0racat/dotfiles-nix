@@ -1,6 +1,7 @@
 {
   programs.lazygit = {
     enable = true;
+    enableZshIntegration = false;
     settings = {
       gui.language = "ja";
       os.editPreset = "nvim";

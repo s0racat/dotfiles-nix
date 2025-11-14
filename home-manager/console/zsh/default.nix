@@ -85,6 +85,7 @@ in
       ga = "git add";
       gl = "git pull";
       oct = "stat -c '%A %a %n'";
+      lg = "lazygit";
     };
     # zprof.enable = true;
     setOptions = [

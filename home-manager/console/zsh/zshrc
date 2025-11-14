@@ -16,6 +16,9 @@ zstyle ":completion:*" list-colors "${LS_COLORS}ma=48;2;94;129;172"
 zstyle -e ':completion:*:default' list-colors '
   reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${LS_COLORS}ma=48;2;94;129;172")'
 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 function chpwd() {
   case "$PWD" in
   /mnt* | /nix*) return ;;
@@ -23,8 +26,6 @@ function chpwd() {
   esac
 }
 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
 # https://github.com/wezterm/wezterm/issues/5503#issuecomment-3218465821
 # Function to send the current working directory to WezTerm
 function __wezterm_osc7() {
@@ -38,6 +39,7 @@ function __wezterm_osc7() {
 
 # Hook to execute the function after every interactive command
 precmd_functions+=(__wezterm_osc7)
+
 if [ -n "$WT_SESSION" ] || [ "$TERM" = "foot" ] || [ -n "$_ALACRITTY" ]; then
   if [ -z "$TMUX" ]; then
     if tmux has-session 2>/dev/null; then
