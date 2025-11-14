@@ -43,9 +43,10 @@ in
       LANG = "en_US.UTF-8";
 
     };
-    sessionVariables = {
-      LESS = "-FRi --mouse";
+    sessionVariables = rec {
+      LESS = "-FRXi --mouse";
       BROWSER = "xdg-open";
+      BAT_PAGER = "less ${LESS}";
 
     };
     shellAliases = {
