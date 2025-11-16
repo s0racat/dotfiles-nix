@@ -1,5 +1,5 @@
 { pkgs, isNixOS, ... }:
 {
   targets.genericLinux.enable = !isNixOS;
-  targets.genericLinux.gpu.packages = pkgs.stable;
+  targets.genericLinux.gpu.packages = pkgs;
 }

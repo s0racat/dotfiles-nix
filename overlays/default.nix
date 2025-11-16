@@ -23,7 +23,7 @@ let
   ];
 in
 {
-  stable = import inputs.nixpkgs-small {
+  unstable = import inputs.nixpkgs-unstable-small {
     inherit (final) system overlays config;
   };
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };

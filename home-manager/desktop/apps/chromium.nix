@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.chromium = {
-    package = pkgs.stable.chromium;
+    package = pkgs.chromium;
     enable = true;
     extensions = [
       # "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin

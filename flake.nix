@@ -1,34 +1,35 @@
 {
   description = "dotfiles";
   inputs = {
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.pre-commit-hooks-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # Quickly locate nix packages with specific files
     # $ nix-locate 'bin/hello'
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     {
       self,
-      nixpkgs,
+      nixpkgs-stable,
       treefmt-nix,
       ...
     }@inputs:
@@ -39,10 +40,10 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      forAllSystems = nixpkgs-stable.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (
         system:
-        import nixpkgs {
+        import nixpkgs-stable {
           inherit system;
           overlays = self.overlays.default;
           config.allowUnfree = true;

@@ -16,7 +16,7 @@
     xdg-utils
     ripgrep
     file
-    deno
+    unstable.deno
     typescript
     fd
     wget

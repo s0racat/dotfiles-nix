@@ -5,7 +5,7 @@ in
 {
   programs.bat = {
     enable = true;
-    extraPackages = with pkgs.stable.bat-extras; [
+    extraPackages = with pkgs.bat-extras; [
       (batman.overrideAttrs (oldAttrs: {
         installPhase = ''
           ${oldAttrs.installPhase}
