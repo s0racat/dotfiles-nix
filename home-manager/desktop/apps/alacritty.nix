@@ -1,8 +1,6 @@
 # apt: require alacritty
 {
   pkgs,
-  lib,
-  isNixOS,
   ...
 }:
 let

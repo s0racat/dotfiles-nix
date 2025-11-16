@@ -1,9 +1,6 @@
 # apt: require mpv
 {
   pkgs,
-  lib,
-  isNixOS,
-  config,
   ...
 }:
 {

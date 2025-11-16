@@ -1,8 +1,6 @@
 # apt: require foot
 {
   pkgs,
-  lib,
-  isNixOS,
   ...
 }:
 {
