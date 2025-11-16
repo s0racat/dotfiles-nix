@@ -8,7 +8,7 @@
 {
   programs.foot = {
     enable = true;
-    package = lib.mkIf (!isNixOS) pkgs.emptyDirectory;
+    package = pkgs.foot;
     settings = {
 
       main = {

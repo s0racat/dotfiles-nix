@@ -5,19 +5,17 @@ let
   electron_flags = [
     "--password-store=gnome-libsecret"
     "--gtk-version=4"
-    "--enable-wayland-ime"
-    "--wayland-text-input-version=3"
   ];
   chromium_flags = [
     electron_flags
     "--start-maximized"
     "--enable-features=${
       builtins.concatStringsSep "," [
-        "VaapiVideoDecoder"
-        "VaapiIgnoreDriverChecks"
-        "Vulkan"
-        "DefaultANGLEVulkan"
-        "VulkanFromANGLE"
+        # "VaapiVideoDecoder"
+        # "VaapiIgnoreDriverChecks"
+        # "Vulkan"
+        # "DefaultANGLEVulkan"
+        # "VulkanFromANGLE"
         "WebRTCPipeWireCapturer"
       ]
     }"

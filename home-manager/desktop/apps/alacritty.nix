@@ -11,7 +11,7 @@ in
 {
   programs.alacritty = {
     enable = true;
-    package = lib.mkIf (!isNixOS) null;
+    package = pkgs.alacritty;
     settings = {
 
       cursor.style = {

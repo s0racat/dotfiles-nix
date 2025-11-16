@@ -6,5 +6,6 @@
     ./keepassxc.nix
     ./mpv.nix
     ./pcmanfm-qt.nix
+    ./chromium.nix
   ];
 }

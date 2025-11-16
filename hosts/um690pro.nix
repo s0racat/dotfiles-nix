@@ -31,7 +31,6 @@ let
 
     "${nixosDir}/desktop/ime.nix"
     "${nixosDir}/desktop/sway.nix"
-    "${nixosDir}/apps/chromium.nix"
     "${nixosDir}/apps/ddcutil.nix"
     "${nixosDir}/apps/firefox.nix"
     "${nixosDir}/apps/misc.nix"
