@@ -33,7 +33,6 @@ in
       system ? "x86_64-linux",
       extraSpecialArgs ? { },
       isNixOS ? false,
-      stateVersion ? "25.11",
       extraModules ? [ ],
       av1Support ? false,
     }:
@@ -62,7 +61,7 @@ in
             rec {
               home.username = username;
               home.homeDirectory = "/home/${home.username}";
-              home.stateVersion = stateVersion;
+              home.stateVersion = "25.05";
               nix.package = pkgs.nix;
               home.packages = [ (hm pkgs) ];
             }
@@ -80,14 +79,14 @@ in
       specialArgs ? { },
       extraSpecialArgs ? { },
       isNixOS ? true,
-      stateVersion ? "25.05",
       extraModules ? [ ],
       av1Support ? false,
     }:
     let
       splittedSystem = nixpkgs-stable.lib.splitString "-" system;
       os = builtins.elemAt splittedSystem 1;
-      systemConfig = if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs-stable.lib.nixosSystem;
+      systemConfig =
+        if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs-stable.lib.nixosSystem;
       hmModules =
         if os == "darwin" then
           [
@@ -107,7 +106,6 @@ in
         specialArgs = specialArgs // {
           inherit
             username
-            stateVersion
             inputs
             self
             ;

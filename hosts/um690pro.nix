@@ -3,7 +3,6 @@
   lib,
   pkgs,
   username,
-  stateVersion,
   self,
   ...
 }:
@@ -61,7 +60,7 @@ in
     pkiBundle = "/etc/secureboot";
   };
 
-  system.stateVersion = stateVersion; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
   users.users."${username}" = {
     isNormalUser = true;
@@ -82,6 +81,6 @@ in
     imports = [
       "${self}/home-manager/desktop"
     ];
-    home.stateVersion = stateVersion; # Please read the comment before changing.
+    home.stateVersion = "25.05"; # Please read the comment before changing.
   };
 }

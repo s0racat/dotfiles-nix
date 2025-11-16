@@ -1,6 +1,8 @@
 # apt: require alacritty
 {
   pkgs,
+  isNixOS,
+  lib,
   ...
 }:
 let
@@ -9,7 +11,7 @@ in
 {
   programs.alacritty = {
     enable = true;
-    package = pkgs.alacritty;
+    package = lib.mkIf (!isNixOS) null;
     settings = {
 
       cursor.style = {
