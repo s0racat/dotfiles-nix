@@ -30,6 +30,7 @@
     textlint
     nixd
     man-pages-ja
+    gemini-cli
   ];
   home.extraDependencies = with pkgs; [
     stdenv
