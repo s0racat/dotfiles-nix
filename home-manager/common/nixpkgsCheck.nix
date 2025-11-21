@@ -1,4 +1,4 @@
 {
-              home.enableNixpkgsReleaseCheck = false;
+  home.enableNixpkgsReleaseCheck = false;
 
 }
