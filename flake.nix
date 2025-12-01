@@ -1,7 +1,7 @@
 {
   description = "dotfiles";
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager/master";
