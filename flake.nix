@@ -8,12 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
-      # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-      # inputs.pre-commit-hooks-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-    };
+    # lanzaboote = {
+    #   url = "github:nix-community/lanzaboote/v0.4.3";
+    #   # Optional but recommended to limit the size of your system closure.
+    #   inputs.nixpkgs.follows = "nixpkgs-stable";
+    #   # inputs.pre-commit-hooks-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    # };
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

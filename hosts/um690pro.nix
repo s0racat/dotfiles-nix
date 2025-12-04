@@ -53,11 +53,16 @@ in
   ++ serviceModules;
 
   # comment to disable lanzaboote
-  boot.loader.systemd-boot.enable = lib.mkForce false;
+  # boot.loader.systemd-boot.enable = lib.mkForce false;
+  #
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   pkiBundle = "/etc/secureboot";
+  # };
 
-  boot.lanzaboote = {
+  boot.loader.limine = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    secureBoot.enable = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?
