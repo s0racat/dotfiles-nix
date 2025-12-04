@@ -44,7 +44,7 @@ in
 {
   imports = [
     "${self}/nixos/hardware/um690pro.nix"
-    inputs.lanzaboote.nixosModules.lanzaboote
+    #inputs.lanzaboote.nixosModules.lanzaboote
   ]
   ++ commonModules
   ++ virtModules
