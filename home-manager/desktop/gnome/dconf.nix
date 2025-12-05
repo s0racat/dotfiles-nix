@@ -9,9 +9,14 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       disabled-extensions = [ ];
+      # https://github.com/pop-os/shell
+      # https://extensions.gnome.org/extension/4691/pip-on-top/
       enabled-extensions = [
         "pop-shell@system76.com"
         "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+        "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "pip-on-top@rafostar.github.com"
       ];
 
       # お気に入りのアプリ
