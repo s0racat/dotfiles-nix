@@ -12,16 +12,10 @@ let
 in
 {
   services.swayidle = {
-    events = [
-      {
-        event = "before-sleep";
-        inherit command;
-      }
-      {
-        event = "lock";
-        inherit command;
-      }
-    ];
+    events = {
+      before-sleep = command;
+      lock = command;
+    };
     timeouts = [
       {
         timeout = 600;
