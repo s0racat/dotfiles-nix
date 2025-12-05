@@ -34,6 +34,7 @@
         # "org.gnome.TextEditor.desktop"
       ];
     };
+    "org/gnome/shell/extensions/pip-on-top".stick = true;
     "org/gnome/desktop/background" = {
       picture-uri-dark = "file://${
         pkgs.fetchurl {
