@@ -23,7 +23,7 @@
     grex
     p7zip
     unzip
-    rm-improved
+    rip2
     pandoc
     yt-dlp
     jq
