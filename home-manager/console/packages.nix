@@ -11,7 +11,7 @@
     nodejs-slim
     nodePackages.pnpm
     go
-    python3
+    uv
     lua
     xdg-utils
     ripgrep
