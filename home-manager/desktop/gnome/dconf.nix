@@ -17,6 +17,7 @@
         "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "pip-on-top@rafostar.github.com"
+        "apps-menu@gnome-shell-extensions.gcampax.github.com"
       ];
 
       # お気に入りのアプリ
