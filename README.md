@@ -7,11 +7,10 @@ sudo dpkg-reconfigure locales # select en_US.UTF-8, ja_JP.UTF-8
 sudo apt install curl xz-utils zsh -y
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
-nix-shell -p gitMinimal --run "git clone https://github.com/s0racat/dotfiles-nix"
+git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-# set HM variable to override home-manager profile
-nix run
+nix run home-manager/master -- switch --flake .
 chsh -s $(which zsh)
 ```
 

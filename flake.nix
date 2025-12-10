@@ -62,13 +62,6 @@
           pkgs = nixpkgsFor.${system};
         in
         {
-          hm = {
-            type = "app";
-            program =
-              (pkgs.writeShellScript "hm" ''
-                ${util.hm pkgs}/bin/home-manager switch --flake . $@
-              '').outPath;
-          };
           alejandra = {
             type = "app";
             program =
@@ -76,8 +69,6 @@
                 ${pkgs.alejandra}/bin/alejandra -e ./_sources .
               '').outPath;
           };
-
-          default = self.apps.${system}.hm;
         }
       );
 
