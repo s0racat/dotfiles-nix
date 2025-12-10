@@ -66,8 +66,7 @@
             type = "app";
             program =
               (pkgs.writeShellScript "hm" ''
-                profile="''${HM:-$(whoami)@$(hostname)}"
-                ${util.hm pkgs}/bin/home-manager switch --flake .#''${profile} $@
+                ${util.hm pkgs}/bin/home-manager switch --flake . $@
               '').outPath;
           };
           alejandra = {

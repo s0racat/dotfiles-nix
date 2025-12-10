@@ -128,7 +128,8 @@ in
               xkb_options = "caps:none";
             };
             "type:pointer" = {
-              accel_profile = "adaptive";
+              accel_profile = "flat";
+              pointer_accel = "0.8";
             };
           };
           bars = [
