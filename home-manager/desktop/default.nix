@@ -8,6 +8,7 @@
     ./services
     ./fcitx5
     ./gnome
+    ./cinnamon
     ./apps
     ./env
   ];

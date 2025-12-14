@@ -6,6 +6,11 @@
 }:
 {
   dconf.settings = {
+    "org/gnome/desktop/wm/preferences" = {
+      titlebar-font = "Roboto Medium 11";
+
+    };
+
     "org/gnome/shell" = {
       disable-user-extensions = false;
       disabled-extensions = [ ];
