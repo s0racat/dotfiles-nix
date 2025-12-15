@@ -33,7 +33,7 @@ let
           echo "Update Nix's channels"
           nix-channel --update
           echo "Upgrade Home Manager"
-          home-manager switch
+          home-manager switch -b hmbak
         '';
     runtimeInputs = with pkgs; [
       homeManagerPackage
