@@ -99,6 +99,7 @@ in
 
       services.home-manager-auto-upgrade = {
         Unit.Description = "Home Manager upgrade";
+        Unit.X-SwitchMethod = "keep-old";
         Service = {
           ExecStart = "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
           Environment = lib.mkIf cfg.useFlake [ "FLAKE_DIR=${cfg.flakeDir}" ];

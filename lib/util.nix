@@ -4,18 +4,6 @@
   ...
 }:
 let
-  backupFileExt = "hmbak";
-  hm =
-    pkgs:
-    pkgs.symlinkJoin {
-      name = "home-manager";
-      paths = [ pkgs.home-manager ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/home-manager \
-        --add-flags "-b ${backupFileExt}"
-      '';
-    };
 
   inherit (inputs)
     nixpkgs-stable
@@ -26,7 +14,6 @@ let
     ;
 in
 {
-  inherit hm;
   mkHome =
     {
       name,
@@ -63,7 +50,7 @@ in
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = "25.05";
               nix.package = pkgs.nix;
-              home.packages = [ (hm pkgs) ];
+              home.packages = [ home-manager.packages.${pkgs.system}.default ];
             }
           )
         ]
@@ -115,7 +102,7 @@ in
           {
             networking.hostName = name;
             home-manager = {
-              backupFileExtension = backupFileExt;
+              backupFileExtension = "hmbak";
               # use flake's nixpkgs settings.
               useGlobalPkgs = true;
 
