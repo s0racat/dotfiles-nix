@@ -50,7 +50,7 @@ in
               home.homeDirectory = "/home/${home.username}";
               home.stateVersion = "25.05";
               nix.package = pkgs.nix;
-              home.packages = [ home-manager.packages.${pkgs.system}.default ];
+              programs.home-manager.enable = true;
             }
           )
         ]
