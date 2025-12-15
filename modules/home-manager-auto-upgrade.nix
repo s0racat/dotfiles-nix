@@ -12,12 +12,12 @@ let
 
   hmExtraArgs = lib.escapeShellArgs cfg.extraArgs;
 
-  preSwitchScript =
-    lib.concatStringsSep "\n"
-      (map (cmd: ''
-        echo "+ ${cmd}"
-        ${cmd}
-      '') cfg.preSwitchCommands);
+  preSwitchScript = lib.concatStringsSep "\n" (
+    map (cmd: ''
+      echo "+ ${cmd}"
+      ${cmd}
+    '') cfg.preSwitchCommands
+  );
 
   autoUpgradeApp = pkgs.writeShellApplication {
     name = "home-manager-auto-upgrade";
@@ -50,7 +50,7 @@ let
           ${preSwitchScript}
 
           echo "Upgrade Home Manager"
-          home-manager switch -b hmbak --flake . ${hmExtraArgs}
+          home-manager switch --flake . ${hmExtraArgs}
         ''
       else
         ''
@@ -63,7 +63,7 @@ let
           ${preSwitchScript}
 
           echo "Upgrade Home Manager"
-          home-manager switch -b hmbak ${hmExtraArgs}
+          home-manager switch ${hmExtraArgs}
         '';
   };
 in
@@ -99,8 +99,7 @@ in
       flakeDir = lib.mkOption {
         type = lib.types.str;
         default = "${config.xdg.configHome}/home-manager";
-        defaultText = lib.literalExpression
-          ''"''${config.xdg.configHome}/home-manager"'';
+        defaultText = lib.literalExpression ''"''${config.xdg.configHome}/home-manager"'';
         example = "/home/user/dotfiles";
         description = ''
           Directory containing flake.nix.
@@ -110,7 +109,11 @@ in
       extraArgs = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
-        example = [ "--impure" "--verbose" ];
+        example = [
+          "--impure"
+          "-b"
+          "hmbak"
+        ];
         description = ''
           Extra arguments passed to `home-manager switch`.
         '';
@@ -121,7 +124,6 @@ in
         default = [ ];
         example = [
           "nix flake update"
-          "git status --short"
         ];
         description = ''
           Shell commands executed before `home-manager switch`.
@@ -133,10 +135,7 @@ in
 
   config = lib.mkIf cfg.enable {
     assertions = [
-      (lib.hm.assertions.assertPlatform
-        "services.home-manager.autoUpgrade"
-        pkgs
-        lib.platforms.linux)
+      (lib.hm.assertions.assertPlatform "services.home-manager.autoUpgrade" pkgs lib.platforms.linux)
     ];
 
     systemd.user = {
@@ -159,13 +158,11 @@ in
         };
 
         Service = {
-          ExecStart =
-            "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
+          ExecStart = "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
 
-          Environment =
-            lib.mkIf cfg.useFlake [
-              "FLAKE_DIR=${cfg.flakeDir}"
-            ];
+          Environment = lib.mkIf cfg.useFlake [
+            "FLAKE_DIR=${cfg.flakeDir}"
+          ];
         };
       };
     };

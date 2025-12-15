@@ -10,6 +10,11 @@
   services.home-manager.autoUpgrade = {
     enable = !isNixOS;
     useFlake = true;
+    extraArgs = [
+      "-b"
+      "hmbak"
+    ];
+    preSwitchCommands = [ "git pull" ];
     frequency = "weekly";
     flakeDir = "${config.home.homeDirectory}/dotfiles-nix";
   };
