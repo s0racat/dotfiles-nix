@@ -53,6 +53,7 @@ in
 
     };
     shellAliases = {
+      hm = "home-manager switch -b hmbak --flake .";
       le = "less";
       rg = "batgrep";
       man = "batman -L ja_JP.UTF-8";
