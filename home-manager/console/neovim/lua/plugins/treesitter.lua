@@ -1,13 +1,15 @@
 local spec = {
 	{
 		"nvim-treesitter/nvim-treesitter",
-
+		-- TODO: update to main branch
+		branch = "master",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {}, -- 必要な言語を指定
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
+					disable = { "tmux" },
 				},
 				indent = {
 					enable = true,
@@ -41,6 +43,8 @@ local spec = {
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		-- TODO: update to main branch
+		branch = "master",
 		event = "CursorMoved",
 		-- TODO: config
 	},
