@@ -1,6 +1,5 @@
 # apt: require foot
 {
-  pkgs,
   lib,
   ...
 }:
