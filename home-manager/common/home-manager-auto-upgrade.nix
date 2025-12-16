@@ -10,7 +10,7 @@
   services.home-manager.autoUpgrade = {
     enable = !isNixOS;
     useFlake = true;
-    extraArgs = [
+    flags = [
       "-b"
       "hmbak"
     ];

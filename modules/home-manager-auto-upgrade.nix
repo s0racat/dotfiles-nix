@@ -10,7 +10,8 @@ let
 
   homeManagerPackage = config.programs.home-manager.package;
 
-  hmExtraArgs = lib.escapeShellArgs cfg.extraArgs;
+  hmExtraArgs = lib.escapeShellArgs cfg.flags;
+
   legacyPreSwitchCommands = lib.warn ''
     services.home-manager.autoUpgrade:
     Implicit `nix flake update` before `home-manager switch` is deprecated.
@@ -18,18 +19,28 @@ let
     explicitly.
   '' [ "nix flake update" ];
 
+  # null = legacy behavior
+  # []   = run nothing
   effectivePreSwitchCommands =
-    if cfg.useFlake && cfg.preSwitchCommands == [ ] then
+    if cfg.useFlake && cfg.preSwitchCommands == null then
       legacyPreSwitchCommands
     else
       cfg.preSwitchCommands;
 
-  preSwitchScript = lib.concatStringsSep "\n" (
-    map (cmd: ''
-      echo "+ ${cmd}"
-      ${cmd}
-    '') effectivePreSwitchCommands
-  );
+  hasPreSwitchCommands = effectivePreSwitchCommands != [ ];
+
+  preSwitchScript =
+    lib.optionalString hasPreSwitchCommands (
+      lib.concatStringsSep "\n" (
+        [
+          ''echo "Running pre-switch commands"''
+        ]
+        ++ map (cmd: ''
+          echo "+ ${cmd}"
+          ${cmd}
+        '') effectivePreSwitchCommands
+      )
+    );
 
   autoUpgradeApp = pkgs.writeShellApplication {
     name = "home-manager-auto-upgrade";
@@ -37,7 +48,6 @@ let
     runtimeInputs = with pkgs; [
       homeManagerPackage
       nix
-      git
     ];
 
     text =
@@ -58,7 +68,6 @@ let
           echo "Changing to flake directory $FLAKE_DIR"
           cd "$FLAKE_DIR"
 
-          echo "Running pre-switch commands"
           ${preSwitchScript}
 
           echo "Upgrade Home Manager"
@@ -71,7 +80,6 @@ let
           echo "Update Nix channels"
           nix-channel --update
 
-          echo "Running pre-switch commands"
           ${preSwitchScript}
 
           echo "Upgrade Home Manager"
@@ -80,7 +88,7 @@ let
   };
 in
 {
-  meta.maintainers = [ lib.maintainers.pinage404 ];
+  meta.maintainers = [ lib.hm.maintainers.soracat ];
 
   options = {
     services.home-manager.autoUpgrade = {
@@ -111,14 +119,15 @@ in
       flakeDir = lib.mkOption {
         type = lib.types.str;
         default = "${config.xdg.configHome}/home-manager";
-        defaultText = lib.literalExpression ''"''${config.xdg.configHome}/home-manager"'';
+        defaultText =
+          lib.literalExpression ''"''${config.xdg.configHome}/home-manager"'';
         example = "/home/user/dotfiles";
         description = ''
           Directory containing flake.nix.
         '';
       };
 
-      extraArgs = lib.mkOption {
+      flags = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
         example = [
@@ -132,14 +141,19 @@ in
       };
 
       preSwitchCommands = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [ ];
-        example = [
-          "nix flake update"
-        ];
+        type = lib.types.nullOr (lib.types.listOf lib.types.str);
+        default = null;
+        example = lib.literalExpression ''
+          [
+            "nix flake update"
+            "''${pkgs.git}/bin/git pull"
+          ]
+        '';
         description = ''
           Shell commands executed before `home-manager switch`.
-          Each entry is executed as a separate command.
+
+          - null: use legacy behavior (deprecated)
+          - []: run no pre-switch commands
         '';
       };
     };
@@ -147,7 +161,10 @@ in
 
   config = lib.mkIf cfg.enable {
     assertions = [
-      (lib.hm.assertions.assertPlatform "services.home-manager.autoUpgrade" pkgs lib.platforms.linux)
+      (lib.hm.assertions.assertPlatform
+        "services.home-manager.autoUpgrade"
+        pkgs
+        lib.platforms.linux)
     ];
 
     systemd.user = {
@@ -170,7 +187,8 @@ in
         };
 
         Service = {
-          ExecStart = "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
+          ExecStart =
+            "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
 
           Environment = lib.mkIf cfg.useFlake [
             "FLAKE_DIR=${cfg.flakeDir}"
@@ -180,3 +198,4 @@ in
     };
   };
 }
+
