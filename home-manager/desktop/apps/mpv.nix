@@ -1,11 +1,12 @@
 # apt: require mpv
 {
   pkgs,
+  isNixOS,
   ...
 }:
 {
   programs.mpv = {
-    enable = true;
+    enable = isNixOS;
     scripts = [ pkgs.mpvScripts.mpris ];
     config = {
       keep-open = "yes";

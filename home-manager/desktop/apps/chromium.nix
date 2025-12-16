@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  isNixOS,
+  lib,
+  ...
+}:
 {
   programs.chromium = {
-    package = pkgs.chromium;
+    package = lib.mkIf (!isNixOS) null;
     enable = true;
     extensions = [
       # "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
