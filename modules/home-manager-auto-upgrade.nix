@@ -21,26 +21,27 @@ let
 
   # null = legacy behavior
   # []   = run nothing
-  effectivePreSwitchCommands =
+  preSwitchCommands =
     if cfg.useFlake && cfg.preSwitchCommands == null then
       legacyPreSwitchCommands
+    else if cfg.preSwitchCommands == null then
+      [ ]
     else
       cfg.preSwitchCommands;
 
-  hasPreSwitchCommands = effectivePreSwitchCommands != [ ];
+  hasPreSwitchCommands = preSwitchCommands != [ ];
 
-  preSwitchScript =
-    lib.optionalString hasPreSwitchCommands (
-      lib.concatStringsSep "\n" (
-        [
-          ''echo "Running pre-switch commands"''
-        ]
-        ++ map (cmd: ''
-          echo "+ ${cmd}"
-          ${cmd}
-        '') effectivePreSwitchCommands
-      )
-    );
+  preSwitchScript = lib.optionalString hasPreSwitchCommands (
+    lib.concatStringsSep "\n" (
+      [
+        ''echo "Running pre-switch commands"''
+      ]
+      ++ map (cmd: ''
+        echo "+ ${cmd}"
+        ${cmd}
+      '') preSwitchCommands
+    )
+  );
 
   autoUpgradeApp = pkgs.writeShellApplication {
     name = "home-manager-auto-upgrade";
@@ -119,8 +120,7 @@ in
       flakeDir = lib.mkOption {
         type = lib.types.str;
         default = "${config.xdg.configHome}/home-manager";
-        defaultText =
-          lib.literalExpression ''"''${config.xdg.configHome}/home-manager"'';
+        defaultText = lib.literalExpression ''"''${config.xdg.configHome}/home-manager"'';
         example = "/home/user/dotfiles";
         description = ''
           Directory containing flake.nix.
@@ -161,10 +161,7 @@ in
 
   config = lib.mkIf cfg.enable {
     assertions = [
-      (lib.hm.assertions.assertPlatform
-        "services.home-manager.autoUpgrade"
-        pkgs
-        lib.platforms.linux)
+      (lib.hm.assertions.assertPlatform "services.home-manager.autoUpgrade" pkgs lib.platforms.linux)
     ];
 
     systemd.user = {
@@ -187,8 +184,7 @@ in
         };
 
         Service = {
-          ExecStart =
-            "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
+          ExecStart = "${autoUpgradeApp}/bin/home-manager-auto-upgrade";
 
           Environment = lib.mkIf cfg.useFlake [
             "FLAKE_DIR=${cfg.flakeDir}"
