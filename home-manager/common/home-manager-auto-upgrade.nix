@@ -5,6 +5,7 @@
   ...
 }:
 {
+  # https://github.com/nix-community/home-manager/pull/8353
   disabledModules = [ "services/home-manager-auto-upgrade.nix" ];
   imports = [ "${self}/modules/home-manager-auto-upgrade.nix" ];
   services.home-manager.autoUpgrade = {
