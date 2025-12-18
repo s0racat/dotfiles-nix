@@ -8,8 +8,8 @@
     gnupg
     ghq
     gcc
-    nodejs-slim
-    nodePackages.pnpm
+    nodejs_latest
+    pnpm
     go
     uv
     lua

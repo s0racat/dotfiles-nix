@@ -59,8 +59,7 @@ in
       man = "batman -L ja_JP.UTF-8";
       cd = "z";
       gksu = "pkexec env WAYLAND_DISPLAY=$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY XDG_RUNTIME_DIR=/run/user/0 DISPLAY=$DISPLAY";
-      npm = "pnpm";
-      cz = "git cz";
+      pn = "pnpm";
       nix-shell = "nix-shell --command ${zshBin}";
       rm = "rip";
       # lg = "lazygit";
