@@ -30,9 +30,9 @@ vim.keymap.set("n", "<leader>q", function()
 	else
 		vim.cmd("q")
 	end
-end, { silent = true })
+end, { desc = "Close buffer or window", silent = true })
 
-vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file", silent = true })
 -- ノーマルモード
 vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "x", '"_x')
