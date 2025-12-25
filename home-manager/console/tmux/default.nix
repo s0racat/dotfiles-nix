@@ -29,7 +29,7 @@
         ''
           # theme
           set -g status-style "bg=default,fg=${default_fg}"
-          set -g window-status-current-format "#[fg=${default_fg},bg=${bg2}] #I: #W "
+          set -g window-status-current-format "#[fg=${default_fg},bg=${bg2}]#{?window_zoomed_flag, ,} #I: #W "
           set -g window-status-last-style "fg=${default_fg},bg=default"
           set -g message-command-style "bg=default,fg=${default_fg}"
           set -g message-style "bg=default,fg=${default_fg}"
