@@ -31,7 +31,7 @@
     nixd
     man-pages-ja
     gemini-cli
-
+    xsel
   ];
   home.extraDependencies = with pkgs; [
     stdenv

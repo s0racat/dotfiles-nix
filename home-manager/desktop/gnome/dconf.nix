@@ -95,6 +95,9 @@
       repeat-interval = lib.hm.gvariant.mkUint32 30;
       delay = lib.hm.gvariant.mkUint32 280;
     };
+    "org/gnome/desktop/peripherals/mouse" = {
+      speed = 0.6;
+    };
     "org/gnome/desktop/input-sources".xkb-options = [
       config.wayland.windowManager.sway.config.input."type:keyboard".xkb_options
     ];

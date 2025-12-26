@@ -5,6 +5,9 @@
     "org/cinnamon/desktop/wm/preferences" = {
       titlebar-font = "Roboto Medium 11";
     };
+    "org/cinnamon/desktop/peripherals/mouse" = {
+      speed = 0.6;
+    };
     "org/x/apps/portal".color-scheme = "prefer-dark";
     "org/cinnamon/desktop/interface" = with config.gtk; {
       icon-theme = iconTheme.name;
