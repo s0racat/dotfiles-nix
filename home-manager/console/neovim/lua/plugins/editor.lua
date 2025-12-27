@@ -71,13 +71,22 @@ local spec = {
 		opts = {
 			spec = {
 				{
+					"<leader>f",
+					group = "Telescope",
+				},
+				{
+					"<leader>t",
+					group = "[T]oggle",
+				},
+
+				{
+					"<leader>l",
+					group = "[L]SP",
+				},
+				{
 					"<leader>h",
 					group = "Git [H]unk",
 					mode = { "n", "v" },
-				},
-				{
-					"<leader>w",
-					group = "LSP: [W]orkspace",
 				},
 			},
 			triggers = {

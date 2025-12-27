@@ -55,21 +55,21 @@ local spec = {
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
-			vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
-			vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "Search [G]it Files" })
+			vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Search [F]iles" })
+			vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "Search [H]elp" })
 			vim.keymap.set(
 				"n",
 				"<leader>fw",
 				require("telescope.builtin").grep_string,
-				{ desc = "[S]earch current [W]ord" }
+				{ desc = "Search current [W]ord" }
 			)
-			vim.keymap.set("n", "<leader>fr", require("telescope.builtin").live_grep, { desc = "[S]earch by G[r]ep" })
+			vim.keymap.set("n", "<leader>fr", require("telescope.builtin").live_grep, { desc = "Search by G[r]ep" })
 			vim.keymap.set(
 				"n",
 				"<leader>fd",
 				require("telescope.builtin").diagnostics,
-				{ desc = "[S]earch [D]iagnostics" }
+				{ desc = "Search [D]iagnostics" }
 			)
 		end,
 
@@ -105,6 +105,7 @@ local spec = {
 		keys = {
 			{ "-", "<cmd>Oil<cr>", desc = "Open Oil" },
 		},
+		event = "VeryLazy",
 		config = function()
 			require("oil").setup({
 				-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
