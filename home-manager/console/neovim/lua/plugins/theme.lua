@@ -35,24 +35,24 @@ local spec = {
 		end,
 	},
 
-	{
-		-- Set lualine as statusline
-		"nvim-lualine/lualine.nvim",
-		-- See `:help lualine.txt`
-		event = "VeryLazy",
-		enabled = false,
-		opts = {
-			options = {
-				icons_enabled = true,
-				theme = "nord",
-				-- component_separators = { left = '', right = '' },
-				-- section_separators = { left = '', right = '' }
-			},
-			sections = {
-				lualine_x = { skkeleton },
-			},
-		},
-	},
+	-- {
+	-- 	-- Set lualine as statusline
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	-- See `:help lualine.txt`
+	-- 	event = "VeryLazy",
+	-- 	-- enabled = false,
+	-- 	opts = {
+	-- 		options = {
+	-- 			icons_enabled = true,
+	-- 			theme = "nord",
+	-- 			-- component_separators = { left = '', right = '' },
+	-- 			-- section_separators = { left = '', right = '' }
+	-- 		},
+	-- 		sections = {
+	-- 			lualine_x = { skkeleton },
+	-- 		},
+	-- 	},
+	-- },
 
 	{ "nvim-tree/nvim-web-devicons", opt = true },
 

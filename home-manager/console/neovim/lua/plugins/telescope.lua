@@ -7,12 +7,12 @@ local spec = {
 			"<leader>?",
 			"<leader><space>",
 			"<leader>/",
-			"<leader>g",
-			"<leader>f",
-			"<leader>h",
-			"<leader>b",
-			"<leader>r",
-			"<leader>x",
+			"<leader>fg",
+			"<leader>ff",
+			"<leader>fh",
+			"<leader>fw",
+			"<leader>fr",
+			"<leader>fd",
 		},
 		config = function()
 			local actions = require("telescope.actions")
@@ -55,19 +55,19 @@ local spec = {
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
-			vim.keymap.set("n", "<leader>g", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
-			vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>h", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
+			vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set(
 				"n",
-				"<leader>b",
+				"<leader>fw",
 				require("telescope.builtin").grep_string,
 				{ desc = "[S]earch current [W]ord" }
 			)
-			vim.keymap.set("n", "<leader>r", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>fr", require("telescope.builtin").live_grep, { desc = "[S]earch by G[r]ep" })
 			vim.keymap.set(
 				"n",
-				"<leader>x",
+				"<leader>fd",
 				require("telescope.builtin").diagnostics,
 				{ desc = "[S]earch [D]iagnostics" }
 			)

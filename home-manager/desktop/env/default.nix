@@ -1,6 +1,6 @@
 {
   imports = [
-
+    ./clip.nix
     ./envvar.nix
     ./font.nix
     ./mimeapps.nix
