@@ -3,6 +3,7 @@ local spec = {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		cmd = "Telescope",
+		dependencies = { "telescope-all-recent.nvim" },
 		keys = {
 			"<leader>?",
 			"<leader><space>",
@@ -85,6 +86,15 @@ local spec = {
 		-- NOTE: If you are having trouble with this installation,
 		--       refer to the README for telescope-fzf-native for more instructions.
 	},
+	{
+		"prochri/telescope-all-recent.nvim",
+		dependencies = {
+			"kkharji/sqlite.lua",
+			-- optional, if using telescope for vim.ui.select
+		},
+		opts = true,
+	},
+
 	-- {
 	-- 	"nvim-telescope/telescope-file-browser.nvim",
 	-- 	keys = {

@@ -55,6 +55,7 @@ in
     in
     lib.mkAfter ''
       ${lazyConfig}
+      vim.g.sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}'
     '';
 
   xdg.dataFile = {
