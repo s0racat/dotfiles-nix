@@ -7,7 +7,6 @@
 }:
 
 let
-  cfg = config.programs.zsh;
   dircolorsPath =
     if config.home.preferXdgDirectories then
       "${config.xdg.configFile."dir_colors".source}"
@@ -19,7 +18,6 @@ let
   zoxide = pkgs.runCommand "zoxide" { } "${pkgs.zoxide}/bin/zoxide init zsh > $out";
   starship = pkgs.runCommand "starship" { } "${pkgs.starship}/bin/starship init zsh > $out";
   fzf = pkgs.runCommand "fzf" { } "${pkgs.fzf}/bin/fzf --zsh > $out";
-  relToDotDir = file: (lib.optionalString (cfg.dotDir != null) (cfg.dotDir + "/")) + file;
   zshBin = if isNixOS then "${pkgs.zsh}/bin/zsh" else "/bin/zsh";
 in
 {
