@@ -108,8 +108,8 @@ in
 
   home.activation.zshScripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     for file in \
-      ${relToDotDir ".zshrc"} \
-      ${relToDotDir ".zshenv"} \
+      $HOME/.zshrc \
+      $HOME/.zshenv \
       $HOME/.config/sheldon/*/*.zsh
     do
       if [ ! -f "$file.zwc" ]; then
