@@ -124,8 +124,8 @@ in
     fi
   '';
 
-  home.file."${relToDotDir ".zshrc"}".onChange = "${zshBin} -c 'zcompile ~/.zshrc'";
-  home.file."${relToDotDir ".zshenv"}".onChange = "${zshBin} -c 'zcompile ~/.zshenv'";
+  home.file."./.zshrc".onChange = "${zshBin} -c 'zcompile ~/.zshrc'";
+  home.file."./.zshenv".onChange = "${zshBin} -c 'zcompile ~/.zshenv'";
   home.packages = [ pkgs.sheldon ];
 
   xdg.configFile."sheldon/sync/starship.zsh" = {
