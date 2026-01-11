@@ -32,6 +32,7 @@
     man-pages-ja
     gemini-cli
     xsel
+    amdgpu_top
   ];
   home.extraDependencies = with pkgs; [
     stdenv

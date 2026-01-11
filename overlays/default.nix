@@ -1,6 +1,7 @@
 { self, inputs, ... }:
 final: prev:
 # https://wiki.archlinux.org/title/Chromium
+# Mesa 25.0.7: chromium --use-angle=vulkan --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE --disable-features=UseSkiaRenderer
 let
   electron_flags = [
     "--password-store=gnome-libsecret"
@@ -11,11 +12,7 @@ let
     "--start-maximized"
     "--enable-features=${
       builtins.concatStringsSep "," [
-        # "VaapiVideoDecoder"
-        # "VaapiIgnoreDriverChecks"
-        # "Vulkan"
-        # "DefaultANGLEVulkan"
-        # "VulkanFromANGLE"
+        "AcceleratedVideoDecodeLinuxGL"
         "WebRTCPipeWireCapturer"
       ]
     }"
