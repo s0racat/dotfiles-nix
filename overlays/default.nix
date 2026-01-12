@@ -3,21 +3,8 @@ final: prev:
 # https://wiki.archlinux.org/title/Chromium
 # Mesa 25.0.7: chromium --use-angle=vulkan --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE --disable-features=UseSkiaRenderer
 let
-  electron_flags = [
-    "--password-store=gnome-libsecret"
-    "--gtk-version=4"
-  ];
-  chromium_flags = [
-    electron_flags
-    "--start-maximized"
-    "--enable-features=${
-      builtins.concatStringsSep "," [
-        "AcceleratedVideoDecodeLinuxGL"
-        "WebRTCPipeWireCapturer"
-      ]
-    }"
-    "--force-dark-mode"
-  ];
+  flags = import ./flags.nix;
+  inherit (flags) chromium_flags electron_flags;
 in
 {
   unstable = import inputs.nixpkgs-unstable-small {

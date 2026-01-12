@@ -19,7 +19,7 @@ in
 
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit";
+      ExecStart = "${pkgs.wayland-pipewire-idle-inhibit}/bin/wayland-pipewire-idle-inhibit";
       Restart = "on-failure";
     };
 
