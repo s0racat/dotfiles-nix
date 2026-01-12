@@ -22,6 +22,7 @@ in
       "bhchdcejhohfmigjafbampogmaanbfkg" # UA Switcher
       "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
       "oboonakemofpalcgghocfoadofidjkkk" # KeePassXC
+      "lodcanccmfbpjjpnngindkkmiehimile" # Control Panel for YouTube
     ];
 
   };

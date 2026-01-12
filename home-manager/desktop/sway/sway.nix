@@ -54,7 +54,7 @@ in
               "${modifier}+Shift+r" = "reload";
               "${modifier}+Shift+s" =
                 ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
-              "${modifier}+Shift+e" = ''mode ${lib.escapeShellArg system}'';
+              "${modifier}+Shift+e" = "mode ${lib.escapeShellArg system}";
               "${modifier}+Shift+p" =
                 ''[app_id="org.keepassxc.KeePassXC"] scratchpad show, move position center'';
               "XF86MonBrightnessDown" = "exec ${swayosd-client} --brightness lower";
@@ -234,7 +234,7 @@ in
               {
                 command = "floating enable, sticky enable";
                 criteria = {
-                  title = "(Picture-in-Picture|ピクチャーインピクチャー)";
+                  title = "(Picture-in-Picture|ピクチャーインピクチャー|ピクチャー イン ピクチャー)";
                 };
               }
               {
