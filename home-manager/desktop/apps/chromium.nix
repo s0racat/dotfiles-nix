@@ -28,13 +28,17 @@ in
   };
   home.activation.writeFlatpakChromiumFlags = lib.mkIf (!isNixOS) (
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          CONFIG_DIR="$HOME/.var/app/org.chromium.Chromium/config"
-          CONFIG_FILE="$CONFIG_DIR/chromium-flags.conf"
-          mkdir -p "$CONFIG_DIR"
+      CONFIG_DIR="$HOME/.var/app/org.chromium.Chromium/config"
+      CONFIG_FILE="$CONFIG_DIR/chromium-flags.conf"
 
-          cat > "$CONFIG_FILE" <<'EOF'
-      ${flagsText}
-      EOF
+      if [ ! -d "$CONFIG_DIR" ]; then
+        mkdir -p "$CONFIG_DIR"
+      fi
+
+      if [ ! -f "$CONFIG_FILE" ] || \
+         ! printf '%s\n' "${flagsText}" | cmp -s - "$CONFIG_FILE"; then
+        printf '%s\n' "${flagsText}" >"$CONFIG_FILE"
+      fi
     ''
   );
 }

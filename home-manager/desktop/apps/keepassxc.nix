@@ -31,12 +31,17 @@ let
 in
 {
   home.activation.copyKeePassXCconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ ! -f ${config.xdg.configHome}/keepassxc/keepassxc.ini ]; then
-      mkdir -p ${config.xdg.configHome}/keepassxc
-      cat << EOF > ${config.xdg.configHome}/keepassxc/keepassxc.ini
-    ${KeePassXCcfg}
-    EOF
-      chmod 600 ${config.xdg.configHome}/keepassxc/keepassxc.ini
+    CFG_DIR="${config.xdg.configHome}/keepassxc"
+    CFG_FILE="$CFG_DIR/keepassxc.ini"
+
+    if [ ! -d "$CFG_DIR" ]; then
+      mkdir -p "$CFG_DIR"
+    fi
+
+    if [ ! -f "$CFG_FILE" ] || \
+       ! printf '%s\n' "${KeePassXCcfg}" | cmp -s - "$CFG_FILE"; then
+      printf '%s\n' "${KeePassXCcfg}" >"$CFG_FILE"
+      chmod 600 "$CFG_FILE"
     fi
   '';
 }
