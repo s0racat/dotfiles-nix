@@ -1,4 +1,4 @@
-{ lib, isNixOS, ... }:
+{ ... }:
 {
   imports = [
     ./gnome-keyring.nix
