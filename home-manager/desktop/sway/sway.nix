@@ -234,7 +234,7 @@ in
               {
                 command = "floating enable, sticky enable";
                 criteria = {
-                  title = "(Picture-in-Picture|ピクチャーインピクチャー|ピクチャー イン ピクチャー)";
+                  title = "(Picture-in-Picture|ピクチャー ?イン ?ピクチャー)";
                 };
               }
               {
