@@ -8,7 +8,7 @@ let
   inherit (config.wayland.systemd) target;
 in
 {
-  home.packages = [ pkgs.sway-audio-idle-inhibit ];
+  home.packages = [ pkgs.wayland-pipewire-idle-inhibit ];
 
   systemd.user.services.sway-audio-idle-inhibit = {
     Unit = {
