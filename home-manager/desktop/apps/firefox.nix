@@ -85,6 +85,7 @@
           "media.av1.enabled" = av1Support;
           # https://wiki.mozilla.org/Media/block-autoplay
           # "media.autoplay.blocking_policy" = 2;
+          "browser.translations.automaticallyPopup" = false;
         };
       };
     };
