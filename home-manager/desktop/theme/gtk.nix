@@ -7,7 +7,7 @@
     cursorTheme = {
       package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
-      size = 24;
+      size = 32;
     };
     theme = {
       name = "Nordic-bluish-accent-standard-buttons";
