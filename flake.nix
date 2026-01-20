@@ -1,12 +1,12 @@
 {
   description = "dotfiles";
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-stable-small.url = "github:NixOS/nixpkgs/nixos-25.11-small";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       # neovimUtils.makeVimPackageInfo not found https://github.com/nix-community/home-manager/commit/3c71ea724c54b29a8f62e2b965caafca863fa3a2
-      url = "github:nix-community/home-manager/d21bee5abf9fb4a42b2fa7728bf671f8bb246ba6";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # lanzaboote = {
@@ -18,7 +18,7 @@
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Quickly locate nix packages with specific files
     # $ nix-locate 'bin/hello'
@@ -30,7 +30,7 @@
   outputs =
     {
       self,
-      nixpkgs-stable,
+      nixpkgs-unstable,
       treefmt-nix,
       ...
     }@inputs:
@@ -41,10 +41,10 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      forAllSystems = nixpkgs-stable.lib.genAttrs supportedSystems;
+      forAllSystems = nixpkgs-unstable.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (
         system:
-        import nixpkgs-stable {
+        import nixpkgs-unstable {
           inherit system;
           overlays = self.overlays.default;
           config.allowUnfree = true;

@@ -3,12 +3,13 @@ final: prev:
 # https://wiki.archlinux.org/title/Chromium
 # Mesa 25.0.7: chromium --use-angle=vulkan --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE --disable-features=UseSkiaRenderer
 let
-  flags = import ./flags.nix;
+  flags = import ./chromium-flags.nix;
   inherit (flags) chromium_flags electron_flags;
 in
 {
-  unstable = import inputs.nixpkgs-unstable-small {
-    inherit (final) system overlays config;
+  stable = import inputs.nixpkgs-stable-small {
+    inherit (final) overlays config;
+    system = final.stdenv.hostPlatform.system;
   };
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode-fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  flags = import "${self}/overlays/flags.nix";
+  flags = import "${self}/overlays/chromium-flags.nix";
   inherit (flags) chromium_flags;
   flagsText = builtins.concatStringsSep "\n" (
     chromium_flags ++ [ "--user-data-dir=${config.home.homeDirectory}/.config/chromium" ]

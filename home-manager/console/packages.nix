@@ -3,7 +3,7 @@
   # a = outputs.homeConfigurations."takumi@takumi-Venus-series".config.home.packages
   # lib.unique (builtins.map(x: lib.getName x) a)
   home.packages = with pkgs; [
-    pipr
+    stable.pipr
     eza
     gnupg
     ghq
@@ -16,7 +16,7 @@
     xdg-utils
     ripgrep
     file
-    unstable.deno
+    deno
     typescript
     fd
     wget
