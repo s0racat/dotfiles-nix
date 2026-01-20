@@ -17,6 +17,7 @@
     ./zoxide.nix
     ./nix-index.nix
     ./tealdeer.nix
+    ./distrobox.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];
