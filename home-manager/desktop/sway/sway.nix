@@ -257,7 +257,7 @@ in
             inner = 14;
           };
           modifier = "Mod4";
-          menu = "${pkgs.fuzzel}/bin/fuzzel";
+          menu = "env LANG=en_US.UTF-8 ${pkgs.fuzzel}/bin/fuzzel";
           startup = [
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
