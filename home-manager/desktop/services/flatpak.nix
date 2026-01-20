@@ -7,7 +7,6 @@ lib.mkIf (!isNixOS) {
       ExecStart = "/usr/bin/flatpak update --assumeyes --noninteractive";
       Type = "oneshot";
     };
-    Install.WantedBy = [ "default.target" ];
   };
 
   systemd.user.timers.flatpak-update = {
