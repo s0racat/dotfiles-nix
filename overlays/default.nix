@@ -9,7 +9,7 @@ in
 {
   stable = import inputs.nixpkgs-stable-small {
     inherit (final) overlays config;
-    system = final.stdenv.hostPlatform.system;
+    inherit (final.stdenv.hostPlatform) system;
   };
   chromium = prev.chromium.override { commandLineArgs = chromium_flags; };
   vscode-fhs = (prev.vscode.override { commandLineArgs = electron_flags; }).fhs;
