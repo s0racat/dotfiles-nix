@@ -8,9 +8,10 @@
   systemd.user.services.distrobox-upgrade = {
     Unit.Description = "distrobox-upgrade";
     Service = {
-      ExecStart = "distrobox-upgrade --all";
+      Environment="PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin";
+      ExecStart = "%h/.local/bin/distrobox-upgrade --all";
       Type = "simple";
-      # StandardOutput = "null";
+      StandardOutput = "null";
     };
   };
 
