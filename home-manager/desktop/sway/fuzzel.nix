@@ -8,6 +8,7 @@
         icon-theme = config.gtk.iconTheme.name;
         filter-desktop = true;
         font = "monospace:size=14";
+        launch-prefix = "env LANG=ja_JP.UTF-8";
       };
       colors = {
 
