@@ -16,7 +16,7 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
+        "ref": "63a87808f5f9b6e4195a1d33f6ea25d23f4aa0d",
         "repo": "home-manager",
         "type": "github"
       }
