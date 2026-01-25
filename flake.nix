@@ -5,7 +5,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       # neovimUtils.makeVimPackageInfo not found https://github.com/nix-community/home-manager/commit/3c71ea724c54b29a8f62e2b965caafca863fa3a2
-      url = "github:nix-community/home-manager/63a87808f5f9b6e4195a1d33f6ea25d23f4aa0d";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -47,7 +47,6 @@
         import nixpkgs-unstable {
           inherit system;
           overlays = self.overlays.default;
-          config.allowUnfree = true;
         }
       );
       util = import ./lib/util.nix { inherit inputs nixpkgsFor; };
