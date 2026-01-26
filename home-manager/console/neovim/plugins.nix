@@ -19,7 +19,7 @@ in
       gopls
       pyright
       stylua
-      nixfmt-rfc-style
+      nixfmt
       skkDictionaries.l
       nixd
     ];
