@@ -26,7 +26,7 @@ https://yanor.net/wiki/?Windows/WSL/%E7%9B%B8%E4%BA%92%E9%81%8B%E7%94%A8/Windows
 
 [https://learn.microsoft.com/ja-jp/windows/wsl/systemd](https://learn.microsoft.com/ja-jp/windows/wsl/systemd)
 
-[https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
+[https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
 ```bash
 sudo gpasswd -a $USER docker
