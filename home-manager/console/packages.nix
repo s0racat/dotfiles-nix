@@ -33,6 +33,7 @@
     gemini-cli
     xsel
     amdgpu_top
+    distrobox
   ];
   home.extraDependencies = with pkgs; [
     stdenv
