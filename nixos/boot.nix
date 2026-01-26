@@ -1,10 +1,6 @@
 _: {
   # boot
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 15;
-  };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.consoleLogLevel = 3;
   boot.tmp.useTmpfs = true;

@@ -9,10 +9,6 @@
     qemu = {
       swtpm.enable = true;
       runAsRoot = true;
-      ovmf = {
-        enable = true;
-        packages = [ pkgs.OVMFFull.fd ];
-      };
     };
   };
   programs.virt-manager.enable = true;
