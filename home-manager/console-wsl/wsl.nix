@@ -36,6 +36,7 @@ in
     "/mnt/c/Program Files/OpenSSH/ssh.exe"
     "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
     "/mnt/c/Users/${config.home.username}/AppData/Local/Programs/Microsoft VS Code/bin/code"
+    "/mnt/c/Program Files/Docker/Docker/resources/bin/docker-credential-wincred.exe" # ~/.docker/config.json: { "credsStore": "wincred.exe" }
   ];
   home.sessionVariables = {
     WIN_HOME = "/mnt/c/Users/${config.home.username}";
