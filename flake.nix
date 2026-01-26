@@ -46,15 +46,22 @@
         system:
         import nixpkgs-unstable {
           inherit system;
-          overlays = self.overlays.default;
+          overlays = [ self.overlays.default ];
         }
       );
       util = import ./lib/util.nix { inherit inputs nixpkgsFor; };
     in
     {
-      overlays.default = [
-        (import ./overlays { inherit self inputs; })
-      ];
+      overlays.default = import ./overlays { inherit self inputs; };
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        pkgs.lib.genAttrs (builtins.attrNames self.homeConfigurations) (
+          name: self.homeConfigurations.${name}.activationPackage
+        )
+      );
 
       apps = forAllSystems (
         system:
@@ -68,7 +75,9 @@
               (pkgs.writeShellScript "alejandra" ''
                 ${pkgs.alejandra}/bin/alejandra -e ./_sources .
               '').outPath;
+            meta.description = "alejandra";
           };
+
         }
       );
 
