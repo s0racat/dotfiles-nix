@@ -11,6 +11,7 @@ let
         "WebRTCPipeWireCapturer"
       ]
     }"
+    "--disable-features=${builtins.concatStringsSep "," [ "UseSkiaRenderer" ]}"
     "--force-dark-mode"
   ];
 in
