@@ -1,14 +1,13 @@
-# This is a basic workflow to help you get started with Actions
+# CI workflow for Nix flake maintenance
 
 name: CI
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-
+  # 毎週土曜 4:00 UTC
   schedule:
-    - cron: "0 4 * * 6" # 3:00 am in JST
-  # Allows you to run this workflow manually from the Actions tab
+    - cron: "0 4 * * 6"
+
+  # 手動実行
   workflow_dispatch:
 
 permissions:
@@ -16,41 +15,62 @@ permissions:
 
 env:
   LANG: "en_US.UTF-8"
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # リポジトリを checkout
       - uses: actions/checkout@v4
 
+      # git の bot 設定（commit 用）
       - name: Configure git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-      # Runs a single command using the runner's shell
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      # Nix をインストール
+      - name: Install Nix
+        uses: cachix/install-nix-action@v30
+
+      # Cachix（pull only）
+      # authToken を指定しないので push はしない
+      - name: Enable Cachix (pull only)
+        uses: cachix/cachix-action@v15
+        with:
+          name: deadnix
+
+      # GitHub Actions キャッシュで /nix/store を再利用
+      - name: Cache Nix store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          # OS + nix 式 + flake.lock が完全一致したらヒット
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+
+          # 完全一致が無ければ、同じ OS の最新キャッシュを使う
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+
+      # flake.lock を更新（変更があれば commit）
       - name: Update Nix flake
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           nix flake update --commit-lock-file
 
+      # nvfetcher 実行（ソース更新 & commit）
       - name: Update nvfetcher
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           nix run nixpkgs#nvfetcher -- --commit-changes
 
+      # flake check
       - name: Run checks
         run: nix flake check
 
-      - name: push
+      # 変更があれば push
+      - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: git push
