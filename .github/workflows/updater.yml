@@ -34,13 +34,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v30
 
-      # Cachix（pull only）
-      # authToken を指定しないので push はしない
-      - name: Enable Cachix (pull only)
-        uses: cachix/cachix-action@v15
-        with:
-          name: deadnix
-
       # GitHub Actions キャッシュで /nix/store を再利用
       - name: Cache Nix store
         uses: nix-community/cache-nix-action@v6
