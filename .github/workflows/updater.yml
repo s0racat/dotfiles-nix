@@ -30,9 +30,11 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-      # Nix をインストール
-      - name: Install Nix
-        uses: cachix/install-nix-action@v30
+      - uses: nixbuild/nix-quick-install-action@v30
+        with:
+         nix_conf: |
+          keep-env-derivations = true
+          keep-outputs = true
 
       # GitHub Actions キャッシュで /nix/store を再利用
       - name: Cache Nix store
