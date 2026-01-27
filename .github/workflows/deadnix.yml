@@ -13,8 +13,11 @@ jobs:
       # リポジトリをチェックアウト
       - uses: actions/checkout@v4
 
-      # Nix をインストール
-      - uses: cachix/install-nix-action@v30
+      - uses: nixbuild/nix-quick-install-action@v30
+        with:
+         nix_conf: |
+          keep-env-derivations = true
+          keep-outputs = true
 
       # Cachix を「ダウンロード専用（pull only）」で使用
       # authToken を指定しないので push はしない
