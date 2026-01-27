@@ -28,7 +28,7 @@ jobs:
           # OS + nix式 + flake.lock が完全一致したらヒット
           primary-key: nix-deadnix-${{ runner.os }}-${{ hashFiles('**/*.nix') }}
           restore-prefixes-first-match: nix-deadnix-${{ runner.os }}-
-
+          gc-max-store-size-linux: 3G
 
       # deadnix 実行（未使用コード解析）
       - uses: astro/deadnix-action@main
