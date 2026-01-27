@@ -32,3 +32,6 @@ jobs:
 
       # deadnix 実行（未使用コード解析）
       - uses: astro/deadnix-action@main
+        with:
+          create_pr: true
+          flags: "--edit --exclude=./_sources"
