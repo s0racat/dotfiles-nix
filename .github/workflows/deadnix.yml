@@ -21,12 +21,6 @@ jobs:
           keep-env-derivations = true
           keep-outputs = true
 
-      # Cachix を「ダウンロード専用（pull only）」で使用
-      # authToken を指定しないので push はしない
-      - uses: cachix/cachix-action@v15
-        with:
-          name: deadnix
-
       # GitHub Actions のキャッシュで /nix/store を再利用
       - uses: nix-community/cache-nix-action@v6
         with:
