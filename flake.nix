@@ -53,14 +53,16 @@
     in
     {
       overlays.default = import ./overlays { inherit self inputs; };
+
       checks = forAllSystems (
         system:
         let
           pkgs = nixpkgsFor.${system};
         in
-        pkgs.lib.genAttrs (builtins.attrNames self.homeConfigurations) (
-          name: self.homeConfigurations.${name}.activationPackage
-        )
+        pkgs.lib.mapAttrs' (name: config: {
+          name = "hm_" + name;
+          value = config.activationPackage;
+        }) self.homeConfigurations
       );
 
       apps = forAllSystems (
