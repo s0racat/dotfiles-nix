@@ -1,6 +1,6 @@
-on:
+on: 
   push:
-  workflow_dispatch:
+  workflow_dispatch: 
 
 name: Dead code analysis
 
@@ -8,14 +8,29 @@ jobs:
   deadnix:
     name: Deadnix
     runs-on: ubuntu-latest
+
     steps:
+      # リポジトリをチェックアウト
       - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v25
-      - uses: cachix/cachix-action@v14
+
+      # Nix をインストール
+      - uses: cachix/install-nix-action@v30
+
+      # Cachix を「ダウンロード専用（pull only）」で使用
+      # authToken を指定しないので push はしない
+      - uses: cachix/cachix-action@v15
         with:
           name: deadnix
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - uses: astro/deadnix-action@main
+
+      # GitHub Actions のキャッシュで /nix/store を再利用
+      - uses: nix-community/cache-nix-action@v6
         with:
-          create_pr: true
-          flags: "--edit --exclude=./_sources"
+          # OS + nix式 + flake.lock が完全一致したらヒット
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+
+          # 完全一致が無ければ
+          # 同じ OS の最新キャッシュをフォールバックで使う
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+
+      # deadnix 実行（未使用コード解析）
+      - uses: astro/deadnix-action@main
