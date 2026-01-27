@@ -45,6 +45,7 @@ jobs:
 
           # 完全一致が無ければ、同じ OS の最新キャッシュを使う
           restore-prefixes-first-match: nix-${{ runner.os }}-
+          gc-max-store-size-linux: 3G
 
       # flake.lock を更新（変更があれば commit）
       - name: Update Nix flake
