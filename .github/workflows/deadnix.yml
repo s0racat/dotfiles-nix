@@ -8,10 +8,7 @@ jobs:
   deadnix:
     name: Deadnix
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-      checks: write
+    permissions: write-all
 
     steps:
       # リポジトリをチェックアウト
