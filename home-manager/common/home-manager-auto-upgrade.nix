@@ -2,6 +2,7 @@
   config,
   isNixOS,
   self,
+  pkgs,
   ...
 }:
 {
@@ -15,7 +16,7 @@
       "-b"
       "hmbak"
     ];
-    preSwitchCommands = [ "git pull" ];
+    preSwitchCommands = [ "${pkgs.gitMinimal}/bin/git pull" ];
     frequency = "weekly";
     flakeDir = "${config.home.homeDirectory}/dotfiles-nix";
   };

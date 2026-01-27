@@ -35,11 +35,9 @@ let
     lib.concatStringsSep "\n" (
       [
         ''echo "Running pre-switch commands"''
+        "set -o xtrace"
       ]
-      ++ map (cmd: ''
-        echo "+ ${cmd}"
-        ${cmd}
-      '') preSwitchCommands
+      ++ preSwitchCommands
     )
   );
 
@@ -55,11 +53,6 @@ let
       if cfg.useFlake then
         ''
           set -euo pipefail
-
-          if [[ -z "''${FLAKE_DIR:-}" ]]; then
-            echo "FLAKE_DIR is not set" >&2
-            exit 1
-          fi
 
           if [[ ! -f "$FLAKE_DIR/flake.nix" ]]; then
             echo "No flake.nix found in $FLAKE_DIR." >&2
@@ -95,7 +88,7 @@ in
     services.home-manager.autoUpgrade = {
       enable = lib.mkEnableOption ''
         the Home Manager upgrade service that periodically updates your Nix
-        configuration before running `home-manager switch`
+        configuration by running `home-manager switch`
       '';
 
       frequency = lib.mkOption {
@@ -114,6 +107,10 @@ in
         default = false;
         description = ''
           Whether to use flake-based Home Manager configuration.
+
+          Flake URI uses FQDN, long, and short hostnames, and you must configure the corresponding user@host key in `homeConfigurations`. For example: user@hostname or user@host.example.com.
+
+          Also check `services.home-manager.autoUpgrade.flakeDir` option.
         '';
       };
 
@@ -124,6 +121,7 @@ in
         example = "/home/user/dotfiles";
         description = ''
           Directory containing flake.nix.
+          Also check `services.home-manager.autoUpgrade.useFlake` option.
         '';
       };
 
@@ -145,8 +143,8 @@ in
         default = null;
         example = lib.literalExpression ''
           [
+            "''${pkgs.gitMinimal}/bin/git pull"
             "nix flake update"
-            "''${pkgs.git}/bin/git pull"
           ]
         '';
         description = ''
