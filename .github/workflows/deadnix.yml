@@ -26,11 +26,9 @@ jobs:
       - uses: nix-community/cache-nix-action@v6
         with:
           # OS + nix式 + flake.lock が完全一致したらヒット
-          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+          primary-key: nix-deadnix-${{ runner.os }}-${{ hashFiles('**/*.nix') }}
+          restore-prefixes-first-match: nix-deadnix-${{ runner.os }}-
 
-          # 完全一致が無ければ
-          # 同じ OS の最新キャッシュをフォールバックで使う
-          restore-prefixes-first-match: nix-${{ runner.os }}-
 
       # deadnix 実行（未使用コード解析）
       - uses: astro/deadnix-action@main
