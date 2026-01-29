@@ -72,5 +72,5 @@ sudo systemd-cryptenroll --tpm2-device=auto $luks
 # gh
 
 ```bash
-gh auth login
+gh.exe auth login -c
 ```
