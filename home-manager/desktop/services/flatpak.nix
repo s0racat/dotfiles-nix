@@ -14,7 +14,7 @@ lib.mkIf (!isNixOS) {
   '';
   home.file.".local/bin/flatpak-update" = {
     source = pkgs.writeShellScript "flatpak-update" ''
-
+      sleep 20
       OUTPUT=$(flatpak update -y --noninteractive 2>&1)
 
       COUNT=$(echo "$OUTPUT" | grep -c "^Updating ")
