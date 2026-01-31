@@ -1,4 +1,5 @@
-{pkgs,...}:{
+{ pkgs, ... }:
+{
   xdg.configFile."distrobox/distrobox.conf".text = ''
     container_manager="podman"
     container_image_default="quay.io/toolbx/arch-toolbox:latest"
