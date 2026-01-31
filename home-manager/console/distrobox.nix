@@ -1,4 +1,4 @@
-{
+{pkgs,...}:{
   xdg.configFile."distrobox/distrobox.conf".text = ''
     container_manager="podman"
     container_image_default="quay.io/toolbx/arch-toolbox:latest"
@@ -20,8 +20,7 @@
   systemd.user.services.distrobox-upgrade = {
     Unit.Description = "distrobox-upgrade";
     Service = {
-      Environment = "PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin";
-      ExecStart = "%h/.local/bin/distrobox-upgrade --all";
+      ExecStart = "${pkgs.distrobox}/bin/distrobox-upgrade --all";
       Type = "simple";
       StandardOutput = "null";
     };
