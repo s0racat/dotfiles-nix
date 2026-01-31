@@ -263,6 +263,8 @@ in
             { command = "fcitx5 -r -d"; }
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "keepassxc"; }
+
+            { command = "flatpak-update"; }
           ];
         };
       extraConfig = ''
