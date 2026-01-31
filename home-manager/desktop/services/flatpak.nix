@@ -4,7 +4,7 @@ lib.mkIf (!isNixOS) {
   systemd.user.services.flatpak-update = {
     Unit.Description = "flatpak-update";
     Service = {
-      ExecStart = "/usr/bin/flatpak update --assumeyes --noninteractive";
+      ExecStart = "/usr/bin/flatpak update --user --assumeyes --noninteractive";
       Type = "oneshot";
     };
   };
