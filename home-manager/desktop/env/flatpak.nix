@@ -3,10 +3,11 @@
   isNixOS,
   pkgs,
   config,
+osConfig,
   ...
 }:
-
-lib.mkIf (!isNixOS) {
+let nixosFlatpak = osConfig.services.flatpak.enable ; in
+lib.mkIf (!isNixOS || nixosFlatpak) {
   xdg.configFile."autostart/mintupdate.desktop".text = ''
     [Desktop Entry]
     Type=Application
