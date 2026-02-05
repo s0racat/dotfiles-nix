@@ -15,7 +15,7 @@
 
     [kali]
     image="docker.io/kalilinux/kali-rolling:latest"
-    additional_packages="kali-linux-headless"
+    #additional_packages="kali-linux-headless"
     additional_flags="--env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/run/dbus/system_bus_socket"
   '';
   systemd.user.services.distrobox-upgrade = {
