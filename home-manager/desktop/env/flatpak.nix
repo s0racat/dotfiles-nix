@@ -18,13 +18,22 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
   home.file.".local/bin/flatpak-update" = {
     source = pkgs.writeShellScript "flatpak-update" ''
       sleep 20
+
       OUTPUT=$(flatpak update -y --noninteractive 2>&1)
 
-      COUNT=$(echo "$OUTPUT" | grep -c "^Updating ")
+      APPS=$(echo "$OUTPUT" \
+        | grep "^Updating " \
+        | sed 's|Updating app/||; s|/.*||')
+
+      COUNT=$(echo "$APPS" | grep -c .)
 
       if [ "$COUNT" -gt 0 ]; then
-        echo "$COUNT 個のアプリが更新されました"
-        notify-send "📦 Flatpak Update" "$COUNT 個のアプリが更新されました"
+        NAMES=""
+        for app in $APPS; do
+          NAMES="$NAMES\n・$app"
+        done
+
+        notify-send "📦 Flatpak Update" "$COUNT 個のアプリが更新されました$NAMES"
       fi
     '';
     executable = true;
