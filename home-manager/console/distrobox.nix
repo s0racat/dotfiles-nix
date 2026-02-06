@@ -13,8 +13,13 @@
     additional_packages="vim pacman-contrib"
     exported_bins="/usr/bin/makepkg /usr/bin/updpkgsums"
 
-    [kali]
-    image="docker.io/kalilinux/kali-rolling:latest"
+    #[kali]
+    #image="docker.io/kalilinux/kali-rolling:latest"
+    #additional_flags="--env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/run/dbus/system_bus_socket"
+    #additional_packages="kali-linux-headless"
+
+    [blackarch]
+    image="docker.io/blackarchlinux/blackarch:latest"
     additional_flags="--env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/run/dbus/system_bus_socket"
   '';
   systemd.user.services.distrobox-upgrade = {
