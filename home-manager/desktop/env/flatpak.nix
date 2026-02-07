@@ -23,7 +23,7 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
 
       APPS=$(echo "$OUTPUT" \
         | grep "^Updating " \
-        | sed 's|^Updating app/||; s|/.*||')
+        | sed 's|^Updating ||' | cut -d'/' -f1,2)
 
       COUNT=$(echo "$APPS" | grep -c .)
 
