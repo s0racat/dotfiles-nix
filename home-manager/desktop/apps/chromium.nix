@@ -9,7 +9,7 @@ let
   flags = import "${self}/overlays/chromium-flags.nix";
   inherit (flags) chromium_flags;
   flagsText = builtins.concatStringsSep "\n" (
-    chromium_flags ++ [ "--user-data-dir=${config.home.homeDirectory}/.config/chromium" ]
+    chromium_flags
   );
 in
 {
@@ -27,19 +27,5 @@ in
     ];
 
   };
-  home.activation.writeFlatpakChromiumFlags = lib.mkIf (!isNixOS) (
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      CONFIG_DIR="$HOME/.var/app/org.chromium.Chromium/config"
-      CONFIG_FILE="$CONFIG_DIR/chromium-flags.conf"
-
-      if [ ! -d "$CONFIG_DIR" ]; then
-        mkdir -p "$CONFIG_DIR"
-      fi
-
-      if [ ! -f "$CONFIG_FILE" ] || \
-         ! printf '%s\n' "${flagsText}" | cmp -s - "$CONFIG_FILE"; then
-        printf '%s\n' "${flagsText}" >"$CONFIG_FILE"
-      fi
-    ''
-  );
+  home.file.".var/app/com.brave.Browser/config/brave-flags.conf".text = flagsText;
 }
