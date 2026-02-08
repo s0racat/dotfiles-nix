@@ -1,7 +1,6 @@
 {
   isNixOS,
   lib,
-  config,
   self,
   ...
 }:
