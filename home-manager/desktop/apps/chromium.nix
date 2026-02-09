@@ -7,9 +7,7 @@
 let
   flags = import "${self}/overlays/chromium-flags.nix";
   inherit (flags) chromium_flags;
-  flagsText = builtins.concatStringsSep "\n" (
-    chromium_flags
-  );
+  flagsText = builtins.concatStringsSep "\n" chromium_flags;
 in
 {
   programs.chromium = {
