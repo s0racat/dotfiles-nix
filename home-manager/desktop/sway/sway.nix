@@ -251,7 +251,7 @@ in
             ];
           };
           focus.followMouse = false;
-          focus.mouseWarping = "container";
+          #focus.mouseWarping = "container";
           gaps = {
             smartGaps = true;
             inner = 14;
@@ -262,7 +262,7 @@ in
             { command = "lxqt-policykit-agent"; }
             { command = "fcitx5 -r -d"; }
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
-            { command = "keepassxc"; }
+            { command = "gtk-launch org.keepassxc.KeePassXC"; }
 
             { command = "flatpak-update"; }
           ];
