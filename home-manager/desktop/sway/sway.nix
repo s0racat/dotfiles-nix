@@ -139,6 +139,7 @@ in
             {
               id = "default";
               command = "${pkgs.waybar}/bin/waybar";
+              position = "bottom";
               fonts = {
                 names = [
                   "DejaVu Sans Mono"
