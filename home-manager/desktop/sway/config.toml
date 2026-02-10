@@ -29,7 +29,7 @@ interval = 1
 format = " $icon $frequency.eng(w:3) $utilization "
 [[block.click]]
 button = "left"
-cmd = "alacritty -e htop"
+cmd = "$TERMINAL -e htop"
 
 [[block]]
 block = "memory"

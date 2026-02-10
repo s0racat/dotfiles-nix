@@ -50,6 +50,7 @@ in
       BAT_PAGER = "less ${LESS}";
 
     };
+
     shellAliases = {
       hm = "home-manager switch -b hmbak --flake .";
       le = "less";
@@ -193,5 +194,4 @@ in
       github = "zsh-users/zsh-syntax-highlighting"
     '';
   };
-
 }
