@@ -138,7 +138,7 @@ in
           bars = [
             {
               id = "default";
-              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
+              command = "${pkgs.waybar}/bin/waybar";
               fonts = {
                 names = [
                   "DejaVu Sans Mono"
