@@ -25,7 +25,7 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
         | grep "^Updating " \
         | sed 's|^Updating ||' | cut -d'/' -f1,2)
 
-      COUNT=$(echo "$APPS" | grep -c .)
+      COUNT=$(printf "%s\n" "$APPS" | grep -c .)
 
       if [ "$COUNT" -gt 0 ]; then
         NAMES=""
