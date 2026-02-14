@@ -139,11 +139,11 @@ in
             {
               id = "default";
               command = "${pkgs.waybar}/bin/waybar";
+              # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
               position = "bottom";
               fonts = {
                 names = [
-                  "DejaVu Sans Mono"
-                  "FontAwesome"
+                  "monospace"
                 ];
                 size = 10.0;
               };
@@ -280,7 +280,7 @@ in
   '';
 
   home.packages = [
-    pkgs.font-awesome_4
+    pkgs.font-awesome
     pkgs.wl-clipboard
     pkgs.lxqt.pavucontrol-qt
   ];

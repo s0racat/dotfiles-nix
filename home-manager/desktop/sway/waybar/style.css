@@ -1,0 +1,111 @@
+/* Keyframes */
+
+@keyframes blink-critical {
+    to {
+        background-color: #bf616a;
+    }
+}
+
+/* Colors */
+@define-color textcolor #d8dee9;
+@define-color bgcolor #2e3440;
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+}
+
+/* The whole bar */
+#waybar {
+    background: @bgcolor;
+    color: @textcolor;
+    font-family: monospace;
+    font-size: 10pt;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#backlight,
+#idle_inhibitor,
+#disk,
+#user,
+#mpris {
+    padding-left: 4pt;
+    padding-right: 4pt;
+    background: @bgcolor;
+    color: @textcolor;
+}
+
+/* Critical modules blinking */
+#mode,
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical.discharging {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-name: blink-critical;
+    animation-duration: 1s;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding-left: 2pt;
+    padding-right: 2pt;
+    background: @bgcolor;
+    color: @textcolor;
+}
+
+#workspaces button.visible,
+#workspaces button.focused,
+#workspaces button:hover {
+    background: #81a1c1;
+    color: @textcolor;
+    border: 1px solid #E5E9F0;
+}
+
+#workspaces button.urgent {
+    background: #bf616a;
+}
+
+#window {
+    margin-right: 35pt;
+    margin-left: 35pt;
+}
+
+/* Clock & Tray */
+#tray,
+#clock {
+    background: @bgcolor;
+    color: @textcolor;
+}
+
+/* Modules */
+#pulseaudio,
+#network,
+#memory,
+#cpu,
+#temperature,
+#language,
+#battery {
+    background: @bgcolor;
+    color: @textcolor;
+}
+

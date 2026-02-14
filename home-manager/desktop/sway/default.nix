@@ -11,5 +11,6 @@
     ./i3status-rust.nix
     ./envvar.nix
     ./sway-audio-idle-inhibit.nix
+    ./waybar.nix
   ];
 }
