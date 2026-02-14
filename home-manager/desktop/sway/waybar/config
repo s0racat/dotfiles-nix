@@ -3,8 +3,8 @@
 	"position": "bottom",
 
 	"modules-left": [
-		"sway/mode",
-		"sway/workspaces"
+		"sway/workspaces",
+		"sway/mode"
 	],
 
 	"modules-right": [
