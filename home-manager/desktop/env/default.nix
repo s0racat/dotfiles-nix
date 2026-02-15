@@ -7,5 +7,6 @@
     ./xdg.nix
     ./xsession.nix
     ./flatpak.nix
+    ./code.nix
   ];
 }
