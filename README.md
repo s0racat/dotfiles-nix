@@ -10,7 +10,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run home-manager/master -- switch --flake .
+nix run home-manager/master -- switch --flake . -b hmbak
 chsh -s $(which zsh)
 ```
 
