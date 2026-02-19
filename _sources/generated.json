@@ -1,6 +1,6 @@
 {
     "gh-fzgist": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": "2021-12-11",
         "extract": null,
         "name": "gh-fzgist",
@@ -21,7 +21,7 @@
         "version": "e2d20a91bbd19de1dc1cd8c603b366dd63c92158"
     },
     "man-pages-ja": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "man-pages-ja",
@@ -36,8 +36,8 @@
         "version": "20260115"
     },
     "mbusb": {
-        "cargoLocks": null,
-        "date": "2025-10-28",
+        "cargoLock": null,
+        "date": "2026-02-20",
         "extract": null,
         "name": "mbusb",
         "passthru": null,
@@ -49,15 +49,15 @@
             "name": null,
             "owner": "s0racat",
             "repo": "multibootusb",
-            "rev": "f76a2108bf505722d3c65ba710dd705a9e85c40d",
-            "sha256": "sha256-haKT6j99aOar/qs6MVmZ2LO1LBPk/rs2AIycTgecyCc=",
+            "rev": "8f28764c310e1c121bac7ce995c4c05919e22530",
+            "sha256": "sha256-j1pKgRseEVzaybf+BeFz0FTSdcOq3UFdgb4kkkGRBZU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f76a2108bf505722d3c65ba710dd705a9e85c40d"
+        "version": "8f28764c310e1c121bac7ce995c4c05919e22530"
     },
     "win32yank": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "win32yank",
