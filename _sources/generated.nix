@@ -28,13 +28,13 @@
   };
   mbusb = {
     pname = "mbusb";
-    version = "2931796df5054986c4112b8a03c8150dd0ec72bb";
+    version = "af326934d547650b5893faeddde944714b6a4837";
     src = fetchFromGitHub {
       owner = "s0racat";
       repo = "multibootusb";
-      rev = "2931796df5054986c4112b8a03c8150dd0ec72bb";
+      rev = "af326934d547650b5893faeddde944714b6a4837";
       fetchSubmodules = false;
-      sha256 = "sha256-C1HqmRiuzYP9JZhn6SnbhwTX8OUWcyw1PNtUqmtPR8k=";
+      sha256 = "sha256-ku3eJKd4CjNtFe2iav3Xz5m9TThHoNteXI2v0iybe/o=";
     };
     date = "2026-02-20";
   };
