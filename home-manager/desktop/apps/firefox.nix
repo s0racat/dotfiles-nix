@@ -86,6 +86,7 @@
           # https://wiki.mozilla.org/Media/block-autoplay
           # "media.autoplay.blocking_policy" = 2;
           "browser.translations.automaticallyPopup" = false;
+          "browser.shell.checkDefaultBrowser" = false;
         };
       };
     };
