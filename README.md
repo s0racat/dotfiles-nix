@@ -5,8 +5,8 @@ sudo passwd -d takumi
 sudo apt update; sudo apt upgrade -y
 sudo dpkg-reconfigure locales # select en_US.UTF-8, ja_JP.UTF-8
 sudo apt install curl xz-utils zsh -y
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-. ~/.nix-profile/etc/profile.d/nix.sh
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+echo 'trusted-users = root @sudo' | sudo tee -a /etc/nix/nix.conf
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
