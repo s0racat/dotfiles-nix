@@ -25,10 +25,10 @@ let
     };
 in
 {
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "qtct";
+  # };
   xdg.configFile = {
     "qt5ct/qt5ct.conf".text = qtctConf;
     "qt6ct/qt6ct.conf".text = qtctConf;
