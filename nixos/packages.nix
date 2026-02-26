@@ -13,13 +13,13 @@
     libsForQt5.qt5ct
     kdePackages.qt6ct
     winetricks # winetricks (all versions)
-    wineWowPackages.waylandFull # native wayland support (unstable)
+    wineWow64Packages.waylandFull # native wayland support (unstable)
     vscode-fhs
     mbusb
     gparted
     exfatprogs
     quickemu
-    xfce.xfce4-terminal
+    xfce4-terminal
     lxqt.lxqt-archiver
     lsof
   ];
