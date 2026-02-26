@@ -4,6 +4,6 @@
   xsession.windowManager.command = ''
     export XDG_SESSION_TYPE=x11
     export GDK_BACKEND=x11
-    exec startxfce4
+    exec dbus-run-session -- startlxqt
   '';
 }
