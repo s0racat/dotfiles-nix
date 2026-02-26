@@ -282,6 +282,5 @@ in
   home.packages = [
     pkgs.font-awesome
     pkgs.wl-clipboard
-    pkgs.lxqt.pavucontrol-qt
   ];
 }
