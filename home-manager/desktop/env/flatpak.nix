@@ -19,9 +19,12 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
     source = pkgs.writeShellScript "flatpak-update" ''
       sleep 20
 
-      flatpak update -y --noninteractive 2>&1
-
-      notify-send "📦 Flatpak Update" "flatpakアプリが更新されました"
+      OUTPUT=$(flatpak update -y --noninteractive 2>&1)
+      if echo "$OUTPUT" | grep -q "Nothing to do"; then
+        exit 0
+      else
+        notify-send "📦 Flatpak Update" "flatpakアプリが更新されました"
+      fi
     '';
     executable = true;
   };

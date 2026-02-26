@@ -8,5 +8,6 @@
     ./xsession.nix
     ./flatpak.nix
     ./code.nix
+    ./picom.nix
   ];
 }
