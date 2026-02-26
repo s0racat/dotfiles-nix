@@ -10,6 +10,8 @@
     keepassxc
     lxqt.pcmanfm-qt
     lxqt.pavucontrol-qt
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
     winetricks # winetricks (all versions)
     wineWowPackages.waylandFull # native wayland support (unstable)
     vscode-fhs
