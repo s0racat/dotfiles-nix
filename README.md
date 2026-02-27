@@ -10,6 +10,7 @@ echo 'trusted-users = root @sudo' | sudo tee -a /etc/nix/nix.conf
 git clone https://github.com/s0racat/dotfiles-nix
 cd dotfiles-nix
 export NIX_CONFIG="experimental-features = nix-command flakes"
+exec bash
 nix run home-manager/master -- switch --flake . -b hmbak
 chsh -s $(which zsh)
 ```
