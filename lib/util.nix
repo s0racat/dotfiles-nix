@@ -6,7 +6,7 @@
 let
 
   inherit (inputs)
-    nixpkgs-unstable
+    nixpkgs-stable
     home-manager
     self
     nix-darwin
@@ -24,7 +24,7 @@ in
       av1Support ? false,
     }:
     let
-      splittedName = nixpkgs-unstable.lib.splitString "@" name;
+      splittedName = nixpkgs-stable.lib.splitString "@" name;
       username = builtins.elemAt splittedName 0;
     in
     {
@@ -70,10 +70,10 @@ in
       av1Support ? false,
     }:
     let
-      splittedSystem = nixpkgs-unstable.lib.splitString "-" system;
+      splittedSystem = nixpkgs-stable.lib.splitString "-" system;
       os = builtins.elemAt splittedSystem 1;
       systemConfig =
-        if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs-unstable.lib.nixosSystem;
+        if os == "darwin" then nix-darwin.lib.darwinSystem else nixpkgs-stable.lib.nixosSystem;
       hmModules =
         if os == "darwin" then
           [

@@ -7,7 +7,7 @@ let
   inherit (flags) chromium_flags electron_flags;
 in
 {
-  stable = import inputs.nixpkgs-stable-small {
+  unstable = import inputs.nixpkgs-unstable-small {
     inherit (final) overlays;
     config.allowUnfree = true;
     inherit (final.stdenv.hostPlatform) system;

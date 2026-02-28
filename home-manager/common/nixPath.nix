@@ -5,7 +5,7 @@
 }:
 {
   # make `nix run nixpkgs#hello` use the same nixpkgs as the one used by this flake.
-  nix.registry.nixpkgs.flake = inputs.nixpkgs-unstable;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs-stable;
   nix.registry.home-manager.flake = inputs.home-manager;
   nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
   xdg.dataFile = lib.mapAttrs' (name: value: {

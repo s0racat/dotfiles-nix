@@ -25,7 +25,7 @@ in
     ];
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
   };
-  programs.neovim.initLua =
+  programs.neovim.extraLuaConfig =
     let
       plugins = with pkgs.vimPlugins; [
 
