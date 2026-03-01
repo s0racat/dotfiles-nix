@@ -13,7 +13,7 @@ in
   programs.chromium = {
     package = lib.mkIf (!isNixOS) null;
     # https://github.com/nix-community/home-manager/issues/8821
-    # enable = true;
+    enable = true;
     extensions = [
       # "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
       "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock origin lite
