@@ -32,16 +32,6 @@
     man-pages-ja
     gemini-cli
     xsel
-    (pkgs.symlinkJoin {
-      name = "amdgpu_top-smi";
-      paths = [ pkgs.amdgpu_top ];
-
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-
-      postBuild = ''
-        wrapProgram $out/bin/amdgpu_top --add-flags "--smi"
-      '';
-    })
     distrobox
   ];
   home.extraDependencies = with pkgs; [

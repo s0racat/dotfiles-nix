@@ -18,6 +18,7 @@
     ./nix-index.nix
     ./tealdeer.nix
     ./distrobox.nix
+    ./amdgpu_top.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];
