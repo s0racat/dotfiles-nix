@@ -47,7 +47,7 @@
         import nixpkgs-stable {
           inherit system;
           overlays = [ self.overlays.default ];
-config.allowUnfree = true;
+          config.allowUnfree = true;
         }
       );
       util = import ./lib/util.nix { inherit inputs nixpkgsFor; };
