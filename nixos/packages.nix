@@ -19,7 +19,7 @@
     gparted
     exfatprogs
     quickemu
-    xfce4-terminal
+    xfce.xfce4-terminal
     lxqt.lxqt-archiver
     lsof
   ];
