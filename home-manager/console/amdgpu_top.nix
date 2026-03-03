@@ -2,7 +2,7 @@
 {
   home.packages = [
     (pkgs.symlinkJoin {
-      name = "amdgpu_top-smi";
+      name = "amdgpu_top-dark";
       paths = [ pkgs.amdgpu_top ];
 
       nativeBuildInputs = [ pkgs.makeWrapper ];
