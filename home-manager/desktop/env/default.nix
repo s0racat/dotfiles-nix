@@ -9,5 +9,6 @@
     ./flatpak.nix
     ./code.nix
     ./picom.nix
+    ./wallpaper.nix
   ];
 }
