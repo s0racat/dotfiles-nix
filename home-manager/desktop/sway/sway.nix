@@ -261,6 +261,7 @@ in
           menu = "env LANG=en_US.UTF-8 ${pkgs.fuzzel}/bin/fuzzel";
           startup = [
             { command = "lxqt-policykit-agent"; }
+            { command = "kdeconnectd"; }
             { command = "fcitx5 -r -d"; }
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "gtk-launch org.keepassxc.KeePassXC"; }
