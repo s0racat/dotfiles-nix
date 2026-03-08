@@ -82,7 +82,7 @@
 		"format-wifi": "   ({signalStrength}%)",
 		"format-ethernet": "  {ifname}",
 		"format-disconnected": " No connection",
-		"format-alt": "  {ipaddr}/{cidr}",
+		"format-alt": " 󰩟 {ipaddr}/{cidr}",
 		"tooltip": false
 	},
 
