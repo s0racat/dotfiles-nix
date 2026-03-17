@@ -50,6 +50,7 @@ in
               cliphist = lib.getExe pkgs.cliphist;
             in
             lib.mkOptionDefault {
+              "--locked ${modifier}+Shift+BackSpace" = "exec systemctl poweroff";
               "${modifier}+q" = "kill";
               "${modifier}+Shift+r" = "reload";
               "${modifier}+Shift+s" =
