@@ -2,7 +2,6 @@
   lib,
   isNixOS,
   pkgs,
-  config,
   osConfig,
   ...
 }:
