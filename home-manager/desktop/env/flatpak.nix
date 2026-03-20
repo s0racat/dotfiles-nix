@@ -15,8 +15,8 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
     Type=Application
     Hidden=true
   '';
-  home.file.".local/bin/flatpak-update" = {
-    source = pkgs.writeShellScript "flatpak-update" ''
+  home.packages = [
+    (pkgs.writeShellScriptBin "flatpak-update" ''
       sleep 20
 
       OUTPUT=$(flatpak update -y --noninteractive 2>&1)
@@ -25,14 +25,13 @@ lib.mkIf (!isNixOS || nixosFlatpak) {
       else
         notify-send "📦 Flatpak Update" "flatpakアプリが更新されました"
       fi
-    '';
-    executable = true;
-  };
+    '')
+  ];
   xdg.configFile."autostart/flatpak-update.desktop".text = ''
     [Desktop Entry]
     Type=Application
     Name=Flatpak Update
-    Exec=${config.home.homeDirectory}/.local/bin/flatpak-update
+    Exec=flatpak-update
     X-GNOME-Autostart-enabled=true
   '';
 }
