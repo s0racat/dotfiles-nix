@@ -12,7 +12,7 @@
 		"network",
 		"memory",
 		"cpu",
-		"temperature",
+		// "temperature",
 		"battery",
 		"sway/language",
 		"clock",
