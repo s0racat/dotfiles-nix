@@ -1,4 +1,4 @@
-{ config,lib, ... }:
+{ config, lib, ... }:
 let
   envvar = {
 
@@ -10,11 +10,10 @@ let
 in
 {
   home.sessionVariables = envvar;
-  systemd.user.sessionVariables = 
-  (builtins.removeAttrs config.home.sessionVariables [ "NIX_PATH" ])
-  // (lib.optionalAttrs (builtins.hasAttr "XCURSOR_PATH" config.home.sessionSearchVariables) {
-    XCURSOR_PATH = builtins.concatStringsSep ":" config.home.sessionSearchVariables.XCURSOR_PATH;
-  });
-
+  systemd.user.sessionVariables =
+    (builtins.removeAttrs config.home.sessionVariables [ "NIX_PATH" ])
+    // (lib.optionalAttrs (builtins.hasAttr "XCURSOR_PATH" config.home.sessionSearchVariables) {
+      XCURSOR_PATH = builtins.concatStringsSep ":" config.home.sessionSearchVariables.XCURSOR_PATH;
+    });
 
 }

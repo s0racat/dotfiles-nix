@@ -1,4 +1,4 @@
 { self, ... }:
 {
-  home.file."Pictures/wallpapar".source = self + /wallpaper;
+  home.file."Pictures/wallpaper".source = self + /wallpaper;
 }

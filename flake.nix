@@ -107,6 +107,11 @@
           av1Support = true;
         })
         (util.mkHome {
+          name = "takumi@takumi-21kj";
+          extraModules = [ ./home-manager/desktop ];
+          av1Support = true;
+        })
+        (util.mkHome {
           name = "takumi@takumi-venusseries";
           extraModules = [ ./home-manager/desktop ];
           av1Support = true;

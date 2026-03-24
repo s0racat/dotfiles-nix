@@ -109,8 +109,11 @@ in
               };
             in
             {
-              "HDMI-A-1" = {
-                bg = "${wallpaper} fill";
+              "*" = {
+                bg = "${config.home.homeDirectory}/Pictures/wallpaper/3b4252.png fill";
+              };
+              "eDP-1" = {
+                scale = "1.25";
               };
             };
 
@@ -134,6 +137,13 @@ in
             "type:pointer" = {
               accel_profile = "adaptive";
               pointer_accel = "0.6";
+            };
+            "type:touchpad" = {
+              tap = "enabled";
+              natural_scroll = "enabled";
+              accel_profile = "adaptive";
+              scroll_factor = "0.3";
+
             };
           };
           bars = [
