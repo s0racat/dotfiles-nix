@@ -93,21 +93,6 @@ in
           defaultWorkspace = "workspace number 1";
           terminal = "alacritty";
           output =
-            let
-              wallpaper = pkgs.fetchurl {
-                # url = "https://i.pximg.net/img-original/img/2025/06/11/19/56/13/131440287_p0.png";
-                # hash = "sha256-C9xNGuHZMDArWOE6McjSMnAaurjc3/l1NQq6cqD5zpE=";
-                url = "https://c.l3n.co/9bQZck.png";
-                hash = "sha256-D7dENYLOuumuMe/Ylx0E5wa1dh5kTGDUbrLDfbkfeD0=
-";
-                curlOptsList = [
-                  "-H"
-                  "User-Agent: Mozilla/5.0"
-                  "-H"
-                  "Referer: https://pixiv.net"
-                ];
-              };
-            in
             {
               "*" = {
                 bg = "${config.home.homeDirectory}/Pictures/wallpaper/3b4252.png fill";
