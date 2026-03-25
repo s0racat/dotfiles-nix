@@ -8,8 +8,8 @@
 
     main = {
       # shell = "sh -c 'tmux attach || tmux'";
-      font = "monospace:size=12";
-      dpi-aware = "yes";
+      font = "monospace:size=14";
+      dpi-aware = "no";
       term = "foot";
     };
     cursor = {
