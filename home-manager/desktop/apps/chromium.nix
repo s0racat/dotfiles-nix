@@ -58,7 +58,7 @@ in
       Name=Visual Studio Code
       Comment=Code Editing. Redefined.
       GenericName=Text Editor
-      Exec=/usr/share/code/code %F ${toString electron_flags}
+      Exec=/usr/bin/code %F ${toString electron_flags}
       Icon=vscode
       Type=Application
       StartupNotify=false
