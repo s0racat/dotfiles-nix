@@ -9,6 +9,7 @@ let
       builtins.concatStringsSep "," [
         "AcceleratedVideoDecodeLinuxGL"
         "WebRTCPipeWireCapturer"
+        "TouchpadOverscrollHistoryNavigation"
       ]
     }"
     "--disable-features=${builtins.concatStringsSep "," [ "UseSkiaRenderer" ]}"

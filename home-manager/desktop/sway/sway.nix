@@ -96,6 +96,10 @@ in
             "*" = {
               bg = "${config.home.homeDirectory}/Pictures/wallpaper/3b4252.png fill";
             };
+            "HDMI-A-1" = {
+              pos = "-1920 0";
+
+            };
             "eDP-1" = {
               scale = "1.25";
             };
