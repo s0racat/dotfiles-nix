@@ -92,15 +92,14 @@ in
 
           defaultWorkspace = "workspace number 1";
           terminal = "alacritty";
-          output =
-            {
-              "*" = {
-                bg = "${config.home.homeDirectory}/Pictures/wallpaper/3b4252.png fill";
-              };
-              "eDP-1" = {
-                scale = "1.25";
-              };
+          output = {
+            "*" = {
+              bg = "${config.home.homeDirectory}/Pictures/wallpaper/3b4252.png fill";
             };
+            "eDP-1" = {
+              scale = "1.25";
+            };
+          };
 
           seat = {
             "*" = {
@@ -262,7 +261,6 @@ in
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "gtk-launch org.keepassxc.KeePassXC"; }
 
-            { command = "flatpak-update"; }
           ];
         };
       extraConfig = ''
