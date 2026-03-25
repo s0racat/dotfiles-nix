@@ -7,9 +7,9 @@
         width = 50;
         icon-theme = config.gtk.iconTheme.name;
         filter-desktop = true;
-        font = "monospace:size=8";
+        font = "monospace:size=15";
         launch-prefix = "env LANG=ja_JP.UTF-8";
-        dpi-aware = "yes";
+        dpi-aware = "no";
       };
       colors = {
 
