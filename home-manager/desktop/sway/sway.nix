@@ -264,6 +264,7 @@ in
             { command = "fcitx5 -r -d"; }
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "gtk-launch org.keepassxc.KeePassXC"; }
+            { command = "nm-applet"; }
 
           ];
         };
