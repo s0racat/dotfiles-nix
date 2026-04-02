@@ -2,6 +2,7 @@
 {
   pkgs,
   config,
+  isNixOS,
   lib,
   ...
 }:
@@ -45,7 +46,8 @@ in
         {
           keybindings =
             let
-              swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
+              swayosd-client =
+                if isNixOS then lib.getExe' pkgs.swayosd "swayosd-client" else "/usr/bin/swayosd-client";
               playerctl = lib.getExe pkgs.playerctl;
               cliphist = lib.getExe pkgs.cliphist;
             in
@@ -265,6 +267,7 @@ in
             # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
             { command = "gtk-launch org.keepassxc.KeePassXC"; }
             { command = "nm-applet"; }
+            { command = "swayosd-server"; }
 
           ];
         };
