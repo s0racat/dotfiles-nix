@@ -268,7 +268,8 @@ in
             { command = "gtk-launch org.keepassxc.KeePassXC"; }
             { command = "nm-applet"; }
             { command = "swayosd-server"; }
-            { command = "blueman-applet"; }
+            { command = "blueman-applet"; always = true;}
+
 
           ];
         };
