@@ -19,6 +19,7 @@ in
       }
     ];
     timeouts = [
+{timeout = 300; inherit command;}
       {
         timeout = 600;
         command = suspendCommand;
