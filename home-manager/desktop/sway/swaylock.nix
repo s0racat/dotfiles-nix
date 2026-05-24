@@ -1,6 +1,5 @@
 # apt: require swaylock
 {
-  pkgs,
   isNixOS,
   lib,
   ...
