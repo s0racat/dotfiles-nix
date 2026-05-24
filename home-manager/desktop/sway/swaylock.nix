@@ -22,7 +22,7 @@
         show-failed-attempts = true;
         show-keyboard-layout = true;
         indicator-caps-lock = true;
-        inherit image;
+        color = "2e3440";
       };
   };
 }
