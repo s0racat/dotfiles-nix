@@ -40,7 +40,7 @@ vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "s", '"_s')
 vim.keymap.set("n", "S", '"_S')
-vim.keymap.set("n", "gf", 'gF')
+vim.keymap.set("n", "gf", "gF")
 -- ビジュアルモード
 vim.keymap.set("v", "d", '"_d')
 vim.keymap.set("v", "x", '"_x')
