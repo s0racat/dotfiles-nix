@@ -113,8 +113,9 @@
 			"default": ["", ""]
 		},
 		"scroll-step": 1,
-		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": false
+		"on-click": "pavucontrol-qt",
+		"tooltip": false,
+        "reverse-scrolling": true
 	},
 
 	"temperature": {
