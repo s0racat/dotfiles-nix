@@ -19,7 +19,6 @@ let
   starship = pkgs.runCommand "starship" { } "${pkgs.starship}/bin/starship init zsh > $out";
   fzf = pkgs.runCommand "fzf" { } "${pkgs.fzf}/bin/fzf --zsh > $out";
   zshBin = if isNixOS then "${pkgs.zsh}/bin/zsh" else "/bin/zsh";
-  cfg = config.programs.zsh;
 in
 {
 
