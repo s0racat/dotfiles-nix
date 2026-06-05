@@ -2,10 +2,10 @@
   description = "dotfiles";
   inputs = {
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
       # neovimUtils.makeVimPackageInfo not found https://github.com/nix-community/home-manager/commit/3c71ea724c54b29a8f62e2b965caafca863fa3a2
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

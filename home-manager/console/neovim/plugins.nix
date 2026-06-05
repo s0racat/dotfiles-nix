@@ -12,7 +12,7 @@ in
   programs.neovim = {
     extraPackages = with pkgs; [
       lua-language-server
-      nodePackages.typescript-language-server
+      typescript-language-server
       bash-language-server
       vim-language-server
       emmet-language-server
@@ -25,7 +25,7 @@ in
     ];
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
   };
-  programs.neovim.extraLuaConfig =
+  programs.neovim.initLua =
     let
       plugins = with pkgs.vimPlugins; [
 

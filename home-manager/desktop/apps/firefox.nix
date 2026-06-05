@@ -2,6 +2,7 @@
 {
   lib,
   pkgs,
+config,
   av1Support,
   ...
 }:
@@ -24,6 +25,7 @@
   programs.firefox = {
     enable = true;
     package = null;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     # profileVersion = null;
     profiles = {
       default = {

@@ -20,7 +20,6 @@ let
   fzf = pkgs.runCommand "fzf" { } "${pkgs.fzf}/bin/fzf --zsh > $out";
   zshBin = if isNixOS then "${pkgs.zsh}/bin/zsh" else "/bin/zsh";
   cfg = config.programs.zsh;
-  relToDotDir = file: (lib.optionalString (cfg.dotDir != null) (cfg.dotDir + "/")) + file;
 in
 {
 
@@ -125,8 +124,8 @@ in
     fi
   '';
 
-  home.file.${relToDotDir ".zshrc"}.onChange = "${zshBin} -c 'zcompile ~/.zshrc'";
-  home.file.${relToDotDir ".zshenv"}.onChange = "${zshBin} -c 'zcompile ~/.zshenv'";
+  home.file."./.zshrc".onChange = "${zshBin} -c 'zcompile ~/.zshrc'";
+  home.file."./.zshenv".onChange = "${zshBin} -c 'zcompile ~/.zshenv'";
   home.packages = [ pkgs.sheldon ];
 
   xdg.configFile."sheldon/sync/starship.zsh" = {

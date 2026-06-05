@@ -6,7 +6,9 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
+    initLua = lib.mkBefore (builtins.readFile ./lua/init.lua);
+    withRuby = false;
+    withPython3 = false;
   };
 
   xdg.configFile."nvim/lua/conf" = {

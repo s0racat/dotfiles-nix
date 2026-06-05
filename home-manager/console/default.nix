@@ -19,6 +19,7 @@
     ./tealdeer.nix
     ./distrobox.nix
     ./amdgpu_top.nix
+    ./xdg.nix
     "${self}/common/nix-settings.nix"
     "${self}/home-manager/common"
   ];

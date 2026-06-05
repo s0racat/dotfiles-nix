@@ -2,6 +2,7 @@
 {
   gtk = {
     enable = true;
+    gtk4.theme = null;
     font.name = "Roboto";
     font.size = 13;
     cursorTheme = {

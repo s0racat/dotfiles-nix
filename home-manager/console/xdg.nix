@@ -1,0 +1,5 @@
+{
+
+  xdg.userDirs.setSessionVariables = false;
+
+}
