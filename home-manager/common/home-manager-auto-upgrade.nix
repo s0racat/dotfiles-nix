@@ -1,7 +1,6 @@
 {
   config,
   isNixOS,
-  self,
   pkgs,
   ...
 }:
