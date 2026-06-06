@@ -261,17 +261,7 @@ in
           modifier = "Mod4";
           menu = "env LANG=en_US.UTF-8 ${pkgs.fuzzel}/bin/fuzzel";
           startup = [
-            { command = "lxqt-policykit-agent"; }
-            { command = "kdeconnectd"; }
-            { command = "fcitx5 -r -d"; }
-            # { command = "${pkgs.playerctl-notify}/bin/playerctl-notify"; }
-            { command = "gtk-launch org.keepassxc.KeePassXC"; }
-            { command = "nm-applet"; }
-            { command = "swayosd-server"; }
-            {
-              command = "blueman-applet";
-              always = true;
-            }
+            { command = "~/.config/sway/autostart.sh"; }
 
           ];
         };
@@ -280,6 +270,23 @@ in
       '';
     };
 
+  xdg.configFile."sway/autostart.sh" = {
+    executable = true;
+    source =
+      let
+        cmds = [
+          "lxqt-policykit-agent"
+          "kdeconnectd"
+          "fcitx5 -r -d"
+          "gtk-launch org.keepassxc.KeePassXC"
+          "nm-applet"
+          "blueman-applet"
+          "sleep 10 && swayosd-server"
+        ];
+
+      in
+      pkgs.writeShellScript "autostart.sh" (lib.concatStringsSep "\n" (map (c: "${c} &") cmds) + "\n");
+  };
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
     	exec sway

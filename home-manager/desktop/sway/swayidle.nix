@@ -30,10 +30,9 @@ in
         command = suspendCommand;
       }
     ];
-    events =
-      {
-        "before-sleep" = command;
-      };
+    events = {
+      "before-sleep" = command;
+    };
   };
   services.swayidle.enable = true;
 }

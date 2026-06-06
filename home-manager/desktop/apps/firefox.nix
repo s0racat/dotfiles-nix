@@ -2,7 +2,7 @@
 {
   lib,
   pkgs,
-config,
+  config,
   av1Support,
   ...
 }:
