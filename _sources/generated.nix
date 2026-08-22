@@ -20,10 +20,10 @@
   };
   man-pages-ja = {
     pname = "man-pages-ja";
-    version = "20260615";
+    version = "20260815";
     src = fetchurl {
-      url = "https://github.com/linux-jm/manual/releases/download/v20260615/man-pages-ja-20260615.tar.gz";
-      sha256 = "sha256-NZ8bt0SILjULcSOCAdL7deECUMgVV8vtMOHAlITtQnM=";
+      url = "https://github.com/linux-jm/manual/releases/download/v20260815/man-pages-ja-20260815.tar.gz";
+      sha256 = "sha256-6TXMd6VKa7HcCsE+W5Ho+mY7v7gn2wVfeT1iS7gqNgg=";
     };
   };
   mbusb = {
