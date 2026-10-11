@@ -272,20 +272,17 @@ in
 
   xdg.configFile."sway/autostart.sh" = {
     executable = true;
-    source =
-      let
-        cmds = [
-          "lxqt-policykit-agent"
-          "kdeconnectd"
-          "fcitx5 -r -d"
-          "gtk-launch org.keepassxc.KeePassXC"
-          "nm-applet"
-          "sleep 20 && blueman-applet"
-          "sleep 10 && swayosd-server"
-        ];
+    text = ''
+      sleep 20
+      lxqt-policykit-agent &
+      kdeconnectd &
+      fcitx5 -r -d &
+      gtk-launch org.keepassxc.KeePassXC &
+      nm-applet &
+      blueman-applet &
+      swayosd-server &
+    '';
 
-      in
-      pkgs.writeShellScript "autostart.sh" (lib.concatStringsSep "\n" (map (c: "${c} &") cmds) + "\n");
   };
   programs.zsh.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
