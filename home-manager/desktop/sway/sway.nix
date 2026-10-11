@@ -280,7 +280,7 @@ in
           "fcitx5 -r -d"
           "gtk-launch org.keepassxc.KeePassXC"
           "nm-applet"
-          "blueman-applet"
+          "sleep 20 && blueman-applet"
           "sleep 10 && swayosd-server"
         ];
 
