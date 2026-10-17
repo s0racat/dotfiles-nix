@@ -29,11 +29,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-MwMUJuHkF52cQzTHIKHl22xL+JQ/J7h0pSRx9LZROFc=",
+            "sha256": "sha256-jLfyd4y8hX+v8WhdNxAaeTJf+WnJOWsnze3w5TnXbr4=",
             "type": "url",
-            "url": "https://github.com/linux-jm/manual/releases/download/v20260915/man-pages-ja-20260915.tar.gz"
+            "url": "https://github.com/linux-jm/manual/releases/download/v20261015/man-pages-ja-20261015.tar.gz"
         },
-        "version": "20260915"
+        "version": "20261015"
     },
     "mbusb": {
         "cargoLock": null,
